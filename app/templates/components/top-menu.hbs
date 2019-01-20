@@ -1,0 +1,22 @@
+<div class="logo-veeakker">{{#link-to "index"}}<img src="/images/veeakker.png" />{{/link-to}}</div>
+<div id="veeakker-menu" class="overlay {{mobileIsOpenClass}}">
+  <a href="#" class="closebtn" {{action this.closeNav}}>&times;</a>
+  <div class="talen-mobile">
+    <ul>
+      <li><a href="#">NL</a></li>
+      <li><a href="#">FR</a></li>
+      <li><a href="#">EN</a></li>
+    </ul>
+  </div>
+  <div class="fix"></div>
+  <ul class="overlay-content">
+    <li><a href="overons.aspx">OVER ONS</a></li>
+    <li><a href="producten.aspx">PRODUCTEN</a></li>
+    <li><a href="nieuws.aspx">NIEUWS</a></li>
+    <li><a href="#" target="_blank">WEBSHOP</a></li>
+    <li><a href="locaties.aspx">LOCATIES</a></li>
+    <li class="laatste-menu"><a href="home.aspx#contact">CONTACT</a></li>
+  </ul> 
+</div>
+<div class="fix"></div>
+<div class="mobile-menu"><span class="menu-small" {{action this.openNav}}>&#9776;</span></div>
