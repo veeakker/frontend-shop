@@ -136,8 +136,8 @@ p {
                 text-decoration: none;
             }
 
-    .laatste-menu {
-        border-right: none !important;
+    #veeakker-menu ul.menu-links li:last-child {
+      border-right: none;
     }
 
     /*HOME*/
@@ -768,8 +768,8 @@ p {
                 text-decoration: none;
             }
 
-    .laatste-menu {
-        border-right: none !important;
+    #veeakker-menu ul.menu-links li:last-child {
+      border-right: none;
     }
 
     /*HOME*/
