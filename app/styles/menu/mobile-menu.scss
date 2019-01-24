@@ -1,0 +1,38 @@
+.top-menu__main-menu {
+
+  // Opening and closing the menu
+  @media screen and (max-width: 850px) {
+    #veeakker-menu {
+      height: 0%;
+    }
+
+    &.mobile-open {
+      #veeakker-menu {
+        height: 100%;
+      }
+    }
+  }
+
+
+  // Open and close links
+  //
+  // We only want to render these links when they can be pressed so
+  // screen readers don't get confused.  Could be handled in the
+  // handlebars code too, perhaps in an easier way.
+
+  // hide this by default
+  .closebtn, .mobile-menu {
+    display: none;
+  }
+
+  @media screen and (max-width: 850px) {
+    // if we're not open
+    .closebtn { display: none; }
+    .mobile-menu { display: inherit; }
+
+    &.mobile-open {
+      .closebtn { display: inherit; }
+      .mobile-menu { display: none; }
+    }
+  }
+}

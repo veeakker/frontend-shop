@@ -1,18 +1,20 @@
-<div class="logo-veeakker">{{#link-to "index"}}<img src="/images/veeakker.png" />{{/link-to}}</div>
-<div id="veeakker-menu" class="overlay {{mobileIsOpenClass}}">
-  <a href="#" class="closebtn" {{action this.closeNav}}>&times;</a>
-  <div class="talen-mobile">
-    <LanguageList />
+<div class="top-menu__main-menu {{mobileIsOpenClass}}">
+  <div class="logo-veeakker">{{#link-to "index"}}<img src="/images/veeakker.png" alt="Veeakker brand name in written front" />{{/link-to}}</div>
+  <div id="veeakker-menu" class="overlay">
+    <a href="#" class="closebtn" {{action this.closeNav}}>&times;</a>
+    <div class="talen-mobile">
+      <LanguageList />
+    </div>
+    <div class="fix"></div>
+    <ul class="overlay-content menu-links">
+      <li><a href="overons.aspx">Over ons</a></li>
+      <li><a href="producten.aspx">Producten</a></li>
+      <li><a href="nieuws.aspx">Nieuws</a></li>
+      <li><a href="webshop">Webshop</a></li>
+      <li><a href="locaties.aspx">Locaties</a></li>
+      <li class="laatste-menu"><a href="home.aspx#contact">Contact</a></li>
+    </ul>
   </div>
   <div class="fix"></div>
-  <ul class="overlay-content">
-    <li><a href="overons.aspx">OVER ONS</a></li>
-    <li><a href="producten.aspx">PRODUCTEN</a></li>
-    <li><a href="nieuws.aspx">NIEUWS</a></li>
-    <li><a href="#" target="_blank">WEBSHOP</a></li>
-    <li><a href="locaties.aspx">LOCATIES</a></li>
-    <li class="laatste-menu"><a href="home.aspx#contact">CONTACT</a></li>
-  </ul> 
+  <div class="mobile-menu"><span class="menu-small" tabindex="0" {{action this.openNav}}>&#9776;</span></div>
 </div>
-<div class="fix"></div>
-<div class="mobile-menu"><span class="menu-small" {{action this.openNav}}>&#9776;</span></div>
