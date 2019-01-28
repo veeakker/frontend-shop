@@ -1,4 +1,14 @@
+#content-home {
+  h1, h2, h3 {
+    text-transform: uppercase;
+  }
+}
+
 #contact {
+  h1 {
+    font-family: 'Varela Round', sans-serif;
+  }
+
   .veeakker-home-map__leaflet-map {
     width: 300px;
     height: 200px;

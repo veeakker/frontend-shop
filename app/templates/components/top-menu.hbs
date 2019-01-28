@@ -1,5 +1,11 @@
 <div class="top-menu__main-menu {{mobileIsOpenClass}}">
-  <div class="logo-veeakker">{{#link-to "index"}}<img src="/images/veeakker.png" alt="Veeakker brand name in written front" />{{/link-to}}</div>
+  <div class="logo-veeakker">
+    <span property="name" content="Veeakker"></span>
+    <span property="url" content="https://veeakker.be/"></span>
+    {{#link-to "index"}}
+      <img src="/images/veeakker.png" alt="Veeakker brand name in written front" />
+    {{/link-to}}
+  </div>
   <div id="veeakker-menu" class="overlay">
     <a href="#" class="closebtn" {{action this.closeNav}}>&times;</a>
     <div class="talen-mobile">
