@@ -1,0 +1,12 @@
+{{#leaflet-map lat=lat lng=lng zoom=zoom}}
+  {{!-- layer components --}}
+  {{tile-layer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+
+  {{#marker-layer location=veeakkerButchery}}
+    {{#popup-layer}}
+      <h3>Veeakker</h3>
+      Slachthuislaan 3A<br/>
+      3000 Leuven
+    {{/popup-layer}}
+  {{/marker-layer}}
+{{/leaflet-map}}
