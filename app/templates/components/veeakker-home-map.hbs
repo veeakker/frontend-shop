@@ -1,8 +1,7 @@
-{{#leaflet-map lat=lat lng=lng zoom=zoom as |map|}}
-  {{!-- layer components --}}
+{{#leaflet-map lat=butcheryLat lng=butcheryLng zoom=defaultZoom as |map|}}
   {{map.tile url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
 
-  {{#map.marker location=veeakkerButchery as |marker|}}
+  {{#map.marker location=veeakkerButcheryLocation as |marker|}}
     {{#marker.popup}}
       <h3>Veeakker</h3>
       Slachthuislaan 3A<br/>
