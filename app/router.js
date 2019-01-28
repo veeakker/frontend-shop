@@ -8,7 +8,14 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('about');
-  this.route('products');
+  this.route('products', function() {
+    this.route('beef');
+    this.route('pork');
+    this.route('chicken');
+    this.route('lamb');
+    this.route('fish');
+    this.route('assorted');
+  });
   this.route('news');
   this.route('locations');
 });
