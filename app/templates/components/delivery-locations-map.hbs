@@ -1,9 +1,20 @@
 <LeafletMap @lat={{baseLat}} @lng={{baseLng}} @zoom={{baseZoom}} as |map|>
   {{map.tile url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
 
-  {{#each @places as |deliveryPlace|}}
-    {{#if deliveryPlace.geoCoordinate.location}}
-      {{map.marker location=deliveryPlace.geoCoordinate.location}}
-    {{/if}}
-  {{/each}}
+  {{#let
+     (icon iconUrl=iconSettings.iconUrl shadowUrl=iconSettings.shadowUrl iconSize=iconSettings.iconSize shadowSize=iconSettings.shadowSize iconAnchor=iconSettings.iconAnchor shadowAnchor=iconSettings.shadowAnchor popupAnchor=iconSettings.popupAnchor)
+     (icon iconUrl=orangeLeafUrl shadowUrl=iconSettings.shadowUrl iconSize=iconSettings.iconSize shadowSize=iconSettings.shadowSize iconAnchor=iconSettings.iconAnchor shadowAnchor=iconSettings.shadowAnchor popupAnchor=iconSettings.popupAnchor)
+     (icon iconUrl=redLeafUrl shadowUrl=iconSettings.shadowUrl iconSize=iconSettings.iconSize shadowSize=iconSettings.shadowSize iconAnchor=iconSettings.iconAnchor shadowAnchor=iconSettings.shadowAnchor popupAnchor=iconSettings.popupAnchor)
+     as |greenIcon orangeIcon redIcon|}}
+
+    {{#each @places as |deliveryPlace|}}
+      {{#let deliveryPlace.deliveryKind.simpleName as |kind|}}
+        {{#if deliveryPlace.geoCoordinate.location}}
+          {{map.marker
+            location=deliveryPlace.geoCoordinate.location
+            icon=(if (eq kind "toer") greenIcon (if (eq kind "natuurwinkel") orangeIcon redIcon))}}
+        {{/if}}
+      {{/let}}
+    {{/each}}
+  {{/let}}
 </LeafletMap>
