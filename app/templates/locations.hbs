@@ -7,17 +7,7 @@
     <div class="forks"><img src="/images/forks.png" width="151"/></div>
   </div>
   <div class="maps">
-    {{#leaflet-map lat=50.874007 lng=4.689850 zoom=9 as |map|}}
-      {{map.tile url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
-
-      {{#each model as |deliveryPlace|}}
-        {{#if deliveryPlace.geoCoordinate.location}}
-          {{map.marker location=deliveryPlace.geoCoordinate.location}}
-        {{else}}
-          {{map.marker location=butcheryLocation}}
-        {{/if}}
-      {{/each}}
-    {{/leaflet-map}}
+    <DeliveryLocationsMap @places={{model}} />
   </div>
   <div class="extra-menu">
     <div class="winkel tablinks" onclick="openLocation(event, 'winkel')" id="defaultOpen"><h5>WINKEL</h5></div>

@@ -1,0 +1,9 @@
+<LeafletMap @lat={{baseLat}} @lng={{baseLng}} @zoom={{baseZoom}} as |map|>
+  {{map.tile url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+
+  {{#each @places as |deliveryPlace|}}
+    {{#if deliveryPlace.geoCoordinate.location}}
+      {{map.marker location=deliveryPlace.geoCoordinate.location}}
+    {{/if}}
+  {{/each}}
+</LeafletMap>
