@@ -6,6 +6,7 @@ import { computed } from '@ember-decorators/object';
 export default class DeliveryKindModel extends Model {
   @attr() label;
   @attr() uri;
+  @attr() description;
   @hasMany('delivery-place') deliveryPlaces;
 
   @computed('uri')
