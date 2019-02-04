@@ -4,15 +4,19 @@
   {{#let
      (icon iconUrl=iconSettings.iconUrl shadowUrl=iconSettings.shadowUrl iconSize=iconSettings.iconSize shadowSize=iconSettings.shadowSize iconAnchor=iconSettings.iconAnchor shadowAnchor=iconSettings.shadowAnchor popupAnchor=iconSettings.popupAnchor)
      (icon iconUrl=orangeLeafUrl shadowUrl=iconSettings.shadowUrl iconSize=iconSettings.iconSize shadowSize=iconSettings.shadowSize iconAnchor=iconSettings.iconAnchor shadowAnchor=iconSettings.shadowAnchor popupAnchor=iconSettings.popupAnchor)
-     (icon iconUrl=redLeafUrl shadowUrl=iconSettings.shadowUrl iconSize=iconSettings.iconSize shadowSize=iconSettings.shadowSize iconAnchor=iconSettings.iconAnchor shadowAnchor=iconSettings.shadowAnchor popupAnchor=iconSettings.popupAnchor)
+     (icon iconUrl=redLeafUrl shadowUrl=iconSettings.shadowUrl iconSize=iconSettings.iconSize shadowSize=iconSettings.shadowSize iconAnchor=iconSettings.iconAnchor shadowAnchor=iconSettings.shadowAnchor popupAnchor=iconSettings.popupAnnchor)
      as |greenIcon orangeIcon redIcon|}}
 
     {{#each @places as |deliveryPlace|}}
       {{#let deliveryPlace.deliveryKind.simpleName as |kind|}}
         {{#if deliveryPlace.geoCoordinate.location}}
-          {{map.marker
+          {{#map.marker
             location=deliveryPlace.geoCoordinate.location
-            icon=(if (eq kind "toer") greenIcon (if (eq kind "natuurwinkel") orangeIcon redIcon))}}
+             icon=(if (eq kind "toer") greenIcon (if (eq kind "natuurwinkel") orangeIcon greenIcon)) as |marker|}}
+            {{#marker.popup}}
+              <h3>{{deliveryPlace.deliveryKind.simpleName}}</h3>
+            {{/marker.popup}}
+          {{/map.marker}}
         {{/if}}
       {{/let}}
     {{/each}}
