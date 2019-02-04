@@ -17,7 +17,9 @@ Router.map(function() {
     this.route('assorted');
   });
   this.route('news');
-  this.route('locations');
+  this.route('locations', function() {
+    this.route('kind', { path: ":normalized_label" });
+  });
 });
 
 export default Router;
