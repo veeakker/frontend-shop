@@ -11,10 +11,8 @@ export default class GeoCoordinateModel extends Model {
   @computed('latitude', 'longitude')
   get location(){
     if( this.latitude && this.longitude ) {
-      console.log("Can has points");
       return [ this.latitude, this.longitude ];
     } else {
-      console.log('no point');
       return null;
     }
   }

@@ -1,0 +1,14 @@
+{{#let
+   (icon iconUrl=iconConfig.iconUrl shadowUrl=iconConfig.shadowUrl iconSize=iconConfig.iconSize shadowSize=iconConfig.shadowSize iconAnchor=iconConfig.iconAnchor shadowAnchor=iconConfig.shadowAnchor popupAnchor=iconConfig.popupAnchor)
+   place.geoCoordinate.location
+   as |markerIcon location|}}
+  {{#if location}}
+    {{#component mapMarker
+       location=location
+       icon=markerIcon as |marker|}}
+      {{#marker.popup}}
+        <h3>{{simpleName}}</h3>
+      {{/marker.popup}}
+    {{/component}}
+  {{/if}}
+{{/let}}
