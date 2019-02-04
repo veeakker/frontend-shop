@@ -8,6 +8,37 @@
        icon=markerIcon as |marker|}}
       {{#marker.popup}}
         <h3>{{simpleName}}</h3>
+        {{#let place.deliveryKind.normalizedLabel as |normalizedLabel|}}
+          {{#if (eq normalizedLabel "butchery")}}
+            {{#link-to "locations.kind" place.deliveryKind}}
+              Klik hier om meer te weten over de slagerij als afhaal-locatie.
+            {{/link-to}}
+          {{else}}
+            {{#if (eq normalizedLabel "routes")}}
+              {{#link-to "locations.kind" place.deliveryKind}}
+                Klik hier om meer te weten over leveringen via toeren.
+              {{/link-to}}
+            {{else}}
+              {{#if (eq normalizedLabel "health-shops")}}
+                {{#link-to "locations.kind" place.deliveryKind}}
+                  Klik hier om meer te weten over leveringen via natuurwinkels.
+                {{/link-to}}
+              {{else}}
+                {{#if (eq normalizedLabel "local-farms")}}
+                  {{#link-to "locations.kind" place.deliveryKind}}
+                    Klik hier om meer te weten over leveringen via buurderijen.
+                  {{/link-to}}
+                {{else}}
+                  {{#if (eq normalizedLabel "home-delivery")}}
+                    {{#link-to "locations.kind" place.deliveryKind}}
+                      Klik hier om meer te weten over thuisleveringen.
+                    {{/link-to}}
+                  {{/if}}
+                {{/if}}
+              {{/if}}
+            {{/if}}
+          {{/if}}
+        {{/let}}
       {{/marker.popup}}
     {{/component}}
   {{/if}}

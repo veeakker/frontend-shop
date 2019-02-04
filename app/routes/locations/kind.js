@@ -20,6 +20,6 @@ export default class LocationsKindRoute extends Route {
   }
 
   serialize( model, params ){
-    return { normalized_label: model.normalizedLabel };
+    return { normalized_label: model.get('normalizedLabel') };
   }
 }

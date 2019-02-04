@@ -33,7 +33,7 @@ export default class DeliveryKindModel extends Model {
     if( uri == "http://veeakker.be/delivery-kinds/toeren")
       return "routes";
     if( uri == "http://veeakker.be/delivery-kinds/natuurwinkels")
-      return "nature-shops";
+      return "health-shops";
     if( uri == "http://veeakker.be/delivery-kinds/buurderijen")
       return "local-farms";
     if( uri == "http://veeakker.be/delivery-kinds/webshop")
@@ -48,7 +48,7 @@ function uriForNormalizedLabel( label ) {
     return "http://veeakker.be/delivery-kinds/winkel";
   if( label =="routes" )
     return "http://veeakker.be/delivery-kinds/toeren";
-  if( label =="nature-shops" )
+  if( label =="health-shops" )
     return "http://veeakker.be/delivery-kinds/natuurwinkels";
   if( label =="local-farms" )
     return "http://veeakker.be/delivery-kinds/buurderijen";
