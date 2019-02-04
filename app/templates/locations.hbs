@@ -10,11 +10,11 @@
     <DeliveryLocationsMap @places={{model}} />
   </div>
   <div class="extra-menu">
-    <div class="winkel tablinks" onclick="openLocation(event, 'winkel')" id="defaultOpen"><h5>WINKEL</h5></div>
-    <div class="toeren tablinks" onclick="openLocation(event, 'toeren')"><h5>TOEREN</h5></div>
-    <div class="natuurwinkels tablinks" onclick="openLocation(event, 'natuurwinkels')"><h5>NATUURWINKELS</h5></div>
-    <div class="buurderijen tablinks" onclick="openLocation(event, 'buurderijen')"><h5>BUURDERIJEN</h5></div>
-    <div class="webshop tablinks" onclick="openLocation(event, 'webshop')"><h5>WEBSHOP</h5></div>
+    {{link-to "Winkel" "locations.kind" "butchery"}}
+    {{link-to "Toeren" "locations.kind" "routes"}}
+    {{link-to "Natuurwinkels" "locations.kind" "health-shops"}}
+    {{link-to "Buurderijen" "locations.kind" "local-farms"}}
+    {{link-to "Webshop" "locations.kind" "home-delivery"}} {{!-- TODO: moet dit "aan huis" worden? --}}
   </div><div class="fix"></div>
 
   {{outlet}}

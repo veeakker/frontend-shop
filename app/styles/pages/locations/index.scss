@@ -1,3 +1,5 @@
+@import './extra-menu';
+
 #locaties {
   .maps .leaflet-container {
     height: 800px;
@@ -24,40 +26,6 @@
     margin-top: 76px;
   }
 
-  #locaties h5 {
-    margin: 0px;
-  }
-
-  #locaties .extra-menu {
-    max-width: 1020px;
-    margin: 0 auto;
-    min-height: 56px;
-    overflow: hidden;
-  }
-
-  .winkel, .toeren, .natuurwinkels, .buurderijen, .webshop {
-    display: block;
-    float: left;
-    width: 184px;
-    background-color: #AD9A89;
-    text-align: center;
-    margin: 10px;
-  }
-
-  .winkel:hover, .toeren:hover, .natuurwinkels:hover, .buurderijen:hover, .webshop:hover {
-    background-color: #443B36;
-    cursor: pointer;
-  }
-
-  .winkel.active, .toeren.active, .natuurwinkels.active, .buurderijen.active, .webshop.active {
-    background-color: #443B36;
-    cursor: pointer;
-  }
-
-  .winkel h5, .toeren h5, .natuurwinkels h5, .buurderijen h5, .webshop h5 {
-    padding: 10px;
-    margin-top: 0px !important;
-  }
 
   #locaties p {
     margin: 0 auto;
@@ -97,40 +65,6 @@
     margin-top: 76px;
   }
 
-  #locaties h5 {
-    margin: 0px;
-  }
-
-  #locaties .extra-menu {
-    max-width: 600px;
-    margin: 0 auto;
-    min-height: 56px;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  .winkel, .toeren, .natuurwinkels, .buurderijen, .webshop {
-    display: inline-block;
-    width: 170px;
-    background-color: #AD9A89;
-    text-align: center;
-    margin: 10px;
-  }
-
-  .winkel:hover, .toeren:hover, .natuurwinkels:hover, .buurderijen:hover, .webshop:hover {
-    background-color: #443B36;
-    cursor: pointer;
-  }
-
-  .winkel.active, .toeren.active, .natuurwinkels.active, .buurderijen.active, .webshop.active {
-    background-color: #443B36;
-    cursor: pointer;
-  }
-
-  .winkel h5, .toeren h5, .natuurwinkels h5, .buurderijen h5, .webshop h5 {
-    padding: 10px;
-    margin-top: 0px !important;
-  }
 
   #locaties p {
     margin: 0 auto;
@@ -169,39 +103,6 @@
     font-size: 18px;
     font-weight: 100;
     margin-top: 76px;
-  }
-
-  #locaties h5 {
-    margin: 0px;
-  }
-
-  #locaties .extra-menu {
-    max-width: 1020px;
-    margin: 0 auto;
-    min-height: 56px;
-    overflow: hidden;
-  }
-
-  .winkel, .toeren, .natuurwinkels, .buurderijen, .webshop {
-    width: 100%;
-    background-color: #AD9A89;
-    text-align: center;
-    margin: 10px 0px;
-  }
-
-  .winkel:hover, .toeren:hover, .natuurwinkels:hover, .buurderijen:hover, .webshop:hover {
-    background-color: #443B36;
-    cursor: pointer;
-  }
-
-  .winkel.active, .toeren.active, .natuurwinkels.active, .buurderijen.active, .webshop.active {
-    background-color: #443B36;
-    cursor: pointer;
-  }
-
-  .winkel h5, .toeren h5, .natuurwinkels h5, .buurderijen h5, .webshop h5 {
-    padding: 10px;
-    margin-top: 0px !important;
   }
 
   #locaties p {
