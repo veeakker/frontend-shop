@@ -1,6 +1,6 @@
 <ul>
   {{#each model.childGroups as |sub|}}
-    <li>{{sub.label}}</li>
+    <li>{{link-to sub.label "webshop.product-groups.show.subgroups.show" model sub}}</li>
   {{/each}}
-</ul> 
+</ul>
 {{outlet}}

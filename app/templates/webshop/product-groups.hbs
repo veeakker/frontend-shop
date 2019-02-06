@@ -1,7 +1,9 @@
 <ul>
   {{#each sortedProductGroups as |productGroup|}}
-    <li>{{productGroup.label}}</li>
+    <li>{{link-to productGroup.label "webshop.product-groups.show" productGroup}}</li>
   {{/each}}
 </ul>
+
+<hr />
 
 {{outlet}}
