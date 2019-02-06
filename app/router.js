@@ -20,6 +20,9 @@ Router.map(function() {
   this.route('locations', function() {
     this.route('kind', { path: ":normalized_label" });
   });
+  this.route('webshop', function() {
+    this.route('product-groups');
+  });
 });
 
 export default Router;
