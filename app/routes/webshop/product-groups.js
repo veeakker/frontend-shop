@@ -1,0 +1,10 @@
+import Route from '@ember/routing/route';
+import { inject as service } from '@ember-decorators/service';
+
+export default class WebshopProductGroupsRoute extends Route {
+  @service store;
+
+  model() {
+    return this.store.query('product-group', { "filter[:has-no:parent-group]": "yes" });
+  }
+}

@@ -17,7 +17,18 @@ Router.map(function() {
     this.route('assorted');
   });
   this.route('news');
-  this.route('locations');
+  this.route('locations', function() {
+    this.route('kind', { path: ":normalized_label" });
+  });
+  this.route('webshop', function() {
+    this.route('product-groups', function() {
+      this.route('show', { path: ":id" }, function() {
+        this.route('subgroups', function() {
+          this.route('show', { path: ":subgroup_id" });
+        });
+      });
+    });
+  });
 });
 
 export default Router;

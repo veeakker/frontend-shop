@@ -1,0 +1,11 @@
+<hr />
+
+<h1>{{model.label}} - {{model.childGroups.length}}</h1>
+
+<ul>
+  {{#each sortedSubGroups as |subGroup|}}
+    <li>{{subGroup.label}}</li>
+  {{/each}}
+</ul>
+
+{{outlet}}

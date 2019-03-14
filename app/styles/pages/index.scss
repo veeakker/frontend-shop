@@ -1,0 +1,7 @@
+// Style for specific pages.  Folder structure is based on the route.
+// The /app/templates/products/ route will have its style in
+// /app/templates/products/index.scss (or any of its subfolders
+// grouped in index.scss).
+@import './index/index';
+@import './products/index';
+@import './locations/index';
