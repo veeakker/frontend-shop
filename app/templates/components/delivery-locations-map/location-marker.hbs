@@ -1,0 +1,41 @@
+{{#let
+   (icon iconUrl=iconConfig.iconUrl shadowUrl=iconConfig.shadowUrl iconSize=iconConfig.iconSize shadowSize=iconConfig.shadowSize iconAnchor=iconConfig.iconAnchor shadowAnchor=iconConfig.shadowAnchor popupAnchor=iconConfig.popupAnchor)
+   place.geoCoordinate.location
+   as |markerIcon location|}}
+  {{#if location}}
+    {{#component mapMarker
+       location=location
+       icon=markerIcon as |marker|}}
+      {{#marker.popup}}
+        <h3>{{simpleName}}</h3>
+        {{#let place.deliveryKind.normalizedLabel as |normalizedLabel|}}
+          {{#if (eq normalizedLabel "butchery")}}
+            {{#link-to "locations.kind" place.deliveryKind}}
+              Klik hier om meer te weten over de slagerij als afhaal-locatie.
+            {{/link-to}}
+          {{/if}}
+          {{#if (eq normalizedLabel "routes")}}
+            {{#link-to "locations.kind" place.deliveryKind}}
+              Klik hier om meer te weten over leveringen via toeren.
+            {{/link-to}}
+          {{/if}}
+          {{#if (eq normalizedLabel "health-shops")}}
+            {{#link-to "locations.kind" place.deliveryKind}}
+              Klik hier om meer te weten over leveringen via natuurwinkels.
+            {{/link-to}}
+          {{/if}}
+          {{#if (eq normalizedLabel "local-farms")}}
+            {{#link-to "locations.kind" place.deliveryKind}}
+              Klik hier om meer te weten over leveringen via buurderijen.
+            {{/link-to}}
+          {{/if}}
+          {{#if (eq normalizedLabel "home-delivery")}}
+            {{#link-to "locations.kind" place.deliveryKind}}
+              Klik hier om meer te weten over thuisleveringen.
+            {{/link-to}}
+          {{/if}}
+        {{/let}}
+      {{/marker.popup}}
+    {{/component}}
+  {{/if}}
+{{/let}}

@@ -1,0 +1,52 @@
+#locaties .extra-menu {
+  a {
+    transition: background-color ease-in-out 0.5s;
+
+    text-transform: uppercase;
+    display: block;
+    float: left;
+    width: 184px;
+    background-color: #AD9A89;
+    margin: 10px;
+    margin-top: 0px;
+    padding: 10px;
+    color: white;
+    font-size: 83%;
+    font-weight: bold;
+  }
+
+  a:hover, a.active {
+    background-color: #443B36
+  }
+}
+
+#locaties .extra-menu {
+  max-width: 1020px;
+  margin: 0 auto;
+  min-height: 56px;
+  overflow: hidden;
+  text-align: center;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1040px) {
+  #locaties .extra-menu {
+    max-width: 600px;
+
+    a {
+      width: 170px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #locaties .extra-menu {
+    max-width: 1020px;
+    margin-bottom: 10px;
+
+    a {
+      width: 100%;
+      margin: 0;
+      margin-top: 10px;
+    }
+  }
+}
