@@ -29,6 +29,10 @@ Router.map(function() {
       });
     });
     this.route('promoted');
+    this.route('account');
+    this.route('collection-points');
+    this.route('conditions');
+    this.route('help');
   });
 });
 
