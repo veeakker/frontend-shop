@@ -34,6 +34,9 @@ Router.map(function() {
     this.route('conditions');
     this.route('help');
     this.route('basket');
+    this.route('contact-info');
+    this.route('contactinfo');
+    this.route('delivery');
   });
 });
 
