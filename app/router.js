@@ -33,6 +33,7 @@ Router.map(function() {
     this.route('collection-points');
     this.route('conditions');
     this.route('help');
+    this.route('basket');
   });
 });
 
