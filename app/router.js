@@ -39,6 +39,7 @@ Router.map(function() {
     this.route('delivery');
     this.route('payment');
     this.route('checkout');
+    this.route('favorites');
   });
 });
 
