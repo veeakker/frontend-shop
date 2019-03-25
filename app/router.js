@@ -37,6 +37,8 @@ Router.map(function() {
     this.route('contact-info');
     this.route('contactinfo');
     this.route('delivery');
+    this.route('payment');
+    this.route('checkout');
   });
 });
 
