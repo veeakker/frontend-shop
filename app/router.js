@@ -40,6 +40,7 @@ Router.map(function() {
     this.route('payment');
     this.route('checkout');
     this.route('favorites');
+    this.route('orders');
   });
 });
 
