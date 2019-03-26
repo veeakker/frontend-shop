@@ -25,3 +25,4 @@
 # dev setup
 .DS_Store
 /.vs
+/public/images/favicon
