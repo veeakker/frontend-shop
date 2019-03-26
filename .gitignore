@@ -26,3 +26,4 @@
 .DS_Store
 /.vs
 /package-lock.json
+/public/images/favicon
