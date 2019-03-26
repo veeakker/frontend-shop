@@ -43,6 +43,7 @@ Router.map(function() {
     this.route('orders');
     this.route('login');
     this.route('beef');
+    this.route('product');
   });
 });
 
