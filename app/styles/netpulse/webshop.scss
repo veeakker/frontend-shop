@@ -2334,7 +2334,7 @@ ul.breadcrumb li a:hover {
   }
 
   #header-webshop-small {
-    height: 50px;
+    min-height: 50px;
     border-bottom: 3px solid #443B36;
     width: 100%;
     margin: 0 auto;
@@ -2349,13 +2349,14 @@ ul.breadcrumb li a:hover {
   #webshop-menu-small {
     margin: 0 auto;
     padding-top: 15px;
-    width: 547px;
+    padding-bottom: 15px;
+    max-width: 547px;
     /*margin-right: 25px;*/
     /*float: right;*/
   }
 
   .webshop-menu-small {
-    display: none;
+    display: block;
   }
 
   #webshop-menu ul {
@@ -2382,7 +2383,7 @@ ul.breadcrumb li a:hover {
   }
 
   #webshop-menu-small ul {
-    height: 22px;
+    min-height: 22px;
     padding: 0px;
     margin-top: 0px;
     text-align: right;
@@ -2390,7 +2391,7 @@ ul.breadcrumb li a:hover {
 
   #webshop-menu-small ul li {
     display: block;
-    float: left;
+    float: none;
     list-style: none;
     text-align: center;
     padding: 0;
@@ -2407,6 +2408,9 @@ ul.breadcrumb li a:hover {
   li.small-menu {
     font-size: 12px !important;
     padding-top: 4px !important;
+    width: 105px;
+    text-align: center;
+    margin: 0 auto;
   }
 
   .laatste-menu {
@@ -2426,21 +2430,22 @@ ul.breadcrumb li a:hover {
   #footerWebshop {
     border-top: 3px solid #443B36;
     margin-top: 30px;
+    text-align: center;
   }
 
   #footerWebshop ul {
     height: 22px;
     padding: 0px;
     margin-top: 0px;
-    text-align: right;
     margin: 0 auto;
-    width: 493px;
+    max-width: 493px;
     margin-top: 10px;
+    text-align: center;
   }
 
   #footerWebshop ul li {
     display: block;
-    float: left;
+    float: none;
     list-style: none;
     text-align: center;
     padding: 0;
@@ -2540,7 +2545,7 @@ ul.breadcrumb li a:hover {
   }
 
   .cart-items {
-    width: 80%;
+    max-width: 80%;
     border: 3px solid #443B36;
     transition: height 0.3s ease-in;
     color: #443B36;
@@ -2595,7 +2600,7 @@ ul.breadcrumb li a:hover {
   .cart-item .product-item-details {
     width: 50%;
     padding: 0px 30px 0px 20px;
-    display: inline-block;
+    display: block;
     vertical-align: middle !important;
     margin-top: 11%;
     float: left;
@@ -2660,7 +2665,7 @@ ul.breadcrumb li a:hover {
 
   .button-product-cart {
     margin: 0 auto;
-    width: 100%;
+    max-width: 100%;
     text-align: right;
     margin-top: 8px;
     padding: 10px;
@@ -2670,9 +2675,9 @@ ul.breadcrumb li a:hover {
   .button-product-cart a {
     background-color: #443B36;
     color: #ffffff !important;
-    font-size: 12px;
+    font-size: 11px;
     font-family: 'Open Sans';
-    padding: 10px 49px;
+    padding: 10px 40px;
   }
 
   .row-product {
@@ -3085,8 +3090,10 @@ ul.breadcrumb li a:hover {
   }
 
   .contact-info {
-    width: 600px;
+    max-width: 600px;
     margin: 0 auto;
+    margin-right: 20px;
+    margin-left: 20px;
   }
 
   #checkout-contact input[type=text], #checkout-contact textarea, #checkout-contact #txtMail {
