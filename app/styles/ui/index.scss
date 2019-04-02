@@ -1,2 +1,6 @@
 // Style for specific UI patterns which appear on multiple places but
 // don't have an Ember Component counterpart.
+
+a.active {
+  text-decoration: underline !important;
+}
