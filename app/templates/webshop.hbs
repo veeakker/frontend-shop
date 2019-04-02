@@ -9,33 +9,24 @@
     </div>
     <div class="top-menu">
 
-
       <div id="webshop-menu" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNavWebshop()">&times;</a>
 
 
         <ul class="overlay-content">
-          <li class="dropdown">
-            <a href="javascript:void(0)">VLEES</a>
-            <div class="dropdown-content-menu">
-              <a href="rund.aspx">RUND</a>
-              <a href="#">VARKEN</a>
-              <a href="#">GEVOGELTE</a>
-              <a href="#">LAM</a>
-              <a href="#">WILD</a>
-              <a href="#">MAALVLEES</a>
-              <a href="#">CHARCUTERIE</a>
-              <a href="#">BEREIDINGEN</a>
-            </div>
-          </li>
-          <li class="dropdown"><a href="#">VIS</a></li>
-          <li class="dropdown"><a href="#">VEGGIE</a></li>
-          <li class="dropdown"><a href="#">TRAITEUR</a></li>
-          <li class="dropdown"><a href="#">DIVERSE</a></li>
+          {{#each sortedProductGroups as |productGroup|}}
+            <li class="dropdown">
+              {{link-to productGroup.label "webshop.product-groups.show" productGroup}}
+              {{#if productGroup.sortedChildren.length}}
+                  <div class="dropdown-content-menu">
+                    {{#each productGroup.sortedChildren as |subGroup|}}
+                      {{link-to subGroup.label "webshop.product-groups.show.subgroups.show" productGroup subGroup}}
+                    {{/each}}
+                  </div>
+              {{/if}}
+            </li>
+          {{/each}}
         </ul>
-
-
-
       </div>
       <div class="fix"></div>
       <div class="mobile-menu"><span class="webshop-menu-small" onclick="openNavWebshop()">&#9776;</span></div>
@@ -43,20 +34,11 @@
   </div>
 
   <div id="header-webshop-small" class="webshopMenu">
-
     <div class="top-menu">
-
-
       <div id="webshop-menu-small">
-
-
-
-
         <ul>
           <li><a href="#"><img src="/images/zoekb.png" width="18" /></a> <input class="searchbox" type="text" placeholder="zoeken" name="search"></li>
           <li class="small-menu"><a href="winkelmandje.aspx">1 <img src="/images/winkelmandjeb.png" width="15" /> €67.50</a></li>
-          
-          
 
           <li class="dropdownSmall small-menu">
             <a href="inloggen.aspx">INLOGGEN</a>
