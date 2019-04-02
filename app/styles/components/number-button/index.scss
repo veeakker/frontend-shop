@@ -1,0 +1,9 @@
+.number-input {
+  & > div {
+    display: inline-block;
+    border: solid 1px $dark-base;
+    background-color: $neutral-background;
+    color: $dark-base;
+    height: 1.5em;
+  }
+}

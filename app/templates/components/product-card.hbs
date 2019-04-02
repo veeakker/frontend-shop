@@ -1,42 +1,39 @@
-<div class="card-product">
-  <a href="product.aspx">
-    <div class="container-product">
-      <img src="/images/ons2.jpg" class="image" style="width:100%">
-      <div class="middle">
-        <div class="text">BEKIJK DETAIL</div>
-      </div>
+<div class="card {{detailClass}}">
+  <div class="picture-info" {{action (mut showDetail) (not showDetail)}}>
+    <div class="picture">
+      <img src="/images/meat-image.jpg" class="image">
     </div>
-  </a>
-  <h3>PRODUCT</h3>
-  <p>text</p>
-  <a href="#"><img src="/images/favob.png" width="21" /></a> <a href="#"><img src="/images/vries.png" width="21" /></a> <a href="#"><img src="/images/product-logo.png" width="21" /></a><br />
-  <br />
-  <div class="pack">
-    <div class="custom-select" style="width:100%; margin: 0px;">
-      <select>
-        <option value="0">VERPAKKING</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-      </select>
+    <div class="icons">
+      <span class="icon icon-1"><img src="/images/favob.png" /></span>
+      <span class="icon icon-2"><img src="/images/vries.png" /></span>
+      <span class="icon icon-3"><img src="/images/product-logo.png" /></span>
     </div>
-    <div class="custom-select" style="width:100%; margin: 0px;">
-      <select>
-        <option value="0">HOEVEEL</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-      </select>
-    </div>
-    <div class="fix"></div>
   </div>
-  <br />
-  <div class="button-product"><a href="#">DIRECT BESTELLEN</a></div>
+
+  <div class="description">
+    <div class="product-title">Kotelet</div>
+    <div class="alternative-terms">Andere kotelet - Iets Frans</div>
+  </div>
+
+  <div class="amounts">
+    <div class="configuration">
+      <div class="per-pakje">
+        Per pakje: {{number-button value=packageAmount }}
+      </div>
+
+      <div class="pakjes">
+        Pakjes: {{number-button value=packageCount }}
+      </div>      
+    </div>
+
+    <div class="image-of-packages">
+      {{#each packagesArr as |package|}}
+        <div class="image-spacing-wrapper">
+          <img src={{concat "/images/packages/items-" packageAmount ".png"}} />
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="button-product">{{link-to 'Bestel' 'index'}}</div>
 </div>
-{{yield}}
