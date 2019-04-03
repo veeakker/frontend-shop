@@ -27,11 +27,11 @@
     </div>
 
     <div class="image-of-packages">
-      {{#each packagesArr as |package|}}
+      <EachCount @count={{packageCount}}>
         <div class="image-spacing-wrapper">
           <img src={{concat "/images/packages/items-" packageAmount ".png"}} />
         </div>
-      {{/each}}
+      </EachCount>
     </div>
   </div>
 

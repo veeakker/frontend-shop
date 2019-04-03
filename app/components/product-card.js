@@ -13,12 +13,4 @@ export default class ProductCardComponent extends Component {
   get detailClass() {
     return this.showDetail ? "detail" : "";
   }
-
-  @computed('packageCount')
-  get packagesArr() {
-    const arr = [];
-    for( let idx = 0; idx < ( this.packageCount || 0 ); idx ++ )
-      arr.push( idx );
-    return arr;
-  }
 }
