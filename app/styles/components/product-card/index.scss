@@ -98,12 +98,18 @@
       height: 0em;
       color: rgba( 255,255,255,0 );
     }
+
+    .amounts {
+      margin-top: -1em;
+    }
   }
 }
 
 
 .card {
   .amounts {
+    margin-top: 3em;
+
     .configuration {
       display: flex;
 
@@ -122,6 +128,16 @@
         min-width: 30%;
         margin: 0 -10%;
       }
+    }
+  }
+}
+
+.card {
+  .actions {
+    display: flex;
+
+    .button-product {
+      flex: 1;
     }
   }
 }
