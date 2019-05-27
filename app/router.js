@@ -42,6 +42,8 @@ Router.map(function() {
     this.route('favorites');
     this.route('orders');
     this.route('login');
+    this.route('beef');
+    this.route('product');
   });
 });
 
