@@ -33,6 +33,15 @@ Router.map(function() {
     this.route('collection-points');
     this.route('conditions');
     this.route('help');
+    this.route('basket');
+    this.route('contact-info');
+    this.route('contactinfo');
+    this.route('delivery');
+    this.route('payment');
+    this.route('checkout');
+    this.route('favorites');
+    this.route('orders');
+    this.route('login');
   });
 });
 
