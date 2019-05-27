@@ -1,0 +1,177 @@
+{{outlet}}
+
+
+<ul class="breadcrumb-cart">
+  <li><a href="basket">Winkelmandje</a></li>
+  <li><a href="contact-info">Uw Gegevens</a></li>
+  <li><span class="breadcrumb-txt">Levering / Afhaling</span></li>
+  <li><span class="breadcrumb-nxt">Betalingsgegevens</span></li>
+  <li><span class="breadcrumb-nxt">Bevestig Bestelling</span></li>
+</ul>
+<div class="fix"></div>
+
+
+
+<div id="checkout-contact">
+  <div class="contact-info">
+    <h2>Kies je methode van levering / afhaling</h2>
+
+    <br /><br />
+
+    <label class="containerCheck">
+      Post.nl €x / gratis vanaf - €x
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    <br />
+
+    <label class="containerCheck">
+      Afhaalpunt op Tour Veeakker - gratis
+      <input type="checkbox" id="myCheck" onclick="myFunction()">
+      <span class="checkmark"></span>
+    </label>
+    <br />
+    <div id="txtTour">
+      <div class="custom-select">
+        <select>
+          <option value="0">Kies Provincie</option>
+          <option value="1">Antwerpen</option>
+          <option value="2">Limburg</option>
+          <option value="3">Oost-Vlaanderen</option>
+          <option value="4">Vlaams-Brabant</option>
+          <option value="5">West-Vlaanderen</option>
+          <option value="6">Henegouwen</option>
+          <option value="7">Luik</option>
+          <option value="8">Luxemburg</option>
+          <option value="9">Namen</option>
+          <option value="10">West-Brabant</option>
+        </select>
+      </div>
+      <div class="custom-select">
+        <select>
+          <option value="0">Kies Winkel</option>
+          <option value="1">Antwerpen</option>
+          <option value="2">Limburg</option>
+          <option value="3">Oost-Vlaanderen</option>
+          <option value="4">Vlaams-Brabant</option>
+          <option value="5">West-Vlaanderen</option>
+          <option value="6">Henegouwen</option>
+          <option value="7">Luik</option>
+          <option value="8">Luxemburg</option>
+          <option value="9">Namen</option>
+          <option value="10">West-Brabant</option>
+        </select>
+      </div>
+      <div class="fix"></div><br /><br />
+
+      <table class="cart-itemsNote">
+        <thead>
+          <tr>
+            <th class="first">PRODUCT</th>
+            <th>OPMERKINGEN</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="cart-item">
+            <td class="product-item first">
+              <a href="#" class="image-cart">
+                <img src="/images/ons2.jpg">
+              </a>
+              <div class="product-item-details">
+                <span class="cart-title"><a href="#" title="">PRODUCT</a></span><br />
+                <span class="cart-variant">1kg</span>
+              </div>
+
+            </td>
+            <td class="packing"> <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" placeholder="opmerkingen"></asp:TextBox></td>
+          </tr>
+
+        </tbody>
+      </table><br />
+    </div>
+
+
+    <label class="containerCheck">
+      Afhaalpunt in een winkel - gratis
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    <br />
+
+    <div id="txtStore">
+      <div class="custom-select">
+        <select>
+          <option value="0">Kies Provincie</option>
+          <option value="1">Antwerpen</option>
+          <option value="2">Limburg</option>
+          <option value="3">Oost-Vlaanderen</option>
+          <option value="4">Vlaams-Brabant</option>
+          <option value="5">West-Vlaanderen</option>
+          <option value="6">Henegouwen</option>
+          <option value="7">Luik</option>
+          <option value="8">Luxemburg</option>
+          <option value="9">Namen</option>
+          <option value="10">West-Brabant</option>
+        </select>
+      </div>
+      <div class="custom-select">
+        <select>
+          <option value="0">Kies Winkel</option>
+          <option value="1">Antwerpen</option>
+          <option value="2">Limburg</option>
+          <option value="3">Oost-Vlaanderen</option>
+          <option value="4">Vlaams-Brabant</option>
+          <option value="5">West-Vlaanderen</option>
+          <option value="6">Henegouwen</option>
+          <option value="7">Luik</option>
+          <option value="8">Luxemburg</option>
+          <option value="9">Namen</option>
+          <option value="10">West-Brabant</option>
+        </select>
+      </div>
+      <div class="fix"></div>
+      <br /><br />
+      <label class="containerCheck">
+        Levering informatie anders dan contact informatie
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label>
+      <div id="txtInfo">
+
+        <h2>Vul je gegevens in:</h2>
+        <asp:TextBox ID="txtName" runat="server" placeholder="Naam"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator><br />
+
+        <asp:TextBox ID="txtCompany" runat="server" placeholder="Bedrijf + BTW nummer (optioneel)"></asp:TextBox><br />
+
+        <asp:TextBox ID="txtStreet" runat="server" placeholder="Straat"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtStreet" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator><br />
+        <asp:TextBox ID="txtNumber" runat="server" placeholder="Huisnummer"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtNumber" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator><br />
+        <asp:TextBox ID="txtCode" runat="server" placeholder="Postcode"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtCode" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator><br />
+        <asp:TextBox ID="txtCity" runat="server" placeholder="Gemeente"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCity" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator><br />
+        <asp:TextBox ID="txtPhone" runat="server" placeholder="Gsm / Tel waarop bereikbaar bij levering / afhaling"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtPhone" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator><br /><br />
+      </div>
+
+
+    </div>
+    <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p><img class="frost" src="/images/vries.png" width="25" /><br /><br />
+    <a class="deli" href="afhaalpunten.aspx">MEER INFO OVER LEVERINGEN / AFHAALPUNTEN</a>
+    <div class="fix"></div><br />
+    <div class="cart-total">
+      <p>Prijs <span class="money">€67.50</span></p>
+      <p>Prijs levering <span class="money">€x</span></p>
+      <p>BTW 6% <span class="money">€x</span></p>
+      <p>Totaalprijs <span class="money">€x</span></p>    <br />
+      <div class="button-product-cart"><a href="payment">VERDER BESTELLEN</a></div>
+    </div><div class="fix"></div>
+
+
+  </div>
+</div>
+{{outlet}}

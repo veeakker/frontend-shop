@@ -18,11 +18,11 @@
             <li class="dropdown">
               {{link-to productGroup.label "webshop.product-groups.show" productGroup}}
               {{#if productGroup.sortedChildren.length}}
-                  <div class="dropdown-content-menu">
-                    {{#each productGroup.sortedChildren as |subGroup|}}
-                      {{link-to subGroup.label "webshop.product-groups.show.subgroups.show" productGroup subGroup}}
-                    {{/each}}
-                  </div>
+                <div class="dropdown-content-menu">
+                  {{#each productGroup.sortedChildren as |subGroup|}}
+                    {{link-to subGroup.label "webshop.product-groups.show.subgroups.show" productGroup subGroup}}
+                  {{/each}}
+                </div>
               {{/if}}
             </li>
           {{/each}}
@@ -37,20 +37,23 @@
     <div class="top-menu">
       <div id="webshop-menu-small">
         <ul>
-          <li><a href="#"><img src="/images/zoekb.png" width="18" /></a> <input class="searchbox" type="text" placeholder="zoeken" name="search"></li>
-          <li class="small-menu"><a href="winkelmandje.aspx">1 <img src="/images/winkelmandjeb.png" width="15" /> €67.50</a></li>
-
+          <li>
+            <a href="#">
+              <img src="/images/zoekb.png" width="18" />
+            </a>
+            <input class="searchbox" type="text" placeholder="zoeken" name="search"></li>
+          <li class="small-menu"><a href="basket">1 <img src="/images/winkelmandjeb.png" width="15" /> €67.50</a></li>
           <li class="dropdownSmall small-menu">
-            <a href="inloggen.aspx">INLOGGEN</a>
+            <a href="login">INLOGGEN</a>
             <div class="dropdown-content-menuSmall">
               <a href="account"><img src="/images/loginb.png" width="13" />  ACCOUNT</a>
-              <a href="bestellingen.aspx"><img src="/images/bestellingenb.png" width="13" />  BESTELLINGEN</a>
-              <a href="favorieten.aspx"><img src="/images/favob.png" width="13" />  FAVORIETEN</a>
+              <a href="orders"><img src="/images/bestellingenb.png" width="13" />  BESTELLINGEN</a>
+              <a href="favorites"><img src="/images/favob.png" width="13" />  FAVORIETEN</a>
               <a href="#">AFMELDEN</a>
 
             </div>
           </li>
-          <li class="small-menu"><a href="help.aspx">HELP</a></li>
+          <li class="small-menu"><a href="help">HELP</a></li>
         </ul>
 
       </div>
@@ -64,9 +67,9 @@
 
 <div id="footerWebshop">
   <ul>
-    <li><a href="afhaalpunten.aspx">LEVERING & AFHALING</a></li>
-    <li><a href="voorwaarden.aspx">ALGEMENE VOORWAARDEN</a></li>
-    <li><a href="contactinfo.aspx">CONTACT INFO</a></li>
+    <li><a href="collection-point">LEVERING & AFHALING</a></li>
+    <li><a href="conditions">ALGEMENE VOORWAARDEN</a></li>
+    <li><a href="contactinfo">CONTACT INFO</a></li>
   </ul>
   <div class="fix"></div>
 </div>

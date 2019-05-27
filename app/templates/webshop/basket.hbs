@@ -1,0 +1,57 @@
+{{outlet}}
+
+<div id="empty-shop">
+  <h1>WINKELMANDJE</h1>
+
+  <div class="forks"><img src="/images/forks-bruin.png" width="151"></div>
+  <p>Je hebt nog geen producten in je winkelmandje.</p>
+  <div class="button-product"><a href="webshop.aspx">VERDER WINKELEN</a></div>
+</div>
+
+
+<div id="products-shop">
+  <h1>WINKELMANDJE</h1>
+
+  <div class="forks"><img src="/images/forks-bruin.png" width="151"></div>
+
+  <table class="cart-items">
+    <thead>
+      <tr>
+        <th class="first">PRODUCT</th>
+        <th>PRIJS</th>
+        <th>VERPAKKING</th>
+        <th>AANTAL</th>
+        <th>REMOVE</th>
+        <th>TOTAAL</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="cart-item">
+        <td class="product-item first">
+          <a href="#" class="image-cart">
+            <img src="/images/ons2.jpg">
+          </a>
+          <div class="product-item-details">
+            <span class="cart-title"><a href="#" title="">PRODUCT</a></span><br />
+            <span class="cart-variant">1kg</span>
+          </div>
+
+        </td>
+        <td class="price"><span class="money">€13.50</span></td>
+        <td class="packing"><input type="text" value="2"></td>
+        <td class="quantity"><input type="text" value="5"></td>
+        <td class="remove"> <a href="#">X</a></td>
+        <td class="total"><span class="money">€67.50</span></td>
+      </tr>
+
+    </tbody>
+  </table><br />
+  <div class="cart-total">
+    <p class="cart-price"><span class="money">€67.50</span></p>
+    <p class="cart-message">Exclusief verzendkosten</p>
+    <div class="button-product-cart"><a href="contact-info">VERDER BESTELLEN</a></div>
+  </div>
+
+</div>
+{{outlet}}
