@@ -1,0 +1,219 @@
+[33mcommit 515d6432bb6696efd4240298b4a117fc9a3142d9[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/check-out[m[33m, [m[1;31morigin/feature/check-out[m[33m)[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Mon Mar 25 11:42:59 2019 +0100
+
+    Login
+    ToDo
+    - Add text boxes
+
+[33mcommit 7efe6147ea03c9a3fcd72c305bb922c7b4b507cb[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Mon Mar 25 11:41:02 2019 +0100
+
+    Orders
+    ToDo
+    - Add script accordion
+
+[33mcommit d921ff8ecff54db65cd0f35a8e6c7dc1387fe341[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Mon Mar 25 11:35:50 2019 +0100
+
+    Favorites
+    - Still needs css adjustments
+
+[33mcommit a03a9f47e23b67cde07c2f7f1f690bf9b3b68538[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Mon Mar 25 11:29:29 2019 +0100
+
+    ToDO
+    - Split various payment options
+
+[33mcommit 5b033d3ffe4c797cac02cd860bd07f56c5f79a92[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Mon Mar 25 11:26:58 2019 +0100
+
+    Payment + Checkout
+
+[33mcommit 56713c3e9f44da16df2fca897a3ebc94e2c857ba[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Mon Mar 25 11:09:14 2019 +0100
+
+    Contact info and basket
+
+[33mcommit 9de0aec4c0d851221cd6449dcb83f4e36a48cc58[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Mon Mar 25 10:51:05 2019 +0100
+
+    Basket
+
+[33mcommit 5bb10a6e95722a812ed2959d648405f3b0b6de96[m[33m ([m[1;31morigin/feature/promoted[m[33m, [m[1;32mfeature/promoted[m[33m)[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Fri Mar 22 15:06:39 2019 +0100
+
+    small change to menu css + link account
+
+[33mcommit 5b470af225e2759e8fff299a45b76c4bd134c764[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Fri Mar 22 14:38:18 2019 +0100
+
+    Add <script>
+
+[33mcommit 99d21d5e1c8afce73194eb6a2c5dec866a59b981[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Fri Mar 22 14:30:44 2019 +0100
+
+    Add pages that need to be finalised
+
+[33mcommit ff6fd694c22b4f70be5b8a688000acd1ac314098[m
+Author: inesvancraenenbroeck <ines@netpulse.be>
+Date:   Fri Mar 22 13:54:45 2019 +0100
+
+    Images + css webshop
+
+[33mcommit b14703f735d3f6eee7a675db811fb3e58233ac4b[m
+Author: Ines Van Craenenbroeck <ines@netpulse.be>
+Date:   Thu Mar 14 12:14:30 2019 +0100
+
+    promoted page created
+
+[33mcommit 9ee94c5923c1b3f621093c622e2c6e3a67e1da4d[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Aad Versteden <madnificent@gmail.com>
+Date:   Thu Mar 14 11:33:35 2019 +0100
+
+    Feature/webshop structure (#1)
+    
+    * Create folders for page styles
+    
+    These simple folders for the page styles make it clearer to find the
+    styles and to clean up styles which are not needed.
+    
+    * Add documentation in each of the style files/folders
+    
+    The documentation reflects the intended use of these files.
+    
+    * Schema.org annotations (and a tiny bit of styling)
+    
+    Schema.org annotations which we could find for the index page have
+    been added.  This should get us to the point where we are
+    discoverable.  Notable missing elements are image (required) and
+    priceRange (recommended).
+    
+    * Add models for delivery locations
+    
+    The delivery locations map combines the delivery-method and the
+    delivery-locations making the model somewhat more complex.  Using the
+    schema.org model directly here also means we don't drop attributes on
+    top of items randomly.  As such, the model is more complex than what
+    one would assume initially :)
+    
+    * Use ember-fetch instead of jquery dependency
+    
+    The ember-fetch library offers sufficient abstraction so we don't need
+    to load jQuery.  As we'll need this for all backend requests, we have
+    added it on there.
+    
+    * Replace static map on site with dynamic map
+    
+    The data generated in the backend can now render a map with basic
+    contents.  When contents are not ready to be loaded, a base definition
+    is loaded for testing purposes.  This map will be abstracted further.
+    
+    * Abstract locations into separate component
+    
+    Locations are now handeld in a separate component.  This component
+    simply renders the map with its default contents.  Further information
+    should be supplied from within this component.
+    
+    * Implementation with varying icons for varying contents
+    
+    The icons are taken from a leaflet tutorial.  We will need different
+    icons for the various types of locations.
+    
+    * Always fetch complete locations
+    
+    The amount of locations received might not be complete.  In order to
+    ensure we have the full list, we now fetch them all on every call.
+    
+    There are some optimizations which can be made in order to ensure we
+    have the full contents without fetching the data upon each request.
+    We'll leave that for later.
+    
+    * Add basic popup to locations
+    
+    The basic popup just shows the type of the location.  It's sufficient
+    to indicate what sort of thing we're looking at.
+    
+    * Move delivery-locations-map marker into separate component
+    
+    The extracted component makes it easier to understand the logic.  It
+    quickly becomes convoluted as there are multiple concerns within the
+    map.
+    
+    * Approach for dynamically rendering delivery kinds
+    
+    This approach allows us to dynamically render delivery kinds.  The
+    delivery kinds are discovered by URI and rendered with a slug.
+    
+    Upon further inspection of the rendered contents, we expect these to
+    be static with a high chance of embedded contents.  However, we also
+    assume there's a fair chance that the individual route locations will
+    receive a page.  These are conflicting in terms of optimal
+    architecture.  We will work with the currently known elements, but
+    assume it may change over time, based on the ideas of the customer.
+    
+    * Add link in popup marker
+    
+    The popup marker now contains a link to a link which opens the
+    necessary content block.  It should be noted that the content block is
+    currently not really visible as the map is higher than what users can
+    see.
+    
+    Next up, we will popuplate the contents of that page.
+    
+    * Move locations style into pages/location
+    
+    This will allow us to better cleanup the styles used on the locations
+    page.  We're currently looking at the selection of delivery kinds.
+    
+    * Cleanup extra menu and move style
+    
+    The extra menu was based on clickable divs.  We can have similar
+    behaviour using links which is nicer for screen readers.
+    
+    The extra-menu contained duplicate styles in multiple locations,
+    depending on the specific classes used.  Duplicate content has been
+    removed, code now behaves on anchor tags rather than JavaScript, and a
+    transition for the color has been added.
+    
+    * Render contents for location kind from backend
+    
+    The backend now drives the content which should be shown for a
+    specific location kind.  This approach allows us to be fairly generic
+    about the contents, yet still drive the UI as we'd like.  It's not
+    perfect either, as dynamic elements can not easily be added in the
+    current construction.
+    
+    * Less nesting in delivery-locations-map/location-marker
+    
+    The nesting in the if constructions made it less clear what was
+    supposed to go where.  This simplified form makes it easier to read
+    the contents, especially as there's a surrounding let helper.
+    
+    * Update file modes
+    
+    Assets don't need to be executable :)
+    
+    * Basic models for products, product-groups and spotlight-products
+    
+    These models will be used throughout the code to fetch the correct
+    contents from the database.
+    
+    * Build routes for product groups
+    
+    We can fetch the top-level product-groups with some mu-cl-resources
+    trickery.  This makes it simple to fetch the right contents.
+    
+    * Fix top-level menu so it links to the webshop
+    
+    The top-level menu contained a relative anchor tag instead of a
+    link-to helper.  This made th
