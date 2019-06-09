@@ -15,37 +15,45 @@
 
 <div id="checkout-contact">
   <div class="contact-info">
-    <h2 class="deliveryMessage">
-      Je bestelling is cash of met bankcontact te betalen bij afhaling.<br /> <br />
-      Het totaalbedrag bij de afsluitende stap is slechts een indicatie van het bedrag.
-      Het effectieve totaalbedrag kan hier van afwijken.
-    </h2>
-    <h2>Kies je betalingsmethode</h2>
+    {{#if deliveredOntour}}
+      <h2 class="deliveryMessage">
+        Je bestelling is cash of met bankcontact te betalen bij afhaling.<br /> <br />
+        Het totaalbedrag bij de afsluitende stap is slechts een indicatie van het bedrag.
+        Het effectieve totaalbedrag kan hier van afwijken.
+      </h2>
+    {{else}}
+      <iframe src={{paymentUrl}} width="800" height="600" />
+    {{/if}}
+    
+    <a href={{paymentUrl}}>Open</a>
+
+
+    <!-- <h2>Kies je betalingsmethode</h2> -->
 
     <br /><br />
-    <label class="containerCheck">
-      <img src="/images/mistercash.png" width="100" />
-      <input type="checkbox">
-      <span class="checkmarkPay"></span>
-    </label>
-    <br />
-    <label class="containerCheck">
-      <img src="/images/visa.png" width="100" />
-      <input type="checkbox">
-      <span class="checkmarkPay"></span>
-    </label>
-    <br />
-    <label class="containerCheck">
-      <img src="/images/mastercard.png" width="100" />
-      <input type="checkbox">
-      <span class="checkmarkPay"></span>
-    </label>
-    <br />
-    <label class="containerCheck">
-      <img src="/images/paypal.png" width="100" />
-      <input type="checkbox">
-      <span class="checkmarkPay"></span>
-    </label>
+    <!-- <label class="containerCheck">
+         <img src="/images/mistercash.png" width="100" />
+         <input type="checkbox">
+         <span class="checkmarkPay"></span>
+         </label>
+         <br />
+         <label class="containerCheck">
+         <img src="/images/visa.png" width="100" />
+         <input type="checkbox">
+         <span class="checkmarkPay"></span>
+         </label>
+         <br />
+         <label class="containerCheck">
+         <img src="/images/mastercard.png" width="100" />
+         <input type="checkbox">
+         <span class="checkmarkPay"></span>
+         </label>
+         <br />
+         <label class="containerCheck">
+         <img src="/images/paypal.png" width="100" />
+         <input type="checkbox">
+         <span class="checkmarkPay"></span>
+         </label> -->
     <br />
 
 
@@ -54,7 +62,7 @@
       <p>Prijs levering <span class="money">€x</span></p>
       <p>BTW 6% <span class="money">€x</span></p>
       <p>Totaalprijs <span class="money">€x</span></p>    <br />
-      <div class="button-product-cart"><a href="checkout">VERDER BESTELLEN</a></div>
+      <div class="button-product-cart">{{#link-to "checkout.finish"}}BEVESTIG{{/link-to}}</div>
     </div><div class="fix"></div>
 
 
