@@ -38,7 +38,9 @@ Router.map(function() {
     this.route('contactinfo');
     this.route('delivery');
     this.route('payment');
-    this.route('checkout');
+    this.route('checkout', function() {
+      this.route('finish');
+    });
     this.route('favorites');
     this.route('orders');
     this.route('login');

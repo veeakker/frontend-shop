@@ -2,6 +2,7 @@
   <div id="header-webshop" class="webshopMenu">
     <div class="talenWebshop">
       <ul>
+        {{!-- TODO: replace with language picker --}}
         <li><a href="#">NL</a></li>
         <li><a href="#">FR</a></li>
         <li><a href="#">EN</a></li>
@@ -9,6 +10,7 @@
     </div>
     <div class="top-menu">
 
+      {{!-- TODO: replace with dynamic button --}}
       <div id="webshop-menu" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNavWebshop()">&times;</a>
 
@@ -37,21 +39,22 @@
     <div class="top-menu">
       <div id="webshop-menu-small">
         <ul>
-          <li class="flex"><a href="#"><img src="/images/zoekb.png" width="18" /></a> <input class="searchbox" type="text" placeholder="zoeken" name="search"></li>
-          <li class="small-menu"><a href="basket">1 <img src="/images/winkelmandjeb.png" width="15" /> €67.50</a></li>
-
+          {{!-- TODO: implement search --}}
+          <li class="flex"><a href="#"><img src="/images/zoekb.png" width="18" alt="Search trigger icon" /></a> <input class="searchbox" type="text" placeholder="zoeken" name="search"></li>
+          {{!-- TODO: make static content dynamic --}}
+          <li class="small-menu">{{#link-to "webshop.basket"}}1 <img src="/images/winkelmandjeb.png" alt="shopping basket icon" width="15" /> €67.50{{/link-to}}</li>
 
           <li class="dropdownSmall small-menu">
-              <a href="login">INLOGGEN</a>
-              <div class="dropdown-content-menuSmall">
-                <a href="account"><img src="/images/loginb.png" width="13" />  ACCOUNT</a>
-                <a href="orders"><img src="/images/bestellingenb.png" width="13" />  BESTELLINGEN</a>
-                <a href="favorites"><img src="/images/favob.png" width="13" />  FAVORIETEN</a>
-                <a href="#">AFMELDEN</a>
-
-              </div>
-            </li>
-            <li class="small-menu"><a href="help">HELP</a></li>
+            {{#link-to "webshop.login"}}INLOGGEN{{/link-to}}
+            <div class="dropdown-content-menuSmall">
+              {{!-- TODO: these icons should be set as background icons, they don't represent functionality themselves --}}
+              {{#link-to "webshop.account"}}<img src="/images/loginb.png" width="13" alt="account icon" />{{/link-to}}
+              {{#link-to "webshop.orders"}}><img src="/images/bestellingenb.png" width="13" alt="orders icon" />  BESTELLINGEN{{/link-to}}
+              {{#link-to "webshop.favorites"}}><img src="/images/favob.png" width="13" alt="favorites icon" />  FAVORIETEN{{/link-to}}
+              <a href="#">AFMELDEN</a> {{!-- TODO: implement --}}
+            </div>
+          </li>
+          <li class="small-menu">{{#link-to "webshop.help"}}HELP{{/link-to}}</li>
         </ul>
 
       </div>
