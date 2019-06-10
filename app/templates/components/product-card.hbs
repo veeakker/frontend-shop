@@ -1,12 +1,12 @@
 <div class="card {{detailClass}}">
   <div class="picture-info" {{action (mut showDetail) (not showDetail)}}>
     <div class="picture">
-      <img src="/images/meat-image.jpg" class="image">
+      <img src="/images/meat-image.jpg" class="image" alt="no-alt">
     </div>
     <div class="icons">
-      <span class="icon icon-1"><img src="/images/favob.png" /></span>
-      <span class="icon icon-2"><img src="/images/vries.png" /></span>
-      <span class="icon icon-3"><img src="/images/product-logo.png" /></span>
+      <span class="icon icon-1"><img src="/images/favob.png" alt="no-alt"/></span>
+      <span class="icon icon-2"><img src="/images/vries.png" alt="no-alt"/></span>
+      <span class="icon icon-3"><img src="/images/product-logo.png" alt="no-alt"/></span>
     </div>
   </div>
 
@@ -29,7 +29,7 @@
     <div class="image-of-packages">
       <EachCount @count={{packageCount}}>
         <div class="image-spacing-wrapper">
-          <img src={{concat "/images/packages/items-" packageAmount ".png"}} />
+          <img src={{concat "/images/packages/items-" packageAmount ".png"}} alt="no-alt"/>
         </div>
       </EachCount>
     </div>
