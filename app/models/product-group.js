@@ -1,7 +1,6 @@
-import { computed } from '@ember-decorators/object';
+import { computed } from '@ember/object';
 import DS from 'ember-data';
-const { Model } = DS;
-import { attr, belongsTo, hasMany } from '@ember-decorators/data';
+const { Model, attr, belongsTo, hasMany } = DS;
 
 export default class ProductGroupModel extends Model {
   @attr() label;

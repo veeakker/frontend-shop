@@ -1,5 +1,5 @@
-import { computed } from '@ember-decorators/object';
-import { sort } from '@ember-decorators/object/computed';
+import { computed } from '@ember/object';
+import { sort } from '@ember/object/computed';
 import Controller from '@ember/controller';
 
 export default class WebshopController extends Controller {
