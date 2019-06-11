@@ -34,12 +34,12 @@ Router.map(function() {
     this.route('conditions');
     this.route('help');
     this.route('basket');
-    this.route('contact-info');
     this.route('contactinfo');
     this.route('delivery');
     this.route('payment');
     this.route('checkout', function() {
       this.route('finish');
+      this.route('contact-info');
     });
     this.route('favorites');
     this.route('orders');
