@@ -1,4 +1,4 @@
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
 import Component from '@ember/component';
 
 function nextItemInArray( array, item ) {

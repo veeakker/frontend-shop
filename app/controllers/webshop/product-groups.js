@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
-import { sort } from '@ember-decorators/object/computed';
-import { computed } from '@ember-decorators/object';
+import { sort } from '@ember/object/computed';
+import { computed } from '@ember/object';
 
 export default class WebshopProductGroupsController extends Controller {
   productGroupsSorting = ["sortIndex"];
