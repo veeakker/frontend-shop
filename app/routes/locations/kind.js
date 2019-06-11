@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { uriForNormalizedLabel } from 'veeakker/models/delivery-kind';
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 
 export default class LocationsKindRoute extends Route {
   @service store;

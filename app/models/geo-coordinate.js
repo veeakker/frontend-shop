@@ -1,7 +1,7 @@
 import DS from 'ember-data';
-const { Model } = DS;
-import { attr, belongsTo } from '@ember-decorators/data';
-import { computed } from '@ember-decorators/object';
+import { computed } from '@ember/object';
+
+const { Model, attr, belongsTo } = DS;
 
 export default class GeoCoordinateModel extends Model {
   @attr() latitude;
