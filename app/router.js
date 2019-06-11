@@ -27,16 +27,16 @@ Router.map(function() {
     this.route('checkout', function() {
       this.route('contact-info');
       this.route('finish');
+      this.route('payment');
+      this.route('delivery');
     });
     this.route('collection-points');
     this.route('conditions');
     this.route('contactinfo');
-    this.route('delivery');
     this.route('favorites');
     this.route('help');
     this.route('login');
     this.route('orders');
-    this.route('payment');
     this.route('product');
     this.route('product-groups', function() {
       this.route('show', { path: ":id" }, function() {
