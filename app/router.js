@@ -47,6 +47,7 @@ Router.map(function() {
     });
     this.route('promoted');
   });
+  this.route('general-conditions');
 });
 
 export default Router;
