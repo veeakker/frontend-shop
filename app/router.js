@@ -8,19 +8,36 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('about');
-  this.route('products', function() {
-    this.route('beef');
-    this.route('pork');
-    this.route('chicken');
-    this.route('lamb');
-    this.route('fish');
-    this.route('assorted');
-  });
   this.route('news');
   this.route('locations', function() {
     this.route('kind', { path: ":normalized_label" });
   });
+  this.route('products', function() {
+    this.route('assorted');
+    this.route('beef');
+    this.route('chicken');
+    this.route('fish');
+    this.route('lamb');
+    this.route('pork');
+  });
   this.route('webshop', function() {
+    this.route('account');
+    this.route('basket');
+    this.route('beef');
+    this.route('checkout', function() {
+      this.route('contact-info');
+      this.route('finish');
+    });
+    this.route('collection-points');
+    this.route('conditions');
+    this.route('contactinfo');
+    this.route('delivery');
+    this.route('favorites');
+    this.route('help');
+    this.route('login');
+    this.route('orders');
+    this.route('payment');
+    this.route('product');
     this.route('product-groups', function() {
       this.route('show', { path: ":id" }, function() {
         this.route('subgroups', function() {
@@ -29,23 +46,6 @@ Router.map(function() {
       });
     });
     this.route('promoted');
-    this.route('account');
-    this.route('collection-points');
-    this.route('conditions');
-    this.route('help');
-    this.route('basket');
-    this.route('contactinfo');
-    this.route('delivery');
-    this.route('payment');
-    this.route('checkout', function() {
-      this.route('finish');
-      this.route('contact-info');
-    });
-    this.route('favorites');
-    this.route('orders');
-    this.route('login');
-    this.route('beef');
-    this.route('product');
   });
 });
 
