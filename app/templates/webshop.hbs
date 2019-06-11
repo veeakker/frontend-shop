@@ -45,16 +45,16 @@
           <li class="small-menu">{{#link-to "webshop.basket"}}1 <img src="/images/winkelmandjeb.png" alt="shopping basket icon" width="15" /> €67.50{{/link-to}}</li>
 
           <li class="dropdownSmall small-menu">
-            {{#link-to "webshop.login"}}INLOGGEN{{/link-to}}
+            {{#link-to "webshop.login"}}<span class="uppercase">inloggen</span>{{/link-to}}
             <div class="dropdown-content-menuSmall">
               {{!-- TODO: these icons should be set as background icons, they don't represent functionality themselves --}}
               {{#link-to "webshop.account"}}<img src="/images/loginb.png" width="13" alt="account icon" />{{/link-to}}
-              {{#link-to "webshop.orders"}}><img src="/images/bestellingenb.png" width="13" alt="orders icon" />  BESTELLINGEN{{/link-to}}
-              {{#link-to "webshop.favorites"}}><img src="/images/favob.png" width="13" alt="favorites icon" />  FAVORIETEN{{/link-to}}
-              <a href="#">AFMELDEN</a> {{!-- TODO: implement --}}
+              {{#link-to "webshop.orders"}}><img src="/images/bestellingenb.png" width="13" alt="orders icon" /><span class="uppercase">bestellingen</span>{{/link-to}}
+              {{#link-to "webshop.favorites"}}><img src="/images/favob.png" width="13" alt="favorites icon" /><span class="uppercase">favorieten</span>{{/link-to}}
+              <a href="#"><span class="uppercase">afmelden</span></a> {{!-- TODO: implement --}}
             </div>
           </li>
-          <li class="small-menu">{{#link-to "webshop.help"}}HELP{{/link-to}}</li>
+          <li class="small-menu">{{#link-to "webshop.help"}}<span class="uppercase">help</span>{{/link-to}}</li>
         </ul>
 
       </div>
@@ -68,9 +68,9 @@
 
 <div id="footerWebshop">
   <ul>
-    <li><a href="collection-points">LEVERING &amp; AFHALING</a></li>
-    <li><a href="conditions">ALGEMENE VOORWAARDEN</a></li>
-    <li><a href="contactinfo">CONTACT INFO</a></li>
+    <li><a href="collection-points"><span class="uppercase">levering &amp; afhaling</span></a></li>
+    <li><a href="conditions"><span class="uppercase">algemene voorwaarden</span></a></li>
+    <li><a href="contactinfo"><span class="uppercase">contact info</span></a></li>
   </ul>
   <div class="fix"></div>
 </div>
