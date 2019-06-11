@@ -1,56 +1,56 @@
 {{outlet}}
 
 <div id="empty-shop">
-  <h1>WINKELMANDJE</h1>
+  <h1 class="uppercase">winkelmandje</h1>
 
   <Design::Forks />
   <p>Je hebt nog geen producten in je winkelmandje.</p>
-  <div class="button-product"><a href="webshop.aspx">VERDER WINKELEN</a></div>
+  <div class="button-product"><a href="webshop.aspx" class="uppercase">verder winkelen</a></div>
 </div>
 
 
 <div id="products-shop">
-  <h1>WINKELMANDJE</h1>
+  <h1 class="uppercase">winkelmandje</h1>
 
   <Design::Forks />
   {{!-- TODO: Should this be based on the same table? --}}
   <div id="cart-items-mobile">
     <div>
-      <h2>PRODUCT</h2>
+      <h2 class="uppercase">product</h2>
+      <p class="uppercase">product</p>
       <img src="/images/ons2.jpg" alt="Placeholder image of product" />
-      <p>PRODUCT</p>
       <p>1kg</p>
     </div>
     <div>
-      <h2>PRIJS</h2>
+      <h2 class="uppercase">prijs</h2>
       <p>€13.50</p>
     </div>
     <div>
-      <h2>VERPAKKING</h2>
+      <h2 class="uppercase">verpakking</h2>
       <input class="packing" type="text" value="2">
     </div>
     <div>
-      <h2>AANTAL</h2>
+      <h2 class="uppercase">aantal</h2>
       <input class="quantity" type="text" value="5">
     </div>
     <div>
-      <h2>REMOVE</h2>
+      <h2 class="uppercase">remove</h2>
       <p>X</p>
     </div>
     <div id="last">
-      <h2>TOTAAL</h2>
+      <h2 class="uppercase">totaal</h2>
       <p>€67.50</p>
     </div>
   </div>
   <table class="cart-items">
     <thead>
       <tr>
-        <th class="first">PRODUCT</th>
-        <th>PRIJS</th>
-        <th>VERPAKKING</th>
-        <th>AANTAL</th>
-        <th>REMOVE</th>
-        <th>TOTAAL</th>
+        <th class="first uppercase">product</th>
+        <th class="uppercase">prijs</th>
+        <th class="uppercase">verpakking</th>
+        <th class="uppercase">aantal</th>
+        <th class="uppercase">remove</th>
+        <th class="uppercase">totaal</th>
       </tr>
     </thead>
 
@@ -61,7 +61,7 @@
             <img src="/images/ons2.jpg" alt="Image of meat">
           </a>
           <div class="product-item-details">
-            <span class="cart-title"><a href="#" title="">PRODUCT</a></span><br />
+            <span class="cart-title"><a href="#" title="" class="uppercase">product</a></span><br />
             <span class="cart-variant">1kg</span>
           </div>
 
@@ -78,7 +78,7 @@
   <div class="cart-total">
     <p class="cart-price"><span class="money">€67.50</span></p>
     <p class="cart-message">Exclusief verzendkosten</p>
-    <div class="button-product-cart"><a href="contact-info">VERDER BESTELLEN</a></div>
+    <div class="button-product-cart"><a href="contact-info" class="uppercase">verder bestellen</a></div>
   </div>
 
 </div>
