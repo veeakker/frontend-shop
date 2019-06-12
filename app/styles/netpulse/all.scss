@@ -121,7 +121,7 @@ ul.breadcrumb li a:hover {
 
 @media screen and (min-width: 1040px) {
   /*MAIN*/
-  #header {
+  .header {
     height: 110px;
     background-image: url('/images/header-groot.jpg');
     background-position: top;
@@ -793,7 +793,7 @@ ul.breadcrumb li a:hover {
 
 @media screen and (min-width: 600px) and (max-width: 1040px) {
   /*MAIN*/
-  #header {
+  .header {
     height: 110px;
     background-image: url('/images/header-groot.jpg');
     background-position: top;
@@ -1764,7 +1764,7 @@ ul.breadcrumb li a:hover {
 
 @media screen and (max-width: 600px) {
   /*MAIN*/
-  #header {
+  .header {
     height: 110px;
     background-image: url('/images/header-groot.jpg');
     background-position: top;
