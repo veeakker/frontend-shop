@@ -2,8 +2,8 @@
 
 
 <ul class="breadcrumb-cart">
-  <li><a href="basket">Winkelmandje</a></li>
-  <li><a href="contact-info">Uw Gegevens</a></li>
+  <li>{{link-to "Winkelmandje" "webshop.basket"}}</li>
+  <li>{{link-to "Uw Gegevens" "webshop.checkout.contact-info"}}</li>
   <li><span class="breadcrumb-txt">Levering / Afhaling</span></li>
   <li><span class="breadcrumb-nxt">Betalingsgegevens</span></li>
   <li><span class="breadcrumb-nxt">Bevestig Bestelling</span></li>
@@ -171,7 +171,7 @@
 
     </div>
     <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p><img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" /><br /><br />
-    <a class="deli" href="afhaalpunten.aspx" class="uppercase">meer info over leveringen / afhaalpunten</a>
+    {{link-to "meer info over leveringen / afhaalpunten" "webshop.collection-points" class="deli uppercase"}}
     <div class="fix"></div><br />
     <div class="cart-total">
       <p>Prijs <span class="money">€67.50</span></p>
