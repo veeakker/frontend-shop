@@ -32,7 +32,7 @@ Router.map(function() {
     });
     this.route('collection-points');
     this.route('conditions');
-    this.route('contactinfo');
+    this.route('contact-us');
     this.route('favorites');
     this.route('help');
     this.route('login');
