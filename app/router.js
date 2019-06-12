@@ -8,6 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('about');
+  this.route('contact-us');
   this.route('news');
   this.route('locations', function() {
     this.route('kind', { path: ":normalized_label" });
@@ -32,7 +33,6 @@ Router.map(function() {
     });
     this.route('collection-points');
     this.route('conditions');
-    this.route('contact-us');
     this.route('favorites');
     this.route('help');
     this.route('login');
