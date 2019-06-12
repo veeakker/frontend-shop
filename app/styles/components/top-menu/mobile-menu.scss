@@ -2,12 +2,12 @@
 
   // Opening and closing the menu
   @media screen and (max-width: 850px) {
-    #veeakker-menu {
+    .veeakker-menu {
       height: 0%;
     }
 
     &.mobile-open {
-      #veeakker-menu {
+      .veeakker-menu {
         height: 100%;
       }
     }
