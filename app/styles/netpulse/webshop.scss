@@ -45,7 +45,7 @@ ul.breadcrumb li a:hover {
   width: 200px;
 }
 
-#cart-items-mobile {
+.cart-items-mobile {
   display: none;
 }
 
@@ -2366,7 +2366,7 @@ ul.breadcrumb li a:hover {
     padding: 20px;
   }
 
-  #cart-items-mobile {
+  .cart-items-mobile {
     display: none;
   }
 }
@@ -2773,7 +2773,7 @@ ul.breadcrumb li a:hover {
     margin-left: 20px;
   }
 
-  #cart-items-mobile {
+  .cart-items-mobile {
     display: block;
     border: 3px solid #443B36;
     color: black;
@@ -2783,7 +2783,7 @@ ul.breadcrumb li a:hover {
     margin-top: 50px;
   }
 
-  #cart-items-mobile div input {
+  .cart-items-mobile div input {
     width: 50px;
     text-align: center;
     display: inline-block;
@@ -2793,29 +2793,29 @@ ul.breadcrumb li a:hover {
     margin-bottom: 10px;
   }
 
-  #cart-items-mobile img {
+  .cart-items-mobile img {
     width: 100%;
     margin: 0 auto;
     margin: 0px;
   }
 
-  #cart-items-mobile h2 {
+  .cart-items-mobile h2 {
     font-size: 15px;
   }
 
-  #cart-items-mobile div {
+  .cart-items-mobile div {
     border-bottom: 2px solid #443B36;
   }
 
-  #cart-items-mobile div p {
+  .cart-items-mobile div p {
     font-size: 14px;
   }
 
-  #cart-items-mobile #last {
+  .cart-items-mobile .last {
     border: none;
   }
 
-  #cart-items-mobile .kader {
+  .cart-items-mobile .kader {
     border: 1px solid #443B36;
     padding: 10px;
   }
@@ -3272,7 +3272,7 @@ ul.breadcrumb li a:hover {
     margin-top: 22px;
   }
 
-  #cart-items-mobile p {
+  .cart-items-mobile p {
     float: none;
   }
 
