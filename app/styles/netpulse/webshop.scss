@@ -73,7 +73,7 @@ ul.breadcrumb li a:hover {
     background-color: #E1DBD5;
   }
 
-  #webshop-menu {
+  .webshop-menu {
     margin: 0 auto;
     padding-top: 25px;
     width: 470px;
@@ -88,7 +88,7 @@ ul.breadcrumb li a:hover {
     /*float: right;*/
   }
 
-  #webshop-menu ul {
+  .webshop-menu ul {
     height: 22px;
     padding: 0px;
     margin-top: 0px;
@@ -99,7 +99,7 @@ ul.breadcrumb li a:hover {
     display: none;
   }
 
-  #webshop-menu ul li {
+  .webshop-menu ul li {
     display: block;
     float: left;
     list-style: none;
@@ -110,7 +110,7 @@ ul.breadcrumb li a:hover {
     font-size: 15px;
   }
 
-  #webshop-menu ul li a {
+  .webshop-menu ul li a {
     color: #ffffff;
     text-decoration: none;
   }
@@ -1172,7 +1172,7 @@ ul.breadcrumb li a:hover {
     margin-bottom: 30px;
   }
 
-  #webshop-menu {
+  .webshop-menu {
     margin: 0 auto;
     padding-top: 25px;
     width: 470px;
@@ -1191,14 +1191,14 @@ ul.breadcrumb li a:hover {
     display: none;
   }
 
-  #webshop-menu ul {
+  .webshop-menu ul {
     height: 22px;
     padding: 0px;
     margin-top: 0px;
     text-align: right;
   }
 
-  #webshop-menu ul li {
+  .webshop-menu ul li {
     display: block;
     float: left;
     list-style: none;
@@ -1209,7 +1209,7 @@ ul.breadcrumb li a:hover {
     font-size: 15px;
   }
 
-  #webshop-menu ul li a {
+  .webshop-menu ul li a {
     color: #ffffff;
     text-decoration: none;
   }
@@ -2289,18 +2289,18 @@ ul.breadcrumb li a:hover {
     display: block;
   }
 
-  #webshop-menu {
+  .webshop-menu {
     margin: 0 auto;
     width: 100%;
     padding: 0px;
   }
 
-  #webshop-menu ul {
+  .webshop-menu ul {
     padding: 0px;
     text-align: center;
   }
 
-  #webshop-menu ul li {
+  .webshop-menu ul li {
     list-style: none;
     text-align: center;
     float: none;
@@ -2311,19 +2311,19 @@ ul.breadcrumb li a:hover {
     border-bottom: 1px solid #443B36;
   }
 
-  #webshop-menu ul li a {
+  .webshop-menu ul li a {
     color: #443B36;
   }
 
-  #webshop-menu ul li a:hover {
+  .webshop-menu ul li a:hover {
     color: #ffffff;
   }
 
-  #webshop-menu ul li a {
+  .webshop-menu ul li a {
     color: #443B36;
   }
 
-  #webshop-menu .overlay {
+  .webshop-menu .overlay {
     height: 0% !important;
     width: 100% !important;
     position: fixed;
@@ -2335,7 +2335,7 @@ ul.breadcrumb li a:hover {
     transition: 0.5s;
   }
 
-  #webshop-menu .overlay-content {
+  .webshop-menu .overlay-content {
     position: relative;
     top: 15%;
     width: 100%;
@@ -2346,23 +2346,23 @@ ul.breadcrumb li a:hover {
   }
 
 
-  #webshop-menu .dropdown:hover {
+  .webshop-menu .dropdown:hover {
     background-color: rgba(241,241,241, 0.9);
     color: #443B36;
   }
 
-  #webshop-menu .dropdown a:hover {
+  .webshop-menu .dropdown a:hover {
     color: #443B36;
   }
 
-  #webshop-menu .dropdown-content-menu {
+  .webshop-menu .dropdown-content-menu {
     background-color: rgba(241,241,241, 0.9);
     width: 100%;
     box-shadow: none;
     text-align: center;
   }
 
-  #webshop-menu .dropdown-content-menu a {
+  .webshop-menu .dropdown-content-menu a {
     padding: 20px;
   }
 
@@ -2469,7 +2469,7 @@ ul.breadcrumb li a:hover {
     margin-bottom: 30px;
   }
 
-  #webshop-menu {
+  .webshop-menu {
     margin: 0 auto;
     /*float: right;*/
   }
@@ -2487,14 +2487,14 @@ ul.breadcrumb li a:hover {
     display: block;
   }
 
-  #webshop-menu ul {
+  .webshop-menu ul {
     height: 22px;
     padding: 0px;
     margin-top: 0px;
     text-align: right;
   }
 
-  #webshop-menu ul li {
+  .webshop-menu ul li {
     display: block;
     float: left;
     list-style: none;
@@ -2505,7 +2505,7 @@ ul.breadcrumb li a:hover {
     font-size: 15px;
   }
 
-  #webshop-menu ul li a {
+  .webshop-menu ul li a {
     color: #ffffff;
     text-decoration: none;
   }
