@@ -121,7 +121,7 @@ ul.breadcrumb li a:hover {
 
 @media screen and (min-width: 1040px) {
   /*MAIN*/
-  #header {
+  .header {
     height: 110px;
     background-image: url('/images/header-groot.jpg');
     background-position: top;
@@ -194,7 +194,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*HOME*/
-  #top-banner {
+  .top-banner {
     height: 400px;
     background-image: url('/images/ondergrond.jpg');
     background-position: top;
@@ -315,7 +315,7 @@ ul.breadcrumb li a:hover {
     margin: 0 auto;
   }
 
-  #social {
+  .social {
     height: 300px;
     background-image: url('/images/ondergrond-social.jpg');
     background-position: top;
@@ -324,7 +324,7 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #social h1 {
+  .social h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
@@ -428,7 +428,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*OVER ONS*/
-  #onstopbanner {
+  .onstopbanner {
     height: 250px;
     background-image: url('/images/overons.jpg');
     background-position: top;
@@ -437,14 +437,14 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #onstopbanner h1 {
+  .onstopbanner h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
     margin-top: 76px;
   }
 
-  #overons p {
+  .overons p {
     margin: 0 auto;
     max-width: 1040px;
     color: #443B36;
@@ -543,7 +543,7 @@ ul.breadcrumb li a:hover {
 
 
   /*LOCATIES*/
-  #locatiestopbanner {
+  .locatiestopbanner {
     height: 250px;
     background-image: url('/images/locaties.jpg');
     background-position: top;
@@ -552,18 +552,18 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #locaties h1 {
+  .locaties h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
     margin-top: 76px;
   }
 
-  #locaties h5 {
+  .locaties h5 {
     margin: 0px;
   }
 
-  #locaties .extra-menu {
+  .locaties .extra-menu {
     max-width: 1020px;
     margin: 0 auto;
     min-height: 56px;
@@ -601,7 +601,7 @@ ul.breadcrumb li a:hover {
     margin-top: 0px !important;
   }
 
-  #locaties p {
+  .locaties p {
     margin: 0 auto;
     max-width: 1040px;
     color: #443B36;
@@ -622,7 +622,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*PRODUCTEN*/
-  #productentopbanner {
+  .productentopbanner {
     height: 250px;
     background-image: url('/images/ondergrond-social-extra.jpg');
     background-position: top;
@@ -631,14 +631,14 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #productentopbanner h1 {
+  .productentopbanner h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
     margin-top: 76px;
   }
 
-  #producten p {
+  .producten p {
     margin: 0 auto;
     max-width: 1040px;
     color: #443B36;
@@ -646,7 +646,7 @@ ul.breadcrumb li a:hover {
     padding: 50px 20px;
   }
 
-  #producten .extra-menu {
+  .producten .extra-menu {
     margin: 0 auto;
     margin-top: 50px;
     text-align: center;
@@ -696,7 +696,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*NIEUWS*/
-  #nieuwstopbanner {
+  .nieuwstopbanner {
     height: 250px;
     background-image: url('/images/nieuws.jpg');
     background-position: top;
@@ -705,7 +705,7 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #nieuws h1 {
+  .nieuws h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
@@ -793,7 +793,7 @@ ul.breadcrumb li a:hover {
 
 @media screen and (min-width: 600px) and (max-width: 1040px) {
   /*MAIN*/
-  #header {
+  .header {
     height: 110px;
     background-image: url('/images/header-groot.jpg');
     background-position: top;
@@ -866,7 +866,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*HOME*/
-  #top-banner {
+  .top-banner {
     height: 400px;
     background-image: url('/images/ondergrond.jpg');
     background-position: top;
@@ -987,7 +987,7 @@ ul.breadcrumb li a:hover {
     margin: 0 auto;
   }
 
-  #social {
+  .social {
     height: 300px;
     background-image: url('/images/ondergrond-social.jpg');
     background-position: top;
@@ -996,7 +996,7 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #social h1 {
+  .social h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
@@ -1100,7 +1100,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*OVER ONS*/
-  #onstopbanner {
+  .onstopbanner {
     height: 250px;
     background-image: url('/images/overons.jpg');
     background-position: top;
@@ -1109,14 +1109,14 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #onstopbanner h1 {
+  .onstopbanner h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
     margin-top: 76px;
   }
 
-  #overons p {
+  .overons p {
     margin: 0 auto;
     max-width: 1040px;
     color: #443B36;
@@ -1213,7 +1213,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*LOCATIES*/
-  #locatiestopbanner {
+  .locatiestopbanner {
     height: 250px;
     background-image: url('/images/locaties.jpg');
     background-position: top;
@@ -1222,18 +1222,18 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #locaties h1 {
+  .locaties h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
     margin-top: 76px;
   }
 
-  #locaties h5 {
+  .locaties h5 {
     margin: 0px;
   }
 
-  #locaties .extra-menu {
+  .locaties .extra-menu {
     max-width: 600px;
     margin: 0 auto;
     min-height: 56px;
@@ -1271,7 +1271,7 @@ ul.breadcrumb li a:hover {
     margin-top: 0px !important;
   }
 
-  #locaties p {
+  .locaties p {
     margin: 0 auto;
     max-width: 1040px;
     color: #443B36;
@@ -1292,7 +1292,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*PRODUCTEN*/
-  #productentopbanner {
+  .productentopbanner {
     height: 250px;
     background-image: url('/images/ondergrond-social-extra.jpg');
     background-position: top;
@@ -1301,14 +1301,14 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #productentopbanner h1 {
+  .productentopbanner h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
     margin-top: 76px;
   }
 
-  #producten p {
+  .producten p {
     margin: 0 auto;
     max-width: 1040px;
     color: #443B36;
@@ -1316,7 +1316,7 @@ ul.breadcrumb li a:hover {
     padding: 50px 20px;
   }
 
-  #producten .extra-menu {
+  .producten .extra-menu {
     margin: 0 auto;
     margin-top: 50px;
     text-align: center;
@@ -1365,7 +1365,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*NIEUWS*/
-  #nieuwstopbanner {
+  .nieuwstopbanner {
     height: 250px;
     background-image: url('/images/nieuws.jpg');
     background-position: top;
@@ -1374,7 +1374,7 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #nieuws h1 {
+  .nieuws h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
@@ -1764,7 +1764,7 @@ ul.breadcrumb li a:hover {
 
 @media screen and (max-width: 600px) {
   /*MAIN*/
-  #header {
+  .header {
     height: 110px;
     background-image: url('/images/header-groot.jpg');
     background-position: top;
@@ -1793,7 +1793,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*HOME*/
-  #top-banner {
+  .top-banner {
     height: 400px;
     background-image: url('/images/ondergrond.jpg');
     background-position: top;
@@ -1882,7 +1882,7 @@ ul.breadcrumb li a:hover {
     margin: 0 auto;
   }
 
-  #social {
+  .social {
     height: 300px;
     background-image: url('/images/ondergrond-social.jpg');
     background-position: top;
@@ -1891,7 +1891,7 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #social h1 {
+  .social h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
@@ -1899,7 +1899,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*OVER ONS*/
-  #onstopbanner {
+  .onstopbanner {
     height: 250px;
     background-image: url('/images/overons.jpg');
     background-position: top;
@@ -1908,14 +1908,14 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #onstopbanner h1 {
+  .onstopbanner h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
     margin-top: 76px;
   }
 
-  #overons p {
+  .overons p {
     margin: 0 auto;
     max-width: 1040px;
     color: #443B36;
@@ -1974,7 +1974,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*LOCATIES*/
-  #locatiestopbanner {
+  .locatiestopbanner {
     height: 250px;
     background-image: url('/images/locaties.jpg');
     background-position: top;
@@ -1983,18 +1983,18 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #locaties h1 {
+  .locaties h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
     margin-top: 76px;
   }
 
-  #locaties h5 {
+  .locaties h5 {
     margin: 0px;
   }
 
-  #locaties .extra-menu {
+  .locaties .extra-menu {
     max-width: 1020px;
     margin: 0 auto;
     min-height: 56px;
@@ -2030,7 +2030,7 @@ ul.breadcrumb li a:hover {
     margin-top: 0px !important;
   }
 
-  #locaties p {
+  .locaties p {
     margin: 0 auto;
     max-width: 1040px;
     color: #443B36;
@@ -2051,7 +2051,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*PRODUCTEN*/
-  #productentopbanner {
+  .productentopbanner {
     height: 250px;
     background-image: url('/images/ondergrond-social-extra.jpg');
     background-position: top;
@@ -2060,14 +2060,14 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #productentopbanner h1 {
+  .productentopbanner h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;
     margin-top: 76px;
   }
 
-  #producten p {
+  .producten p {
     margin: 0 auto;
     max-width: 1040px;
     color: #443B36;
@@ -2079,7 +2079,7 @@ ul.breadcrumb li a:hover {
     width: 120px;
   }
 
-  #producten .extra-menu {
+  .producten .extra-menu {
     margin: 0 auto;
     margin-top: 50px;
     text-align: center;
@@ -2128,7 +2128,7 @@ ul.breadcrumb li a:hover {
   }
 
   /*NIEUWS*/
-  #nieuwstopbanner {
+  .nieuwstopbanner {
     height: 250px;
     background-image: url('/images/nieuws.jpg');
     background-position: top;
@@ -2137,7 +2137,7 @@ ul.breadcrumb li a:hover {
     overflow: hidden;
   }
 
-  #nieuws h1 {
+  .nieuws h1 {
     margin: 0 auto;
     font-size: 18px;
     font-weight: 100;

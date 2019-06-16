@@ -1,4 +1,4 @@
-#locaties .extra-menu {
+.locaties .extra-menu {
   a {
     transition: background-color ease-in-out 0.5s;
     text-transform: uppercase;
@@ -28,7 +28,7 @@
   }
 }
 
-#locaties .extra-menu {
+.locaties .extra-menu {
   max-width: 1020px;
   margin: 0 auto;
   min-height: 56px;
@@ -37,7 +37,7 @@
 }
 
 @media screen and (min-width: 600px) and (max-width: 1040px) {
-  #locaties .extra-menu {
+  .locaties .extra-menu {
     max-width: 600px;
 
     a {
@@ -47,7 +47,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  #locaties .extra-menu {
+  .locaties .extra-menu {
     max-width: 1020px;
     margin-bottom: 10px;
 
