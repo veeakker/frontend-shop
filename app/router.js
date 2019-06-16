@@ -8,10 +8,13 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('about');
-  this.route('news');
+  this.route('contact-us');
+  this.route('faq');
+  this.route('general-conditions');
   this.route('locations', function() {
     this.route('kind', { path: ":normalized_label" });
   });
+  this.route('news');
   this.route('products', function() {
     this.route('assorted');
     this.route('beef');
@@ -32,7 +35,6 @@ Router.map(function() {
     });
     this.route('collection-points');
     this.route('conditions');
-    this.route('contactinfo');
     this.route('favorites');
     this.route('help');
     this.route('login');
@@ -47,8 +49,6 @@ Router.map(function() {
     });
     this.route('promoted');
   });
-  this.route('general-conditions');
-  this.route('faq');
 });
 
 export default Router;
