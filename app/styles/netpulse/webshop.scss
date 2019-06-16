@@ -41,11 +41,11 @@ ul.breadcrumb li a:hover {
   display: none;
 }
 
-#postnl {
+.postnl {
   width: 200px;
 }
 
-#cart-items-mobile {
+.cart-items-mobile {
   display: none;
 }
 
@@ -56,7 +56,7 @@ ul.breadcrumb li a:hover {
 
 @media screen and (min-width: 1040px) {
 
-  #header-webshop {
+  .header-webshop {
     height: 70px;
     background-color: #443B36;
     width: 100%;
@@ -64,7 +64,7 @@ ul.breadcrumb li a:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
 
-  #header-webshop-small {
+  .header-webshop-small {
     height: 50px;
     border-bottom: 3px solid #443B36;
     width: 100%;
@@ -73,7 +73,7 @@ ul.breadcrumb li a:hover {
     background-color: #E1DBD5;
   }
 
-  #webshop-menu {
+  .webshop-menu {
     margin: 0 auto;
     padding-top: 25px;
     width: 470px;
@@ -88,7 +88,7 @@ ul.breadcrumb li a:hover {
     /*float: right;*/
   }
 
-  #webshop-menu ul {
+  .webshop-menu ul {
     height: 22px;
     padding: 0px;
     margin-top: 0px;
@@ -99,7 +99,7 @@ ul.breadcrumb li a:hover {
     display: none;
   }
 
-  #webshop-menu ul li {
+  .webshop-menu ul li {
     display: block;
     float: left;
     list-style: none;
@@ -110,7 +110,7 @@ ul.breadcrumb li a:hover {
     font-size: 15px;
   }
 
-  #webshop-menu ul li a {
+  .webshop-menu ul li a {
     color: #ffffff;
     text-decoration: none;
   }
@@ -154,12 +154,12 @@ ul.breadcrumb li a:hover {
     z-index: 1;
   }
 
-  #footerWebshop {
+  .footerWebshop {
     border-top: 3px solid #443B36;
     margin-top: 30px;
   }
 
-  #footerWebshop ul {
+  .footerWebshop ul {
     height: 22px;
     padding: 0px;
     margin-top: 0px;
@@ -169,7 +169,7 @@ ul.breadcrumb li a:hover {
     margin-top: 10px;
   }
 
-  #footerWebshop ul li {
+  .footerWebshop ul li {
     display: block;
     float: left;
     list-style: none;
@@ -180,7 +180,7 @@ ul.breadcrumb li a:hover {
     font-size: 11px;
   }
 
-  #footerWebshop ul li a {
+  .footerWebshop ul li a {
     color: #443B36;
     text-decoration: none;
   }
@@ -237,25 +237,25 @@ ul.breadcrumb li a:hover {
     margin: 0 auto;
   }
 
-  #home-webshop h1 {
+  .home-webshop h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
   }
 
-  #empty-shop h1 {
+  .empty-shop h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
   }
 
-  #products-shop h1 {
+  .products-shop h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
   }
 
-  #empty-shop p {
+  .empty-shop p {
     color: #443B36;
     margin: 0 auto;
     padding: 20px;
@@ -800,7 +800,7 @@ ul.breadcrumb li a:hover {
     color: #443B36;
   }
 
-  #checkout-contact h2 {
+  .checkout-contact h2 {
     color: #443B36;
     display: inline-block;
     text-align: center;
@@ -808,14 +808,14 @@ ul.breadcrumb li a:hover {
     font-size: 18px;
   }
 
-  #checkout-contact p {
+  .checkout-contact p {
     color: #443B36;
     display: inline-block;
     float: right;
     margin-top: 22px;
   }
 
-  #checkout-contact a {
+  .checkout-contact a {
     color: #443B36;
     font-weight: bold;
   }
@@ -825,7 +825,7 @@ ul.breadcrumb li a:hover {
     margin: 0 auto;
   }
 
-  #checkout-contact input[type=text], #checkout-contact textarea, #checkout-contact #txtMail {
+  .checkout-contact input[type=text], .checkout-contact textarea, .checkout-contact #txtMail {
     width: 600px;
     padding: 10px;
     border: 1px solid #443B36;
@@ -837,7 +837,7 @@ ul.breadcrumb li a:hover {
     font-family: 'Open Sans';
   }
 
-  #checkout-contact label {
+  .checkout-contact label {
     color: #443B36;
     font-size: 12px;
     vertical-align: central;
@@ -849,7 +849,7 @@ ul.breadcrumb li a:hover {
     margin-right: 5px;
   }
 
-  #login h1 {
+  .login h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
@@ -1141,22 +1141,22 @@ ul.breadcrumb li a:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }*/
 
-  /*#txtTour {
+  /*.txtTour {
         display: none;
     }*/
 
-  /*#txtStore {
+  /*.txtStore {
         display: none;
     }*/
 
-  /*#txtInfo {
+  /*.txtInfo {
         display: none;
     }*/
 }
 
 
 @media screen and (min-width: 600px) and (max-width: 1040px) {
-  #header-webshop {
+  .header-webshop {
     height: 70px;
     background-color: #443B36;
     width: 100%;
@@ -1164,7 +1164,7 @@ ul.breadcrumb li a:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
 
-  #header-webshop-small {
+  .header-webshop-small {
     height: 50px;
     border-bottom: 3px solid #443B36;
     width: 100%;
@@ -1172,7 +1172,7 @@ ul.breadcrumb li a:hover {
     margin-bottom: 30px;
   }
 
-  #webshop-menu {
+  .webshop-menu {
     margin: 0 auto;
     padding-top: 25px;
     width: 470px;
@@ -1191,14 +1191,14 @@ ul.breadcrumb li a:hover {
     display: none;
   }
 
-  #webshop-menu ul {
+  .webshop-menu ul {
     height: 22px;
     padding: 0px;
     margin-top: 0px;
     text-align: right;
   }
 
-  #webshop-menu ul li {
+  .webshop-menu ul li {
     display: block;
     float: left;
     list-style: none;
@@ -1209,7 +1209,7 @@ ul.breadcrumb li a:hover {
     font-size: 15px;
   }
 
-  #webshop-menu ul li a {
+  .webshop-menu ul li a {
     color: #ffffff;
     text-decoration: none;
   }
@@ -1256,12 +1256,12 @@ ul.breadcrumb li a:hover {
     padding-top: 110px;
   }
 
-  #footerWebshop {
+  .footerWebshop {
     border-top: 3px solid #443B36;
     margin-top: 30px;
   }
 
-  #footerWebshop ul {
+  .footerWebshop ul {
     height: 22px;
     padding: 0px;
     margin-top: 0px;
@@ -1271,7 +1271,7 @@ ul.breadcrumb li a:hover {
     margin-top: 10px;
   }
 
-  #footerWebshop ul li {
+  .footerWebshop ul li {
     display: block;
     float: left;
     list-style: none;
@@ -1282,7 +1282,7 @@ ul.breadcrumb li a:hover {
     font-size: 11px;
   }
 
-  #footerWebshop ul li a {
+  .footerWebshop ul li a {
     color: #443B36;
     text-decoration: none;
   }
@@ -1339,25 +1339,25 @@ ul.breadcrumb li a:hover {
     margin: 0 auto;
   }
 
-  #home-webshop h1 {
+  .home-webshop h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
   }
 
-  #empty-shop h1 {
+  .empty-shop h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
   }
 
-  #products-shop h1 {
+  .products-shop h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
   }
 
-  #empty-shop p {
+  .empty-shop p {
     color: #443B36;
     margin: 0 auto;
     padding: 20px;
@@ -1898,7 +1898,7 @@ ul.breadcrumb li a:hover {
     color: #443B36;
   }
 
-  #checkout-contact h2 {
+  .checkout-contact h2 {
     color: #443B36;
     display: inline-block;
     text-align: center;
@@ -1906,14 +1906,14 @@ ul.breadcrumb li a:hover {
     font-size: 18px;
   }
 
-  #checkout-contact p {
+  .checkout-contact p {
     color: #443B36;
     display: inline-block;
     float: right;
     margin-top: 22px;
   }
 
-  #checkout-contact a {
+  .checkout-contact a {
     color: #443B36;
     font-weight: bold;
   }
@@ -1923,7 +1923,7 @@ ul.breadcrumb li a:hover {
     margin: 0 auto;
   }
 
-  #checkout-contact input[type=text], #checkout-contact textarea, #checkout-contact #txtMail {
+  .checkout-contact input[type=text], .checkout-contact textarea, .checkout-contact #txtMail {
     width: 600px;
     padding: 10px;
     border: 1px solid #443B36;
@@ -1935,7 +1935,7 @@ ul.breadcrumb li a:hover {
     font-family: 'Open Sans';
   }
 
-  #checkout-contact label {
+  .checkout-contact label {
     color: #443B36;
     font-size: 12px;
     vertical-align: central;
@@ -1947,7 +1947,7 @@ ul.breadcrumb li a:hover {
     margin-right: 5px;
   }
 
-  #login h1 {
+  .login h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
@@ -2240,15 +2240,15 @@ ul.breadcrumb li a:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }*/
 
-  /*#txtTour {
+  /*.txtTour {
         display: none;
     }*/
 
-  /*#txtStore {
+  /*.txtStore {
         display: none;
     }*/
 
-  /*#txtInfo {
+  /*.txtInfo {
         display: none;
     }*/
 }
@@ -2275,7 +2275,7 @@ ul.breadcrumb li a:hover {
   }
 
 
-  #header-webshop {
+  .header-webshop {
     display: none;
   }
 
@@ -2289,18 +2289,18 @@ ul.breadcrumb li a:hover {
     display: block;
   }
 
-  #webshop-menu {
+  .webshop-menu {
     margin: 0 auto;
     width: 100%;
     padding: 0px;
   }
 
-  #webshop-menu ul {
+  .webshop-menu ul {
     padding: 0px;
     text-align: center;
   }
 
-  #webshop-menu ul li {
+  .webshop-menu ul li {
     list-style: none;
     text-align: center;
     float: none;
@@ -2311,19 +2311,19 @@ ul.breadcrumb li a:hover {
     border-bottom: 1px solid #443B36;
   }
 
-  #webshop-menu ul li a {
+  .webshop-menu ul li a {
     color: #443B36;
   }
 
-  #webshop-menu ul li a:hover {
+  .webshop-menu ul li a:hover {
     color: #ffffff;
   }
 
-  #webshop-menu ul li a {
+  .webshop-menu ul li a {
     color: #443B36;
   }
 
-  #webshop-menu .overlay {
+  .webshop-menu .overlay {
     height: 0% !important;
     width: 100% !important;
     position: fixed;
@@ -2335,7 +2335,7 @@ ul.breadcrumb li a:hover {
     transition: 0.5s;
   }
 
-  #webshop-menu .overlay-content {
+  .webshop-menu .overlay-content {
     position: relative;
     top: 15%;
     width: 100%;
@@ -2346,27 +2346,27 @@ ul.breadcrumb li a:hover {
   }
 
 
-  #webshop-menu .dropdown:hover {
+  .webshop-menu .dropdown:hover {
     background-color: rgba(241,241,241, 0.9);
     color: #443B36;
   }
 
-  #webshop-menu .dropdown a:hover {
+  .webshop-menu .dropdown a:hover {
     color: #443B36;
   }
 
-  #webshop-menu .dropdown-content-menu {
+  .webshop-menu .dropdown-content-menu {
     background-color: rgba(241,241,241, 0.9);
     width: 100%;
     box-shadow: none;
     text-align: center;
   }
 
-  #webshop-menu .dropdown-content-menu a {
+  .webshop-menu .dropdown-content-menu a {
     padding: 20px;
   }
 
-  #cart-items-mobile {
+  .cart-items-mobile {
     display: none;
   }
 }
@@ -2453,7 +2453,7 @@ ul.breadcrumb li a:hover {
     text-align: left;
   }
 
-  #header-webshop {
+  .header-webshop {
     height: 70px;
     background-color: #443B36;
     width: 100%;
@@ -2461,7 +2461,7 @@ ul.breadcrumb li a:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
 
-  #header-webshop-small {
+  .header-webshop-small {
     min-height: 50px;
     border-bottom: 3px solid #443B36;
     width: 100%;
@@ -2469,7 +2469,7 @@ ul.breadcrumb li a:hover {
     margin-bottom: 30px;
   }
 
-  #webshop-menu {
+  .webshop-menu {
     margin: 0 auto;
     /*float: right;*/
   }
@@ -2487,14 +2487,14 @@ ul.breadcrumb li a:hover {
     display: block;
   }
 
-  #webshop-menu ul {
+  .webshop-menu ul {
     height: 22px;
     padding: 0px;
     margin-top: 0px;
     text-align: right;
   }
 
-  #webshop-menu ul li {
+  .webshop-menu ul li {
     display: block;
     float: left;
     list-style: none;
@@ -2505,7 +2505,7 @@ ul.breadcrumb li a:hover {
     font-size: 15px;
   }
 
-  #webshop-menu ul li a {
+  .webshop-menu ul li a {
     color: #ffffff;
     text-decoration: none;
   }
@@ -2555,13 +2555,13 @@ ul.breadcrumb li a:hover {
     padding-top: 110px;
   }
 
-  #footerWebshop {
+  .footerWebshop {
     border-top: 3px solid #443B36;
     margin-top: 30px;
     text-align: center;
   }
 
-  #footerWebshop ul {
+  .footerWebshop ul {
     height: 22px;
     padding: 0px;
     margin-top: 0px;
@@ -2571,7 +2571,7 @@ ul.breadcrumb li a:hover {
     text-align: center;
   }
 
-  #footerWebshop ul li {
+  .footerWebshop ul li {
     display: block;
     float: none;
     list-style: none;
@@ -2582,7 +2582,7 @@ ul.breadcrumb li a:hover {
     font-size: 11px;
   }
 
-  #footerWebshop ul li a {
+  .footerWebshop ul li a {
     color: #443B36;
     text-decoration: none;
   }
@@ -2639,25 +2639,25 @@ ul.breadcrumb li a:hover {
     margin: 0 auto;
   }
 
-  #home-webshop h1 {
+  .home-webshop h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
   }
 
-  #empty-shop h1 {
+  .empty-shop h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
   }
 
-  #products-shop h1 {
+  .products-shop h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
   }
 
-  #empty-shop p {
+  .empty-shop p {
     color: #443B36;
     margin: 0 auto;
     padding: 20px;
@@ -2773,7 +2773,7 @@ ul.breadcrumb li a:hover {
     margin-left: 20px;
   }
 
-  #cart-items-mobile {
+  .cart-items-mobile {
     display: block;
     border: 3px solid #443B36;
     color: black;
@@ -2783,7 +2783,7 @@ ul.breadcrumb li a:hover {
     margin-top: 50px;
   }
 
-  #cart-items-mobile div input {
+  .cart-items-mobile div input {
     width: 50px;
     text-align: center;
     display: inline-block;
@@ -2793,29 +2793,29 @@ ul.breadcrumb li a:hover {
     margin-bottom: 10px;
   }
 
-  #cart-items-mobile img {
+  .cart-items-mobile img {
     width: 100%;
     margin: 0 auto;
     margin: 0px;
   }
 
-  #cart-items-mobile h2 {
+  .cart-items-mobile h2 {
     font-size: 15px;
   }
 
-  #cart-items-mobile div {
+  .cart-items-mobile div {
     border-bottom: 2px solid #443B36;
   }
 
-  #cart-items-mobile div p {
+  .cart-items-mobile div p {
     font-size: 14px;
   }
 
-  #cart-items-mobile #last {
+  .cart-items-mobile .last {
     border: none;
   }
 
-  #cart-items-mobile .kader {
+  .cart-items-mobile .kader {
     border: 1px solid #443B36;
     padding: 10px;
   }
@@ -3257,7 +3257,7 @@ ul.breadcrumb li a:hover {
     color: #443B36;
   }
 
-  #checkout-contact h2 {
+  .checkout-contact h2 {
     color: #443B36;
     display: inline-block;
     text-align: center;
@@ -3265,18 +3265,18 @@ ul.breadcrumb li a:hover {
     font-size: 18px;
   }
 
-  #checkout-contact p {
+  .checkout-contact p {
     color: #443B36;
     display: inline-block;
     float: right;
     margin-top: 22px;
   }
 
-  #cart-items-mobile p {
+  .cart-items-mobile p {
     float: none;
   }
 
-  #checkout-contact a {
+  .checkout-contact a {
     color: #443B36;
     font-weight: bold;
   }
@@ -3288,7 +3288,7 @@ ul.breadcrumb li a:hover {
     margin-left: 20px;
   }
 
-  #checkout-contact input[type=text], #checkout-contact textarea, #checkout-contact #txtMail {
+  .checkout-contact input[type=text], .checkout-contact textarea, .checkout-contact #txtMail {
     width: 100%;
     padding: 10px;
     border: 1px solid #443B36;
@@ -3300,7 +3300,7 @@ ul.breadcrumb li a:hover {
     font-family: 'Open Sans';
   }
 
-  #checkout-contact label {
+  .checkout-contact label {
     color: #443B36;
     font-size: 12px;
     vertical-align: central;
@@ -3312,7 +3312,7 @@ ul.breadcrumb li a:hover {
     margin-right: 5px;
   }
 
-  #login h1 {
+  .login h1 {
     font-size: 18px;
     color: #443B36;
     margin-top: 30px;
@@ -3605,7 +3605,7 @@ ul.breadcrumb li a:hover {
     font-family: 'Open Sans';
   }
 
-  #header-webshop {
+  .header-webshop {
     display: none;
   }
 
@@ -3613,15 +3613,15 @@ ul.breadcrumb li a:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }*/
 
-  /*#txtTour {
+  /*.txtTour {
         display: none;
     }*/
 
-  /*#txtStore {
+  /*.txtStore {
         display: none;
     }*/
 
-  /*#txtInfo {
+  /*.txtInfo {
         display: none;
     }*/
 
