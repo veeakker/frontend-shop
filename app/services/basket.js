@@ -1,3 +1,5 @@
+import { set } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { get } from '@ember/object';
 import { computed } from '@ember/object';
 import EmberObject from '@ember/object';
@@ -19,9 +21,13 @@ class OrderLine {
     const price = get(this, 'offering.unitPrice.value');
     return amount * price;
   }
+
+  @alias( 'offering.unitPrice.value' ) pricePerUnit;
 }
 
 export default class BasketService extends Service {
+  @service store
+
   init(){
     super.init(...arguments);
     this.orderLines = A();
@@ -48,7 +54,7 @@ export default class BasketService extends Service {
    */
   removeOffer( offering, amount ){
     const obj = this.objectForOffering( offering );
-    obj.amount.set( obj.amount - amount );
+    set(obj, 'amount', obj.amount - amount);
     if( obj.amount <= 0 ) {
       this.orderLines.removeObject( obj );
     }
