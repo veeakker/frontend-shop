@@ -469,7 +469,7 @@ ul.breadcrumb li a:hover {
     padding: 10px 0px;
   }
 
-  .button-product a {
+  .button-product > * {
     display: inline-block;
     max-width: 80%;
     background-color: #443B36;
@@ -1568,7 +1568,7 @@ ul.breadcrumb li a:hover {
     padding: 10px 0px;
   }
 
-  .button-product a {
+  .button-product > * {
     display: inline-block;
     max-width: 80%;
     background-color: #443B36;
@@ -2927,7 +2927,7 @@ ul.breadcrumb li a:hover {
     padding: 10px 0px;
   }
 
-  .button-product a {
+  .button-product > * {
     display: inline-block;
     max-width: 80%;
     background-color: #443B36;

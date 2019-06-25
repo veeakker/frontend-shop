@@ -75,6 +75,11 @@ export default {
   'blue-lighter': '#bcdefa',
   'blue-lightest': '#eff8ff',
 
+  'brown-lightest': '#f1f1f1',
+  brown: '#E1DBD5',
+  'brown-darkest': '#443b36',
+
+
   'indigo-darkest': '#191e38',
   'indigo-darker': '#2f365f',
   'indigo-dark': '#5661b3',
