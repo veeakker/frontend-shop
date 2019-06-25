@@ -1,6 +1,13 @@
-<ul>
-  {{#each model.childGroups as |sub|}}
-    <li>{{link-to sub.label "webshop.product-groups.show.subgroups.show" model sub}}</li>
-  {{/each}}
-</ul>
+<div class="sub-menu ml-4">
+  <h3 class="uppercase my-3 py-1">{{this.model.label}}</h3>
+  <ul class="mt-5 pl-0">
+    {{#each this.model.sortedChildren as |group|}}
+      <li>
+        {{link-to group.label "webshop.product-groups.show.subgroups.show" this.model group class="uppercase"}}
+      </li>
+    {{/each}}
+  </ul>
+  <div class="fix"></div>
+</div>
+
 {{outlet}}

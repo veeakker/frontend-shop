@@ -29,9 +29,9 @@ Router.map(function() {
     this.route('beef');
     this.route('checkout', function() {
       this.route('contact-info');
-      this.route('finish');
-      this.route('payment');
       this.route('delivery');
+      this.route('payment');
+      this.route('finish');
     });
     this.route('collection-points');
     this.route('conditions');

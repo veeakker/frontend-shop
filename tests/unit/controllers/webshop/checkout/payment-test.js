@@ -1,12 +1,12 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Controller | webshop/payment', function(hooks) {
+module('Unit | Controller | webshop/checkout/payment', function(hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let controller = this.owner.lookup('controller:webshop/payment');
+    let controller = this.owner.lookup('controller:webshop/checkout/payment');
     assert.ok(controller);
   });
 });

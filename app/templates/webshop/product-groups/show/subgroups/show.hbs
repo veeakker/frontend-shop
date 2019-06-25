@@ -2,35 +2,28 @@
   <h1 class="text-purple uppercase">producten in the kijker</h1>
   <Design::Forks @useDarkImage={{true}} />
   <div class="row-product">
-    <div class="column-product">
-      <ProductCard/>
-    </div>
-    <div class="column-product">
-      <ProductCard/>
-    </div>
-    <div class="column-product">
-      <ProductCard/>
-    </div>
-    <div class="column-product">
-      <ProductCard/>
-    </div>
-    <div class="column-product">
-      <ProductCard/>
-    </div>
-    <div class="column-product">
-      <ProductCard/>
-    </div>
+    {{#each this.model.sortedProducts as |product|}}
+      <div class="column-product">
+        <ProductCard @product={{product}} />
+      </div>
+    {{else}}
+      <div class="column-product">
+        <ProductCard/>
+      </div>
+      <div class="column-product">
+        <ProductCard/>
+      </div>
+      <div class="column-product">
+        <ProductCard/>
+      </div>
+      <div class="column-product">
+        <ProductCard/>
+      </div>
+      <div class="column-product">
+        <ProductCard/>
+      </div>
+    {{/each}}
   </div>
 </div>
-
-<hr />
-
-<h1>{{model.label}} - {{model.childGroups.length}}</h1>
-
-<ul>
-  {{#each sortedSubGroups as |subGroup|}}
-    <li>{{subGroup.label}}</li>
-  {{/each}}
-</ul>
 
 {{outlet}}

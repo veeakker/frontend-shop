@@ -1,0 +1,13 @@
+<div class="sub-menu ml-4">
+  <Webshop::LeftMenu::ParentGroups @topGroup={{@productGroup}} @productGroup={{@productGroup}} />
+  <ul class="mt-5 pl-0">
+    {{#each sortedSubGroups as |group|}}
+      <li>
+        {{link-to group.label "webshop.product-groups.show.subgroups.show" @productGroup group class="uppercase"}}
+      </li>
+    {{/each}}
+  </ul>
+  <div class="fix"></div>
+</div>
+
+{{yield}}
