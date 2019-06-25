@@ -1,9 +1,11 @@
-<button class="minus" {{action this.decreaseValue}} >-</button>
-<div class="value">
-  {{#if key}}
-    {{get @value key}}
-  {{else}}
-    {{@value}}
-  {{/if}}
+<div class="mt-1 bg-brown-lightest inline-block border-none text-brown-darkest">
+  <button class="minus inline-block p-1" {{action this.decreaseValue}} >-</button>
+  <div class="value inline-block">
+    {{#if key}}
+      {{get @value key}}
+    {{else}}
+      {{@value}}
+    {{/if}}
+  </div>
+  <button class="plus inline-block p-1" {{action this.increaseValue}}>+</button>
 </div>
-<button class="plus" {{action this.increaseValue}}>+</button>
