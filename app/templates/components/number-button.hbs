@@ -1,5 +1,9 @@
-<button class="minus" {{action decreaseValue}} >-</button>
+<button class="minus" {{action this.decreaseValue}} >-</button>
 <div class="value">
-  {{value}}  
+  {{#if key}}
+    {{get @value key}}
+  {{else}}
+    {{@value}}
+  {{/if}}
 </div>
-<button class="plus" {{action increaseValue}}>+</button>
+<button class="plus" {{action this.increaseValue}}>+</button>

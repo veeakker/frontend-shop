@@ -1,0 +1,7 @@
+{{#if @productGroup.parentGroup}}
+  <Webshop::LeftMenu::ParentGroups @productGroup={{@productGroup.parentGroup}} />
+{{/if}}
+
+<h3 class="uppercase my-3 py-1">{{@productGroup.label}}</h3>
+
+{{yield}}

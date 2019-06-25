@@ -11,14 +11,14 @@
   </div>
 
   <div class="description">
-    <div class="product-title">Kotelet</div>
+    <div class="product-title">{{#if @product}}{{product.label}}{{else}}Kotelet{{/if}}</div>
     <div class="alternative-terms">Andere kotelet - Iets Frans</div>
   </div>
 
   <div class="amounts">
     <div class="configuration">
       <div class="per-pakje">
-        Per pakje: {{number-button value=packageAmount }}
+        Per pakje: <ProductCard::Offers @product={{@product}} @onSelect={{mut this.selectedOffer}} @selected={{this.currentOffer}} />
       </div>
 
       <div class="pakjes">
@@ -29,7 +29,11 @@
     <div class="image-of-packages">
       <EachCount @count={{packageCount}}>
         <div class="image-spacing-wrapper">
-          <img src={{concat "/images/packages/items-" packageAmount ".png"}} alt={{concat "Package with " packageAmount "items in it"}} />
+          {{#if (eq this.currentOffer.typeAndQuantity.unit "C62")}}
+            {{#with this.currentOffer.typeAndQuantity.value as |amount|}}
+              <img src={{concat "/images/packages/items-" amount ".png"}} alt={{concat "Package with " amount "items in it"}} />
+            {{/with}}
+          {{/if}}
         </div>
       </EachCount>
     </div>

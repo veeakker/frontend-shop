@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import fetch from 'fetch';
 
-export default class WebshopPaymentController extends Controller {
+export default class WebshopCheckoutPaymentController extends Controller {
   deliveredOnTour = false;
   paymentUrl = "";
 
