@@ -42,7 +42,15 @@
           {{!-- TODO: implement search --}}
           <li class="flex"><a href="#"><img src="/images/zoekb.png" width="18" alt="search trigger icon" /></a> <input class="searchbox" type="text" placeholder="zoeken" name="search"></li>
           {{!-- TODO: make static content dynamic --}}
-          <li class="small-menu">{{#link-to "webshop.basket"}}1 <img src="/images/winkelmandjeb.png" alt="shopping basket icon" width="15" /> {{euros basket.totalPrice}}{{/link-to}}</li>
+          <li class="small-menu">
+            {{#link-to "webshop.basket"}}
+              {{#if basket.orderLines.length}}
+                {{basket.orderLines.length}}
+              {{/if}}
+              <img src="/images/winkelmandjeb.png" alt="shopping basket icon" width="15" />
+              {{euros basket.totalPrice}}
+            {{/link-to}}
+          </li>
 
           <li class="dropdownSmall small-menu">
             {{#link-to "webshop.login"}}<span class="uppercase">inloggen</span>{{/link-to}}
