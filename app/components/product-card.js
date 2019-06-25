@@ -1,3 +1,4 @@
+import { action } from '@ember/object';
 import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import Component from '@ember/component';
