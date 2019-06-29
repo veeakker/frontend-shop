@@ -1,7 +1,7 @@
 <div class="card {{detailClass}}">
   <div class="picture-info" {{action (mut showDetail) (not showDetail)}} role="button">
     <div class="picture">
-      <img src="/images/meat-image.jpg" class="image" alt="Placeholder image of shown product">
+      <ProductCard::Thumbnail @product={{product}} />
     </div>
     <div class="icons">
       <span class="icon icon-1"><img src="/images/favob.png" alt="Favorite icon"/></span>

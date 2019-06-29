@@ -60,7 +60,7 @@
         <tr class="cart-item">
           <td class="product-item">
             <a href="#" class="image-cart">
-              <img src="/images/ons2.jpg" alt="Image of meat">
+              <ProductCard::Thumbnail @product={{orderLine.offering.typeAndQuantity.product}} />
             </a>
             <div class="product-item-details">
               <span class="cart-title"><a href="#" title="" class="uppercase">{{orderLine.offering.typeAndQuantity.product.label}}</a></span><br />
