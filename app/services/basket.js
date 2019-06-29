@@ -31,6 +31,11 @@ export default class BasketService extends Service {
   init(){
     super.init(...arguments);
     this.orderLines = A();
+
+    [[5,"5D1111EF41D9CC0008000009"], [2,"5D11F4BA41D9CC0008000015"]].forEach( async ([amount,offeringId]) => {
+      let offering = await this.store.find('offering', offeringId);
+      this.addOffer( offering, amount );
+    } );
   }
 
   orderLines = null;
