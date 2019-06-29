@@ -9,6 +9,7 @@ export default class ProductModel extends Model {
   @hasMany('offering') offerings;
   @belongsTo('unit-price-specification') unitPrice;
   @belongsTo('quantitative-value') targetUnit;
+  @belongsTo('file') thumbnail;
 
   @sort('offerings', 'offeringSortKeys') sortedOfferings;
   offeringSortKeys = ['typeAndQuantity.value']
