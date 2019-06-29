@@ -39,7 +39,12 @@ Router.map(function() {
     this.route('help');
     this.route('login');
     this.route('orders');
-    this.route('product');
+    this.route('product', { path: "product/:product_id/" }, function() {
+      this.route('information');
+      this.route('ingredients');
+      this.route('nutricional-values');
+      this.route('allergenics');
+    });
     this.route('product-groups', function() {
       this.route('show', { path: ":id" }, function() {
         this.route('subgroups', function() {

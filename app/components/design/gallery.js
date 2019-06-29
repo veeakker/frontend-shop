@@ -7,4 +7,4 @@ export default Component.extend({
     { src: "/images/ons2.jpg", alt:"Image of meat"},
     { src: "/images/ons3.jpg", alt:"Image of meat with spices"},
   ])
-})
+});

@@ -1,9 +1,8 @@
+import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
-import Component from '@ember/component';
-// import { wait } from 'ember-animated';
 
 const wait = function( time ) {
   return new Promise((success) => {
@@ -11,9 +10,7 @@ const wait = function( time ) {
   });
 };
 
-export default class ProductCardComponent extends Component {
-  showDetail = false
-
+export default class WebshopProductController extends Controller {
   packageCount = 1
 
   tagName = ""
@@ -38,8 +35,6 @@ export default class ProductCardComponent extends Component {
   @action
   async add() {
     this.basket.addOffer( this.currentOffer, this.packageCount );
-    await wait(500);
-    this.set('showDetail', false);
     await wait(500);
     this.set('selectedOffer', null);
   }
