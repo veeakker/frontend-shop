@@ -1,170 +1,51 @@
-{{outlet}}
-
-<div class="sub-menu">
-  <h3>RUND</h3>
-  <ul>
-    <li><a href="#" class="uppercase">blonde d'aquitane</a></li>
-    <li><a href="#" class="uppercase">grasstier</a></li>
-    <li><a href="#" class="uppercase">galloway natuurpunt</a></li>
-    <li><a href="#" class="uppercase">maalvlees</a></li>
-    <li><a href="#" class="uppercase">paketten</a></li>
-  </ul>
-  <div class="fix"></div>
-</div>
-
-<div class="products-shop">
-
-  <ul class="breadcrumb">
-    <li><a href="#">Webshop</a></li>
-    <li><a href="#">Vlees</a></li>
-    <li><a href="#">Rund</a></li>
-    <li><a href="#">Grasstier</a></li>
-    <li><a href="#">Detail</a></li>
-  </ul>
-  <div class="fix"></div>
-
+{{!-- We should get rid of this product id dependency --}}
+<div id="product" class="products-shop">
   <div>
-
     <div class="product-info">
-      <div class="info-img"><img src="/images/ons2.jpg" alt="Image of meat" /></div>
+      <div class="info-img">
+        <ProductCard::Thumbnail @product={{this.model}} />
+      </div>
       <div class="info-txt">
-        <h3 class="uppercase">product</h3>
-        <p class="no-padding">text</p>
+        <h3 class="uppercase">{{model.label}}</h3>
+        <p class="no-padding">{{model.altLabel}}</p>
         <a href="#">
           <img src="/images/favob.png" alt="Favorite icon" width="21" />
         </a>
         <a href="#"><img src="/images/vries.png" alt="Frozen icon" width="21" /></a>
         <a href="#"><img src="/images/product-logo.png" alt="Producer logo" width="21" /></a><br />
         <br />
-        <div class="pack">
 
-          <div class="custom-select w-full m-0">
-            <select>
-              <option value="0" class="uppercase">verpakking</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
-          <div class="custom-select w-full m-0">
-            <select>
-              <option value="0" class="uppercase">hoeveel</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
-          <div class="fix"></div>
+        <div class="amounts">
+          <div class="configuration">
+            <div class="per-pakje">
+              Per pakje: <ProductCard::Offers @product={{model}} @onChange={{mut this.selectedOffer}} @selected={{this.currentOffer}} />
+            </div>
 
+            <div class="pakjes">
+              Pakjes: {{number-button value=packageCount}}
+            </div>      
+          </div>
+
+          <ProductCard::PackagesImage @count={{packageCount}} @offer={{this.currentOffer}} />
         </div>
-        <br />
 
-        <div class="button-product"><a href="#" class="uppercase">bestellen</a></div>
+        <div class="button-product"><button {{action this.add}}>bestellen</button></div>
       </div><div class="fix"></div>
     </div>
 
 
 
     <div class="extra-menu-product">
-      <div class="info tablinks" onclick="openLocation(event, 'info')"><h5 class="uppercase">informatie</h5></div>
-      <div class="ingre tablinks" onclick="openLocation(event, 'ingre')"><h5 class="uppercase">ingrediënten</h5></div>
-      <div class="food tablinks" onclick="openLocation(event, 'food')"><h5 class="uppercase">voedingswaarden</h5></div>
-      <div class="aler tablinks" onclick="openLocation(event, 'aler')"><h5 class="uppercase">allergenen</h5></div>
+      {{#link-to "webshop.product.information" model class="info tablinks uppercase"}}<h5>informatie</h5>{{/link-to}}
+      {{#link-to "webshop.product.ingredients" model class="ingre tablinks uppercase"}}<h5>ingrediënten</h5>{{/link-to}}
+      {{#link-to "webshop.product.nutricional-values" model class="food tablinks uppercase"}}<h5>voedingswaarden</h5>{{/link-to}}
+      {{#link-to "webshop.product.allergenics" model class="aler tablinks uppercase"}}<h5>allergenen</h5>{{/link-to}}
     </div><div class="fix"></div>
     <div class="tabcontent">
-      <p>
-        info ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel
-        eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-        et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-        ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
-        in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-        dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
-        dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-        dignissim qui blandit praesent
-      </p>
-      <Design::Gallery />
+      {{outlet}}
 
-    </div>
-    <div class="tabcontent">
-      <p>
-        ingre ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel
-        eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-        et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-        ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
-        in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-        dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
-        dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-        dignissim qui blandit praesent
-      </p>
-      <Design::Gallery />
-
-    </div>
-    <div class="tabcontent">
-      <p>
-        food ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel
-        eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-        et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-        ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
-        in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-        dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
-        dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-        dignissim qui blandit praesent
-      </p>
-      <Design::Gallery />
-
-    </div>
-    <div class="tabcontent">
-      <p>
-        aler ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel
-        eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-        et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-        ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
-        in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-        dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-        enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
-        dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-        dignissim qui blandit praesent
-      </p>
       <Design::Gallery />
     </div>
   </div>
 </div>
 <div class="fix"></div>
-{{outlet}}
