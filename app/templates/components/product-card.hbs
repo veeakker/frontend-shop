@@ -26,17 +26,7 @@
       </div>      
     </div>
 
-    <div class="image-of-packages">
-      <EachCount @count={{packageCount}}>
-        <div class="image-spacing-wrapper">
-          {{#if (eq this.currentOffer.typeAndQuantity.unit "C62")}}
-            {{#with this.currentOffer.typeAndQuantity.value as |amount|}}
-              <img src={{concat "/images/packages/items-" amount ".png"}} alt={{concat "Package with " amount "items in it"}} />
-            {{/with}}
-          {{/if}}
-        </div>
-      </EachCount>
-    </div>
+    <ProductCard::PackagesImage @count={{packageCount}} @offer={{this.currentOffer}} />
   </div>
 
   <div class="actions">
