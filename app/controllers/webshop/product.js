@@ -32,10 +32,17 @@ export default class WebshopProductController extends Controller {
     return this.showDetail ? "detail" : "";
   }
 
+  resetOrder() {
+    this.setProperties( {
+      packageCount: 1,
+      selectedOffer: null
+    } );
+  }
+
   @action
   async add() {
     this.basket.addOffer( this.currentOffer, this.packageCount );
     await wait(500);
-    this.set('selectedOffer', null);
+    this.resetOrder();
   }
 }
