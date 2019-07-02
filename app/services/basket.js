@@ -6,6 +6,7 @@ import EmberObject from '@ember/object';
 import { A } from '@ember/array';
 import Service from '@ember/service';
 import { alias } from '@ember/object/computed';
+import fetch from 'fetch';
 
 class OrderLine {
   constructor( { amount, offering } ) {
@@ -28,30 +29,40 @@ class OrderLine {
 export default class BasketService extends Service {
   @service store
 
-  init(){
+  async init(){
     super.init(...arguments);
-    this.orderLines = A();
 
-    [[5,"5D1111EF41D9CC0008000009"], [2,"5D11F4BA41D9CC0008000015"]].forEach( async ([amount,offeringId]) => {
-      let offering = await this.store.find('offering', offeringId);
-      this.addOffer( offering, amount );
-    } );
+    const result = await (await fetch(`/current-basket/ensure`)).json();
+    this.store.pushPayload( result );
+    const basket = this.store.peekRecord('basket', result.data.id);
+    await basket.reload();
+    await basket.orderLines;
+    this.set('basket', basket);
   }
 
-  orderLines = null;
+  basket = null;
+
+  @alias( 'basket.orderLines' )
+  orderLines;
   
+  async saveBasket(){
+    await this.basket.save();
+  }
+
   /**
    * Adds <amount> items of type <offering> to the orderLines
    */
-  addOffer( offering, amount ){
+  async addOffer( offering, amount ){
     if( this.hasOffering( offering ) ) {
       const obj = this.objectForOffering( offering );
       obj.set( 'amount',  obj.amount + amount );
     } else {
-      this.orderLines.pushObject(
-        new OrderLine({ offering, amount })
-      );
+      const orderLine = this.store.createRecord('order-line', { offering, amount });
+      await orderLine.save();
+      this.orderLines.pushObject(orderLine);
     }
+
+    await this.saveBasket();
   }
 
   /**
@@ -63,6 +74,7 @@ export default class BasketService extends Service {
     if( obj.amount <= 0 ) {
       this.orderLines.removeObject( obj );
     }
+    this.saveBasket();
   }
 
   objectForOffering( offering ) {
@@ -76,9 +88,12 @@ export default class BasketService extends Service {
   @computed( 'orderLines.@each.price' )
   get totalPrice() {
     // sum all prices
-    return this
-      .orderLines
-      .map( (ol) => ol.price )
-      .reduce( (a,b) => a+b, 0 );
+    if( this.orderLines ){
+      return this
+        .orderLines
+        .map( (ol) => ol.price )
+        .reduce( (a,b) => a+b, 0 );
+    }
+    else return undefined;
   }
 }
