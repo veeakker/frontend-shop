@@ -17,5 +17,7 @@ export default class OrderLineModel extends Model {
     return amount * price;
   }
 
+  @alias( 'offering.typeAndQuantity.product' ) product;
+
   @alias( 'offering.unitPrice.value' ) pricePerUnit;
 }

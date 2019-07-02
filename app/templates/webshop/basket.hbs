@@ -1,90 +1,90 @@
-{{outlet}}
-
-<div class="empty-shop">
-  <h1 class="uppercase">winkelmandje</h1>
-
-  <Design::Forks />
-  <p>Je hebt nog geen producten in je winkelmandje.</p>
-  <div class="button-product">{{link-to "verder winkelen" "webshop" class="uppercase"}}</div>
-</div>
-
-
 <div class="products-shop">
   <h1 class="uppercase">winkelmandje</h1>
 
   <Design::Forks />
-  {{!-- TODO: Should this be based on the same table? --}}
-  <div class="cart-items-mobile">
-    <div>
-      <h2 class="uppercase">product</h2>
-      <p class="uppercase">product</p>
-      <img src="/images/ons2.jpg" alt="Placeholder image of product" />
-      <p>1kg</p>
-    </div>
-    <div>
-      <h2 class="uppercase">prijs</h2>
-      <p>€13.50</p>
-    </div>
-    <div>
-      <h2 class="uppercase">verpakking</h2>
-      <input class="packing" type="text" value="2">
-    </div>
-    <div>
-      <h2 class="uppercase">aantal</h2>
-      <input class="quantity" type="text" value="5">
-    </div>
-    <div>
-      <h2 class="uppercase">remove</h2>
-      <p>X</p>
-    </div>
-    <div class="last">
-      <h2 class="uppercase">totaal</h2>
-      <p>€67.50</p>
-    </div>
-  </div>
 
-  <table class="cart-items">
-    <thead>
-      <tr>
-        <th class="first uppercase">product</th>
-        <th class="uppercase">prijs</th>
-        <th class="uppercase">verpakking</th>
-        <th class="uppercase">aantal</th>
-        <th class="uppercase">remove</th>
-        <th class="uppercase">totaal</th>
-      </tr>
-    </thead>
+  {{#if (eq basket.orderLines.length 0)}}
+    <div class="empty-shop">
+      <p>Je hebt nog geen producten in je winkelmandje.</p>
+      <div class="button-product">{{link-to "verder winkelen" "webshop" class="uppercase"}}</div>
+    </div>
+  {{else}}
+    {{!-- TODO: Should this be based on the same table? --}}
+    <div class="cart-items-mobile">
+      <div>
+        <h2 class="uppercase">product</h2>
+        <p class="uppercase">product</p>
+        <img src="/images/ons2.jpg" alt="Placeholder image of product" />
+        <p>1kg</p>
+      </div>
+      <div>
+        <h2 class="uppercase">prijs</h2>
+        <p>€13.50</p>
+      </div>
+      <div>
+        <h2 class="uppercase">verpakking</h2>
+        <input class="packing" type="text" value="2">
+      </div>
+      <div>
+        <h2 class="uppercase">aantal</h2>
+        <input class="quantity" type="text" value="5">
+      </div>
+      <div>
+        <h2 class="uppercase">remove</h2>
+        <p>X</p>
+      </div>
+      <div class="last">
+        <h2 class="uppercase">totaal</h2>
+        <p>€67.50</p>
+      </div>
+    </div>
 
-    <tbody>
-      {{#each basket.orderLines as |orderLine|}}
-        <tr class="cart-item">
-          <td class="product-item">
-            <a href="#" class="image-cart">
-              <ProductCard::Thumbnail @product={{orderLine.offering.typeAndQuantity.product}} />
-            </a>
-            <div class="product-item-details">
-              <span class="cart-title"><a href="#" title="" class="uppercase">{{orderLine.offering.typeAndQuantity.product.label}}</a></span><br />
-              {{!-- TODO: I don't know what this 1kg means --}}
-              <span class="cart-variant">1kg</span>
-            </div>
-
-          </td>
-          <td class="price"><span class="money">{{euros orderLine.pricePerUnit}} / pakje</span></td>
-          <td class="packing">
-            <Webshop::Basket::Amount @amount={{orderLine.offering.typeAndQuantity}} />
-          </td>
-          <td class="quantity">{{orderLine.amount}}</td>
-          <td class="remove"><button {{action this.removeOrderLine orderLine.offering orderLine.amount}}>X</button></td>
-          <td class="total"><span class="money">{{euros orderLine.price}}</span></td>
+    <table class="cart-items">
+      <thead>
+        <tr>
+          <th class="first uppercase">product</th>
+          <th class="uppercase">prijs</th>
+          <th class="uppercase">verpakking</th>
+          <th class="uppercase">aantal</th>
+          <th class="uppercase">remove</th>
+          <th class="uppercase">totaal</th>
         </tr>
-      {{/each}}
-    </tbody>
-  </table><br />
-  <div class="cart-total">
-    <p class="cart-price"><span class="money">{{euros basket.totalPrice}}</span></p>
-    <p class="cart-message">Exclusief verzendkosten</p>
-    <div class="button-product-cart">{{link-to "verder bestellen" "webshop.checkout.contact-info" class="uppercase"}}</div>
-  </div>
+      </thead>
 
+      <tbody>
+        {{#each basket.orderLines as |orderLine|}}
+          <tr class="cart-item">
+            <td class="product-item">
+              {{#link-to "webshop.product" orderLine.product class="image-cart"}}
+                <ProductCard::Thumbnail @product={{orderLine.offering.typeAndQuantity.product}} />
+              {{/link-to}}
+              <div class="product-item-details">
+                <span class="cart-title uppercase">
+                  {{#link-to "webshop.product" orderLine.product}}
+                    {{orderLine.offering.typeAndQuantity.product.label}}
+                  {{/link-to}}
+                </span><br />
+                {{!-- TODO: I don't know what this 1kg means --}}
+                <span class="cart-variant">1kg</span>
+              </div>
+
+            </td>
+            <td class="price"><span class="money">{{euros orderLine.pricePerUnit}} / pakje</span></td>
+            <td class="packing">
+              <Webshop::Basket::Amount @amount={{orderLine.offering.typeAndQuantity}} />
+            </td>
+            <td class="quantity">{{orderLine.amount}}</td>
+            <td class="remove"><button {{action this.removeOrderLine orderLine.offering orderLine.amount}}>X</button></td>
+            <td class="total"><span class="money">{{euros orderLine.price}}</span></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table><br />
+    <div class="cart-total">
+      <p class="cart-price"><span class="money">{{euros basket.totalPrice}}</span></p>
+      <p class="cart-message">Exclusief verzendkosten</p>
+      <div class="button-product-cart">{{link-to "verder bestellen" "webshop.checkout.contact-info" class="uppercase"}}</div>
+    </div>
+  {{/if}}
 </div>
 {{outlet}}
