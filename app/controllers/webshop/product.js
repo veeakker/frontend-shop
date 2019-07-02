@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { computed } from '@ember/object';
-import { alias } from '@ember/object/computed';
+import { alias, or } from '@ember/object/computed';
 
 const wait = function( time ) {
   return new Promise((success) => {
@@ -22,9 +22,12 @@ export default class WebshopProductController extends Controller {
   @alias('model.sortedOfferings.firstObject')
   firstOffer;
 
-  @computed('firstOffer', 'selectedOffer')
+  @computed('firstOffer.id', 'selectedOffer.id')
   get currentOffer(){
-    return this.selectedOffer || this.firstOffer;
+    // It is not clear why we have to base ourselves on the id
+    // property in this case, but that seems to make it work.
+    this.get('firstOffer.id'); this.get('selectedOffer.id');
+    return this.get('selectedOffer') || this.get('firstOffer');
   }
 
   @computed('showDetail')
@@ -35,7 +38,7 @@ export default class WebshopProductController extends Controller {
   resetOrder() {
     this.setProperties( {
       packageCount: 1,
-      selectedOffer: null
+      selectedOffer: false
     } );
   }
 
@@ -44,5 +47,11 @@ export default class WebshopProductController extends Controller {
     this.basket.addOffer( this.currentOffer, this.packageCount );
     await wait(500);
     this.resetOrder();
+  }
+
+  @action
+  async updateSelectedOffer( offer ) {
+    debugger;
+    this.set('selectedOffer', offer);
   }
 }
