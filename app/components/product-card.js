@@ -22,12 +22,15 @@ export default class ProductCardComponent extends Component {
 
   @service basket
 
-  @alias('model.sortedOfferings.firstObject')
+  @alias('product.sortedOfferings.firstObject')
   firstOffer;
 
-  @computed('firstOffer', 'selectedOffer')
+  @computed('firstOffer.id', 'selectedOffer.id')
   get currentOffer(){
-    return this.selectedOffer || this.firstOffer;
+    // It is not clear why we have to base ourselves on the id
+    // property in this case, but that seems to make it work.
+    this.get('firstOffer.id'); this.get('selectedOffer.id');
+    return this.get('selectedOffer') || this.get('firstOffer');
   }
 
   @computed('showDetail')
