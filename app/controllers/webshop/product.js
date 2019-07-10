@@ -48,9 +48,4 @@ export default class WebshopProductController extends Controller {
     await wait(500);
     this.resetOrder();
   }
-
-  @action
-  async updateSelectedOffer( offer ) {
-    this.set('selectedOffer', offer);
-  }
 }
