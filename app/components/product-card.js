@@ -25,7 +25,7 @@ export default class ProductCardComponent extends Component {
   @alias('product.sortedOfferings.firstObject')
   firstOffer;
 
-  @computed('firstOffer.id', 'selectedOffer.id')
+  @computed('firstOffer.id', 'selectedOffer', 'selectedOffer.id')
   get currentOffer(){
     // It is not clear why we have to base ourselves on the id
     // property in this case, but that seems to make it work.
@@ -45,5 +45,6 @@ export default class ProductCardComponent extends Component {
     this.set('showDetail', false);
     await wait(500);
     this.set('selectedOffer', null);
+    this.set('packageCount', 1);
   }
 }

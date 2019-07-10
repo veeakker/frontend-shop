@@ -18,7 +18,7 @@
   <div class="amounts">
     <div class="configuration">
       <div class="per-pakje">
-        Per pakje: <ProductCard::Offers @product={{@product}} @onChange={{mut this.selectedOffer}} @selected={{this.currentOffer}} />
+        Per pakje: <ProductCard::Offers @product={{@product}} @onChange={{action (mut selectedOffer)}} @selected={{this.currentOffer}} />
       </div>
 
       <div class="pakjes">
