@@ -1,6 +1,5 @@
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
-import { sort } from '@ember/object/computed';
 import Controller from '@ember/controller';
 
 export default class WebshopController extends Controller {
