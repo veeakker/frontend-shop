@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import { action } from '@ember/object';
 import { or } from '@ember/object/computed';
 import Component from '@ember/component';

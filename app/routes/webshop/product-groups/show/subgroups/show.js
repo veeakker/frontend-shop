@@ -8,7 +8,5 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
     return this.store.loadRecord('product-group', subgroup_id, {
       include: "products.offerings.unit-price,products.offerings.type-and-quantity"
     });
-
-    return this.store.find( 'product-group', subgroup_id );
   }
 }

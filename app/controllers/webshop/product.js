@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { computed } from '@ember/object';
-import { alias, or } from '@ember/object/computed';
+import { alias } from '@ember/object/computed';
 
 const wait = function( time ) {
   return new Promise((success) => {
@@ -51,7 +51,6 @@ export default class WebshopProductController extends Controller {
 
   @action
   async updateSelectedOffer( offer ) {
-    debugger;
     this.set('selectedOffer', offer);
   }
 }
