@@ -10,9 +10,49 @@
 </ul>
 <div class="fix"></div>
 
-
-
 <div class="checkout-contact">
+  <div class="contact-info">
+    <h2>Kies je methode van levering / afhaling</h2>
+
+    <br /><br />
+
+    <Webshop::Checkout::Delivery::Checkbox @for="postal" @current={{this.deliveryMethod}}>
+      Post.nl €x / gratis vanaf - €x
+    </Webshop::Checkout::Delivery::Checkbox>
+
+    <Webshop::Checkout::Delivery::Checkbox @for="tour" @current={{this.deliveryMethod}}>
+      Afhaalpunt op Tour Veeakker - gratis
+    </Webshop::Checkout::Delivery::Checkbox>
+
+    <Webshop::Checkout::Delivery::Checkbox @for="shop" @current={{this.deliveryMethod}}>
+      Afhaalpunt in een winkel - gratis
+    </Webshop::Checkout::Delivery::Checkbox>
+
+    <Webshop::Checkout::Delivery::Checkbox @for="postal" @current={{this.deliveryMethod}} class="bg-grey">
+      Levering informatie anders dan contact informatie
+    </Webshop::Checkout::Delivery::Checkbox>
+
+    <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p><img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" /><br /><br />
+
+    {{link-to "meer info over leveringen / afhaalpunten" "webshop.collection-points" class="deli uppercase"}}
+
+    <div class="fix"></div><br />
+    <div class="cart-total">
+      <p>Prijs <span class="money">€67.50</span></p>
+      <p>Prijs levering <span class="money">€x</span></p>
+      <p>BTW 6% <span class="money">€x</span></p>
+      <p>Totaalprijs <span class="money">€x</span></p>    <br />
+      <div class="button-product-cart">{{link-to "Verder bestellen" "webshop.checkout.payment" disabled=(not this.deliveryMethod)}}</div>
+    </div><div class="fix"></div>
+
+
+  </div>
+</div>
+
+<hr />
+
+
+<div class="checkout-contact bg-grey">
   <div class="contact-info">
     <h2>Kies je methode van levering / afhaling</h2>
 
@@ -184,4 +224,5 @@
 
   </div>
 </div>
+
 {{outlet}}

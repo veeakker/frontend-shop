@@ -1,0 +1,8 @@
+<label class="containerCheck" ...attributes>
+  {{yield}}
+  <input
+    type="checkbox"
+    checked={{eq this.current this.for}}
+    {{on "click" (action (mut this.current) (and (not (eq this.for this.current)) this.for))}}>
+  <span class="checkmark"></span>
+</label>
