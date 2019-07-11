@@ -1,0 +1,8 @@
+<h1>Location map</h1>
+
+<DeliveryLocationsMap @places={{locations}} class="h-64" as |marker location|>
+  {{!-- yield marker location --}}
+  {{!-- TODO: add location name to model and show it here --}}
+  <h3>{{location.deliveryKind.simpleName}}</h3>
+  Please click <button>here</button> to select this location
+</DeliveryLocationsMap>
