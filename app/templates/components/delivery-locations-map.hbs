@@ -1,6 +1,8 @@
-<LeafletMap @lat={{baseLat}} @lng={{baseLng}} @zoom={{baseZoom}} as |map|>
+<LeafletMap @lat={{baseLat}} @lng={{baseLng}} @zoom={{baseZoom}} ...attributes as |map|>
   {{map.tile url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
   {{#each @places as |deliveryPlace|}}
-    {{delivery-locations-map/location-marker place=deliveryPlace mapMarker=map.marker}}
+    <DeliveryLocationsMap::LocationMarker @place={{deliveryPlace}} @mapMarker={{map.marker}} as |marker deliveryPlace|>
+      {{yield marker deliveryPlace}}
+    </DeliveryLocationsMap::LocationMarker>
   {{/each}}
 </LeafletMap>

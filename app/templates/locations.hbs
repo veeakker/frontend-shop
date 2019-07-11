@@ -7,7 +7,36 @@
     <Design::Forks/>
   </div>
   <div class="maps">
-    <DeliveryLocationsMap @places={{model}} />
+    <DeliveryLocationsMap @places={{model}} as |marker place|>
+      <h3>{{place.deliveryKind.simpleName}}</h3>
+      {{#let place.deliveryKind.normalizedLabel as |normalizedLabel|}}
+        {{#if (eq normalizedLabel "butchery")}}
+          {{#link-to "locations.kind" place.deliveryKind}}
+            Klik hier om meer te weten over de slagerij als afhaal-locatie.
+          {{/link-to}}
+        {{/if}}
+        {{#if (eq normalizedLabel "routes")}}
+          {{#link-to "locations.kind" place.deliveryKind}}
+            Klik hier om meer te weten over leveringen via toeren.
+          {{/link-to}}
+        {{/if}}
+        {{#if (eq normalizedLabel "health-shops")}}
+          {{#link-to "locations.kind" place.deliveryKind}}
+            Klik hier om meer te weten over leveringen via natuurwinkels.
+          {{/link-to}}
+        {{/if}}
+        {{#if (eq normalizedLabel "local-farms")}}
+          {{#link-to "locations.kind" place.deliveryKind}}
+            Klik hier om meer te weten over leveringen via buurderijen.
+          {{/link-to}}
+        {{/if}}
+        {{#if (eq normalizedLabel "home-delivery")}}
+          {{#link-to "locations.kind" place.deliveryKind}}
+            Klik hier om meer te weten over thuisleveringen.
+          {{/link-to}}
+        {{/if}}
+      {{/let}}
+    </DeliveryLocationsMap>
   </div>
   <div class="extra-menu">
     {{link-to "Winkel" "locations.kind" "butchery"}}
