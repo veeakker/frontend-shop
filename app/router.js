@@ -31,7 +31,7 @@ Router.map(function() {
       this.route('contact-info');
       this.route('delivery');
       this.route('payment');
-      this.route('finish');
+      this.route('finish', { path: "finish/:basket_id" } );
     });
     this.route('collection-points');
     this.route('conditions');
