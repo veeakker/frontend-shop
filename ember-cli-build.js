@@ -7,6 +7,8 @@ module.exports = function(defaults) {
     // Add options here
     fingerprint: {
       exclude: [
+        'images/forks.png',
+        'images/forks-bruin.png',
         'images/layers-2x.png',
         'images/layers.png',
         'images/marker-icon-2x.png',
