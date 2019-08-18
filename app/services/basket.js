@@ -17,14 +17,6 @@ export default class BasketService extends Service {
     await basket.reload();
     await basket.orderLines;
     this.set('basket', basket);
-
-    if( ! basket.orderLines.length ) {
-      // add some products for demo purposes if nothing is in here
-      [[5,"5D1111EF41D9CC0008000009"], [2,"5D11F4BA41D9CC0008000015"]].forEach( async ([amount,offeringId]) => {
-        let offering = await this.store.find('offering', offeringId);
-        this.addOffer( offering, amount );
-      } );
-    }
   }
 
   basket = null;
