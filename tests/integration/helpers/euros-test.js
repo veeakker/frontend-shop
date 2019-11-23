@@ -12,6 +12,6 @@ module('Integration | Helper | euros', function(hooks) {
 
     await render(hbs`{{euros inputValue}}`);
 
-    assert.equal(this.element.textContent.trim(), '1234');
+    assert.dom(this.element).hasText('1234');
   });
 });

@@ -6,9 +6,9 @@
     {{#component mapMarker
        location=location
        icon=markerIcon as |marker|}}
-      {{#marker.popup}}
+      <marker.popup>
         {{yield marker place}}
-      {{/marker.popup}}
+      </marker.popup>
     {{/component}}
   {{/if}}
 {{/let}}

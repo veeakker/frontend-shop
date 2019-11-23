@@ -12,7 +12,7 @@ module('Integration | Component | webshop/checkout/delivery/checkbox', function(
 
     await render(hbs`{{webshop/checkout/delivery/checkbox}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.dom(this.element).hasText('');
 
     // Template block usage:
     await render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | webshop/checkout/delivery/checkbox', function(
       {{/webshop/checkout/delivery/checkbox}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom(this.element).hasText('template block text');
   });
 });

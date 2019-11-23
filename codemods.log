@@ -1,0 +1,6 @@
+2019-11-23T10:52:16.466Z [warn] WARNING: {{euros}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/webshop.hbs
+2019-11-23T10:52:16.503Z [warn] WARNING: {{eq}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/webshop/checkout/delivery/checkbox.hbs
+2019-11-23T10:52:17.339Z [warn] WARNING: {{euros}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/webshop/checkout/delivery.hbs
+2019-11-23T10:52:18.313Z [warn] WARNING: {{euros}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/webshop/basket.hbs
+2019-11-23T10:52:18.315Z [warn] WARNING: {{euros}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/webshop/basket.hbs
+2019-11-23T10:52:18.315Z [warn] WARNING: {{euros}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/webshop/basket.hbs

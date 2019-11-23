@@ -22,7 +22,7 @@
   <div class="kader">
     <h2>! VOORDEEL !</h2>
     <p>
-      Wil je je vlees op een bepaalde manier gesneden of heb je een andere wens of vraag bij een product dat je wil kopen? Klanten van de tours van Veeakker kunnen gebruik maken van een opmerkingenveld in de webshop. Je krijgt het opmerkingenveld echter enkel te zien als je ingelogd bent met je account waarin je gekozen hebt voor leveringen via de Tours van Veeakker. <br /><br /> Nog geen account? {{link-to "Maak ze nu aan >" "webshop.login"}}
+      Wil je je vlees op een bepaalde manier gesneden of heb je een andere wens of vraag bij een product dat je wil kopen? Klanten van de tours van Veeakker kunnen gebruik maken van een opmerkingenveld in de webshop. Je krijgt het opmerkingenveld echter enkel te zien als je ingelogd bent met je account waarin je gekozen hebt voor leveringen via de Tours van Veeakker. <br /><br /> Nog geen account? <LinkTo @route="webshop.login">Maak ze nu aan ></LinkTo>
     </p>
   </div>
   <h4>Afhalen in winkels die onze producten verkopen + foto</h4>
@@ -53,9 +53,9 @@
 </div>
 <div class="footerWebshop">
   <ul>
-    <li>{{link-to "levering &amp; afhaling" "webshop.collection-points" class="uppercase"}}</li>
-    <li>{{link-to "algemene voorwaarden" "general-conditions" class="uppercase"}}</li>
-    <li>{{link-to "contact info" "contact-us" class="uppercase"}}</li>
+    <li><LinkTo @route="webshop.collection-points" class="uppercase">levering &amp; afhaling</LinkTo></li>
+    <li><LinkTo @route="general-conditions" class="uppercase">algemene voorwaarden</LinkTo></li>
+    <li><LinkTo @route="contact-us" class="uppercase">contact info</LinkTo></li>
   </ul>
   <div class="fix"></div>
 </div>

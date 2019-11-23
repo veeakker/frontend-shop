@@ -11,39 +11,39 @@
       <h3>{{place.deliveryKind.simpleName}}</h3>
       {{#let place.deliveryKind.normalizedLabel as |normalizedLabel|}}
         {{#if (eq normalizedLabel "butchery")}}
-          {{#link-to "locations.kind" place.deliveryKind}}
+          <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
             Klik hier om meer te weten over de slagerij als afhaal-locatie.
-          {{/link-to}}
+          </LinkTo>
         {{/if}}
         {{#if (eq normalizedLabel "routes")}}
-          {{#link-to "locations.kind" place.deliveryKind}}
+          <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
             Klik hier om meer te weten over leveringen via toeren.
-          {{/link-to}}
+          </LinkTo>
         {{/if}}
         {{#if (eq normalizedLabel "health-shops")}}
-          {{#link-to "locations.kind" place.deliveryKind}}
+          <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
             Klik hier om meer te weten over leveringen via natuurwinkels.
-          {{/link-to}}
+          </LinkTo>
         {{/if}}
         {{#if (eq normalizedLabel "local-farms")}}
-          {{#link-to "locations.kind" place.deliveryKind}}
+          <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
             Klik hier om meer te weten over leveringen via buurderijen.
-          {{/link-to}}
+          </LinkTo>
         {{/if}}
         {{#if (eq normalizedLabel "home-delivery")}}
-          {{#link-to "locations.kind" place.deliveryKind}}
+          <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
             Klik hier om meer te weten over thuisleveringen.
-          {{/link-to}}
+          </LinkTo>
         {{/if}}
       {{/let}}
     </DeliveryLocationsMap>
   </div>
   <div class="extra-menu">
-    {{link-to "Winkel" "locations.kind" "butchery"}}
-    {{link-to "Toeren" "locations.kind" "routes"}}
-    {{link-to "Natuurwinkels" "locations.kind" "health-shops"}}
-    {{link-to "Buurderijen" "locations.kind" "local-farms"}}
-    {{link-to "Webshop" "locations.kind" "home-delivery"}} {{!-- TODO: moet dit "aan huis" worden? --}}
+    <LinkTo @route="locations.kind" @model="butchery">Winkel</LinkTo>
+    <LinkTo @route="locations.kind" @model="routes">Toeren</LinkTo>
+    <LinkTo @route="locations.kind" @model="health-shops">Natuurwinkels</LinkTo>
+    <LinkTo @route="locations.kind" @model="local-farms">Buurderijen</LinkTo>
+    <LinkTo @route="locations.kind" @model="home-delivery">Webshop</LinkTo> {{!-- TODO: moet dit "aan huis" worden? --}}
   </div><div class="fix"></div>
 
   {{outlet}}

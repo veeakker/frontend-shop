@@ -1,6 +1,6 @@
 {{outlet}}
 <ul class="breadcrumb-cart">
-  <li>{{link-to "Winkelmandje" "webshop.basket"}}</li>
+  <li><LinkTo @route="webshop.basket">Winkelmandje</LinkTo></li>
   <li><span class="breadcrumb-txt">Uw Gegevens</span></li>
   <li><span class="breadcrumb-nxt">Levering / Afhaling</span></li>
   <li><span class="breadcrumb-nxt">Betalingsgegevens</span></li>
@@ -13,20 +13,20 @@
     <p>Heeft u al een account? <a href="login">Aanmelden</a></p>
     <div class="fix"></div>
 
-    {{input value=this.email placeholder="E-mail"}}
+    <Input @value={{this.email}} placeholder="E-mail" />
 
     <br />
 
     <h2>Vul je gegevens in:</h2>
-    {{input value=this.name placeholder="Naam"}} <br />
-    {{input value=this.company placeholder="Bedrijf + BTW nummer (optioneel)"}} <br />
-    {{input value=this.street placeholder="Straat"}} <br />
-    {{input value=this.houseNumber placeholder="Huisnummer"}} <br />
-    {{input value=this.postalCode placeholder="Postcode"}} <br />
-    {{input value=this.city placeholder="Gemeente"}} <br />
-    {{input value=this.phone placeholder="Gsm / Tel waarop bereikbaar bij levering / afhaling"}} <br />
+    <Input @value={{this.name}} placeholder="Naam" /> <br />
+    <Input @value={{this.company}} placeholder="Bedrijf + BTW nummer (optioneel)" /> <br />
+    <Input @value={{this.street}} placeholder="Straat" /> <br />
+    <Input @value={{this.houseNumber}} placeholder="Huisnummer" /> <br />
+    <Input @value={{this.postalCode}} placeholder="Postcode" /> <br />
+    <Input @value={{this.city}} placeholder="Gemeente" /> <br />
+    <Input @value={{this.phone}} placeholder="Gsm / Tel waarop bereikbaar bij levering / afhaling" /> <br />
 
-    <div class="button-product-cart">{{#link-to "webshop.checkout.delivery" class="uppercase"}}verder bestellen{{/link-to}}</div>
+    <div class="button-product-cart"><LinkTo @route="webshop.checkout.delivery" class="uppercase">verder bestellen</LinkTo></div>
   </div>
 </div>
 {{outlet}}

@@ -2,9 +2,9 @@
   <div class="logo-veeakker">
     <span property="name" content="Veeakker"></span>
     <span property="url" content="https://veeakker.be/"></span>
-    {{#link-to "index"}}
+    <LinkTo @route="index">
       <img src="/images/veeakker.png" alt="Veeakker brand name in written front" />
-    {{/link-to}}
+    </LinkTo>
   </div>
   <div id="veeakker-menu" class="overlay">
     <a href="#" class="closebtn" {{action this.closeNav}}>&times;</a>
@@ -13,12 +13,12 @@
     </div>
     <div class="fix"></div>
     <ul class="overlay-content menu-links">
-      <li>{{link-to "Over ons" "about"}}</li>
-      <li>{{link-to "Producten" "products"}}</li>
-      <li>{{link-to "Nieuws" "news"}}</li>
-      <li>{{link-to "Webshop" "webshop"}}</li>
-      <li>{{link-to "Locaties" "locations"}}</li>
-      <li>{{link-to "Contact" "index" (query-params a="contact")}}</li>
+      <li><LinkTo @route="about">Over ons</LinkTo></li>
+      <li><LinkTo @route="products">Producten</LinkTo></li>
+      <li><LinkTo @route="news">Nieuws</LinkTo></li>
+      <li><LinkTo @route="webshop">Webshop</LinkTo></li>
+      <li><LinkTo @route="locations">Locaties</LinkTo></li>
+      <li><LinkTo @route="index" @query={{hash a="contact"}}>Contact</LinkTo></li>
     </ul>
   </div>
   <div class="fix"></div>
