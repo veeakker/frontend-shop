@@ -12,7 +12,7 @@ module('Integration | Component | webshop/checkout/delivery/locations-map', func
 
     await render(hbs`{{webshop/checkout/delivery/locations-map}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.dom(this.element).hasText('');
 
     // Template block usage:
     await render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | webshop/checkout/delivery/locations-map', func
       {{/webshop/checkout/delivery/locations-map}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom(this.element).hasText('template block text');
   });
 });

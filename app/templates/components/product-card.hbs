@@ -22,7 +22,7 @@
       </div>
 
       <div class="pakjes">
-        Pakjes: {{number-button value=packageCount}}
+        Pakjes: <NumberButton @value={{packageCount}} />
       </div>      
     </div>
 
@@ -31,6 +31,6 @@
 
   <div class="actions">
     <div class="button-product" role="button" {{action this.add}} ><span>Bestel</span></div>
-    <div class="button-product">{{link-to "Meer..." "webshop.product" product}}</div>
+    <div class="button-product"><LinkTo @route="webshop.product" @model={{product}}>Meer...</LinkTo></div>
   </div>
 </div>

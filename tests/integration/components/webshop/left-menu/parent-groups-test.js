@@ -12,7 +12,7 @@ module('Integration | Component | webshop/left-menu/parent-groups', function(hoo
 
     await render(hbs`{{webshop/left-menu/parent-groups}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.dom(this.element).hasText('');
 
     // Template block usage:
     await render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | webshop/left-menu/parent-groups', function(hoo
       {{/webshop/left-menu/parent-groups}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom(this.element).hasText('template block text');
   });
 });

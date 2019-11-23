@@ -17,6 +17,10 @@ env:
     # See https://git.io/vdao3 for details.
     - JOBS=1
 
+branches:
+  only:
+    - master
+
 script:
   - yarn lint:hbs
   - yarn lint:js

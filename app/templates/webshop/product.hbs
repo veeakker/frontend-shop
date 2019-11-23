@@ -22,7 +22,7 @@
             </div>
 
             <div class="pakjes">
-              Pakjes: {{number-button value=packageCount}}
+              Pakjes: <NumberButton @value={{packageCount}} />
             </div>      
           </div>
 
@@ -36,10 +36,10 @@
 
 
     <div class="extra-menu-product">
-      {{#link-to "webshop.product.information" model class="info tablinks uppercase"}}<h5>informatie</h5>{{/link-to}}
-      {{#link-to "webshop.product.ingredients" model class="ingre tablinks uppercase"}}<h5>ingrediënten</h5>{{/link-to}}
-      {{#link-to "webshop.product.nutricional-values" model class="food tablinks uppercase"}}<h5>voedingswaarden</h5>{{/link-to}}
-      {{#link-to "webshop.product.allergenics" model class="aler tablinks uppercase"}}<h5>allergenen</h5>{{/link-to}}
+      <LinkTo @route="webshop.product.information" @model={{model}} class="info tablinks uppercase"><h5>informatie</h5></LinkTo>
+      <LinkTo @route="webshop.product.ingredients" @model={{model}} class="ingre tablinks uppercase"><h5>ingrediënten</h5></LinkTo>
+      <LinkTo @route="webshop.product.nutricional-values" @model={{model}} class="food tablinks uppercase"><h5>voedingswaarden</h5></LinkTo>
+      <LinkTo @route="webshop.product.allergenics" @model={{model}} class="aler tablinks uppercase"><h5>allergenen</h5></LinkTo>
     </div><div class="fix"></div>
     <div class="tabcontent">
       {{outlet}}

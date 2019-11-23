@@ -18,11 +18,11 @@
         <ul class="overlay-content">
           {{#each sortedProductGroups as |productGroup|}}
             <li class="dropdown">
-              {{link-to productGroup.label "webshop.product-groups.show" productGroup}}
+              <LinkTo @route="webshop.product-groups.show" @model={{productGroup}}>{{productGroup.label}}</LinkTo>
               {{#if productGroup.sortedChildren.length}}
                 <div class="dropdown-content-menu">
                   {{#each productGroup.sortedChildren as |subGroup|}}
-                    {{link-to subGroup.label "webshop.product-groups.show.subgroups.show" productGroup subGroup}}
+                    <LinkTo @route="webshop.product-groups.show.subgroups.show" @models={{array productGroup subGroup}}>{{subGroup.label}}</LinkTo>
                   {{/each}}
                 </div>
               {{/if}}
@@ -43,26 +43,26 @@
           <li class="flex"><a href="#"><img src="/images/zoekb.png" width="18" alt="search trigger icon" /></a> <input class="searchbox" type="text" placeholder="zoeken" name="search"></li>
           {{!-- TODO: make static content dynamic --}}
           <li class="small-menu">
-            {{#link-to "webshop.basket"}}
+            <LinkTo @route="webshop.basket">
               {{#if basket.orderLines.length}}
                 {{basket.orderLines.length}}
               {{/if}}
               <img src="/images/winkelmandjeb.png" alt="shopping basket icon" width="15" />
               {{euros basket.totalPrice}}
-            {{/link-to}}
+            </LinkTo>
           </li>
 
           <li class="dropdownSmall small-menu">
-            {{#link-to "webshop.login"}}<span class="uppercase">inloggen</span>{{/link-to}}
+            <LinkTo @route="webshop.login"><span class="uppercase">inloggen</span></LinkTo>
             <div class="dropdown-content-menuSmall">
               {{!-- TODO: these icons should be set as background icons, they don't represent functionality themselves --}}
-              {{#link-to "webshop.account"}}<img src="/images/loginb.png" width="13" alt="account icon" />{{/link-to}}
-              {{#link-to "webshop.orders"}}><img src="/images/bestellingenb.png" width="13" alt="orders icon" /><span class="uppercase">bestellingen</span>{{/link-to}}
-              {{#link-to "webshop.favorites"}}><img src="/images/favob.png" width="13" alt="favorites icon" /><span class="uppercase">favorieten</span>{{/link-to}}
+              <LinkTo @route="webshop.account"><img src="/images/loginb.png" width="13" alt="account icon" /></LinkTo>
+              <LinkTo @route="webshop.orders">><img src="/images/bestellingenb.png" width="13" alt="orders icon" /><span class="uppercase">bestellingen</span></LinkTo>
+              <LinkTo @route="webshop.favorites">><img src="/images/favob.png" width="13" alt="favorites icon" /><span class="uppercase">favorieten</span></LinkTo>
               <a href="#"><span class="uppercase">afmelden</span></a> {{!-- TODO: implement --}}
             </div>
           </li>
-          <li class="small-menu">{{#link-to "webshop.help"}}<span class="uppercase">help</span>{{/link-to}}</li>
+          <li class="small-menu"><LinkTo @route="webshop.help"><span class="uppercase">help</span></LinkTo></li>
         </ul>
 
       </div>
@@ -76,9 +76,9 @@
 
 <div class="footerWebshop">
   <ul>
-    <li>{{link-to "levering &amp; afhaling" "webshop.collection-points" class="uppercase"}}</li>
-    <li>{{link-to "algemene voorwaarden" "webshop.conditions" class="uppercase"}}</li>
-    <li>{{link-to "contact info" "contact-us" class="uppercase"}}</li>
+    <li><LinkTo @route="webshop.collection-points" class="uppercase">levering &amp; afhaling</LinkTo></li>
+    <li><LinkTo @route="webshop.conditions" class="uppercase">algemene voorwaarden</LinkTo></li>
+    <li><LinkTo @route="contact-us" class="uppercase">contact info</LinkTo></li>
   </ul>
   <div class="fix"></div>
 </div>

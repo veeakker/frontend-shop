@@ -5,7 +5,7 @@
       <LanguageList />
     </div>
     <div class="top-banner-items">
-      <div class="logo-slo">{{#link-to "application"}}<img about="http://veeakker.be/" property="logo" src="/images/logo-veeakker-rechts.png" alt="Veeakker logo"/>{{/link-to}}</div>
+      <div class="logo-slo"><LinkTo @route="application"><img about="http://veeakker.be/" property="logo" src="/images/logo-veeakker-rechts.png" alt="Veeakker logo"/></LinkTo></div>
     </div>
   </div>
   <div class="fix"></div>
@@ -40,7 +40,7 @@
           <li>Tijdens leveringen: 0475/983162</li>
         </ul>
         
-        <div class="faq">{{link-to "faq" "faq" class="uppercase"}}</div>
+        <div class="faq"><LinkTo @route="faq" class="uppercase">faq</LinkTo></div>
       </div>
       <div class="kaart">
         <VeeakkerHomeMap />

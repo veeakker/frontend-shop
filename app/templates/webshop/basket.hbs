@@ -6,7 +6,7 @@
   {{#if (eq basket.orderLines.length 0)}}
     <div class="empty-shop">
       <p>Je hebt nog geen producten in je winkelmandje.</p>
-      <div class="button-product">{{link-to "verder winkelen" "webshop" class="uppercase"}}</div>
+      <div class="button-product"><LinkTo @route="webshop" class="uppercase">verder winkelen</LinkTo></div>
     </div>
   {{else}}
     {{!-- TODO: Should this be based on the same table? --}}
@@ -55,14 +55,14 @@
         {{#each basket.orderLines as |orderLine|}}
           <tr class="cart-item">
             <td class="product-item">
-              {{#link-to "webshop.product" orderLine.product class="image-cart"}}
+              <LinkTo @route="webshop.product" @model={{orderLine.product}} class="image-cart">
                 <ProductCard::Thumbnail @product={{orderLine.offering.typeAndQuantity.product}} />
-              {{/link-to}}
+              </LinkTo>
               <div class="product-item-details">
                 <span class="cart-title uppercase">
-                  {{#link-to "webshop.product" orderLine.product}}
+                  <LinkTo @route="webshop.product" @model={{orderLine.product}}>
                     {{orderLine.offering.typeAndQuantity.product.label}}
-                  {{/link-to}}
+                  </LinkTo>
                 </span><br />
                 {{!-- TODO: I don't know what this 1kg means --}}
                 <span class="cart-variant">1kg</span>
@@ -83,7 +83,7 @@
     <div class="cart-total">
       <p class="cart-price"><span class="money">{{euros basket.totalPrice}}</span></p>
       <p class="cart-message">Exclusief verzendkosten</p>
-      <div class="button-product-cart">{{link-to "verder bestellen" "webshop.checkout.contact-info" class="uppercase"}}</div>
+      <div class="button-product-cart"><LinkTo @route="webshop.checkout.contact-info" class="uppercase">verder bestellen</LinkTo></div>
     </div>
   {{/if}}
 </div>
