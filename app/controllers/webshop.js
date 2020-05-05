@@ -8,6 +8,6 @@ export default class WebshopController extends Controller {
   @service basket
 
   @computed( "model.@each.sortIndex" ) get sortedProductGroups() {
-    return this.get('model').sortBy('sortIndex');
+    return this.model.sortBy('sortIndex');
   }
 }

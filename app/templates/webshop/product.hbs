@@ -6,8 +6,8 @@
         <ProductCard::Thumbnail @product={{this.model}} />
       </div>
       <div class="info-txt">
-        <h3 class="uppercase">{{model.label}}</h3>
-        <p class="no-padding">{{model.altLabel}}</p>
+        <h3 class="uppercase">{{this.model.label}}</h3>
+        <p class="no-padding">{{this.model.altLabel}}</p>
         <a href="#">
           <img src="/images/favob.png" alt="Favorite icon" width="21" />
         </a>
@@ -18,15 +18,15 @@
         <div class="amounts">
           <div class="configuration">
             <div class="per-pakje">
-              Per pakje: <ProductCard::Offers @product={{model}} @onChange={{action (mut selectedOffer)}} @selected={{this.currentOffer}} />
+              Per pakje: <ProductCard::Offers @product={{this.model}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
             </div>
 
             <div class="pakjes">
-              Pakjes: <NumberButton @value={{packageCount}} />
+              Pakjes: <NumberButton @value={{this.packageCount}} />
             </div>      
           </div>
 
-          <ProductCard::PackagesImage @count={{packageCount}} @offer={{this.currentOffer}} />
+          <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
         </div>
 
         <div class="button-product"><button {{action this.add}}>bestellen</button></div>
@@ -36,10 +36,10 @@
 
 
     <div class="extra-menu-product">
-      <LinkTo @route="webshop.product.information" @model={{model}} class="info tablinks uppercase"><h5>informatie</h5></LinkTo>
-      <LinkTo @route="webshop.product.ingredients" @model={{model}} class="ingre tablinks uppercase"><h5>ingrediënten</h5></LinkTo>
-      <LinkTo @route="webshop.product.nutricional-values" @model={{model}} class="food tablinks uppercase"><h5>voedingswaarden</h5></LinkTo>
-      <LinkTo @route="webshop.product.allergenics" @model={{model}} class="aler tablinks uppercase"><h5>allergenen</h5></LinkTo>
+      <LinkTo @route="webshop.product.information" @model={{this.model}} class="info tablinks uppercase"><h5>informatie</h5></LinkTo>
+      <LinkTo @route="webshop.product.ingredients" @model={{this.model}} class="ingre tablinks uppercase"><h5>ingrediënten</h5></LinkTo>
+      <LinkTo @route="webshop.product.nutricional-values" @model={{this.model}} class="food tablinks uppercase"><h5>voedingswaarden</h5></LinkTo>
+      <LinkTo @route="webshop.product.allergenics" @model={{this.model}} class="aler tablinks uppercase"><h5>allergenen</h5></LinkTo>
     </div><div class="fix"></div>
     <div class="tabcontent">
       {{outlet}}

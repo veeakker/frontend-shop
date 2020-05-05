@@ -1,8 +1,8 @@
 <div class="image-of-packages">
-  <EachCount @count={{count}}>
+  <EachCount @count={{this.count}}>
     <div class="image-spacing-wrapper">
-      {{#if (eq offer.typeAndQuantity.unit "C62")}}
-        {{#with offer.typeAndQuantity.value as |amount|}}
+      {{#if (eq this.offer.typeAndQuantity.unit "C62")}}
+        {{#with this.offer.typeAndQuantity.value as |amount|}}
           <img src={{concat "/images/packages/items-" amount ".png"}} alt={{concat "Package with " amount "items in it"}} />
         {{/with}}
       {{/if}}

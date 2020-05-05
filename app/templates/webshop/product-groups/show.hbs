@@ -3,7 +3,7 @@
   <ul class="mt-5 pl-0">
     {{#each this.model.sortedChildren as |group|}}
       <li>
-        <LinkTo @route="webshop.product-groups.show.subgroups.show" @models={{array this.model group}} class="uppercase">{{group.label}}</LinkTo>
+        <LinkTo @route="webshop.product-groups.show.subgroups.show" @models={{elements this.model group}} class="uppercase">{{group.label}}</LinkTo>
       </li>
     {{/each}}
   </ul>

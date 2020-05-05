@@ -16,13 +16,13 @@
 
 
         <ul class="overlay-content">
-          {{#each sortedProductGroups as |productGroup|}}
+          {{#each this.sortedProductGroups as |productGroup|}}
             <li class="dropdown">
               <LinkTo @route="webshop.product-groups.show" @model={{productGroup}}>{{productGroup.label}}</LinkTo>
               {{#if productGroup.sortedChildren.length}}
                 <div class="dropdown-content-menu">
                   {{#each productGroup.sortedChildren as |subGroup|}}
-                    <LinkTo @route="webshop.product-groups.show.subgroups.show" @models={{array productGroup subGroup}}>{{subGroup.label}}</LinkTo>
+                    <LinkTo @route="webshop.product-groups.show.subgroups.show" @models={{elements productGroup subGroup}}>{{subGroup.label}}</LinkTo>
                   {{/each}}
                 </div>
               {{/if}}
@@ -44,11 +44,11 @@
           {{!-- TODO: make static content dynamic --}}
           <li class="small-menu">
             <LinkTo @route="webshop.basket">
-              {{#if basket.orderLines.length}}
-                {{basket.orderLines.length}}
+              {{#if this.basket.orderLines.length}}
+                {{this.basket.orderLines.length}}
               {{/if}}
               <img src="/images/winkelmandjeb.png" alt="shopping basket icon" width="15" />
-              {{euros basket.totalPrice}}
+              {{euros this.basket.totalPrice}}
             </LinkTo>
           </li>
 

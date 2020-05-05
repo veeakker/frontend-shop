@@ -15,17 +15,17 @@
 
 <div class="checkout-contact">
   <div class="contact-info">
-    {{#if deliveredOntour}}
+    {{#if this.deliveredOntour}}
       <h2 class="deliveryMessage">
         Je bestelling is cash of met bankcontact te betalen bij afhaling.<br /> <br />
         Het totaalbedrag bij de afsluitende stap is slechts een indicatie van het bedrag.
         Het effectieve totaalbedrag kan hier van afwijken.
       </h2>
     {{else}}
-      <iframe src={{paymentUrl}} width="800" height="600" />
+      <iframe src={{this.paymentUrl}} width="800" height="600" />
     {{/if}}
     
-    <a href={{paymentUrl}}>Open</a>
+    <a href={{this.paymentUrl}}>Open</a>
 
 
     {{!-- <h2>Kies je betalingsmethode</h2> --}}

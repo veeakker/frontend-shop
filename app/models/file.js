@@ -7,8 +7,8 @@ export default class FileModel extends Model {
 
   @computed('id')
   get downloadUrl(){
-    if( this.get('id') )
-      return `/files/${this.get('id')}/download`;
+    if( this.id )
+      return `/files/${this.id}/download`;
     return undefined;
   }
 
@@ -23,8 +23,8 @@ export default class FileModel extends Model {
         .join('&');
 
     // build the resulting uri
-    if( this.get('id') )
-      return `/images/${this.get('id')}?${query}`;
+    if( this.id )
+      return `/images/${this.id}?${query}`;
 
     return undefined;
   }

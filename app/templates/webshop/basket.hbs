@@ -3,7 +3,7 @@
 
   <Design::Forks />
 
-  {{#if (eq basket.orderLines.length 0)}}
+  {{#if (eq this.basket.orderLines.length 0)}}
     <div class="empty-shop">
       <p>Je hebt nog geen producten in je winkelmandje.</p>
       <div class="button-product"><LinkTo @route="webshop" class="uppercase">verder winkelen</LinkTo></div>
@@ -52,7 +52,7 @@
       </thead>
 
       <tbody>
-        {{#each basket.orderLines as |orderLine|}}
+        {{#each this.basket.orderLines as |orderLine|}}
           <tr class="cart-item">
             <td class="product-item">
               <LinkTo @route="webshop.product" @model={{orderLine.product}} class="image-cart">
@@ -81,7 +81,7 @@
       </tbody>
     </table><br />
     <div class="cart-total">
-      <p class="cart-price"><span class="money">{{euros basket.totalPrice}}</span></p>
+      <p class="cart-price"><span class="money">{{euros this.basket.totalPrice}}</span></p>
       <p class="cart-message">Exclusief verzendkosten</p>
       <div class="button-product-cart"><LinkTo @route="webshop.checkout.contact-info" class="uppercase">verder bestellen</LinkTo></div>
     </div>

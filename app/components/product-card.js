@@ -1,3 +1,4 @@
+import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { computed } from '@ember/object';
@@ -12,13 +13,13 @@ const wait = function( time ) {
 };
 
 export default class ProductCardComponent extends Component {
-  showDetail = false
+  @tracked showDetail = false;
 
   packageCount = 1
 
   tagName = ""
 
-  selectedOffer = null
+  @tracked selectedOffer = null;
 
   @service basket
 
@@ -30,10 +31,9 @@ export default class ProductCardComponent extends Component {
     // It is not clear why we have to base ourselves on the id
     // property in this case, but that seems to make it work.
     this.get('firstOffer.id'); this.get('selectedOffer.id');
-    return this.get('selectedOffer') || this.get('firstOffer');
+    return this.selectedOffer || this.firstOffer;
   }
 
-  @computed('showDetail')
   get detailClass() {
     return this.showDetail ? "detail" : "";
   }
