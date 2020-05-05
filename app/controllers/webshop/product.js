@@ -27,7 +27,7 @@ export default class WebshopProductController extends Controller {
     // It is not clear why we have to base ourselves on the id
     // property in this case, but that seems to make it work.
     this.get('firstOffer.id'); this.get('selectedOffer.id');
-    return this.get('selectedOffer') || this.get('firstOffer');
+    return this.selectedOffer || this.firstOffer;
   }
 
   @computed('showDetail')

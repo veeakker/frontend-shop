@@ -37,7 +37,7 @@ export default class NumberButtonComponent extends Component {
 
   @action
   increaseValue(){
-    const next = nextItemInArray( this.get('optionsArray'), this.value );
+    const next = nextItemInArray( this.optionsArray, this.value );
     this.executeChange( next );
   }
 

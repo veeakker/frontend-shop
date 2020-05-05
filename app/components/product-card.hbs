@@ -1,7 +1,7 @@
-<div class="card {{detailClass}}">
-  <div class="picture-info" {{action (mut showDetail) (not showDetail)}} role="button">
+<div class="card {{this.detailClass}}">
+  <div class="picture-info" {{action (mut this.showDetail) (not this.showDetail)}} role="button">
     <div class="picture">
-      <ProductCard::Thumbnail @product={{product}} />
+      <ProductCard::Thumbnail @product={{this.product}} />
     </div>
     <div class="icons">
       <span class="icon icon-1"><img src="/images/favob.png" alt="Favorite icon"/></span>
@@ -11,26 +11,26 @@
   </div>
 
   <div class="description">
-    <div class="product-title">{{#if @product}}{{product.label}}{{else}}Kotelet{{/if}}</div>
+    <div class="product-title">{{#if @product}}{{this.product.label}}{{else}}Kotelet{{/if}}</div>
     <div class="alternative-terms">{{@product.altLabel}}</div>
   </div>
 
   <div class="amounts">
     <div class="configuration">
       <div class="per-pakje">
-        Per pakje: <ProductCard::Offers @product={{@product}} @onChange={{action (mut selectedOffer)}} @selected={{this.currentOffer}} />
+        Per pakje: <ProductCard::Offers @product={{@product}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
       </div>
 
       <div class="pakjes">
-        Pakjes: <NumberButton @value={{packageCount}} />
+        Pakjes: <NumberButton @value={{this.packageCount}} />
       </div>      
     </div>
 
-    <ProductCard::PackagesImage @count={{packageCount}} @offer={{this.currentOffer}} />
+    <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
   </div>
 
   <div class="actions">
     <div class="button-product" role="button" {{action this.add}} ><span>Bestel</span></div>
-    <div class="button-product"><LinkTo @route="webshop.product" @model={{product}}>Meer...</LinkTo></div>
+    <div class="button-product"><LinkTo @route="webshop.product" @model={{this.product}}>Meer...</LinkTo></div>
   </div>
 </div>

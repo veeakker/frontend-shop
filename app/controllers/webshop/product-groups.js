@@ -8,6 +8,6 @@ export default class WebshopProductGroupsController extends Controller {
   @sort( "model", "sortIndex" ) productGroups;
 
   @computed( "model.@each.sortIndex" ) get sortedProductGroups() {
-    return this.get('model').sortBy('sortIndex');
+    return this.model.sortBy('sortIndex');
   }
 }

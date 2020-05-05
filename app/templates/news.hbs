@@ -7,7 +7,7 @@
     <Design::Forks/>
   </div>
   <div class="row">
-    {{#each model as |newsItem|}}
+    {{#each this.model as |newsItem|}}
       <div class="column">
         <NewsItem @item={{newsItem}} @tagName=""/>
       </div>

@@ -1,7 +1,4 @@
-import DS from 'ember-data';
-import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
+import JSONAPIAdapter from '@ember-data/adapter/json-api';
 
-const { JSONAPIAdapter } = DS;
-
-export default class ApplicationAdapter extends JSONAPIAdapter.extend( AdapterFetch ) {
+export default class ApplicationAdapter extends JSONAPIAdapter.extend() {
 }
