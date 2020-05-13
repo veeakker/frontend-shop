@@ -5,6 +5,7 @@ const { Model, attr, hasMany, belongsTo } = DS;
 export default class ProductModel extends Model {
   @attr() label;
   @attr() altLabel;
+  @attr() description;
   @attr('number') sortIndex;
   @hasMany('product-group') productGroups;
   @hasMany('offering') offerings;
