@@ -4,7 +4,7 @@
       <ProductCard::Thumbnail @product={{@product}} />
     </div>
     <div class="icons">
-      {{#each this.enabledLabelArray as |label|}}
+      {{#each @product.enabledLabelArray as |label|}}
         <span class="icon icon-2"><img src={{label.image}} alt={{concat label.label "icon"}}/></span>
       {{/each}}
     </div>
