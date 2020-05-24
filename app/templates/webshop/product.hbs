@@ -8,11 +8,10 @@
       <div class="info-txt">
         <h3 class="uppercase">{{this.model.label}}</h3>
         <p class="no-padding">{{this.model.altLabel}}</p>
-        <a href="#">
-          <img src="/images/favob.png" alt="Favorite icon" width="21" />
-        </a>
-        <a href="#"><img src="/images/vries.png" alt="Frozen icon" width="21" /></a>
-        <a href="#"><img src="/images/product-logo.png" alt="Producer logo" width="21" /></a><br />
+
+        {{#each this.model.enabledLabelArray as |label|}}
+          <img src={{label.image}} alt={{concat label.label "icon"}} width="21" />
+        {{/each}}
         <br />
 
         <div class="amounts">
@@ -23,7 +22,7 @@
 
             <div class="pakjes">
               Pakjes: <NumberButton @value={{this.packageCount}} />
-            </div>      
+            </div>
           </div>
 
           <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
