@@ -1,12 +1,12 @@
 <div class="card {{this.detailClass}}">
   <div class="picture-info" {{action (mut this.showDetail) (not this.showDetail)}} role="button">
     <div class="picture">
-      <ProductCard::Thumbnail @product={{this.product}} />
+      <ProductCard::Thumbnail @product={{@product}} />
     </div>
     <div class="icons">
-      <span class="icon icon-1"><img src="/images/favob.png" alt="Favorite icon"/></span>
-      <span class="icon icon-2"><img src="/images/vries.png" alt="Frozen icon"/></span>
-      <span class="icon icon-3"><img src="/images/product-logo.png" alt="Make icon"/></span>
+      {{#each this.enabledLabelArray as |label|}}
+        <span class="icon icon-2"><img src={{label.image}} alt={{concat label.label "icon"}}/></span>
+      {{/each}}
     </div>
   </div>
 
@@ -23,7 +23,7 @@
 
       <div class="pakjes">
         Pakjes: <NumberButton @value={{this.packageCount}} />
-      </div>      
+      </div>
     </div>
 
     <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
@@ -31,6 +31,6 @@
 
   <div class="actions">
     <div class="button-product" role="button" {{action this.add}} ><span>Bestel</span></div>
-    <div class="button-product"><LinkTo @route="webshop.product" @model={{this.product}}>Meer...</LinkTo></div>
+    <div class="button-product"><LinkTo @route="webshop.product" @model={{@product}}>Meer...</LinkTo></div>
   </div>
 </div>
