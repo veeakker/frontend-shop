@@ -14,7 +14,7 @@
       <div>
         <h2 class="uppercase">product</h2>
         <p class="uppercase">product</p>
-        <img src="/images/ons2.jpg" alt="Placeholder image of product" />
+        <img src="/images/ons2.jpg" alt="Product placeholder" />
         <p>1kg</p>
       </div>
       <div>
@@ -74,7 +74,7 @@
               <Webshop::Basket::Amount @amount={{orderLine.offering.typeAndQuantity}} />
             </td>
             <td class="quantity">{{orderLine.amount}}</td>
-            <td class="remove"><button {{action this.removeOrderLine orderLine.offering orderLine.amount}}>X</button></td>
+            <td class="remove"><button type="button" {{action this.removeOrderLine orderLine.offering orderLine.amount}}>X</button></td>
             <td class="total"><span class="money">{{euros orderLine.price}}</span></td>
           </tr>
         {{/each}}

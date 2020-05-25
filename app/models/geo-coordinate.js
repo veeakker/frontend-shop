@@ -1,7 +1,5 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 import { computed } from '@ember/object';
-
-const { Model, attr, belongsTo } = DS;
 
 export default class GeoCoordinateModel extends Model {
   @attr() latitude;

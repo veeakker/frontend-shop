@@ -1,6 +1,6 @@
 import { tracked } from '@glimmer/tracking';
 import Component from '@ember/component';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 
 export default class TopMenuComponent extends Component {
   classNames = ["top-menu"]

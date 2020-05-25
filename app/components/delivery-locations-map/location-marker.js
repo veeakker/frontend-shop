@@ -1,8 +1,10 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { get } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import Component from '@glimmer/component';
 
 export default class DeliveryLocationsMapLocationMarkerComponent extends Component {
   // icon settings
+  @tracked
   allIconOptions = {
     greenLeaf: {
       iconUrl: '/images/leaf-green.png',
@@ -33,12 +35,12 @@ export default class DeliveryLocationsMapLocationMarkerComponent extends Compone
     }
   }
 
-  @computed('place.deliveryKind.simpleName') get simpleName(){
-    return this.get('place.deliveryKind.simpleName');
+  get simpleName() {
+    return get(this.args.place, "deliveryKind.simpleName");
   }
 
-  @computed('simpleName') get iconConfig(){
-    const name = this.get('place.deliveryKind.simpleName');
+  get iconConfig() {
+    const name = get(this.args.place, "deliveryKind.simpleName");
 
     if ( name === "toer" )
       return this.allIconOptions.greenLeaf;

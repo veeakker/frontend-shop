@@ -26,7 +26,6 @@ Router.map(function() {
   this.route('webshop', function() {
     this.route('account');
     this.route('basket');
-    this.route('beef');
     this.route('checkout', function() {
       this.route('contact-info');
       this.route('delivery');

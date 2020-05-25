@@ -34,7 +34,7 @@ export default class ProductCardComponent extends Component {
     if( this.firstOffer && this.firstOffer.id ){
       return this.firstOffer;
     }
-    return ;
+    return null;
   }
 
   get detailClass() {

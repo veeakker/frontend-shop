@@ -1,5 +1,4 @@
-import DS from 'ember-data';
-const { Model, belongsTo } = DS;
+import Model, { belongsTo } from '@ember-data/model';
 
 export default class DeliveryPlaceModel extends Model {
   @belongsTo('delivery-kind') deliveryKind;

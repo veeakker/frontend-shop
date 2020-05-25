@@ -1,13 +1,13 @@
 {{#let
    (icon iconUrl=this.iconConfig.iconUrl shadowUrl=this.iconConfig.shadowUrl iconSize=this.iconConfig.iconSize shadowSize=this.iconConfig.shadowSize iconAnchor=this.iconConfig.iconAnchor shadowAnchor=this.iconConfig.shadowAnchor popupAnchor=this.iconConfig.popupAnchor)
-   this.place.geoCoordinate.location
+   @place.geoCoordinate.location
    as |markerIcon location|}}
   {{#if location}}
-    {{#component this.mapMarker
+    {{#component @mapMarker
        location=location
        icon=markerIcon as |marker|}}
       <marker.popup>
-        {{yield marker this.place}}
+        {{yield marker @place}}
       </marker.popup>
     {{/component}}
   {{/if}}

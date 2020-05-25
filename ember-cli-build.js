@@ -14,7 +14,8 @@ module.exports = function(defaults) {
         'images/marker-icon-2x.png',
         'images/marker-icon.png',
         'images/marker-shadow.png',
-        'images/packages/*'
+        'images/packages/*',
+        'images/product-labels/*'
       ]
     }
   });
