@@ -1,5 +1,4 @@
-import DS from 'ember-data';
-const { Model, attr, belongsTo, hasMany } = DS;
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class SpotlightProductModel extends Model {
   @attr() sortIndex;

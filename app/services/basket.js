@@ -23,7 +23,7 @@ export default class BasketService extends Service {
 
   @alias( 'basket.orderLines' )
   orderLines;
-  
+
   async saveBasket(){
     await this.basket.save();
   }

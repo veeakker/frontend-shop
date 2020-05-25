@@ -1,8 +1,7 @@
+import { tracked } from '@glimmer/tracking';
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import { computed } from '@ember/object';
-import { alias } from '@ember/object/computed';
 
 const wait = function( time ) {
   return new Promise((success) => {
@@ -11,26 +10,28 @@ const wait = function( time ) {
 };
 
 export default class WebshopProductController extends Controller {
+  @tracked
   packageCount = 1
 
-  tagName = ""
-
+  @tracked
   selectedOffer = null
 
   @service basket
 
-  @alias('model.sortedOfferings.firstObject')
-  firstOffer;
+  get firstOffer(){
+    return this.model.sortedOfferings.firstObject;
+  }
 
-  @computed('firstOffer.id', 'selectedOffer.id')
   get currentOffer(){
     // It is not clear why we have to base ourselves on the id
     // property in this case, but that seems to make it work.
-    this.get('firstOffer.id'); this.get('selectedOffer.id');
-    return this.selectedOffer || this.firstOffer;
+    if( this.selectedOffer.id )
+      return this.selectedOffer;
+    if( this.firstOffer.id )
+      return this.firstOffer;
+    return null;
   }
 
-  @computed('showDetail')
   get detailClass() {
     return this.showDetail ? "detail" : "";
   }

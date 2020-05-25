@@ -1,6 +1,5 @@
 import { sort } from '@ember/object/computed';
-import DS from 'ember-data';
-const { Model, attr, hasMany, belongsTo } = DS;
+import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 
 export default class ProductModel extends Model {
   @attr() label;

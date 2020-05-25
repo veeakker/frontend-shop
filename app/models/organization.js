@@ -1,5 +1,4 @@
-import DS from 'ember-data';
-const { Model, hasMany } = DS;
+import Model, { hasMany } from '@ember-data/model';
 
 export default class OrganizationModel extends Model {
   @hasMany('delivery-place') deliveryPlaces;

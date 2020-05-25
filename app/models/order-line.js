@@ -1,8 +1,7 @@
 import { get } from '@ember/object';
 import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
-import DS from 'ember-data';
-const { Model, attr, belongsTo } = DS;
+import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class OrderLineModel extends Model {
   @belongsTo('offering') offering
@@ -13,7 +12,7 @@ export default class OrderLineModel extends Model {
     // we don't use defaults here, as an NaN or undefined price is
     // probably preferred over an incorrect one.
     const amount = this.amount;
-    const price = get(this, 'offering.unitPrice.value');
+    const price = get(this.offering, "unitPrice.value");
     return amount * price;
   }
 
