@@ -19,15 +19,15 @@ export default class WebshopProductController extends Controller {
   @service basket
 
   get firstOffer(){
-    return this.model.sortedOfferings.firstObject;
+    return this.model.sortedOfferings && this.model.sortedOfferings.firstObject;
   }
 
   get currentOffer(){
     // It is not clear why we have to base ourselves on the id
     // property in this case, but that seems to make it work.
-    if( this.selectedOffer.id )
+    if( this.selectedOffer && this.selectedOffer.id )
       return this.selectedOffer;
-    if( this.firstOffer.id )
+    if( this.firstOffer && this.firstOffer.id )
       return this.firstOffer;
     return null;
   }
