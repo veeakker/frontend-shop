@@ -124,6 +124,7 @@ ul.breadcrumb li a:hover {
   .header {
     height: 110px;
     background-image: url('/images/header-groot.jpg');
+    border-bottom: solid #cccccc 1px;
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -226,15 +227,17 @@ ul.breadcrumb li a:hover {
     float: left;
     height: 25px;
     width: 25px;
-    font-family: 'Open Sans';
+    //font-family: 'Open Sans';
     font-size: 12px;
     border-radius: 50%;
-    background-color: #443B36;
+    background-color: rgb(97, 82, 74);
     margin: 3px;
+    padding-top: 2px;
+    padding-left: 0px;
   }
 
   .talen ul li a {
-    color: #ffffff;
+    color: #cccccc;
     padding: 5px;
     padding-top: 4px;
     display: inline-block;
@@ -430,7 +433,7 @@ ul.breadcrumb li a:hover {
   /*OVER ONS*/
   .onstopbanner {
     height: 250px;
-    background-image: url('/images/overons.jpg');
+    background-image: url('/images/ondergrond-social-extra.jpg');
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -698,7 +701,7 @@ ul.breadcrumb li a:hover {
   /*NIEUWS*/
   .nieuwstopbanner {
     height: 250px;
-    background-image: url('/images/nieuws.jpg');
+    background-image: url('/images/ondergrond-social-extra.jpg');
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -796,6 +799,7 @@ ul.breadcrumb li a:hover {
   .header {
     height: 110px;
     background-image: url('/images/header-groot.jpg');
+    border-bottom: solid #cccccc 1px;
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1048,6 +1052,10 @@ ul.breadcrumb li a:hover {
   .adres {
     list-style: none;
     padding: 0px;
+  }
+
+  .adres li {
+    color: #443B36;
   }
 
   .adres a {
@@ -1767,6 +1775,7 @@ ul.breadcrumb li a:hover {
   .header {
     height: 110px;
     background-image: url('/images/header-groot.jpg');
+    border-bottom: solid #cccccc 1px;
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
