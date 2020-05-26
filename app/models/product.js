@@ -5,6 +5,7 @@ export default class ProductModel extends Model {
   @attr() label;
   @attr() altLabel;
   @attr() description;
+  @attr() ingredientsText;
   @attr('number') sortIndex;
   @attr('uri-set') productLabels;
   @hasMany('product-group') productGroups;
