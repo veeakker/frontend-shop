@@ -1,9 +1,16 @@
 {{!-- Note: the width and height are explicitly fetched from the component.  Report if design changes. --}}
 {{#if (and this.imageUrl @large)}}
-  <img class="image" src={{this.imageUrl}} srcset={{concat this.imageUrl " 244w, " this.largeImageUrl " 500w, " this.doubleLargeImageUrl " 1000w"}} this alt="Detail picture of product" />
+  <img
+    class="image"
+    src={{this.imageUrl}}
+    srcset={{concat this.imageUrl " 244w, " this.largeImageUrl " 500w, " this.doubleLargeImageUrl " 1000w"}}
+    this alt="Detail picture of product" />
 {{/if}}
 {{#if (and this.imageUrl (not @large))}}
-  <img src={{this.imageUrl}} class="image" alt="Detail picture of product">
+  <img
+    src={{this.imageUrl}}
+    class="image"
+    alt="Detail picture of product">
 {{/if}}
 {{#if (not this.imageUrl)}}
   <img src="/images/meat-image.jpg" class="image" alt="Placeholder of shown product">

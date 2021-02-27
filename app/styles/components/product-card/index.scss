@@ -43,6 +43,11 @@
     }
   }
 
+  /* greyed out unavailable pictures */
+  .product-disabled .picture img {
+    filter: grayscale(1);
+  }
+
   .picture-info {
     position: relative;
     overflow: hidden;

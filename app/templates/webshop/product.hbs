@@ -1,7 +1,7 @@
 {{!-- We should get rid of this product id dependency --}}
 <div id="product" class="products-shop">
   <div>
-    <div class="product-info">
+    <div class={{concat "product-info" (if this.model.isEnabled "" " product-disabled")}}>
       <div class="info-img">
         <ProductCard::Thumbnail @product={{this.model}} @large={{true}} />
       </div>
@@ -14,21 +14,26 @@
         {{/each}}
         <br />
 
-        <div class="amounts">
-          <div class="configuration">
-            <div class="per-pakje">
-              Per pakje: <ProductCard::Offers @product={{this.model}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
+        {{#if this.model.isEnabled}}
+          <div class="amounts">
+            <div class="configuration">
+              <div class="per-pakje">
+                Per pakje: <ProductCard::Offers @product={{this.model}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
+              </div>
+
+              <div class="pakjes">
+                Pakjes: <NumberButton @value={{this.packageCount}} />
+              </div>
             </div>
 
-            <div class="pakjes">
-              Pakjes: <NumberButton @value={{this.packageCount}} />
-            </div>
+            <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
           </div>
 
-          <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
-        </div>
-
-        <div class="button-product"><button type="button" {{action this.add}}>bestellen</button></div>
+          <div class="button-product"><button type="button" {{action this.add}}>bestellen</button></div>
+        {{else}}
+          <br />
+          Dit product is momenteel niet beschikbaar
+        {{/if}}
       </div><div class="fix"></div>
     </div>
 
