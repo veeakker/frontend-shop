@@ -1,0 +1,11 @@
+.cart-item.product-disabled {
+  text-decoration: line-through;
+
+  .cart-title {
+    text-decoration: line-through;
+  }
+
+  .product-disabled-message {
+    text-decoration: none;
+  }
+}

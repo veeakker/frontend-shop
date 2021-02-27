@@ -1,3 +1,4 @@
+import { get } from '@ember/object';
 import { set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
@@ -64,12 +65,13 @@ export default class BasketService extends Service {
     this.objectForOffering( offering ) && true;
   }
 
-  @computed( 'orderLines.@each.price' )
+  @computed( 'orderLines.@each.price', 'orderLines.@each.product' )
   get totalPrice() {
     // sum all prices
     if( this.orderLines ){
       return this
         .orderLines
+        .filter( (line) => get(line, 'product.isEnabled') )
         .map( (ol) => ol.price )
         .reduce( (a,b) => a+b, 0 );
     }
