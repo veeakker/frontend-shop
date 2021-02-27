@@ -18,4 +18,11 @@ export default class ProductGroupModel extends Model {
   get sortedProducts() {
     return (this.products || []).sortBy('sortIndex');
   }
+
+  @computed('products.@each.sortIndex', 'products.@each.isEnabled')
+  get sortedEnabledProducts() {
+    return (this.products || [])
+      .filter( (product) => product.isEnabled )
+      .sortBy('sortIndex');
+  }
 }

@@ -8,6 +8,7 @@ export default class ProductModel extends Model {
   @attr() ingredientsText;
   @attr() nutricionDataText;
   @attr() allergensText;
+  @attr('boolean') isEnabled;
   @attr('number') plu;
   @attr('number') sortIndex;
   @attr('uri-set') productLabels;

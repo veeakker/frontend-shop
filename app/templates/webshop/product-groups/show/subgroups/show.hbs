@@ -2,7 +2,7 @@
   <h1 class="text-purple uppercase">producten in the kijker</h1>
   <Design::Forks @useDarkImage={{true}} />
   <div class="row-product">
-    {{#each this.model.sortedProducts as |product|}}
+    {{#each this.model.sortedEnabledProducts as |product|}}
       <div class="column-product">
         <ProductCard @product={{product}} />
       </div>
