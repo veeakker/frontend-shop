@@ -30,7 +30,7 @@
         <input class="quantity" type="text" value="5">
       </div>
       <div>
-        <h2 class="uppercase">remove</h2>
+        <h2 class="uppercase">verwijder</h2>
         <p>X</p>
       </div>
       <div class="last">
@@ -46,14 +46,15 @@
           <th class="uppercase">prijs</th>
           <th class="uppercase">stuks / pakje</th>
           <th class="uppercase">aantal pakjes</th>
-          <th class="uppercase">remove</th>
+          <th class="uppercase">verwijder</th>
           <th class="uppercase">totaal</th>
         </tr>
       </thead>
 
       <tbody>
         {{#each this.basket.orderLines as |orderLine|}}
-          <tr class="cart-item">
+          <tr class={{concat "cart-item"
+                        (if orderLine.product.isEnabled "" " product-disabled")}}>
             <td class="product-item">
               <LinkTo @route="webshop.product" @model={{orderLine.product}} class="image-cart">
                 <ProductCard::Thumbnail @product={{orderLine.offering.typeAndQuantity.product}} />
@@ -65,9 +66,14 @@
                   </LinkTo>
                 </span><br />
                 {{!-- TODO: I don't know what this 1kg means --}}
-                <span class="cart-variant">1kg</span>
-              </div>
+                <!-- <span class="cart-variant">1kg</span> -->
 
+                {{#if (not orderLine.product.isEnabled)}}
+                  <div class="product-disabled-message">
+                    Momenteel niet beschikbaar
+                  </div>
+                {{/if}}
+              </div>
             </td>
             <td class="price"><span class="money">{{euros orderLine.pricePerUnit}} / pakje</span></td>
             <td class="packing">

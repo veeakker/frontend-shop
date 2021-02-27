@@ -7,3 +7,8 @@
 @import './ui/index';
 @import './components/index';
 @import './pages/index';
+
+/* greyed out pictures of disabled products */
+.product-disabled img.product-image {
+  filter: grayscale(1);
+}
