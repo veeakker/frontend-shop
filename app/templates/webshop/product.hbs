@@ -36,9 +36,16 @@
 
     <div class="extra-menu-product">
       <LinkTo @route="webshop.product.information" @model={{this.model}} class="info tablinks uppercase"><h5>informatie</h5></LinkTo>
-      <LinkTo @route="webshop.product.ingredients" @model={{this.model}} class="ingre tablinks uppercase"><h5>ingrediënten</h5></LinkTo>
-      <LinkTo @route="webshop.product.nutricional-values" @model={{this.model}} class="food tablinks uppercase"><h5>voedingswaarden</h5></LinkTo>
-      <LinkTo @route="webshop.product.allergenics" @model={{this.model}} class="aler tablinks uppercase"><h5>allergenen</h5></LinkTo>
+      {{#if this.model.ingredientsText}}
+        <LinkTo @route="webshop.product.ingredients" @model={{this.model}} class="ingre tablinks uppercase"><h5>ingrediënten</h5></LinkTo>
+      {{/if}}
+      {{#if this.model.nutricionDataText}}
+        <LinkTo @route="webshop.product.nutricional-values" @model={{this.model}} class="food tablinks uppercase"><h5>voedingswaarden</h5></LinkTo>
+      {{/if}}
+      {{#if this.model.allergensText}}
+        <LinkTo @route="webshop.product.allergenics" @model={{this.model}} class="aler t
+          ablinks uppercase"><h5>allergenen</h5></LinkTo>
+      {{/if}}
     </div><div class="fix"></div>
     <div class="tabcontent">
       {{outlet}}
