@@ -24,6 +24,9 @@
       <div class="configuration">
         <div class="per-pakje">
           Per pakje: <ProductCard::Offers @product={{@product}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
+          {{#if @product.offerings}}
+            <ProductCard::OfferType @units={{this.getUnits}} @onChange={{action (mut this.selectedUnit)}} />
+          {{/if}}
         </div>
 
         <div class="pakjes">

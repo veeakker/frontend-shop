@@ -1,0 +1,10 @@
+<select class="select-eenheid" name="units" onchange={{action "selectValue" value="target.value"}}>      
+  <option disabled selected>eenheid</option>
+
+  {{#each @units as |unit|}}        
+     <option value={{unit}}>{{unit}}</option>      
+  {{/each}} 
+   
+</select>
+
+{{yield}}
