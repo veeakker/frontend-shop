@@ -117,9 +117,13 @@
 
   .configuration {
     display: flex;
-
+    
     .per-pakje, .pakjes {
       flex: 1;
+
+      .select-eenheid {
+        margin-top: 5px;
+      }
     }
   }
 
