@@ -53,27 +53,22 @@ export default class ProductCardComponent extends Component {
     this.set('packageCount', 1);
   }
 
-  @action getUnits() {
-    console.log("Units");
+  get getUnits() {
+    var possibleUnits = [];
+    const offerings = this.args.product.offerings;
 
-    // var possibleUnits = [];
-    // const offerings = this.args.product.offerings;
-    // console.log(offerings);
-    // console.log(offerings);
-    // // TODO: Fixen
+    // TODO: Fixen
     // if (offerings != null) {
     //   this.args.product.offerings.forEach( async offer => {
-    //     console.log(offer.id);
     //     const unit = this.store.findRecord('type-and-quantity', offer.id);
-    //     console.log(unit);
 
-        // if (!possibleUnits.includes(unit)) {
-        //   possibleUnits.push(unit);
-        // }
+    //     if (!possibleUnits.includes(unit)) {
+    //       possibleUnits.push(unit);
+    //     }
     //   });
     // }
 
-    // return possibleUnits
+    return possibleUnits
     
   }
 }
