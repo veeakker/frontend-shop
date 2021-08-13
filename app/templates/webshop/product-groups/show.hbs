@@ -1,13 +1,9 @@
-<div class="sub-menu ml-4">
-  <h3 class="uppercase my-3 py-1">{{this.model.label}}</h3>
-  <ul class="mt-5 pl-0">
-    {{#each this.model.sortedChildren as |group|}}
-      <li>
-        <LinkTo @route="webshop.product-groups.show.subgroups.show" @models={{elements this.model group}} class="uppercase">{{group.label}}</LinkTo>
-      </li>
-    {{/each}}
-  </ul>
-  <div class="fix"></div>
+<div class="scrollable-header submenu-header">
+  {{#each this.model.sortedChildren as |group|}}
+    <LinkTo @route="webshop.product-groups.show.subgroups.show" @models={{elements this.model group}}>{{group.label}}</LinkTo>
+  {{/each}}
 </div>
 
-{{outlet}}
+<div id="webshop-content">
+  {{outlet}}
+</div>

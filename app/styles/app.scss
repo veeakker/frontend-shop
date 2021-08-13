@@ -12,3 +12,30 @@
 .product-disabled img.product-image {
   filter: grayscale(1);
 }
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 3.5rem;    /* Footer height */
+}
+
+footer {
+  width: 100%;
+  background-color: #443B36;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3.5rem;
+  
+  a {
+    color: white;
+    padding: 1.5rem;
+  }
+}
