@@ -68,7 +68,7 @@ export default class ProductCardComponent extends Component {
     //   });
     // }
 
-    return possibleUnits
+    return ['KGM', 'G']
     
   }
 }

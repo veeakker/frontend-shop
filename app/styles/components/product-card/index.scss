@@ -1,12 +1,12 @@
-.card {
+.product-card {
   width: 250px;
   height: 300px;
-  margin: 2em;
+  margin: 1em;
 
   overflow: hidden;
-  position: relative;
 
-  /* background-color: $light-base; */
+  text-align: center;
+
   border: 3px solid $light-base;
 
   &, * {
@@ -28,11 +28,11 @@
   }
 
   .description {
-    color: $dark-base;
+    color: $base-primary;
     font-family: 'Open Sans';
 
     .product-title {
-      font-size: 1.3em;
+      font-size: 1.4em;
       font-weight: bold;
     }
 
@@ -75,13 +75,14 @@
         img {
           width: 22px;
           color: white;
-          border: solid 0.5px $dark-base;
+          border: solid 0.5px $base-primary;
           background-color: $light-base;
         }
       }
     }
   }
 
+  // Show details or not...
   &.detail {
     .picture-info {
       overflow: hidden;
@@ -110,20 +111,21 @@
   }
 }
 
-
-// This should be moved to a separate file to indicate product amounts
 .amounts {
   margin-top: 3em;
 
   .configuration {
     display: flex;
-    
-    .per-pakje, .pakjes {
-      flex: 1;
+    align-items: flex-end;
+    justify-content: space-evenly;
 
-      .select-eenheid {
-        margin-top: 5px;
-      }
+    color:$base-primary;
+
+    .select-eenheid {
+      background-color: $light-base;
+      margin-left: 1px;
+      margin-right: 10px;
+      height: 25px;
     }
   }
 
@@ -140,12 +142,23 @@
   }
 }
 
-.card {
-  .actions {
-    display: flex;
+.actions {
+  display: flex;
+  justify-content: space-evenly;
+}
 
-    .button-product {
-      flex: 1;
-    }
-  }
+.button-product {
+  max-width: 40%;
+  margin-top: 8px;
+
+  display: inline-block;
+  background-color: $base-primary;
+  color: #ffffff !important;
+  font-size: 15px;
+  font-family: 'Open Sans';
+  padding: 10px 20px;
+}
+
+.button-product:hover {
+  background-color: $base-secondary;
 }
