@@ -1,6 +1,6 @@
 .product-card {
-  width: 250px;
-  height: 300px;
+  max-width: 300px;
+  max-height: 350px;
   margin: 1em;
 
   overflow: hidden;
@@ -121,10 +121,14 @@
 
     color:$base-primary;
 
+    .per-pakje-input {
+      display: flex;
+      align-items: flex-end;
+    }
+
     .select-eenheid {
       background-color: $light-base;
-      margin-left: 1px;
-      margin-right: 10px;
+      margin-left: 2px;
       height: 25px;
     }
   }
