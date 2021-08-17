@@ -1,62 +1,60 @@
-{{!-- We should get rid of this product id dependency --}}
-<div id="product" class="products-shop">
-  <div>
-    <div class={{concat "product-info" (if this.model.isEnabled "" " product-disabled")}}>
-      <div class="info-img">
-        <ProductCard::Thumbnail @product={{this.model}} @large={{true}} />
-      </div>
-      <div class="info-txt">
-        <h3 class="uppercase">{{this.model.label}}</h3>
-        <p class="no-padding">{{this.model.altLabel}}</p>
+<div id="product">
+  <div class={{concat "product-info" (if this.model.isEnabled "" " product-disabled")}}>
+    <div class="info-img">
+      <ProductCard::Thumbnail @product={{this.model}} @large={{true}} />
+    </div>
+    <div class="info-txt">
+      <h3>{{this.model.label}}</h3>
+      <p class="no-padding">{{this.model.altLabel}}</p>
 
-        {{#each this.model.enabledLabelArray as |label|}}
-          <img src={{label.image}} alt={{concat label.label "icon"}} width="21" />
-        {{/each}}
-        <br />
+      {{#each this.model.enabledLabelArray as |label|}}
+        <img id="product-labels" src={{label.image}} alt={{concat label.label "icon"}} width="21" />
+      {{/each}}
+      <br />
 
-        {{#if this.model.isEnabled}}
-          <div class="amounts">
-            <div class="configuration">
-              <div class="per-pakje">
-                Per pakje: <ProductCard::Offers @product={{this.model}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
-              </div>
-
-              <div class="pakjes">
-                Pakjes: <NumberButton @value={{this.packageCount}} />
+      {{#if this.model.isEnabled}}
+        <div class="amounts">
+          <div class="configuration">
+            <div class="per-pakje">
+              Per pakje: 
+              <div class="per-pakje-input">
+                <ProductCard::Offers @product={{this.model}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
+                {{#if this.model.offerings}}
+                  <div class="eenheid">
+                    <ProductCard::OfferType @units={{this.getUnits}} @onChange={{action (mut this.selectedUnit)}} />
+                  </div>
+                {{/if}}
               </div>
             </div>
-
-            <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
+      
+            <div class="pakjes">
+              Pakjes: <NumberButton @value={{this.packageCount}} />
+            </div>
           </div>
 
-          <div class="button-product"><button type="button" {{action this.add}}>bestellen</button></div>
-        {{else}}
-          <br />
-          Dit product is momenteel niet beschikbaar
-        {{/if}}
-      </div><div class="fix"></div>
-    </div>
+          <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
+        </div>
 
-
-
-    <div class="extra-menu-product">
-      <LinkTo @route="webshop.product.information" @model={{this.model}} class="info tablinks uppercase"><h5>informatie</h5></LinkTo>
-      {{#if this.model.ingredientsText}}
-        <LinkTo @route="webshop.product.ingredients" @model={{this.model}} class="ingre tablinks uppercase"><h5>ingrediënten</h5></LinkTo>
+        <button class="button-product" type="button" {{action this.add}}>Bestellen</button>
+      {{else}}
+        <br />
+        Dit product is momenteel niet beschikbaar
       {{/if}}
-      {{#if this.model.nutricionDataText}}
-        <LinkTo @route="webshop.product.nutricional-values" @model={{this.model}} class="food tablinks uppercase"><h5>voedingswaarden</h5></LinkTo>
-      {{/if}}
-      {{#if this.model.allergensText}}
-        <LinkTo @route="webshop.product.allergenics" @model={{this.model}} class="aler t
-          ablinks uppercase"><h5>allergenen</h5></LinkTo>
-      {{/if}}
-    </div><div class="fix"></div>
-    <div class="tabcontent">
-      {{outlet}}
-
-      <Design::Gallery />
     </div>
   </div>
+
+  <div class="extra-menu-product">
+    <LinkTo @route="webshop.product.information" @model={{this.model}}><h5>informatie</h5></LinkTo>
+    {{#if this.model.ingredientsText}}
+      <LinkTo @route="webshop.product.ingredients" @model={{this.model}}><h5>ingrediënten</h5></LinkTo>
+    {{/if}}
+    {{#if this.model.nutricionDataText}}
+      <LinkTo @route="webshop.product.nutricional-values" @model={{this.model}}><h5>voedingswaarden</h5></LinkTo>
+    {{/if}}
+    {{#if this.model.allergensText}}
+      <LinkTo @route="webshop.product.allergenics" @model={{this.model}}><h5>allergenen</h5></LinkTo>
+    {{/if}}
+    <p>{{outlet}}</p>
+    <Design::Gallery />
+  </div>
 </div>
-<div class="fix"></div>

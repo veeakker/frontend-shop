@@ -1,0 +1,94 @@
+#product {
+  padding: 5%;
+}
+
+.product-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.info-img {
+  margin: 2.5%;
+  float: left;
+  max-width: 600px;
+  min-width: 350px;
+}
+
+.info-txt {
+  margin: 2.5%;
+  color: $base-primary;
+  text-align: left;
+  max-width: 600px;
+
+  h3 {
+    font-size: 20px;
+    font-family: 'Open Sans';
+    text-transform: uppercase;
+  }
+
+  p {
+    padding: 2%;
+  }
+
+  .pakjes {
+    margin-left: 10px;
+  }
+  
+  .configuration {
+    justify-content: flex-start;
+  }
+}
+
+.no-padding {
+  padding: 20px 0px !important;
+}
+
+#product-labels {
+  margin-bottom: 20px;
+}
+
+.extra-menu-product {
+  max-width: 1020px;
+  margin: 0 auto;
+  min-height: 56px;
+  overflow: hidden;
+  padding-top: 30px;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    width: 180px;
+    border-bottom: 3px solid #AD9A89;
+    text-align: center;
+    margin: 8px;
+    color: #443B36;
+  }
+
+  a:hover {
+    background-color: #AD9A89;
+    cursor: pointer;
+    color: #ffffff;
+  }
+
+  a.active {
+    border-bottom: 3px solid #443B36;
+    cursor: pointer;
+  }
+
+  a.active:hover {
+    background-color: #443B36;
+    cursor: pointer;
+    color: #ffffff;
+  }
+
+  h5 {
+    padding: 10px;
+    margin: 0px !important;
+  }
+
+  p {
+    margin: 20px 0;
+    color: $base-primary;
+  }
+}

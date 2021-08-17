@@ -49,4 +49,11 @@ export default class WebshopProductController extends Controller {
     await wait(500);
     this.resetOrder();
   }
+
+  get getUnits() {
+    // TODO: Fixen
+
+    return ['KGM', 'G']
+    
+  }
 }
