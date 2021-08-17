@@ -22,16 +22,19 @@
   {{#if @product.isEnabled}}
     <div class="amounts">
       <div class="configuration">
+
         <div class="per-pakje">
-          Per pakje: <ProductCard::Offers @product={{@product}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
-        </div>
-
-        {{#if @product.offerings}}
-          <div class="eenheid">
-            <ProductCard::OfferType @units={{this.getUnits}} @onChange={{action (mut this.selectedUnit)}} />
+          Per pakje: 
+          <div class="per-pakje-input">
+            <ProductCard::Offers @product={{@product}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
+            {{#if @product.offerings}}
+              <div class="eenheid">
+                <ProductCard::OfferType @units={{this.getUnits}} @onChange={{action (mut this.selectedUnit)}} />
+              </div>
+            {{/if}}
           </div>
-        {{/if}}
-
+        </div>
+        
         <div class="pakjes">
           Pakjes: <NumberButton @value={{this.packageCount}} />
         </div>
