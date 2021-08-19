@@ -36,7 +36,7 @@
   max-width: 600px;
 }
 
-.checkout-contact input[type=text], .checkout-contact textarea {
+.contact-info input[type=text], .contact-info textarea {
   max-width: 600px;
   padding: 10px;
   border: 1px solid $base-primary;
@@ -48,7 +48,7 @@
   font-family: 'Open Sans';
 }
 
-.checkout-contact label {
+.contact-info label {
   color: $base-primary;
   font-size: 12px;
   vertical-align: central;
