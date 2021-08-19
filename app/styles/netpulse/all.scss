@@ -71,54 +71,6 @@ p {
   background-repeat: no-repeat;
 }
 
-.waarden1 a {
-  width: 200px;
-  height: 200px;
-  color: #443B36;
-  text-align: center;
-  font-size: 25px;
-  font-weight: bolder;
-  font-family: 'Fairplex OT Med';
-  margin: 0px;
-}
-
-.waarden1 h4 {
-  width: 200px;
-  height: 200px;
-  margin: 0px;
-  padding-top: 55px;
-}
-
-ul.breadcrumb {
-  padding: 15px 16px;
-  list-style: none;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  height: 50px;
-}
-
-ul.breadcrumb li {
-  display: inline;
-  font-size: 10px;
-}
-
-ul.breadcrumb li + li:before {
-  padding: 8px;
-  color: #443B36;
-  content: ">";
-}
-
-ul.breadcrumb li a {
-  color: #443B36;
-  text-decoration: none;
-  font-family: 'Open Sans';
-}
-
-ul.breadcrumb li a:hover {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
 @media screen and (min-width: 1040px) {
   /*MAIN*/
   .header {

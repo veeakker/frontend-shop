@@ -1,0 +1,55 @@
+.checkout-contact {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.checkout-contact h2 {
+  color: $base-primary;
+  display: inline-block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.checkout-contact p {
+  color: $base-primary;
+  display: inline-block;
+  float: right;
+  margin-top: 22px;
+
+  a {
+    color: $base-primary;
+    font-weight: bold;
+  }
+}
+
+.contact-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  margin: 2%;
+
+  max-width: 600px;
+}
+
+.checkout-contact input[type=text], .checkout-contact textarea {
+  max-width: 600px;
+  padding: 10px;
+  border: 1px solid $base-primary;
+  color: $base-primary;
+  margin-top: 3px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  background-color: #E1DBD5;
+  font-family: 'Open Sans';
+}
+
+.checkout-contact label {
+  color: $base-primary;
+  font-size: 12px;
+  vertical-align: central;
+}
