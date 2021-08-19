@@ -1,13 +1,16 @@
 @import './contact-info.scss';
+@import './delivery.scss';
 
 /* BREADCRUMB CHECKOUT */
 .breadcrumb-txt {
   color: $base-primary;
   font-weight: bold;
+  font-size: 20px;
 }
 
 .breadcrumb-nxt {
   color: $base-primary;
+  font-size: 20px;
 }
 
 ul.breadcrumb-cart {
@@ -28,6 +31,7 @@ ul.breadcrumb-cart {
       color: $base-primary;
       text-decoration: none;
       font-family: 'Open Sans';
+      font-size: 20px;
     }
   }
 }

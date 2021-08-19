@@ -5,9 +5,8 @@
   <li><span class="breadcrumb-nxt">Betalingsgegevens</span></li>
   <li><span class="breadcrumb-nxt">Bevestig Bestelling</span></li>
 </ul>
-<div class="fix"></div>
 
-<div class="checkout-contact">
+<div class="delivery-contact">
   <div class="contact-info">
     <h2>Kies je methode van levering / afhaling</h2>
 
@@ -44,7 +43,7 @@
       </label>
       
       {{#if this.differentDeliveryInfo}}
-        <div class="txtInfo">
+        <div class="contact-info">
           <h2>Vul je gegevens in:</h2>
           <Input @value={{this.name}} placeholder="Naam" /> <br />
           <Input @value={{this.company}} placeholder="Bedrijf + BTW nummer (optioneel)" /> <br />
@@ -57,25 +56,24 @@
       {{/if}}
     {{/if}}
 
+    <div id="frost-disclaimer">
+      <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" /><p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
+    </div>
 
-    <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p><img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" /><br /><br />
+    <LinkTo @route="webshop.collection-points" id="extra-info">Meer info over leveringen / afhaalpunten</LinkTo>
 
-    <LinkTo @route="webshop.collection-points" class="deli uppercase">meer info over leveringen / afhaalpunten</LinkTo>
-
-    <div class="fix"></div><br />
     <div class="cart-total">
       {{!-- TODO: Do we need to have the BTW etc in here or can we render the total price? --}}
       {{!-- TODO: Can we make price excluding taxes and delivery cost less visible than the total price? --}}
       {{!-- TODO: Take price of delivery into account --}}
       {{!-- <p>Prijs <span class="money">€67.50</span></p> --}}
-      <p>Prijs levering <span class="money">€x</span></p>
+      <p class="cart-price">Prijs levering <span class="money">€x</span></p>
       {{!-- <p>BTW 6% <span class="money">€x</span></p>  --}}
-      <p>Totaalprijs <span class="money">{{euros this.basket.totalPrice}}</span></p>    <br />
+      <p class="cart-price">Totaalprijs <span class="money">{{euros this.basket.totalPrice}}</span></p>    <br />
       <div class="button-product-cart">
         <LinkTo @route="webshop.checkout.payment" @disabled={{not this.deliveryMethod}}>{{if this.payDirectly "Betalen" "Bevestigen"}}</LinkTo>
       </div>
     </div>
-    <div class="fix"></div>
   </div>
 </div>
 
