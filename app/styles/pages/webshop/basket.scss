@@ -129,3 +129,9 @@
     padding: 10px 49px;
   }
 }
+
+.button-product-cart:hover {
+  a { 
+    background-color: $base-secondary;
+  }
+}
