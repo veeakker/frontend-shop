@@ -1,0 +1,39 @@
+/*GALLERY*/
+.gallery {
+    margin: 0 auto;
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-flow: dense;
+    margin-bottom: 20px;
+  }
+
+  .gallery > * {
+    flex: 1 1 300px;
+  }
+
+  .gallery img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .image {
+    margin: 0 auto;
+    width: 320px;
+    height: 200px;
+  }
+
+  .image-groot {
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+
+  .image-groot img {
+    width: 100%;
+  }
+
