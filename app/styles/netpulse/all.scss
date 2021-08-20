@@ -1,1958 +1,1291 @@
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  background-color: #E1DBD5;
-  font-family: 'Varela Round', sans-serif;
-  color: #ffffff;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-a {
-  text-decoration: none !important;
-}
-
-h1 {
-  text-align: center;
-}
-
-.fix {
-  clear: both;
-}
-
-.footer {
-  width: 100%;
-  height: 40px;
-  background-color: #443B36;
-  margin-top: 50px;
-}
-
-.netpulse {
-  width: 140px;
-  margin: 0 auto;
-  padding-top: 9px;
-}
-
-.netpulse a {
-  margin: 0 auto;
-  text-align: center;
-  color: #e23569;
-  font-size: 12px;
-}
-
-.icons-social {
-  height: 80px;
-  margin: 0 auto;
-  margin-top: 50px;
-  width: 300px;
-  text-align: center;
-}
-
-.icon-social {
-  display: block;
-  float: left;
-  cursor: pointer;
-}
-
-.nieuws-datum {
-  padding-bottom: 0px !important;
-}
-
-.waarden1 {
-  width: 200px;
-  background-repeat: no-repeat;
-}
-
-@media screen and (min-width: 1040px) {
-  /*MAIN*/
-  .header {
-    height: 110px;
-    background-image: url('/images/header-groot.jpg');
-    border-bottom: solid #cccccc 1px;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .top-menu {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-
-  .logo-veeakker {
-    margin-top: 25px;
-    margin-left: 25px;
-    display: block;
-    float: left;
-  }
-
-  .logo-veeakker img {
-    height: 50px;
-  }
-
-  #veeakker-menu {
-    max-width: 800px;
-    margin: 0 auto;
-    display: block;
-    float: right;
-    margin-top: 50px;
-    margin-right: 25px;
-  }
-
-  a.closebtn {
-    display: none;
-  }
-
-  .menu-small {
-    display: none;
-  }
-
-  #veeakker-menu ul {
-    height: 22px;
-    padding: 0px;
-    margin-top: 0px;
-    text-align: right;
-  }
-
-  #veeakker-menu ul li {
-    display: block;
-    float: left;
-    list-style: none;
-    text-align: center;
-    padding: 0;
-    color: #ffffff;
-    padding: 2px 20px;
-    font-size: 18px;
-  }
-
-  #veeakker-menu ul li a {
-    color: #ffffff;
-    text-decoration: none;
-  }
-
-  .laatste-menu {
-    border-bottom: none !important;
-  }
-
-  /*HOME*/
-  .top-banner {
-    height: 400px;
-    background-image: url('/images/ondergrond.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .top-banner-items {
-    max-width: 1280px;
-    margin: 0 auto;
-    height: 400px;
-  }
-
-  .talen-mobile {
-    display: none;
-  }
-
-  .talen ul {
-    width: 93px;
-    float: right;
-    margin-top: 10px;
-    margin-right: 40px;
-    padding: 0px;
-  }
-
-  .talen ul li {
-    display: block;
-    float: left;
-    height: 25px;
-    width: 25px;
-    //font-family: 'Open Sans';
-    font-size: 12px;
-    border-radius: 50%;
-    background-color: rgb(97, 82, 74);
-    margin: 3px;
-    padding-top: 2px;
-    padding-left: 0px;
-  }
-
-  .talen ul li a {
-    color: #cccccc;
-    padding: 5px;
-    padding-top: 4px;
-    display: inline-block;
-  }
-
-  .logo-slo {
-    display: block;
-    float: right;
-  }
-
-  .logo-slo img {
-    width: 300px;
-    margin-top: 50px;
-    margin-right: 50px;
-  }
-
-  .slogan {
-    display: block;
-    margin-top: 170px;
-    margin-right: 20px;
-    float: right;
-  }
-
-  .slogan h1 {
-    font-size: 28px;
-    font-weight: 100;
-  }
-
-  .fork {
-    display: block;
-    margin-top: 125px;
-    margin-right: 75px;
-    float: right;
-  }
-
-  .fork img {
-    width: 151px;
-  }
-
-  .waarden {
-    background-color: #AD9A89;
-    height: 400px;
-  }
-
-  .waarden h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    padding-top: 40px;
-  }
-
-  .waarden3 {
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 660px;
-    height: 220px;
-  }
-
-  .waarden1 {
-    width: 200px;
-    display: block;
-    float: left;
-    margin: 10px;
-  }
-
-  .waarden1 img {
-    width: 200px;
-  }
-
-  .forks {
-    width: 151px;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-
-  .arrow {
-    width: 132px;
-    margin: 0 auto;
-  }
-
-  .social {
-    height: 300px;
-    background-image: url('/images/ondergrond-social.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .social h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 40px;
-  }
-
-  #contact {
-    margin: 0 auto;
-    width: 930px;
-    height: 385px;
-    background-color: #E1DBD5;
-    color: #443B36;
-    font-family: 'Open Sans';
-  }
-
-  #contact h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 500;
-    padding-top: 40px;
-  }
-
-  #contact h3 {
-    font-size: 14px;
-  }
-
-  .winkel-kaart {
-    max-width: 930px;
-    height: 280px;
-    margin: 0 auto;
-  }
-
-  .winkel-home {
-    width: 290px;
-    display: block;
-    float: left;
-    margin-top: 20px;
-  }
-
-  .winkel-uren {
-    width: 290px;
-    display: block;
-    float: left;
-    margin-top: 20px;
-    /*margin-left: 20px;*/
-  }
-
-  .adres {
-    list-style: none;
-    padding: 0px;
-  }
-
-  .adres a {
-    color: #443B36;
-  }
-
-  .kaart {
-    width: 350px;
-    display: block;
-    float: left;
-    margin-top: 23px;
-    padding-left: 25px;
-  }
-
-
-  .dagen {
-    width: 180px;
-    display: block;
-    float: left;
-  }
-
-  .dagen ul, .uren ul {
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-  }
-
-  .uren {
-    width: 110px;
-    display: block;
-    float: left;
-  }
-
-  .faq {
-    max-width: 1280px;
-    margin: 0 auto;
-    margin-top: 35px;
-  }
-
-  .faq a {
-    color: #ffffff;
-    border-bottom: 3px solid #443B36;
-    padding: 10px;
-    font-family: 'Open Sans';
-    color: #443B36;
-  }
-
-  .faq a:hover {
-    background-color: #443B36;
-    color: #ffffff;
-  }
-
-  /*OVER ONS*/
-  .onstopbanner {
-    height: 250px;
-    background-image: url('/images/ondergrond-social-extra.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .onstopbanner h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  .overons p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 50px 20px;
-  }
-
-  /*WAARDEN*/
-  #waardentopbanner {
-    height: 250px;
-    background-image: url('/images/waarden.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  #waardentopbanner h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  #waarden p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 50px 20px;
-  }
-
-  /*FAQ*/
-  #faqtopbanner {
-    height: 250px;
-    background-image: url('/images/waarden.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  #faqtopbanner h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  #faq p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 50px 20px;
-  }
-
-  /*GALLERY*/
-  .gallery {
-    margin: 0 auto;
-    max-width: 1000px;
-    display: flex;
-    flex-wrap: wrap;
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-flow: dense;
-    margin-bottom: 20px;
-  }
-
-  .gallery > * {
-    flex: 1 1 300px;
-  }
-
-  .gallery img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    height: 100%;
-  }
-
-  .image {
-    margin: 0 auto;
-    width: 320px;
-    height: 200px;
-  }
-
-  .image-groot {
-    margin: 0 auto;
-    max-width: 1000px;
-  }
-
-  .image-groot img {
-    width: 100%;
-  }
-
-
-  /*LOCATIES*/
-  .locatiestopbanner {
-    height: 250px;
-    background-image: url('/images/locaties.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .locaties h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  .locaties h5 {
-    margin: 0px;
-  }
-
-  .locaties .extra-menu {
-    max-width: 1020px;
-    margin: 0 auto;
-    min-height: 56px;
-    overflow: hidden;
-  }
-
-  .winkel, .toeren, .natuurwinkels, .buurderijen, .webshop {
-    display: block;
-    float: left;
-    width: 184px;
-    border-bottom: 3px solid #AD9A89;
-    text-align: center;
-    margin: 10px;
-    color: #443B36;
-  }
-
-  .winkel:hover, .toeren:hover, .natuurwinkels:hover, .buurderijen:hover, .webshop:hover {
-    background-color: #AD9A89;
-    cursor: pointer;
-    color: #ffffff;
-  }
-
-  .winkel.active, .toeren.active, .natuurwinkels.active, .buurderijen.active, .webshop.active {
-    border-bottom: 3px solid #443B36;
-    cursor: pointer;
-  }
-
-  .winkel.active:hover, .toeren.active:hover, .natuurwinkels.active:hover, .buurderijen.active:hover, .webshop.active:hover {
-    background-color: #443B36;
-    cursor: pointer;
-  }
-
-  .winkel h5, .toeren h5, .natuurwinkels h5, .buurderijen h5, .webshop h5 {
-    padding: 10px;
-    margin-top: 0px !important;
-  }
-
-  .locaties p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 30px 20px;
-  }
-
-  #winkel, #toeren, #natuurwinkels, #buurderijen, #webshop {
-    display: none;
-  }
-
-  .maps {
-    margin-bottom: 50px;
-  }
-
-  .maps img {
-    width: 100%;
-  }
-
-  /*NIEUWS*/
-  .nieuwstopbanner {
-    height: 250px;
-    background-image: url('/images/ondergrond-social-extra.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .nieuws h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  .column {
-    float: left;
-    width: 25%;
-    padding: 0 10px;
-    margin-top: 50px;
-  }
-
-  .row {
-    margin: 0 10px;
-    max-width: 1208px;
-    margin: 0 auto;
-  }
-
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .card {
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
-    text-align: center;
-    border: 3px solid #443B36;
-    padding-bottom: 30px;
-  }
-
-  .card img {
-    width: 100%;
-  }
-
-  .card h3 {
-    font-size: 15px;
-  }
-
-  .card h3, .card p {
-    padding: 13px 16px;
-    color: #443B36;
-  }
-
-  .card .newsbutton {
-    border-bottom: 3px solid #443B36;
-    /*border: 1px solid #443B36;*/
-    color: #443B36;
-    font-size: 12px;
-    padding: 8px 15px 5px 15px;
-    width: 110px;
-    margin: 0 auto;
-  }
-
-  .card .newsbutton:hover {
-    background-color: #443B36;
-    color: #ffffff;
-  }
-
-  #nieuwsitem p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 20px 20px 50px 20px;
-  }
-
-  #nieuwsitem h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  #nieuwsitem h2 {
-    margin: 0 auto;
-    font-size: 18px;
-    margin-top: 50px;
-    color: #443B36;
-    max-width: 1040px;
-    padding: 0px 20px;
-  }
-}
-
-@media screen and (min-width: 600px) and (max-width: 1040px) {
-  /*MAIN*/
-  .header {
-    height: 110px;
-    background-image: url('/images/header-groot.jpg');
-    border-bottom: solid #cccccc 1px;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .top-menu {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-
-  .logo-veeakker {
-    margin-top: 25px;
-    margin-left: 25px;
-    display: block;
-    float: left;
-  }
-
-  .logo-veeakker img {
-    height: 50px;
-  }
-
-  #veeakker-menu {
-    max-width: 600px;
-    margin: 0 auto;
-    display: block;
-    float: right;
-    margin-top: 52px;
-    margin-right: 25px;
-  }
-
-  a.closebtn {
-    display: none;
-  }
-
-  .menu-small {
-    display: none;
-  }
-
-  #veeakker-menu ul {
-    height: 22px;
-    padding: 0px;
-    margin-top: 0px;
-    text-align: right;
-  }
-
-  #veeakker-menu ul li {
-    display: block;
-    float: left;
-    list-style: none;
-    text-align: center;
-    padding: 0;
-    color: #ffffff;
-    font-size: 15px;
-    padding: 2px 10px;
-  }
-
-  #veeakker-menu ul li a {
-    color: #ffffff;
-    text-decoration: none;
-  }
-
-  .laatste-menu {
-    border-bottom: none !important;
-  }
-
-  /*HOME*/
-  .top-banner {
-    height: 400px;
-    background-image: url('/images/ondergrond.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .top-banner-items {
-    max-width: 1280px;
-    margin: 0 auto;
-    height: 400px;
-  }
-
-  .talen-mobile {
-    display: none;
-  }
-
-  .talen ul {
-    width: 93px;
-    float: right;
-    margin-top: 10px;
-    margin-right: 40px;
-    padding: 0px;
-  }
-
-  .talen ul li {
-    display: block;
-    float: left;
-    height: 25px;
-    width: 25px;
-    font-family: 'Open Sans';
-    font-size: 12px;
-    border-radius: 50%;
-    background-color: #443B36;
-    margin: 3px;
-  }
-
-  .talen ul li a {
-    color: #ffffff;
-    padding: 5px;
-    padding-top: 4px;
-    display: inline-block;
-  }
-
-  .logo-slo {
-    display: block;
-    float: right;
-  }
-
-  .logo-slo img {
-    width: 300px;
-    margin-top: 50px;
-    margin-right: 50px;
-  }
-
-  .slogan {
-    display: block;
-    margin-top: 170px;
-    margin-right: 20px;
-    float: right;
-  }
-
-  .slogan h1 {
-    font-size: 28px;
-    font-weight: 100;
-  }
-
-  .fork {
-    display: block;
-    margin-top: 125px;
-    margin-right: 75px;
-    float: right;
-  }
-
-  .fork img {
-    width: 151px;
-  }
-
-  .waarden {
-    background-color: #AD9A89;
-    height: 400px;
-  }
-
-  .waarden h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    padding-top: 40px;
-  }
-
-  .waarden3 {
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 660px;
-    height: 220px;
-  }
-
-  .waarden1 {
-    width: 200px;
-    display: block;
-    float: left;
-    margin: 10px;
-  }
-
-  .waarden1 img {
-    width: 200px;
-  }
-
-  .forks {
-    width: 151px;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-
-  .arrow {
-    width: 132px;
-    margin: 0 auto;
-  }
-
-  .social {
-    height: 300px;
-    background-image: url('/images/ondergrond-social.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .social h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 40px;
-  }
-
-  #contact {
-    margin: 0 auto;
-    width: 860px;
-    height: 385px;
-    background-color: #E1DBD5;
-    color: #443B36;
-    font-family: 'Open Sans';
-  }
-
-  #contact h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 500;
-    padding-top: 40px;
-  }
-
-  #contact h3 {
-    font-size: 14px;
-  }
-
-  .winkel-kaart {
-    max-width: 860px;
-    height: 250px;
-    margin: 0 auto;
-  }
-
-  .winkel-home {
-    width: 250px;
-    display: block;
-    float: left;
-    margin-top: 30px;
-    font-size: 14px;
-  }
-
-  .winkel-uren {
-    width: 260px;
-    display: block;
-    float: left;
-    margin-top: 30px;
-    font-size: 14px;
-  }
-
-  .adres {
-    list-style: none;
-    padding: 0px;
-  }
-
-  .adres li {
-    color: #443B36;
-  }
-
-  .adres a {
-    color: #443B36;
-  }
-
-  .kaart {
-    width: 350px;
-    display: block;
-    float: left;
-    margin-top: 23px;
-    padding-left: 25px;
-  }
-
-
-  .dagen {
-    width: 160px;
-    display: block;
-    float: left;
-  }
-
-  .dagen ul, .uren ul {
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-  }
-
-  .uren {
-    width: 100px;
-    display: block;
-    float: left;
-  }
-
-  .faq {
-    max-width: 1280px;
-    margin: 0 auto;
-    margin-top: 35px;
-  }
-
-  .faq a {
-    color: #443B36;
-    border-bottom: 3px solid #443B36;
-    padding: 10px;
-    font-family: 'Open Sans';
-  }
-
-  .faq a:hover {
-    background-color: #443B36;
-    color: #ffffff;
-  }
-
-  /*OVER ONS*/
-  .onstopbanner {
-    height: 250px;
-    background-image: url('/images/overons.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .onstopbanner h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  .overons p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 50px 20px;
-  }
-
-  /*WAARDEN*/
-  #waardentopbanner {
-    height: 250px;
-    background-image: url('/images/waarden.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  #waardentopbanner h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  #waarden p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 50px 20px;
-  }
-
-  /*FAQ*/
-  #faqtopbanner {
-    height: 250px;
-    background-image: url('/images/waarden.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  #faqtopbanner h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  #faq p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 50px 20px;
-  }
-
-  /*GALLERY*/
-  .gallery {
-    margin: 0 auto;
-    max-width: 850px;
-    display: flex;
-    flex-wrap: wrap;
-    display: grid;
-    grid-gap: 5px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-auto-flow: dense;
-    margin-bottom: 20px;
-  }
-
-  .gallery > * {
-    flex: 1 1 250px;
-  }
-
-  .gallery img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    height: 100%;
-  }
-
-  .image {
-    margin: 0 auto;
-    width: 250px;
-  }
-
-  .image-groot {
-    margin: 0 auto;
-    max-width: 1000px;
-  }
-
-  .image-groot img {
-    width: 100%;
-  }
-
-  /*LOCATIES*/
-  .locatiestopbanner {
-    height: 250px;
-    background-image: url('/images/locaties.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .locaties h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  .locaties h5 {
-    margin: 0px;
-  }
-
-  .locaties .extra-menu {
-    max-width: 600px;
-    margin: 0 auto;
-    min-height: 56px;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  .winkel, .toeren, .natuurwinkels, .buurderijen, .webshop {
-    display: inline-block;
-    width: 170px;
-    border-bottom: 3px solid #AD9A89;
-    text-align: center;
-    margin: 10px;
-    color: #443B36;
-  }
-
-  .winkel:hover, .toeren:hover, .natuurwinkels:hover, .buurderijen:hover, .webshop:hover {
-    background-color: #AD9A89;
-    cursor: pointer;
-    color: #ffffff;
-  }
-
-  .winkel.active, .toeren.active, .natuurwinkels.active, .buurderijen.active, .webshop.active {
-    border-bottom: 3px solid #443B36;
-    cursor: pointer;
-  }
-
-  .winkel.active:hover, .toeren.active:hover, .natuurwinkels.active:hover, .buurderijen.active:hover, .webshop.active:hover {
-    background-color: #443B36;
-    cursor: pointer;
-  }
-
-  .winkel h5, .toeren h5, .natuurwinkels h5, .buurderijen h5, .webshop h5 {
-    padding: 10px;
-    margin-top: 0px !important;
-  }
-
-  .locaties p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 30px 20px;
-  }
-
-  #winkel, #toeren, #natuurwinkels, #buurderijen, #webshop {
-    display: none;
-  }
-
-  .maps {
-    margin-bottom: 50px;
-  }
-
-  .maps img {
-    width: 100%;
-  }
-
-  /*NIEUWS*/
-  .nieuwstopbanner {
-    height: 250px;
-    background-image: url('/images/nieuws.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .nieuws h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  .column {
-    float: left;
-    width: 25%;
-    padding: 0 10px;
-    margin-top: 50px;
-  }
-
-  .row {
-    margin: 0 10px;
-    max-width: 1208px;
-    margin: 0 auto;
-  }
-
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .card {
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
-    text-align: center;
-    border: 3px solid #443B36;
-    padding-bottom: 30px;
-  }
-
-  .card img {
-    width: 100%;
-  }
-
-  .card h3 {
-    font-size: 15px;
-  }
-
-  .card h3, .card p {
-    padding: 13px 16px;
-    color: #443B36;
-  }
-
-  .card .newsbutton {
-    border-bottom: 3px solid #443B36;
-    /*border: 1px solid #443B36;*/
-    color: #443B36;
-    font-size: 12px;
-    padding: 8px 15px 5px 15px;
-    width: 110px;
-    margin: 0 auto;
-  }
-
-  .card .newsbutton:hover {
-    background-color: #443B36;
-    color: #ffffff;
-  }
-
-  #nieuwsitem p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 20px 20px 50px 20px;
-  }
-
-  #nieuwsitem h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  #nieuwsitem h2 {
-    margin: 0 auto;
-    font-size: 18px;
-    margin-top: 50px;
-    color: #443B36;
-    max-width: 1040px;
-    padding: 0px 20px;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .menu-small {
-    color: #ffffff;
-    font-size: 35px;
-    cursor: pointer;
-    position: absolute;
-    top: 30px;
-    right: 50px;
-    display: block;
-  }
-
-  .closebtn {
-    color: #ffffff;
-  }
-
-  #veeakker-menu {
-    margin: 0 auto;
-    max-width: 100%;
-  }
-
-  #veeakker-menu ul {
-    padding: 0px;
-    text-align: center;
-  }
-
-  #veeakker-menu ul li {
-    list-style: none;
-    text-align: center;
-    float: none;
-    padding: 0;
-    color: #443B36;
-    font-size: 12px !important;
-    padding: 10px 10px;
-    border-bottom: 1px solid #443B36;
-  }
-
-  #veeakker-menu ul li a {
-    color: #443B36;
-  }
-
-  #veeakker-menu ul li a:hover {
-    color: #443B36;
-  }
-
-  .laatste-menu {
-    border-bottom: none !important;
-  }
-
-  #veeakker-menu ul li a {
-    color: #443B36;
-  }
-
-  .overlay {
-    height: 0%;
-    width: 100%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgba(241,241,241, 0.9);
-    overflow-y: hidden;
-    transition: 0.5s;
-  }
-
-  .overlay-content {
-    position: relative;
-    top: 5%;
-    width: 100%;
-    text-align: center;
-    margin-top: 0px;
-    font-size: 15px;
-    height: 100%;
-  }
-
-  .menu-button {
-    padding: 15px;
-    text-decoration: none;
-    font-size: 15px;
-    color: #443B36;
-    display: block;
-    transition: 0.3s;
-  }
-
-  .overlay .closebtn {
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 60px;
-    color: #443B36;
-  }
-
-  a.closebtn {
-    display: block;
-    color: #443B36;
-  }
-
-  .talen-mobile {
-    padding-top: 38px;
-    display: block;
-  }
-
-  .talen {
-    display: none;
-  }
-
-  .talen-mobile ul {
-    width: 120px;
-    height: 35px !important;
-    padding: 0px;
-    margin: 0 auto;
-  }
-
-  .talen-mobile ul li {
-    display: block !important;
-    float: left !important;
-    height: 30px !important;
-    width: 30px !important;
-    font-family: 'Open Sans' !important;
-    font-size: 12px !important;
-    border-radius: 50%;
-    background-color: #443B36;
-    margin: 5px;
-    color: #ffffff !important;
-    padding: 0px !important;
-  }
-
-  .talen-mobile ul li a {
-    color: #ffffff !important;
-    padding: 0px !important;
-    font-size: 12px !important;
-    display: inline-block;
-    padding: 5px !important;
-    padding-top: 7px !important;
-  }
-
-  .waarden {
-    background-color: #AD9A89;
-    height: 350px;
-  }
-
-  .waarden h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    padding-top: 40px;
-  }
-
-  .waarden3 {
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 510px;
-    height: 170px;
-  }
-
-  .waarden1 {
-    width: 150px;
-    display: block;
-    float: left;
-    margin: 10px;
-  }
-
-  .waarden1 img {
-    width: 150px;
-  }
-
-  #contact {
-    margin: 0 auto;
-    max-width: 350px;
-    height: 385px;
-    background-color: #E1DBD5;
-    color: #443B36;
-    font-family: 'Open Sans';
-  }
-
-  #contact h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 500;
-    padding-top: 40px;
-  }
-
-  #contact h3 {
-    font-size: 14px;
-  }
-
-  .winkel-kaart {
-    max-width: 350px;
-    height: 100%;
-    margin: 0 auto;
-  }
-
-  .winkel-home {
-    width: 290px;
-    float: none;
-    padding-top: 30px;
-    font-size: 15px;
-    margin: 0 auto;
-  }
-
-  .winkel-uren {
-    width: 290px;
-    float: none;
-    margin-top: 50px;
-    font-size: 15px;
-    margin: 0 auto;
-  }
-
-  .adres {
-    list-style: none;
-    padding: 0px;
-  }
-
-  .adres a {
-    color: #443B36;
-  }
-
-  .kaart {
-    width: 300px;
-    float: none;
-    margin-top: 23px;
-    margin: 0 auto;
-    padding-left: 0px !important;
-  }
-
-
-  .dagen {
-    width: 180px;
-    display: block;
-    float: left;
-  }
-
-  .dagen ul, .uren ul {
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-  }
-
-  .uren {
-    width: 100px;
-    display: block;
-    float: left;
-  }
-
-  .faq {
-    max-width: 44px;
-    margin: 0 auto;
-    margin-top: 35px;
-    margin-bottom: 35px;
-  }
-
-  .faq a {
-    color: #443B36;
-    border-bottom: 3px solid #443B36;
-    padding: 10px;
-    font-family: 'Open Sans';
-  }
-
-  .faq a:hover {
-    background-color: #443B36;
-    color: #ffffff;
-  }
-
-  /*GALLERY*/
-  .gallery {
-    margin: 0 auto;
-    max-width: 600px !important;
-    display: flex;
-    flex-wrap: wrap;
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-flow: dense;
-    margin-bottom: 20px;
-  }
-
-  .gallery > * {
-    flex: 1 1 300px;
-  }
-
-  .gallery img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    height: 100%;
-  }
-
-  .image {
-    margin: 0 auto;
-    width: 320px;
-    height: 200px;
-  }
-
-  .image-groot {
-    margin: 0 auto;
-    max-width: 1000px;
-  }
-
-  .image-groot img {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  /*MAIN*/
-  .header {
-    height: 110px;
-    background-image: url('/images/header-groot.jpg');
-    border-bottom: solid #cccccc 1px;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .top-menu {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-
-  .logo-veeakker {
-    margin-top: 25px;
-    margin-left: 25px;
-    display: block;
-    float: left;
-  }
-
-  .logo-veeakker img {
-    height: 50px;
-  }
-
-  /*HOME*/
-  .top-banner {
-    height: 400px;
-    background-image: url('/images/ondergrond.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .top-banner-items {
-    max-width: 1280px;
-    margin: 0 auto;
-    height: 400px;
-  }
-
-  .logo-slo {
-    margin: 0 auto;
-    width: 300px;
-  }
-
-  .logo-slo img {
-    width: 300px;
-    margin-top: 50px;
-    margin-right: 50px;
-  }
-
-  .slogan {
-    display: block;
-    margin-top: 170px;
-    margin-right: 20px;
-    float: right;
-  }
-
-  .slogan h1 {
-    font-size: 28px;
-    font-weight: 100;
-  }
-
-  .fork {
-    display: block;
-    margin-top: 125px;
-    margin-right: 75px;
-    float: right;
-  }
-
-  .fork img {
-    width: 151px;
-  }
-
-  .forks {
-    width: 151px;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-
-  .waarden {
-    background-color: #AD9A89;
-    height: 650px;
-  }
-
-  .waarden h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    padding-top: 40px;
-  }
-
-  .waarden3 {
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 150px;
-    height: 470px;
-    ;
-  }
-
-  .waarden1 {
-    width: 150px;
-    margin: 0px;
-  }
-
-  .waarden1 img {
-    width: 150px;
-  }
-
-  .arrow {
-    width: 132px;
-    margin: 0 auto;
-  }
-
-  .social {
-    height: 300px;
-    background-image: url('/images/ondergrond-social.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .social h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 40px;
-  }
-
-  /*OVER ONS*/
-  .onstopbanner {
-    height: 250px;
-    background-image: url('/images/overons.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .onstopbanner h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  .overons p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 50px 20px;
-  }
-
-  /*WAARDEN*/
-  #waardentopbanner {
-    height: 250px;
-    background-image: url('/images/waarden.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  #waardentopbanner h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  #waarden p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 50px 20px;
-  }
-
-  /*FAQ*/
-  #faqtopbanner {
-    height: 250px;
-    background-image: url('/images/waarden.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  #faqtopbanner h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  #faq p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 50px 20px;
-  }
-
-  /*LOCATIES*/
-  .locatiestopbanner {
-    height: 250px;
-    background-image: url('/images/locaties.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .locaties h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  .locaties h5 {
-    margin: 0px;
-  }
-
-  .locaties .extra-menu {
-    max-width: 1020px;
-    margin: 0 auto;
-    min-height: 56px;
-    overflow: hidden;
-  }
-
-  .winkel, .toeren, .natuurwinkels, .buurderijen, .webshop {
-    width: 100%;
-    border-bottom: 3px solid #AD9A89;
-    text-align: center;
-    margin: 10px 0px;
-    color: #443B36;
-  }
-
-  .winkel:hover, .toeren:hover, .natuurwinkels:hover, .buurderijen:hover, .webshop:hover {
-    background-color: #AD9A89;
-    cursor: pointer;
-    color: #ffffff;
-  }
-
-  .winkel.active, .toeren.active, .natuurwinkels.active, .buurderijen.active, .webshop.active {
-    border-bottom: 3px solid #443B36;
-    cursor: pointer;
-  }
-
-  .winkel.active:hover, .toeren.active:hover, .natuurwinkels.active:hover, .buurderijen.active:hover, .webshop.active:hover {
-    background-color: #443B36;
-    cursor: pointer;
-  }
-
-  .winkel h5, .toeren h5, .natuurwinkels h5, .buurderijen h5, .webshop h5 {
-    padding: 10px;
-    margin-top: 0px !important;
-  }
-
-  .locaties p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 30px 20px;
-  }
-
-  #winkel, #toeren, #natuurwinkels, #buurderijen, #webshop {
-    display: none;
-  }
-
-  .maps {
-    margin-bottom: 50px;
-  }
-
-  .maps img {
-    width: 100%;
-  }
-
-  /*NIEUWS*/
-  .nieuwstopbanner {
-    height: 250px;
-    background-image: url('/images/nieuws.jpg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-  }
-
-  .nieuws h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-
-  .row {
-    margin: 0 10px;
-    max-width: 1208px;
-    margin: 0 auto;
-    margin-top: 50px;
-  }
-
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .card {
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
-    text-align: center;
-    border: 3px solid #443B36;
-    padding-bottom: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .card img {
-    width: 100%;
-  }
-
-  .card h3 {
-    font-size: 15px;
-  }
-
-  .card h3, .card p {
-    padding: 13px 16px;
-    color: #443B36;
-  }
-
-  .card .newsbutton {
-    border-bottom: 3px solid #443B36;
-    /*border: 1px solid #443B36;*/
-    color: #443B36;
-    font-size: 12px;
-    padding: 8px 15px 5px 15px;
-    width: 110px;
-    margin: 0 auto;
-  }
-
-  .card .newsbutton:hover {
-    background-color: #443B36;
-    color: #ffffff;
-  }
-
-  #nieuwsitem p {
-    margin: 0 auto;
-    max-width: 1040px;
-    color: #443B36;
-    text-align: justify;
-    padding: 20px 20px 50px 20px;
-  }
-
-  #nieuwsitem h1 {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 100;
-    margin-top: 76px;
-  }
-
-  #nieuwsitem h2 {
-    margin: 0 auto;
-    font-size: 18px;
-    margin-top: 50px;
-    color: #443B36;
-    max-width: 1040px;
-    padding: 0px 20px;
-  }
-}
+
+
+// @media screen and (min-width: 600px) and (max-width: 1040px) {
+//   /*MAIN*/
+//   .header {
+//     height: 110px;
+//     background-image: url('/images/header-groot.jpg');
+//     border-bottom: solid #cccccc 1px;
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     width: 100%;
+//     overflow: hidden;
+//     margin: 0 auto;
+//     position: relative;
+//   }
+
+//   .top-menu {
+//     max-width: 1280px;
+//     margin: 0 auto;
+//   }
+
+//   .logo-veeakker {
+//     margin-top: 25px;
+//     margin-left: 25px;
+//     display: block;
+//     float: left;
+//   }
+
+//   .logo-veeakker img {
+//     height: 50px;
+//   }
+
+//   #veeakker-menu {
+//     max-width: 600px;
+//     margin: 0 auto;
+//     display: block;
+//     float: right;
+//     margin-top: 52px;
+//     margin-right: 25px;
+//   }
+
+//   a.closebtn {
+//     display: none;
+//   }
+
+//   .menu-small {
+//     display: none;
+//   }
+
+//   #veeakker-menu ul {
+//     height: 22px;
+//     padding: 0px;
+//     margin-top: 0px;
+//     text-align: right;
+//   }
+
+//   #veeakker-menu ul li {
+//     display: block;
+//     float: left;
+//     list-style: none;
+//     text-align: center;
+//     padding: 0;
+//     color: #ffffff;
+//     font-size: 15px;
+//     padding: 2px 10px;
+//   }
+
+//   #veeakker-menu ul li a {
+//     color: #ffffff;
+//     text-decoration: none;
+//   }
+
+//   .laatste-menu {
+//     border-bottom: none !important;
+//   }
+
+//   /*HOME*/
+//   .top-banner {
+//     height: 400px;
+//     background-image: url('/images/ondergrond.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   .top-banner-items {
+//     max-width: 1280px;
+//     margin: 0 auto;
+//     height: 400px;
+//   }
+
+//   .talen-mobile {
+//     display: none;
+//   }
+
+//   .talen ul {
+//     width: 93px;
+//     float: right;
+//     margin-top: 10px;
+//     margin-right: 40px;
+//     padding: 0px;
+//   }
+
+//   .talen ul li {
+//     display: block;
+//     float: left;
+//     height: 25px;
+//     width: 25px;
+//     font-family: 'Open Sans';
+//     font-size: 12px;
+//     border-radius: 50%;
+//     background-color: #443B36;
+//     margin: 3px;
+//   }
+
+//   .talen ul li a {
+//     color: #ffffff;
+//     padding: 5px;
+//     padding-top: 4px;
+//     display: inline-block;
+//   }
+
+//   .logo-slo {
+//     display: block;
+//     float: right;
+//   }
+
+//   .logo-slo img {
+//     width: 300px;
+//     margin-top: 50px;
+//     margin-right: 50px;
+//   }
+
+//   .slogan {
+//     display: block;
+//     margin-top: 170px;
+//     margin-right: 20px;
+//     float: right;
+//   }
+
+//   .slogan h1 {
+//     font-size: 28px;
+//     font-weight: 100;
+//   }
+
+//   .fork {
+//     display: block;
+//     margin-top: 125px;
+//     margin-right: 75px;
+//     float: right;
+//   }
+
+//   .fork img {
+//     width: 151px;
+//   }
+
+//   .waarden {
+//     background-color: #AD9A89;
+//     height: 400px;
+//   }
+
+//   .waarden h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     padding-top: 40px;
+//   }
+
+//   .waarden3 {
+//     margin: 0 auto;
+//     margin-top: 20px;
+//     width: 660px;
+//     height: 220px;
+//   }
+
+//   .waarden1 {
+//     width: 200px;
+//     display: block;
+//     float: left;
+//     margin: 10px;
+//   }
+
+//   .waarden1 img {
+//     width: 200px;
+//   }
+
+//   .forks {
+//     width: 151px;
+//     margin: 0 auto;
+//     margin-top: 20px;
+//   }
+
+//   .arrow {
+//     width: 132px;
+//     margin: 0 auto;
+//   }
+
+//   .social {
+//     height: 300px;
+//     background-image: url('/images/ondergrond-social.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   .social h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 40px;
+//   }
+
+//   #contact {
+//     margin: 0 auto;
+//     width: 860px;
+//     height: 385px;
+//     background-color: #E1DBD5;
+//     color: #443B36;
+//     font-family: 'Open Sans';
+//   }
+
+//   #contact h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 500;
+//     padding-top: 40px;
+//   }
+
+//   #contact h3 {
+//     font-size: 14px;
+//   }
+
+//   .winkel-kaart {
+//     max-width: 860px;
+//     height: 250px;
+//     margin: 0 auto;
+//   }
+
+//   .winkel-home {
+//     width: 250px;
+//     display: block;
+//     float: left;
+//     margin-top: 30px;
+//     font-size: 14px;
+//   }
+
+//   .winkel-uren {
+//     width: 260px;
+//     display: block;
+//     float: left;
+//     margin-top: 30px;
+//     font-size: 14px;
+//   }
+
+//   .adres {
+//     list-style: none;
+//     padding: 0px;
+//   }
+
+//   .adres li {
+//     color: #443B36;
+//   }
+
+//   .adres a {
+//     color: #443B36;
+//   }
+
+//   .kaart {
+//     width: 350px;
+//     display: block;
+//     float: left;
+//     margin-top: 23px;
+//     padding-left: 25px;
+//   }
+
+
+//   .dagen {
+//     width: 160px;
+//     display: block;
+//     float: left;
+//   }
+
+//   .dagen ul, .uren ul {
+//     list-style: none;
+//     padding: 0px;
+//     margin: 0px;
+//   }
+
+//   .uren {
+//     width: 100px;
+//     display: block;
+//     float: left;
+//   }
+
+//   .faq {
+//     max-width: 1280px;
+//     margin: 0 auto;
+//     margin-top: 35px;
+//   }
+
+//   .faq a {
+//     color: #443B36;
+//     border-bottom: 3px solid #443B36;
+//     padding: 10px;
+//     font-family: 'Open Sans';
+//   }
+
+//   .faq a:hover {
+//     background-color: #443B36;
+//     color: #ffffff;
+//   }
+
+//   /*OVER ONS*/
+//   .onstopbanner {
+//     height: 250px;
+//     background-image: url('/images/overons.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   .onstopbanner h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   .overons p {
+//     margin: 0 auto;
+//     max-width: 1040px;
+//     color: #443B36;
+//     text-align: justify;
+//     padding: 50px 20px;
+//   }
+
+//   /*WAARDEN*/
+//   #waardentopbanner {
+//     height: 250px;
+//     background-image: url('/images/waarden.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   #waardentopbanner h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   #waarden p {
+//     margin: 0 auto;
+//     max-width: 1040px;
+//     color: #443B36;
+//     text-align: justify;
+//     padding: 50px 20px;
+//   }
+
+//   /*FAQ*/
+//   #faqtopbanner {
+//     height: 250px;
+//     background-image: url('/images/waarden.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   #faqtopbanner h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   #faq p {
+//     margin: 0 auto;
+//     max-width: 1040px;
+//     color: #443B36;
+//     text-align: justify;
+//     padding: 50px 20px;
+//   }
+
+//   /*GALLERY*/
+//   .gallery {
+//     margin: 0 auto;
+//     max-width: 850px;
+//     display: flex;
+//     flex-wrap: wrap;
+//     display: grid;
+//     grid-gap: 5px;
+//     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+//     grid-auto-flow: dense;
+//     margin-bottom: 20px;
+//   }
+
+//   .gallery > * {
+//     flex: 1 1 250px;
+//   }
+
+//   .gallery img {
+//     width: 100%;
+//     display: block;
+//     object-fit: cover;
+//     height: 100%;
+//   }
+
+//   .image {
+//     margin: 0 auto;
+//     width: 250px;
+//   }
+
+//   .image-groot {
+//     margin: 0 auto;
+//     max-width: 1000px;
+//   }
+
+//   .image-groot img {
+//     width: 100%;
+//   }
+
+//   /*LOCATIES*/
+//   .locatiestopbanner {
+//     height: 250px;
+//     background-image: url('/images/locaties.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   .locaties h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   .locaties h5 {
+//     margin: 0px;
+//   }
+
+//   .locaties .extra-menu {
+//     max-width: 600px;
+//     margin: 0 auto;
+//     min-height: 56px;
+//     overflow: hidden;
+//     text-align: center;
+//   }
+
+//   .winkel, .toeren, .natuurwinkels, .buurderijen, .webshop {
+//     display: inline-block;
+//     width: 170px;
+//     border-bottom: 3px solid #AD9A89;
+//     text-align: center;
+//     margin: 10px;
+//     color: #443B36;
+//   }
+
+//   .winkel:hover, .toeren:hover, .natuurwinkels:hover, .buurderijen:hover, .webshop:hover {
+//     background-color: #AD9A89;
+//     cursor: pointer;
+//     color: #ffffff;
+//   }
+
+//   .winkel.active, .toeren.active, .natuurwinkels.active, .buurderijen.active, .webshop.active {
+//     border-bottom: 3px solid #443B36;
+//     cursor: pointer;
+//   }
+
+//   .winkel.active:hover, .toeren.active:hover, .natuurwinkels.active:hover, .buurderijen.active:hover, .webshop.active:hover {
+//     background-color: #443B36;
+//     cursor: pointer;
+//   }
+
+//   .winkel h5, .toeren h5, .natuurwinkels h5, .buurderijen h5, .webshop h5 {
+//     padding: 10px;
+//     margin-top: 0px !important;
+//   }
+
+//   .locaties p {
+//     margin: 0 auto;
+//     max-width: 1040px;
+//     color: #443B36;
+//     text-align: justify;
+//     padding: 30px 20px;
+//   }
+
+//   #winkel, #toeren, #natuurwinkels, #buurderijen, #webshop {
+//     display: none;
+//   }
+
+//   .maps {
+//     margin-bottom: 50px;
+//   }
+
+//   .maps img {
+//     width: 100%;
+//   }
+
+//   /*NIEUWS*/
+//   .nieuwstopbanner {
+//     height: 250px;
+//     background-image: url('/images/nieuws.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   .nieuws h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   .column {
+//     float: left;
+//     width: 25%;
+//     padding: 0 10px;
+//     margin-top: 50px;
+//   }
+
+//   .row {
+//     margin: 0 10px;
+//     max-width: 1208px;
+//     margin: 0 auto;
+//   }
+
+//   .row:after {
+//     content: "";
+//     display: table;
+//     clear: both;
+//   }
+
+//   .card {
+//     /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+//     text-align: center;
+//     border: 3px solid #443B36;
+//     padding-bottom: 30px;
+//   }
+
+//   .card img {
+//     width: 100%;
+//   }
+
+//   .card h3 {
+//     font-size: 15px;
+//   }
+
+//   .card h3, .card p {
+//     padding: 13px 16px;
+//     color: #443B36;
+//   }
+
+//   .card .newsbutton {
+//     border-bottom: 3px solid #443B36;
+//     /*border: 1px solid #443B36;*/
+//     color: #443B36;
+//     font-size: 12px;
+//     padding: 8px 15px 5px 15px;
+//     width: 110px;
+//     margin: 0 auto;
+//   }
+
+//   .card .newsbutton:hover {
+//     background-color: #443B36;
+//     color: #ffffff;
+//   }
+
+//   #nieuwsitem p {
+//     margin: 0 auto;
+//     max-width: 1040px;
+//     color: #443B36;
+//     text-align: justify;
+//     padding: 20px 20px 50px 20px;
+//   }
+
+//   #nieuwsitem h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   #nieuwsitem h2 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     margin-top: 50px;
+//     color: #443B36;
+//     max-width: 1040px;
+//     padding: 0px 20px;
+//   }
+// }
+
+// @media screen and (max-width: 850px) {
+//   .menu-small {
+//     color: #ffffff;
+//     font-size: 35px;
+//     cursor: pointer;
+//     position: absolute;
+//     top: 30px;
+//     right: 50px;
+//     display: block;
+//   }
+
+//   .closebtn {
+//     color: #ffffff;
+//   }
+
+//   #veeakker-menu {
+//     margin: 0 auto;
+//     max-width: 100%;
+//   }
+
+//   #veeakker-menu ul {
+//     padding: 0px;
+//     text-align: center;
+//   }
+
+//   #veeakker-menu ul li {
+//     list-style: none;
+//     text-align: center;
+//     float: none;
+//     padding: 0;
+//     color: #443B36;
+//     font-size: 12px !important;
+//     padding: 10px 10px;
+//     border-bottom: 1px solid #443B36;
+//   }
+
+//   #veeakker-menu ul li a {
+//     color: #443B36;
+//   }
+
+//   #veeakker-menu ul li a:hover {
+//     color: #443B36;
+//   }
+
+//   .laatste-menu {
+//     border-bottom: none !important;
+//   }
+
+//   #veeakker-menu ul li a {
+//     color: #443B36;
+//   }
+
+//   .overlay {
+//     height: 0%;
+//     width: 100%;
+//     position: fixed;
+//     z-index: 1;
+//     top: 0;
+//     left: 0;
+//     background-color: rgba(241,241,241, 0.9);
+//     overflow-y: hidden;
+//     transition: 0.5s;
+//   }
+
+//   .overlay-content {
+//     position: relative;
+//     top: 5%;
+//     width: 100%;
+//     text-align: center;
+//     margin-top: 0px;
+//     font-size: 15px;
+//     height: 100%;
+//   }
+
+//   .menu-button {
+//     padding: 15px;
+//     text-decoration: none;
+//     font-size: 15px;
+//     color: #443B36;
+//     display: block;
+//     transition: 0.3s;
+//   }
+
+//   .overlay .closebtn {
+//     position: absolute;
+//     top: 10px;
+//     right: 25px;
+//     font-size: 60px;
+//     color: #443B36;
+//   }
+
+//   a.closebtn {
+//     display: block;
+//     color: #443B36;
+//   }
+
+//   .talen-mobile {
+//     padding-top: 38px;
+//     display: block;
+//   }
+
+//   .talen {
+//     display: none;
+//   }
+
+//   .talen-mobile ul {
+//     width: 120px;
+//     height: 35px !important;
+//     padding: 0px;
+//     margin: 0 auto;
+//   }
+
+//   .talen-mobile ul li {
+//     display: block !important;
+//     float: left !important;
+//     height: 30px !important;
+//     width: 30px !important;
+//     font-family: 'Open Sans' !important;
+//     font-size: 12px !important;
+//     border-radius: 50%;
+//     background-color: #443B36;
+//     margin: 5px;
+//     color: #ffffff !important;
+//     padding: 0px !important;
+//   }
+
+//   .talen-mobile ul li a {
+//     color: #ffffff !important;
+//     padding: 0px !important;
+//     font-size: 12px !important;
+//     display: inline-block;
+//     padding: 5px !important;
+//     padding-top: 7px !important;
+//   }
+
+//   .waarden {
+//     background-color: #AD9A89;
+//     height: 350px;
+//   }
+
+//   .waarden h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     padding-top: 40px;
+//   }
+
+//   .waarden3 {
+//     margin: 0 auto;
+//     margin-top: 20px;
+//     width: 510px;
+//     height: 170px;
+//   }
+
+//   .waarden1 {
+//     width: 150px;
+//     display: block;
+//     float: left;
+//     margin: 10px;
+//   }
+
+//   .waarden1 img {
+//     width: 150px;
+//   }
+
+//   #contact {
+//     margin: 0 auto;
+//     max-width: 350px;
+//     height: 385px;
+//     background-color: #E1DBD5;
+//     color: #443B36;
+//     font-family: 'Open Sans';
+//   }
+
+//   #contact h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 500;
+//     padding-top: 40px;
+//   }
+
+//   #contact h3 {
+//     font-size: 14px;
+//   }
+
+//   .winkel-kaart {
+//     max-width: 350px;
+//     height: 100%;
+//     margin: 0 auto;
+//   }
+
+//   .winkel-home {
+//     width: 290px;
+//     float: none;
+//     padding-top: 30px;
+//     font-size: 15px;
+//     margin: 0 auto;
+//   }
+
+//   .winkel-uren {
+//     width: 290px;
+//     float: none;
+//     margin-top: 50px;
+//     font-size: 15px;
+//     margin: 0 auto;
+//   }
+
+//   .adres {
+//     list-style: none;
+//     padding: 0px;
+//   }
+
+//   .adres a {
+//     color: #443B36;
+//   }
+
+//   .kaart {
+//     width: 300px;
+//     float: none;
+//     margin-top: 23px;
+//     margin: 0 auto;
+//     padding-left: 0px !important;
+//   }
+
+
+//   .dagen {
+//     width: 180px;
+//     display: block;
+//     float: left;
+//   }
+
+//   .dagen ul, .uren ul {
+//     list-style: none;
+//     padding: 0px;
+//     margin: 0px;
+//   }
+
+//   .uren {
+//     width: 100px;
+//     display: block;
+//     float: left;
+//   }
+
+//   .faq {
+//     max-width: 44px;
+//     margin: 0 auto;
+//     margin-top: 35px;
+//     margin-bottom: 35px;
+//   }
+
+//   .faq a {
+//     color: #443B36;
+//     border-bottom: 3px solid #443B36;
+//     padding: 10px;
+//     font-family: 'Open Sans';
+//   }
+
+//   .faq a:hover {
+//     background-color: #443B36;
+//     color: #ffffff;
+//   }
+
+//   /*GALLERY*/
+//   .gallery {
+//     margin: 0 auto;
+//     max-width: 600px !important;
+//     display: flex;
+//     flex-wrap: wrap;
+//     display: grid;
+//     grid-gap: 20px;
+//     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+//     grid-auto-flow: dense;
+//     margin-bottom: 20px;
+//   }
+
+//   .gallery > * {
+//     flex: 1 1 300px;
+//   }
+
+//   .gallery img {
+//     width: 100%;
+//     display: block;
+//     object-fit: cover;
+//     height: 100%;
+//   }
+
+//   .image {
+//     margin: 0 auto;
+//     width: 320px;
+//     height: 200px;
+//   }
+
+//   .image-groot {
+//     margin: 0 auto;
+//     max-width: 1000px;
+//   }
+
+//   .image-groot img {
+//     width: 100%;
+//   }
+// }
+
+// @media screen and (max-width: 600px) {
+//   /*MAIN*/
+//   .header {
+//     height: 110px;
+//     background-image: url('/images/header-groot.jpg');
+//     border-bottom: solid #cccccc 1px;
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     width: 100%;
+//     overflow: hidden;
+//     margin: 0 auto;
+//     position: relative;
+//   }
+
+//   .top-menu {
+//     max-width: 1280px;
+//     margin: 0 auto;
+//   }
+
+//   .logo-veeakker {
+//     margin-top: 25px;
+//     margin-left: 25px;
+//     display: block;
+//     float: left;
+//   }
+
+//   .logo-veeakker img {
+//     height: 50px;
+//   }
+
+//   /*HOME*/
+//   .top-banner {
+//     height: 400px;
+//     background-image: url('/images/ondergrond.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   .top-banner-items {
+//     max-width: 1280px;
+//     margin: 0 auto;
+//     height: 400px;
+//   }
+
+//   .logo-slo {
+//     margin: 0 auto;
+//     width: 300px;
+//   }
+
+//   .logo-slo img {
+//     width: 300px;
+//     margin-top: 50px;
+//     margin-right: 50px;
+//   }
+
+//   .slogan {
+//     display: block;
+//     margin-top: 170px;
+//     margin-right: 20px;
+//     float: right;
+//   }
+
+//   .slogan h1 {
+//     font-size: 28px;
+//     font-weight: 100;
+//   }
+
+//   .fork {
+//     display: block;
+//     margin-top: 125px;
+//     margin-right: 75px;
+//     float: right;
+//   }
+
+//   .fork img {
+//     width: 151px;
+//   }
+
+//   .forks {
+//     width: 151px;
+//     margin: 0 auto;
+//     margin-top: 20px;
+//   }
+
+//   .waarden {
+//     background-color: #AD9A89;
+//     height: 650px;
+//   }
+
+//   .waarden h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     padding-top: 40px;
+//   }
+
+//   .waarden3 {
+//     margin: 0 auto;
+//     margin-top: 20px;
+//     width: 150px;
+//     height: 470px;
+//     ;
+//   }
+
+//   .waarden1 {
+//     width: 150px;
+//     margin: 0px;
+//   }
+
+//   .waarden1 img {
+//     width: 150px;
+//   }
+
+//   .arrow {
+//     width: 132px;
+//     margin: 0 auto;
+//   }
+
+//   .social {
+//     height: 300px;
+//     background-image: url('/images/ondergrond-social.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   .social h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 40px;
+//   }
+
+//   /*OVER ONS*/
+//   .onstopbanner {
+//     height: 250px;
+//     background-image: url('/images/overons.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   .onstopbanner h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   .overons p {
+//     margin: 0 auto;
+//     max-width: 1040px;
+//     color: #443B36;
+//     text-align: justify;
+//     padding: 50px 20px;
+//   }
+
+//   /*WAARDEN*/
+//   #waardentopbanner {
+//     height: 250px;
+//     background-image: url('/images/waarden.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   #waardentopbanner h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   #waarden p {
+//     margin: 0 auto;
+//     max-width: 1040px;
+//     color: #443B36;
+//     text-align: justify;
+//     padding: 50px 20px;
+//   }
+
+//   /*FAQ*/
+//   #faqtopbanner {
+//     height: 250px;
+//     background-image: url('/images/waarden.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   #faqtopbanner h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   #faq p {
+//     margin: 0 auto;
+//     max-width: 1040px;
+//     color: #443B36;
+//     text-align: justify;
+//     padding: 50px 20px;
+//   }
+
+//   /*LOCATIES*/
+//   .locatiestopbanner {
+//     height: 250px;
+//     background-image: url('/images/locaties.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   .locaties h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   .locaties h5 {
+//     margin: 0px;
+//   }
+
+//   .locaties .extra-menu {
+//     max-width: 1020px;
+//     margin: 0 auto;
+//     min-height: 56px;
+//     overflow: hidden;
+//   }
+
+//   .winkel, .toeren, .natuurwinkels, .buurderijen, .webshop {
+//     width: 100%;
+//     border-bottom: 3px solid #AD9A89;
+//     text-align: center;
+//     margin: 10px 0px;
+//     color: #443B36;
+//   }
+
+//   .winkel:hover, .toeren:hover, .natuurwinkels:hover, .buurderijen:hover, .webshop:hover {
+//     background-color: #AD9A89;
+//     cursor: pointer;
+//     color: #ffffff;
+//   }
+
+//   .winkel.active, .toeren.active, .natuurwinkels.active, .buurderijen.active, .webshop.active {
+//     border-bottom: 3px solid #443B36;
+//     cursor: pointer;
+//   }
+
+//   .winkel.active:hover, .toeren.active:hover, .natuurwinkels.active:hover, .buurderijen.active:hover, .webshop.active:hover {
+//     background-color: #443B36;
+//     cursor: pointer;
+//   }
+
+//   .winkel h5, .toeren h5, .natuurwinkels h5, .buurderijen h5, .webshop h5 {
+//     padding: 10px;
+//     margin-top: 0px !important;
+//   }
+
+//   .locaties p {
+//     margin: 0 auto;
+//     max-width: 1040px;
+//     color: #443B36;
+//     text-align: justify;
+//     padding: 30px 20px;
+//   }
+
+//   #winkel, #toeren, #natuurwinkels, #buurderijen, #webshop {
+//     display: none;
+//   }
+
+//   .maps {
+//     margin-bottom: 50px;
+//   }
+
+//   .maps img {
+//     width: 100%;
+//   }
+
+//   /*NIEUWS*/
+//   .nieuwstopbanner {
+//     height: 250px;
+//     background-image: url('/images/nieuws.jpg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     overflow: hidden;
+//   }
+
+//   .nieuws h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   .column {
+//     width: 100%;
+//     display: block;
+//     margin-bottom: 20px;
+//   }
+
+//   .row {
+//     margin: 0 10px;
+//     max-width: 1208px;
+//     margin: 0 auto;
+//     margin-top: 50px;
+//   }
+
+//   .row:after {
+//     content: "";
+//     display: table;
+//     clear: both;
+//   }
+
+//   .card {
+//     /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+//     text-align: center;
+//     border: 3px solid #443B36;
+//     padding-bottom: 30px;
+//     margin-left: 20px;
+//     margin-right: 20px;
+//   }
+
+//   .card img {
+//     width: 100%;
+//   }
+
+//   .card h3 {
+//     font-size: 15px;
+//   }
+
+//   .card h3, .card p {
+//     padding: 13px 16px;
+//     color: #443B36;
+//   }
+
+//   .card .newsbutton {
+//     border-bottom: 3px solid #443B36;
+//     /*border: 1px solid #443B36;*/
+//     color: #443B36;
+//     font-size: 12px;
+//     padding: 8px 15px 5px 15px;
+//     width: 110px;
+//     margin: 0 auto;
+//   }
+
+//   .card .newsbutton:hover {
+//     background-color: #443B36;
+//     color: #ffffff;
+//   }
+
+//   #nieuwsitem p {
+//     margin: 0 auto;
+//     max-width: 1040px;
+//     color: #443B36;
+//     text-align: justify;
+//     padding: 20px 20px 50px 20px;
+//   }
+
+//   #nieuwsitem h1 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     font-weight: 100;
+//     margin-top: 76px;
+//   }
+
+//   #nieuwsitem h2 {
+//     margin: 0 auto;
+//     font-size: 18px;
+//     margin-top: 50px;
+//     color: #443B36;
+//     max-width: 1040px;
+//     padding: 0px 20px;
+//   }
+// }

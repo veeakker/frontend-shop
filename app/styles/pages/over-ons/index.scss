@@ -1,0 +1,23 @@
+.onstopbanner {
+    height: 250px;
+    background-image: url('/images/ondergrond-social-extra.jpg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  .onstopbanner h1 {
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: 100;
+    margin-top: 76px;
+  }
+
+  .overons p {
+    margin: 0 auto;
+    max-width: 1040px;
+    color: #443B36;
+    text-align: justify;
+    padding: 50px 20px;
+  }
