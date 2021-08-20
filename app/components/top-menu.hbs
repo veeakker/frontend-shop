@@ -1,26 +1,31 @@
-<div class="top-menu__main-menu {{this.mobileIsOpenClass}}">
-  <div class="logo-veeakker">
-    <span property="name" content="Veeakker"></span>
-    <span property="url" content="https://veeakker.be/"></span>
-    <LinkTo @route="index">
-      <img src="/images/veeakker.png" alt="Veeakker brand name in written front" />
-    </LinkTo>
+<div class="top-menu">
+  <LinkTo class="logo-veeakker" @route="index">
+    <img src="/images/veeakker.png" alt="Veeakker brand name in written front" />
+  </LinkTo>
+
+  <div id="veeakker-menu">
+    <LinkTo @route="about">Over ons</LinkTo>
+    <LinkTo @route="products">Producten</LinkTo>
+    <LinkTo @route="news">Nieuws</LinkTo>
+    <LinkTo @route="webshop">Webshop</LinkTo>
+    <LinkTo @route="locations">Locaties</LinkTo>
+    <LinkTo @route="contact-us">Contact</LinkTo>
+      {{#if this.mobileIsOpenClass}}
+        <a id="mobile-menu" {{action this.closeNav}}>
+          <i class="fa fa-times"></i>
+        </a>
+      {{else}}
+        <a id="mobile-menu" {{action this.openNav}}>
+          <i class="fa fa-bars"></i>
+        </a>
+      {{/if}}
   </div>
-  <div id="veeakker-menu" class="overlay">
-    <a href="#" class="closebtn" {{action this.closeNav}}>&times;</a>
-    {{!-- <div class="talen-mobile">
-      <LanguageList />
-    </div> --}}
-    <div class="fix"></div>
-    <ul class="overlay-content menu-links">
-      <li><LinkTo @route="about">Over ons</LinkTo></li>
-      <li><LinkTo @route="products">Producten</LinkTo></li>
-      <li><LinkTo @route="news">Nieuws</LinkTo></li>
-      <li><LinkTo @route="webshop">Webshop</LinkTo></li>
-      <li><LinkTo @route="locations">Locaties</LinkTo></li>
-      <li><LinkTo @route="contact-us">Contact</LinkTo></li>
-    </ul>
-  </div>
-  <div class="fix"></div>
-  <div class="mobile-menu"><span class="menu-small" tabindex="0" {{action this.openNav}}>&#9776;</span></div>
+</div>
+<div class="mobile-menu-links {{this.mobileIsOpenClass}}">
+  <LinkTo @route="about">Over ons</LinkTo>
+    <LinkTo @route="products">Producten</LinkTo>
+    <LinkTo @route="news">Nieuws</LinkTo>
+    <LinkTo @route="webshop">Webshop</LinkTo>
+    <LinkTo @route="locations">Locaties</LinkTo>
+    <LinkTo @route="contact-us">Contact</LinkTo>
 </div>
