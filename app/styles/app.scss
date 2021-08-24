@@ -38,9 +38,9 @@ footer {
 @media only screen and (max-width: 600px) {
   footer {
     display: flex;
+    width: 100%;
     flex-direction: column;
     a {
-      width: 100%;
       text-align: center;
     }
   }
