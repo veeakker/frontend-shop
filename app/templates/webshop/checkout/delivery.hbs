@@ -25,11 +25,15 @@
     </Webshop::Checkout::Delivery::Checkbox>
 
     {{#if (eq this.deliveryMethod "tour")}}
-      <Webshop::Checkout::Delivery::LocationsMap @locationName="tour" />
+      <div class="delivery-map">
+        <Webshop::Checkout::Delivery::LocationsMap @locationName="tour" />
+      </div>
     {{/if}}
 
     {{#if (eq this.deliveryMethod "shop")}}
-      <Webshop::Checkout::Delivery::LocationsMap @locationName="shop" />
+      <div class="delivery-map">
+        <Webshop::Checkout::Delivery::LocationsMap @locationName="shop" />
+      </div>
     {{/if}}
 
     {{#if (eq this.deliveryMethod "postal")}}
