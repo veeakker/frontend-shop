@@ -32,7 +32,7 @@
           <h4>{{orderLine.amount}}</h4>
           <br>
           <br>
-          <button {{action this.removeOrderLine orderLine.offering orderLine.amount}}>
+          <button id="remove-button" {{action this.removeOrderLine orderLine.offering orderLine.amount}}>
             <i class="fas fa-trash"></i>
           </button>
           <h4 id="total-text">Totaal: {{euros orderLine.price}}</h4>
