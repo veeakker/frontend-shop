@@ -11,6 +11,8 @@ const wait = function( time ) {
 };
 
 export default class ProductCardComponent extends Component {
+  @service store;
+
   @tracked showDetail = false;
 
   packageCount = 1
@@ -49,5 +51,24 @@ export default class ProductCardComponent extends Component {
     await wait(500);
     this.set('selectedOffer', null);
     this.set('packageCount', 1);
+  }
+
+  get getUnits() {
+    var possibleUnits = [];
+    const offerings = this.args.product.offerings;
+
+    // TODO: Fixen
+    // if (offerings != null) {
+    //   this.args.product.offerings.forEach( async offer => {
+    //     const unit = this.store.findRecord('type-and-quantity', offer.id);
+
+    //     if (!possibleUnits.includes(unit)) {
+    //       possibleUnits.push(unit);
+    //     }
+    //   });
+    // }
+
+    return ['KGM', 'G']
+    
   }
 }

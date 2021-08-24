@@ -1,4 +1,4 @@
-<div class="card {{this.detailClass}}">
+<div class="product-card {{this.detailClass}}">
   <div
     class={{concat "picture-info" (if @product.isEnabled "" " product-disabled")}}
     {{action (mut this.showDetail) (not this.showDetail)}}
@@ -23,9 +23,17 @@
     <div class="amounts">
       <div class="configuration">
         <div class="per-pakje">
-          Per pakje: <ProductCard::Offers @product={{@product}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
+          Per pakje: 
+          <div class="per-pakje-input">
+            <ProductCard::Offers @product={{@product}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
+            {{#if @product.offerings}}
+              <div class="eenheid">
+                <ProductCard::OfferType @units={{this.getUnits}} @onChange={{action (mut this.selectedUnit)}} />
+              </div>
+            {{/if}}
+          </div>
         </div>
-
+        
         <div class="pakjes">
           Pakjes: <NumberButton @value={{this.packageCount}} />
         </div>
@@ -35,8 +43,8 @@
     </div>
 
     <div class="actions">
-      <div class="button-product" role="button" {{action this.add}} ><span>Bestel</span></div>
-      <div class="button-product"><LinkTo @route="webshop.product" @model={{@product}}>Meer...</LinkTo></div>
+      <button class="button-product" type="button" {{on "click" this.add}}>Bestel</button>
+      <LinkTo class="button-product" @route="webshop.product" @model={{@product}}>Meer...</LinkTo>
     </div>
   {{else}}
     <div class="product-not-available">

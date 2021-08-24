@@ -2,7 +2,301 @@
 // The /app/templates/products/ route will have its style in
 // /app/templates/products/index.scss (or any of its subfolders
 // grouped in index.scss).
-@import './index/index';
 @import './products/index';
 @import './locations/index';
 @import './webshop/index';
+@import './over-ons/index';
+@import './nieuws/index';
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #E1DBD5;
+  font-family: 'Varela Round', sans-serif;
+  color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+h1 {
+  text-align: center;
+}
+
+.fix {
+  clear: both;
+}
+
+.footer {
+  width: 100%;
+  height: 40px;
+  background-color: #443B36;
+  margin-top: 50px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.icons-social {
+  height: 80px;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 300px;
+  text-align: center;
+}
+
+.icon-social {
+  display: block;
+  float: left;
+  cursor: pointer;
+}
+
+.nieuws-datum {
+  padding-bottom: 0px !important;
+}
+
+.waarden1 {
+  width: 200px;
+  background-repeat: no-repeat;
+}
+/*HOME*/
+.top-banner {
+  height: 400px;
+  background-image: url('/images/ondergrond.jpg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.top-banner-items {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 400px;
+}
+
+.talen-mobile {
+  display: none;
+}
+
+.talen ul {
+  width: 93px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 40px;
+  padding: 0px;
+}
+
+.talen ul li {
+  display: block;
+  float: left;
+  height: 25px;
+  width: 25px;
+  //font-family: 'Open Sans';
+  font-size: 12px;
+  border-radius: 50%;
+  background-color: rgb(97, 82, 74);
+  margin: 3px;
+  padding-top: 2px;
+  padding-left: 0px;
+}
+
+.talen ul li a {
+  color: #cccccc;
+  padding: 5px;
+  padding-top: 4px;
+  display: inline-block;
+}
+
+.logo-slo {
+  display: block;
+  float: right;
+}
+
+.logo-slo img {
+  width: 300px;
+  margin-top: 50px;
+  margin-right: 50px;
+}
+
+.slogan {
+  display: block;
+  margin-top: 170px;
+  margin-right: 20px;
+  float: right;
+}
+
+.slogan h1 {
+  font-size: 28px;
+  font-weight: 100;
+}
+
+.fork {
+  display: block;
+  margin-top: 125px;
+  margin-right: 75px;
+  float: right;
+}
+
+.fork img {
+  width: 151px;
+}
+
+.waarden {
+  background-color: #AD9A89;
+  height: 400px;
+}
+
+.waarden h1 {
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: 100;
+  padding-top: 40px;
+}
+
+.waarden3 {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 660px;
+  height: 220px;
+}
+
+.waarden1 {
+  width: 200px;
+  display: block;
+  float: left;
+  margin: 10px;
+}
+
+.waarden1 img {
+  width: 200px;
+}
+
+.forks {
+  width: 151px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.arrow {
+  width: 132px;
+  margin: 0 auto;
+}
+
+.social {
+  height: 300px;
+  background-image: url('/images/ondergrond-social.jpg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.social h1 {
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: 100;
+  margin-top: 40px;
+}
+
+#contact {
+  margin: 0 auto;
+  width: 930px;
+  height: 385px;
+  background-color: #E1DBD5;
+  color: #443B36;
+  font-family: 'Open Sans';
+}
+
+#contact h1 {
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: 500;
+  padding-top: 40px;
+}
+
+#contact h3 {
+  font-size: 14px;
+}
+
+.winkel-kaart {
+  max-width: 930px;
+  height: 280px;
+  margin: 0 auto;
+}
+
+.winkel-home {
+  width: 290px;
+  display: block;
+  float: left;
+  margin-top: 20px;
+}
+
+.winkel-uren {
+  width: 290px;
+  display: block;
+  float: left;
+  margin-top: 20px;
+  /*margin-left: 20px;*/
+}
+
+.adres {
+  list-style: none;
+  padding: 0px;
+}
+
+.adres a {
+  color: #443B36;
+}
+
+.kaart {
+  width: 350px;
+  display: block;
+  float: left;
+  margin-top: 23px;
+  padding-left: 25px;
+}
+
+.dagen {
+  width: 180px;
+  display: block;
+  float: left;
+}
+
+.dagen ul, .uren ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.uren {
+  width: 110px;
+  display: block;
+  float: left;
+}
+
+.faq {
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 35px;
+}
+
+.faq a {
+  color: #ffffff;
+  border-bottom: 3px solid #443B36;
+  padding: 10px;
+  font-family: 'Open Sans';
+  color: #443B36;
+}
+
+.faq a:hover {
+  background-color: #443B36;
+  color: #ffffff;
+}

@@ -1,0 +1,28 @@
+.delivery-contact {
+  color: $base-primary;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+#frost-disclaimer {
+  align-content: center;
+  margin: 8px 0;
+  font-family: 'open-sans';
+
+  p {
+    display: inline;
+    margin-left: 5px;
+    font-size: 18px;
+    align-self: center;
+  }
+}
+
+#extra-info {
+  color: $base-primary;
+  text-decoration: none;
+  font-family: 'open-sans';
+  font-size: 18px;
+  font-weight: bold;
+}

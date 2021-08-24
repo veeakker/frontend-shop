@@ -1,0 +1,48 @@
+@import './contact-info.scss';
+@import './delivery.scss';
+
+/* BREADCRUMB CHECKOUT */
+.breadcrumb-txt {
+  color: $base-primary;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.breadcrumb-nxt {
+  color: $base-primary;
+  font-size: 20px;
+}
+
+ul.breadcrumb-cart {
+  padding: 15px 16px;
+  list-style: none;
+  margin-bottom: 0px;
+  height: 50px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Open Sans';
+  margin-top: 30px;
+
+  li {
+    display: inline;
+    font-size: 15px;
+  
+    a {
+      color: $base-primary;
+      text-decoration: none;
+      font-family: 'Open Sans';
+      font-size: 20px;
+    }
+  }
+}
+
+ul.breadcrumb-cart li + li:before {
+  padding: 8px;
+  color: $base-primary;
+  content: ">";
+}
+
+ul.breadcrumb-cart li a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}

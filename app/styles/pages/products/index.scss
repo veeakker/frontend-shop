@@ -1,7 +1,74 @@
-.producten {
-  .extra-menu {
-    a {
-      text-transform: uppercase;
+.productentopbanner {
+  height: 250px;
+  background-image: url('/images/ondergrond-social-extra.jpg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+  h1 {
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: 100;
+    margin-top: 76px;
+  }
+}
+
+.producten p {
+  margin: 0 auto;
+  max-width: 1040px;
+  color: #443B36;
+  text-align: justify;
+  padding: 50px 20px;
+}
+
+.producten .extra-menu {
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+  min-height: 155px;
+  max-width: 1040px;
+}
+
+.extra-menu {
+  a {
+    text-transform: uppercase;
+    display: inline-block;
+    width: 150px;
+    border-bottom: 3px solid #AD9A89;
+    text-align: center;
+    margin: 8px;
+    color: #443B36;
+
+    img {
+      width: 150px;
+      background-color: #AD9A89;
     }
+
+    h5 {
+      padding: 10px;
+      margin: 0px;
+    }
+  }
+
+  a:hover {
+    background-color: #AD9A89;
+    cursor: pointer;
+    color: #ffffff;
+  }
+
+  a.active {
+    border-bottom: 3px solid #443B36;
+    cursor: pointer;
+    
+    img {
+      background-color: #443B36;
+      cursor: pointer;
+    }
+  }
+
+  a.active:hover {
+    background-color: #443B36;
+    cursor: pointer;
   }
 }

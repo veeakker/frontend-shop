@@ -1,9 +1,18 @@
-// .number-input {
-//   & > div {
-//     display: inline-block;
-//     border: solid 1px $dark-base;
-//     background-color: $neutral-background;
-//     color: $dark-base;
-//     height: 1.5em;
-//   }
-// }
+.number-button {
+    margin-top: 1px;
+    background-color: $light-base ;
+    display: inline-block;
+    border: none;
+    color: $base-primary;
+    height: 25px;
+}
+
+#minus-button, #plus-button {
+    display: inline-block;
+    padding: 0.25rem;
+    border: none;
+}
+
+#number-value {
+    display: inline-block;
+}

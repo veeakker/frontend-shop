@@ -3,27 +3,18 @@
   <div class="checkout-contact">
     <div class="contact-info">
 
-      <h1 class="uppercase">inloggen</h1>
+      <h1 class="tab-title">inloggen</h1>
 
       <Design::Forks />
 
-      <br /><br />
+      <br>
 
-      <asp:TextBox ID="txtMail" runat="server" placeholder="E-mail"></asp:TextBox>
-      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtMail" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-      <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtMail" ErrorMessage="*" ForeColor="#FF0066" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" Text="*"></asp:RegularExpressionValidator>
-      <br />
-      <asp:TextBox ID="txtPassword" runat="server" placeholder="Wachtwoord"></asp:TextBox>
-      <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPassword" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-      <br />
-      <div class="button-product-cart"><a href="#" class="uppercase">inloggen</a></div><a class="forget" href="#">Wachtwoord vergeten?</a> <br /><br />
-      <h2>Maak een account aan</h2>
-      <asp:TextBox ID="txtMailextra" runat="server" placeholder="E-mail"></asp:TextBox>
-      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMailextra" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-      <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtMailextra" ErrorMessage="*" ForeColor="#FF0066" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" Text="*"></asp:RegularExpressionValidator>
-      <br />
+      <Input @value={{this.name}} placeholder="E-mail" /> <br />
+      <Input @value={{this.company}} placeholder="Wachtwoord" /> <br />
 
-      <div class="button-product-cart"><a href="#" class="uppercase">registreer</a></div>
+      <div class="button-product-cart"><a href="#">Inloggen</a></div>
+      <div class="button-product-cart"><a href="#">Registreer</a></div>
+      <div class="button-product-cart"><a href="#">Wachtwoord vergeten?</a></div>
     </div>
   </div>
 </div>

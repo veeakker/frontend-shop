@@ -1,38 +1,76 @@
-.top-menu__main-menu {
+/*MAIN*/
+.top-menu {
+  background-image: url('/images/header-groot.jpg');
+  border-bottom: solid #cccccc 1px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
 
-  // Opening and closing the menu
-  @media screen and (max-width: 850px) {
-    #veeakker-menu {
-      height: 0%;
-    }
+  overflow: hidden;
+}
 
-    &.mobile-open {
-      #veeakker-menu {
-        height: 100%;
-      }
+.mobile-menu-links {
+  display: none;
+}
+
+.logo-veeakker {
+  margin: 25px;
+  display: block;
+  float: left;
+  img {
+    height: 50px;
+  }
+}
+
+#veeakker-menu {
+  float: right;
+  margin: auto 2%;
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 1024px) {
+  #veeakker-menu {
+    #mobile-menu {
+      font-size: 20px;
+      display: inline;
+    } 
+
+    a {
+      display: none;
     }
   }
 
+  .mobile-open {
+    width: 100%;
+    display: inline-block;
+    background-color: $base-primary;
 
-  // Open and close links
-  //
-  // We only want to render these links when they can be pressed so
-  // screen readers don't get confused.  Could be handled in the
-  // handlebars code too, perhaps in an easier way.
+    display: flex;
+    flex-direction: column;
 
-  // hide this by default
-  .closebtn, .mobile-menu {
-    display: none;
+    a {
+      padding: 10px;
+      text-align: center;
+      color: white;
+      border-bottom: solid 1px $neutral-background;
+      margin: 0 5px;
+    }
   }
+}
 
-  @media screen and (max-width: 850px) {
-    // if we're not open
-    .closebtn { display: none; }
-    .mobile-menu { display: inherit; }
 
-    &.mobile-open {
-      .closebtn { display: inherit; }
-      .mobile-menu { display: none; }
+@media screen and (min-width: 1024px) {
+  #veeakker-menu {
+    #mobile-menu {
+      display: none;
+    } 
+  
+    a {
+      font-size: 20px;
+      color: white;
+  
+      margin-right: 40px;
     }
   }
 }

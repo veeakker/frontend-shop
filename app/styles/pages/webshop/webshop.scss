@@ -1,0 +1,75 @@
+.webshop-header {
+  width: 100%;
+  margin: 0;
+}
+
+.account-header {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+
+  padding: 10px;
+  
+  div {
+    float: right;
+  }
+
+  a {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+
+    padding: 15px;
+    margin-left: 17px;
+  }
+}
+
+.menu-header {
+  background-color: $base-primary;
+  
+  a:hover {
+    background-color: $base-primary-highlighted;
+  }
+}
+
+.submenu-header {
+  width: 100%;
+  background-color: $base-secondary;
+  
+  a:hover {
+    background-color: $base-secondary-highlighted;
+  }
+}
+
+// TODO: eventuele center voor non-mobile?
+
+.scrollable-header {
+  overflow: auto;
+  white-space: nowrap;
+  justify-content: center;
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+
+    padding: 15px;
+  }
+}
+
+.tab-title {
+  font-size: 25px;
+  color: #443B36;
+  margin-top: 30px;
+  text-transform: uppercase;
+}
+
+.products {
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

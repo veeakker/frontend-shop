@@ -6,12 +6,10 @@
   <li><span class="breadcrumb-nxt">Betalingsgegevens</span></li>
   <li><span class="breadcrumb-nxt">Bevestig Bestelling</span></li>
 </ul>
-<div class="fix"></div>
 <div class="checkout-contact">
   <div class="contact-info">
     <h2>Contact informatie</h2>
     <p>Heeft u al een account? <a href="login">Aanmelden</a></p>
-    <div class="fix"></div>
 
     <Input @value={{this.email}} placeholder="E-mail" />
 
@@ -26,7 +24,7 @@
     <Input @value={{this.city}} placeholder="Gemeente" /> <br />
     <Input @value={{this.phone}} placeholder="Gsm / Tel waarop bereikbaar bij levering / afhaling" /> <br />
 
-    <div class="button-product-cart"><LinkTo @route="webshop.checkout.delivery" class="uppercase">verder bestellen</LinkTo></div>
+    <div class="button-product-cart"><LinkTo @route="webshop.checkout.delivery">Verder bestellen</LinkTo></div>
   </div>
 </div>
 {{outlet}}
