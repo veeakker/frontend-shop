@@ -7,11 +7,11 @@
   width: 100%;
   display: inline-block;
   overflow: hidden;
-
-  padding: 10px;
   
   div {
     float: right;
+    padding: 10px;
+    min-width: 320px;
   }
 
   a {
@@ -21,7 +21,6 @@
     font-size: 18px;
 
     padding: 15px;
-    margin-left: 17px;
   }
 }
 
