@@ -81,8 +81,11 @@
   }
 }
 
-.fa-trash {
+#remove-button {
+  border: none;
+  background: none;
   margin-right: 30px;
+  font-size: 18px;
 }
 
 .fa-times {
