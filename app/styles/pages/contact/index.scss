@@ -1,0 +1,28 @@
+.contact-content {
+    width: 100%;
+    padding: 5% 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: $base-primary;
+
+    p a {
+        color: $base-secondary;
+    }
+}
+
+.faq {
+  padding: 10%;
+}
+
+.faq a {
+  border-bottom: 3px solid $base-primary;
+  padding: 10px;
+  font-family: 'Open Sans';
+  color: $base-primary;
+}
+
+.faq a:hover {
+  background-color: $base-primary;
+  color: #ffffff;
+}

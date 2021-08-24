@@ -1,46 +1,32 @@
 {{outlet}}
 <div class="contact">
-  <h1 class="uppercase">contacteer veeakker</h1>
-  <Design::Forks @useDarkImage={{true}} />
-  <div class="winkel-kaart">
-    <div class="winkel-home">
-      <ul class="adres">
-        <li><strong>Slagerij - Kantoor</strong></li>
-        <li>Slachthuislaan 3a, 3000 Leuven (B)</li>
-        <li><a href="mailto:hello@veeakker.be" property="email">hello@veeakker.be</a></li>
-        <li><a href="tel:+3216206238" property="telephone">016/20.62.38</a></li>
-        <li>Tijdens leveringen: <a href="tel:+32475983162">0475/98.31.62</a></li>
-      </ul>
+  <div class="onstopbanner">
+    <h1 class="uppercase">Contacteer Veeakker</h1>
+    <Design::Forks/>
+  </div>
 
+  <div class="contact-content">
+    <p class="adres">
+        <h3 class="uppercase">Adres</h3>
+        Slagerij - Kantoor<br>
+        Slachthuislaan 3a, 3000 Leuven (B)<br>
+        <a href="mailto:hello@veeakker.be" property="email">hello@veeakker.be</a><br>
+        <a href="tel:+3216206238" property="telephone">016/20.62.38</a><br>
+        Tijdens leveringen: <a href="tel:+32475983162">0475/98.31.62</a><br>
+    </p>
 
-      <div class="faq"><LinkTo @route="faq" class="uppercase">faq</LinkTo></div>
-    </div>
     <div class="kaart"><img src="/images/kaart.png" alt="Map" /></div>
-    <div class="winkel-uren">
 
+    <p class="uren">
       <h3 class="uppercase">openingsuren</h3>
-      <div class="dagen">
-        <ul>
-          <li><strong>Maandag t/m vrijdag:</strong></li>
+      Maandag t/m vrijdag: 09u00 - 18u30<br>
+      Zaterdag: 09u00 - 18u00<br>
+      Zondag: Gesloten<br>
+    </p>
+  </div>
 
-          <li><strong>Zaterdag:</strong></li>
-          <li><strong>Zondag:</strong></li>
-        </ul>
-      </div>
-      <div class="uren">
-        <ul>
-
-          <li>09u00 - 18u30</li>
-
-          <li>09u00 - 18u00</li>
-          <li>Gesloten</li>
-        </ul>
-      </div>
-      <div class="fix"></div>
-
-    </div>
-  </div><div class="fix"></div>
-
-</div><div class="fix"></div>
+  <div class="faq"><LinkTo @route="faq" class="uppercase">faq</LinkTo></div>
+  
+</div>
 
 {{outlet}}
