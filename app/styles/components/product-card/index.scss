@@ -1,12 +1,14 @@
-.card {
-  width: 250px;
-  height: 300px;
-  margin: 2em;
+@import './thumbnail.scss';
+
+.product-card {
+  width: 300px;
+  height: 350px;
+  margin: 1em;
 
   overflow: hidden;
-  position: relative;
 
-  /* background-color: $light-base; */
+  text-align: center;
+
   border: 3px solid $light-base;
 
   &, * {
@@ -28,11 +30,11 @@
   }
 
   .description {
-    color: $dark-base;
+    color: $base-primary;
     font-family: 'Open Sans';
 
     .product-title {
-      font-size: 1.3em;
+      font-size: 1.4em;
       font-weight: bold;
     }
 
@@ -75,13 +77,14 @@
         img {
           width: 22px;
           color: white;
-          border: solid 0.5px $dark-base;
+          border: solid 0.5px $base-primary;
           background-color: $light-base;
         }
       }
     }
   }
 
+  // Show details or not...
   &.detail {
     .picture-info {
       overflow: hidden;
@@ -110,16 +113,26 @@
   }
 }
 
-
-// This should be moved to a separate file to indicate product amounts
 .amounts {
-  margin-top: 3em;
-
+  min-width: 230px;
   .configuration {
     display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
 
-    .per-pakje, .pakjes {
-      flex: 1;
+    color:$base-primary;
+
+    .per-pakje-input {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .select-eenheid {
+      background-color: $light-base;
+      margin-left: 2px;
+      height: 25px;
+      border: none;
+      color: $base-primary;
     }
   }
 
@@ -132,16 +145,30 @@
       max-width: 60%;
       min-width: 30%;
       margin: 0 -10%;
+      img {
+        width: 100%;
+      }
     }
   }
 }
 
-.card {
-  .actions {
-    display: flex;
+.actions {
+  display: flex;
+  justify-content: space-evenly;
+}
 
-    .button-product {
-      flex: 1;
-    }
-  }
+.button-product {
+  max-width: 40%;
+  margin-top: 8px;
+
+  display: inline-block;
+  background-color: $base-primary;
+  color: white;
+  font-size: 15px;
+  font-family: 'Open Sans';
+  padding: 10px 20px;
+}
+
+.button-product:hover {
+  background-color: $base-secondary;
 }

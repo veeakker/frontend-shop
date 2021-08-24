@@ -1,14 +1,12 @@
-<div vocab="https://schema.org/" typeof="Store" resource="http://veeakker.be/">
-  <div class="header">
-    <TopMenu />
+<div id="page-container" vocab="https://schema.org/" typeof="Store" resource="http://veeakker.be/">
+  <TopMenu />
+  <div id="content-wrap">
+      {{outlet}}
   </div>
-
-  {{outlet}}
-
-  <div class="footer">
-    <div class="redpencil">
-      {{!-- template-lint-disable no-html-comments --}}
-      <!-- Want to work for a cool company that supports open source, open data, and sponsors sites like this one?  Send an email to meettheteam@redpencil.io -->
-    </div>
-  </div>
+  
+  <footer>
+    <LinkTo @route="webshop.collection-points">levering &amp; afhaling</LinkTo>
+    <LinkTo @route="webshop.conditions">algemene voorwaarden</LinkTo>
+    <LinkTo @route="contact-us">contact info</LinkTo>
+  </footer>
 </div>

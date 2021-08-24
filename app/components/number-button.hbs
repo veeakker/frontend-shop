@@ -1,11 +1,11 @@
-<div class="mt-1 bg-brown-lightest inline-block border-none text-brown-darkest">
-  <button class="minus inline-block p-1" {{action this.decreaseValue}} >-</button>
-  <div class="value inline-block">
+<div class="number-button">
+  <button id="minus-button" {{action this.decreaseValue}} >-</button>
+  <div id="number-value">
     {{#if this.key}}
       {{get @value this.key}}
     {{else}}
       {{@value}}
     {{/if}}
   </div>
-  <button class="plus inline-block p-1" {{action this.increaseValue}}>+</button>
+  <button id="plus-button" {{action this.increaseValue}}>+</button>
 </div>

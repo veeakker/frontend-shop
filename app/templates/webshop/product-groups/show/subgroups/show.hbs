@@ -1,29 +1,10 @@
-<div class="home-webshop">
-  <h1 class="text-purple uppercase">producten in the kijker</h1>
-  <Design::Forks @useDarkImage={{true}} />
-  <div class="row-product">
-    {{#each this.model.sortedEnabledProducts as |product|}}
-      <div class="column-product">
-        <ProductCard @product={{product}} />
-      </div>
-    {{else}}
-      <div class="column-product">
-        <ProductCard/>
-      </div>
-      <div class="column-product">
-        <ProductCard/>
-      </div>
-      <div class="column-product">
-        <ProductCard/>
-      </div>
-      <div class="column-product">
-        <ProductCard/>
-      </div>
-      <div class="column-product">
-        <ProductCard/>
-      </div>
-    {{/each}}
-  </div>
+<h1 class="tab-title">Producten in de kijker</h1>
+<Design::Forks @useDarkImage={{true}} />
+
+<div class="products">
+  {{#each this.model.sortedEnabledProducts as |product|}}
+    <ProductCard @product={{product}} />
+  {{/each}}
 </div>
 
 {{outlet}}
