@@ -1,0 +1,26 @@
+{{outlet}}
+<div class="login">
+  <div class="checkout-contact">
+    <div class="contact-info">
+
+      <h1 class="tab-title">Registreer</h1>
+
+      <Design::Forks />
+
+      <br>
+
+      <div class="error-message">
+        {{#if this.error }}
+          {{ this.error }}
+        {{/if}}
+      </div>
+
+      <Input placeholder="E-mail" @type="email" @value={{this.email}}/>
+      <Input placeholder="Wachtwoord" @type="password"  @value={{this.password}}/>
+
+      <div class="button-product-cart" {{ on 'click' this.register }}><a href="#">Registreer</a></div>
+      <div class="button-product-cart"><LinkTo @route="webshop.login">Inloggen</LinkTo></div>
+    </div>
+  </div>
+</div>
+{{outlet}}

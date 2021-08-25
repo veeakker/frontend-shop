@@ -4,7 +4,7 @@
     {{!-- <li class="flex"><a href="#"><img src="/images/zoekb.png" width="18" alt="search trigger icon" /></a> <input class="searchbox" type="text" placeholder="zoeken" name="search"> --}}
     {{!-- TODO: make static content dynamic --}}
     <div>
-      {{#if this.loggedIn}}
+      {{#if this.session.isAuthenticated}}
         <LinkTo @route="webshop.account"><img src="/images/loginb.png" width="13" alt="account icon" /></LinkTo>
         <LinkTo @route="webshop.orders">><img src="/images/bestellingenb.png" width="13" alt="orders icon" />bestellingen</LinkTo>
         <LinkTo @route="webshop.favorites">><img src="/images/favob.png" width="13" alt="favorites icon" /></LinkTo>

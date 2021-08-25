@@ -117,24 +117,18 @@
 }
 
 .button-product-cart {
-  margin: 0 auto;
-  width: 100%;
   text-align: right;
-  margin-top: 8px;
-  padding: 10px;
-  padding-right: 0px;
+  margin: 15px 0;
 
   a {
     background-color: $base-primary;
     color: white;
     font-size: 16px;
     font-family: 'Open Sans';
-    padding: 10px 49px;
+    padding: 10px 50px;
   }
-}
 
-.button-product-cart:hover {
-  a { 
+  a:hover { 
     background-color: $base-secondary;
   }
 }

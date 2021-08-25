@@ -8,7 +8,6 @@ export default class TopMenuComponent extends Component {
   @tracked mobileOpen = false;
 
   get mobileIsOpenClass() {
-    console.log(this.mobileOpen && "mobile-open")
     return this.mobileOpen && "mobile-open";
   }
 
