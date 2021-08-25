@@ -6,8 +6,8 @@ import { tracked } from '@glimmer/tracking';
 export default class WebshopController extends Controller {
   // @sort( "model", ["sortIndex"] ) productGroups;
 
-  @service basket
-
+  @service basket;
+  @service session;
   @tracked loggedIn = false;
 
   @computed( "model.@each.sortIndex" ) get sortedProductGroups() {

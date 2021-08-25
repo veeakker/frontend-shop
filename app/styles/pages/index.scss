@@ -30,6 +30,26 @@ h1 {
   text-transform: uppercase;
 }
 
+button, .button-style {
+  background-color: $base-primary;
+  color: white;
+  font-size: 16px;
+  font-family: 'Open Sans';
+  text-align: center;
+  margin-top: 8px;
+  padding: 10px;
+}
+
+button:hover, .button-style:hover {
+  background-color: $base-secondary;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin: 20px;
+}
+
 .icons-social {
   height: 80px;
   margin: 0 auto;

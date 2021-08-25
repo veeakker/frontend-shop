@@ -52,5 +52,6 @@ Router.map(function() {
       });
     });
     this.route('promoted');
+    this.route('register');
   });
 });
