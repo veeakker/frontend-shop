@@ -5,20 +5,19 @@
     {{!-- TODO: make static content dynamic --}}
     <div>
       {{#if this.session.isAuthenticated}}
-        <LinkTo @route="webshop.account"><img src="/images/loginb.png" width="13" alt="account icon" /></LinkTo>
-        <LinkTo @route="webshop.orders">><img src="/images/bestellingenb.png" width="13" alt="orders icon" />bestellingen</LinkTo>
-        <LinkTo @route="webshop.favorites">><img src="/images/favob.png" width="13" alt="favorites icon" /></LinkTo>
-        {{!-- TODO: implement --}}<a href="#">afmelden</a>
+        <LinkTo @route="webshop.account"><i class="fas fa-user-alt"></i></LinkTo>
+        <LinkTo @route="webshop.favorites"><i class="fas fa-heart"></i></LinkTo>
+        <button type="menu" {{on "click" this.logout}}><i class="fas fa-sign-out-alt"></i></button>
       {{else}}
         <LinkTo @route="webshop.login">Log in</LinkTo>
       {{/if}}
-      {{!-- TODO: create single page help --}} <LinkTo @route="webshop.help">Help</LinkTo>
+      {{!-- TODO: create single page help --}} <LinkTo @route="webshop.help"><i class="fas fa-question-circle"></i></LinkTo>
       
       <LinkTo @route="webshop.basket">
         {{#if this.basket.orderLines.length}}
           {{this.basket.orderLines.length}}
         {{/if}}
-        <img src="/images/winkelmandjeb.png" alt="shopping basket icon" width="15" />
+        <i class="fas fa-shopping-basket"></i>
         {{euros this.basket.totalPrice}}
       </LinkTo>
     </div>

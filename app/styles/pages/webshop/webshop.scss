@@ -14,13 +14,21 @@
     min-width: 320px;
   }
 
-  a {
+  a, button {
     text-decoration: none;
     text-align: center;
-    color: black;
-    font-size: 18px;
+    color:$base-primary;
+    font-size: 22px;
+    padding: 10px;
+    margin: 0 5px;
 
-    padding: 15px;
+    border: none;
+    background-color: transparent;
+  }
+
+  a:hover, button:hover {
+    color: $base-secondary;
+    cursor: pointer;
   }
 }
 
