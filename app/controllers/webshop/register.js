@@ -7,6 +7,8 @@ export default class WebshopRegisterController extends Controller {
   @service store;
   @service session;
 
+  @tracked firstName;
+  @tracked lastName;
   @tracked email;
   @tracked password;
   @tracked error = [];
@@ -20,17 +22,14 @@ export default class WebshopRegisterController extends Controller {
 
     const newAccount = this.store.createRecord('account', {
       email: this.email,
-      password: this.password
+      password: this.password,
+      firstName: this.firstName,
+      lastName: this.lastName,
     });
 
     try {
       const account = await newAccount.save();
-
-      if(account){
-        this.email = '';
-        this.password = '';
-        this.success  = true;
-      }
+      this.transitionToRoute('webshop.login');
     } catch(err){
       this.error = err.errors[0].detail;
     }

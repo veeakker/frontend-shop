@@ -14,7 +14,8 @@
           {{ this.error }}
         {{/if}}
       </div>
-
+      <Input placeholder="Voornaam" @type="text" @value={{this.firstName}}/>
+      <Input placeholder="Naam" @type="text"  @value={{this.lastName}}/>
       <Input placeholder="E-mail" @type="email" @value={{this.email}}/>
       <Input placeholder="Wachtwoord" @type="password"  @value={{this.password}}/>
 
