@@ -19,6 +19,7 @@ export default class WebshopController extends Controller {
   async logout() {
     try {
       await this.session.invalidate('authenticator:mu-semtech');
+      this.transitionToRoute('webshop');
     } catch(err){
       this.error = err.errors[0].detail;
     }

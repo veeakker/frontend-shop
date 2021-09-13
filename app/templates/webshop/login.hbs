@@ -15,8 +15,8 @@
         {{/if}}
       </div>
 
-      <Input @value={{this.email}} placeholder="E-mail" /> <br />
-      <Input @value={{this.password}} placeholder="Wachtwoord" /> <br />
+      <Input @type="email" @value={{this.email}} placeholder="E-mail" /> <br />
+      <Input @type="password" @value={{this.password}} placeholder="Wachtwoord" /> <br />
 
       <div class="button-product-cart" {{ on 'click' this.login }}><a href="#">Inloggen</a></div>
       <div class="button-product-cart"><LinkTo @route="webshop.register">Registreer</LinkTo></div>
