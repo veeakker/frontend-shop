@@ -19,21 +19,26 @@ export default class WebshopRegisterController extends Controller {
     event.preventDefault();
     this.error = [];
     this.success = false;
-    const newPerson = this.store.createRecord('person', {
-      firstName: this.firstName,
-      lastName: this.lastName      
-    });
+    // const newPerson = this.store.createRecord('person', {
+    //   firstName: this.firstName,
+    //   lastName: this.lastName      
+    // });
 
     try {
-      const savedPerson = await newPerson.save();
+      // const savedPerson = await newPerson.save();
 
       const newAccount = this.store.createRecord('account', {
         email: this.email,
-        password: this.password,
-        person: savedPerson
+        password: this.password
       });
       
       const account = await newAccount.save();
+      debugger;
+      let savedAccount = await this.store.findRecord('account', account.id, {include: "person", reload: true});
+      let person = await savedAccount.person;
+      person.firstName = this.firstName;
+      person.lastName = this.lastName;
+      person.save();
 
       this.transitionToRoute('webshop.login');
     } catch(err){
