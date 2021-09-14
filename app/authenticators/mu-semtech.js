@@ -2,9 +2,7 @@ import Base from 'ember-simple-auth/authenticators/base';
 import fetch, { Headers } from 'fetch';
 
 export default class MuSemtechAuthenticator extends Base {
-  async authenticate(options) {
-    debugger;
-    const result = await fetch('/sessions', {
+  async authenticate(options) {    const result = await fetch('/sessions', {
       method: 'POST',
       headers: new Headers({
         Accept: 'application/vnd.api+json',
@@ -30,8 +28,6 @@ export default class MuSemtechAuthenticator extends Base {
   }
 
   async restore(data) {
-    debugger;
-
     const result = await fetch('/sessions/current', {
       method: 'GET',
       headers: new Headers({
@@ -48,8 +44,6 @@ export default class MuSemtechAuthenticator extends Base {
   }
 
   async invalidate() {
-    debugger;
-
     const result = await fetch('/sessions/current', {
       method: 'DELETE',
       headers: new Headers({
