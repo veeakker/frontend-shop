@@ -1,11 +1,18 @@
 {{outlet}}
 
-
 <div class="products-shop">
   <h1 class="tab-title">Mijn account</h1>
 
   <Design::Forks @useDarkImage={{true}} />
-  <p>Naam: {{this.model.person.firstName}}{{this.model.person.lastName}}</p>
+  <p id="account-name">{{this.model.person.firstName}} {{this.model.person.lastName}}</p>
+
+  <div id="account-information">
+    <h1>Info</h1>
+    <p>{{this.model.person.postalAddress.streetAddress}}</p>
+    <p>{{this.model.person.postalAddress.postalCode}}</p>
+    <p>{{this.model.person.postalAddress.locality}}</p>
+    <p>{{this.model.person.postalAddress.country}}</p>
+  </div>
 </div>
 
 {{outlet}}
