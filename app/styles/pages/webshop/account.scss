@@ -1,0 +1,25 @@
+#account-name {
+  font-size: 35px;
+  color:$base-primary;
+  margin: 50px;
+  border-bottom: 3px solid $base-primary-highlighted;
+}
+
+#account-information {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+
+  margin: 50px;
+  padding: 20px;
+
+  h1 {
+    text-align: left;
+    color: $base-primary;
+  }
+
+  p {
+    text-align: left;
+    color: $base-secondary;
+  }
+}

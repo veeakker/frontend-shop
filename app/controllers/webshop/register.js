@@ -11,6 +11,12 @@ export default class WebshopRegisterController extends Controller {
   @tracked lastName;
   @tracked email;
   @tracked password;
+
+  @tracked country = "Belgium";
+  @tracked locality;
+  @tracked postalCode;
+  @tracked address;
+
   @tracked error = [];
   @tracked success;
 
@@ -18,26 +24,30 @@ export default class WebshopRegisterController extends Controller {
   async register(event) {
     event.preventDefault();
     this.error = [];
-    this.success = false;
-    // const newPerson = this.store.createRecord('person', {
-    //   firstName: this.firstName,
-    //   lastName: this.lastName      
-    // });
+
+    const newAccount = this.store.createRecord('account', {
+      email: this.email,
+      password: this.password
+    });
 
     try {
-      // const savedPerson = await newPerson.save();
-
-      const newAccount = this.store.createRecord('account', {
-        email: this.email,
-        password: this.password
-      });
-      
       const account = await newAccount.save();
-      debugger;
+
+      const address = this.store.createRecord('postal-address', {
+        country: this.country,
+        locality: this.locality,
+        postalCode: this.postalCode,
+        streetAddress: this.address
+      });
+  
+      const savedAddress = address.save();
+
       let savedAccount = await this.store.findRecord('account', account.id, {include: "person", reload: true});
+
       let person = await savedAccount.person;
       person.firstName = this.firstName;
       person.lastName = this.lastName;
+      person.postalAddress = savedAddress;
       person.save();
 
       this.transitionToRoute('webshop.login');
