@@ -9,6 +9,7 @@ export default class WebshopAccountRoute extends Route {
   }
 
   async model(params){
-    return await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, {include: "person"});
+    let acc = await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, {include: "person"});
+    return acc
   }
 }

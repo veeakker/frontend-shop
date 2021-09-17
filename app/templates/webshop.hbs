@@ -6,7 +6,7 @@
     <div>
       {{#if this.session.isAuthenticated}}
         <LinkTo @route="webshop.account"><i class="fas fa-user-alt"></i></LinkTo>
-        <LinkTo @route="webshop.favorites"><i class="fas fa-heart"></i></LinkTo>
+        <LinkTo @route="webshop.favourites"><i class="fas fa-heart"></i></LinkTo>
         <button type="menu" {{on "click" this.logout}}><i class="fas fa-sign-out-alt"></i></button>
       {{else}}
         <LinkTo @route="webshop.login">Log in</LinkTo>

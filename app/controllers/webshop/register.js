@@ -52,7 +52,7 @@ export default class WebshopRegisterController extends Controller {
 
       this.transitionToRoute('webshop.login');
     } catch(err){
-      this.error = err.errors[0].detail;
+      this.error = err.errors[0].title;
     }
   }
 }

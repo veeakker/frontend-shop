@@ -10,5 +10,6 @@ export default class WebshopProductRoute extends Route {
   setupController( controller ) {
     super.setupController( ...arguments );
     controller.resetOrder();
+    controller.checkFavourite();
   }
 }

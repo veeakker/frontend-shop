@@ -24,7 +24,7 @@ export default class WebshopLoginController extends Controller {
         this.transitionToRoute('webshop.account');
 
       } catch(err){
-        this.error = err.errors[0].detail;
+        this.error = err.errors[0].title;
       }
     }
 }
