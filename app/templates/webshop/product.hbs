@@ -37,8 +37,8 @@
 
         <button class="button-product" type="button" {{action this.add}}>Bestellen</button>
         {{#if this.session.isAuthenticated}}
-          {{#if this.isFavourite}}
-            <button class="fav-button" {{on "click" this.favourite}}><i class="fas fa-heart"></i></button>
+          {{#if this.favouriteRecord}}
+            <button class="fav-button" {{on "click" this.unFavourite}}><i class="fas fa-heart"></i></button>
           {{else}}
             <button class="fav-button" {{on "click" this.favourite}}><i class="far fa-heart"></i></button>
           {{/if}}

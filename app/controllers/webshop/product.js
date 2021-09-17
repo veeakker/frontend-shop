@@ -10,14 +10,12 @@ const wait = function( time ) {
 };
 
 export default class WebshopProductController extends Controller {
-  @tracked
-  packageCount = 1
+  @tracked packageCount = 1;
 
-  @tracked
-  selectedOffer = null
-  @tracked isFavourite;
+  @tracked selectedOffer = null;
+  @tracked favouriteRecord = null;
 
-  @service basket
+  @service basket;
   @service store;
   @service session;
 
@@ -57,18 +55,17 @@ export default class WebshopProductController extends Controller {
   async checkFavourite() {
     let currentUser = await (await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, {include: "person"})).person;
     let favourites = await this.store.findAll('favourite');
-    debugger
+    
     for (let i = 0; i < favourites.length; i++) {
       const favourite = await this.store.findRecord('favourite', favourites['content'][i].id, {include: 'person,product', reload: true});
 
       if (favourite.person.get('id') == currentUser.id && favourite.product.get('id') == this.model.id) {
-        debugger
-        this.isFavourite = true;
+        this.favouriteRecord = favourite;
         return
       }
     }
 
-    this.isFavourite = false;
+    this.favouriteRecord = null;
   }
 
   @action
@@ -84,11 +81,17 @@ export default class WebshopProductController extends Controller {
       const savedFav = await this.store.findRecord('favourite', fav.id, {reload: true});
       currentUser.favourites.pushObject(savedFav);
       await currentUser.save();
-      this.isFavourite = true;
+      this.favouriteRecord = fav;
     } catch(err){
-      console.log(err)
       this.transitionToRoute('webshop.login');
     }
+  }
+
+  @action
+  async unFavourite() {
+    let currentFav = this.store.peekRecord('favourite', this.favouriteRecord.id);
+    await currentFav.destroyRecord();
+    this.favouriteRecord = null;
   }
 
   get getUnits() {
