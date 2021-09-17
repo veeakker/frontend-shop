@@ -15,8 +15,12 @@ export default class WebshopProductController extends Controller {
 
   @tracked
   selectedOffer = null
+  @tracked isFavourite;
 
   @service basket
+  @service store;
+  @service session;
+
 
   get firstOffer(){
     return this.model.sortedOfferings && this.model.sortedOfferings.firstObject;
@@ -48,6 +52,43 @@ export default class WebshopProductController extends Controller {
     this.basket.addOffer( this.currentOffer, this.packageCount );
     await wait(500);
     this.resetOrder();
+  }
+
+  async checkFavourite() {
+    let currentUser = await (await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, {include: "person"})).person;
+    let favourites = await this.store.findAll('favourite');
+    debugger
+    for (let i = 0; i < favourites.length; i++) {
+      const favourite = await this.store.findRecord('favourite', favourites['content'][i].id, {include: 'person,product', reload: true});
+
+      if (favourite.person.get('id') == currentUser.id && favourite.product.get('id') == this.model.id) {
+        debugger
+        this.isFavourite = true;
+        return
+      }
+    }
+
+    this.isFavourite = false;
+  }
+
+  @action
+  async favourite() {
+    let currentUser = await (await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, {include: "person"})).person;
+
+    const favourite = this.store.createRecord('favourite', {
+      product: this.model,
+      person: currentUser    
+    });
+    try {
+      const fav = await favourite.save();
+      const savedFav = await this.store.findRecord('favourite', fav.id, {reload: true});
+      currentUser.favourites.pushObject(savedFav);
+      await currentUser.save();
+      this.isFavourite = true;
+    } catch(err){
+      console.log(err)
+      this.transitionToRoute('webshop.login');
+    }
   }
 
   get getUnits() {

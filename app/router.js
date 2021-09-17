@@ -34,7 +34,7 @@ Router.map(function() {
     });
     this.route('collection-points');
     this.route('conditions');
-    this.route('favorites');
+    this.route('favourites');
     this.route('help');
     this.route('login');
     this.route('orders');

@@ -1,5 +1,27 @@
 #product {
   padding: 5%;
+
+  .fav-button {
+    text-decoration: none;
+    text-align: center;
+    color:$base-primary;
+    font-size: 22px;
+    padding: 10px;
+    margin: 0 5px;
+
+    border: none;
+    background-color: transparent;
+  }
+
+  .fav-button:hover {
+    color: $base-secondary;
+    cursor: pointer;
+  }
+
+  i {
+    font-size: 25px;
+    margin: 30px;
+  }
 }
 
 .product-info {
@@ -32,7 +54,7 @@
   }
 
   .pakjes {
-    margin-left: 10px;
+    margin-left: 30px;
   }
   
   .configuration {

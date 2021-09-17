@@ -5,4 +5,5 @@ export default class PersonModel extends Model {
   @attr('string') lastName;
   @belongsTo('postal-address') postalAddress;
   @hasMany('account') accounts;
+  @hasMany('favourite') favourites;
 }
