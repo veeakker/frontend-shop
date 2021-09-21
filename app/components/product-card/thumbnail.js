@@ -1,13 +1,17 @@
-import { computed } from '@ember/object';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
 export default class extends Component {
-  tagName = ""
+  get product() {
+    return this.args.product;
+  }
 
-  @computed('product.thumbnail.id')
+  get thumbnail() {
+    return this.product?.thumbnail;
+  }
+
   get imageUrl() {
     const size = { width: 244, height: 200 };
-    const thumbnail = this.product && this.product.get("thumbnail");
+    const thumbnail = this.thumbnail;
     if( thumbnail && thumbnail.get('id') ) {
       if( thumbnail.content )
         return thumbnail.content.sizedImageUrl( size );
@@ -15,10 +19,9 @@ export default class extends Component {
     return null;
   }
 
-  @computed('product.thumbnail.id')
   get largeImageUrl() {
     const size = { width: 500, height: 410 };
-    const thumbnail = this.product && this.product.get("thumbnail");
+    const thumbnail = this.thumbnail;
     if( thumbnail && thumbnail.get('id') ) {
       if( thumbnail.content )
         return thumbnail.content.sizedImageUrl( size );
@@ -26,10 +29,9 @@ export default class extends Component {
     return null;
   }
 
-  @computed('product.thumbnail.id')
   get doubleLargeImageUrl() {
     const size = { width: 1000, height: 820 };
-    const thumbnail = this.product && this.product.get("thumbnail");
+    const thumbnail = this.thumbnail;
     if( thumbnail && thumbnail.get('id') ) {
       if( thumbnail.content )
         return thumbnail.content.sizedImageUrl( size );

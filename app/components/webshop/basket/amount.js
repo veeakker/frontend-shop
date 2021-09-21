@@ -1,15 +1,17 @@
-import { computed } from '@ember/object';
-import Component from '@ember/component';
-import { alias } from '@ember/object/computed';
+import Component from '@glimmer/component';
 
 export default class AmountComponent extends Component {
 
-  @alias('amount.value') value
-  @alias('amount.unit') unit
+  get value() {
+    return this.args.amount.value;
+  }
+
+  get unit() {
+    return this.args.unit.value;
+  }
 
   tagName = ""
 
-  @computed('unit', 'value')
   get unitString(){
     const unit = this.unit;
     if( unit == "C62" )
@@ -21,7 +23,6 @@ export default class AmountComponent extends Component {
     return "---";
   }
 
-  @computed('value', 'unitString')
   get outputString(){
     const value = this.value;
 

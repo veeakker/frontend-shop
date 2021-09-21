@@ -8,8 +8,8 @@ export default class WebshopAccountRoute extends Route {
     this.session.requireAuthentication(transition, 'login');
   }
 
-  async model(params){
+  async model(){
     let acc = await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, {include: "person"});
-    return acc
+    return acc;
   }
 }

@@ -2,7 +2,7 @@
 <Design::Forks @useDarkImage={{true}} />
 
 <div class="products">
-  {{#each this.model.sortedEnabledProducts as |product|}}
+  {{#each (filter-enabled (sort-by-index @model.products)) as |product|}}
     <ProductCard @product={{product}} />
   {{/each}}
 </div>
