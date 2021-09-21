@@ -1,8 +1,5 @@
-import { get } from '@ember/object';
-import { set } from '@ember/object';
-import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
-import Service from '@ember/service';
+import { get, set, computed } from '@ember/object';
+import Service, { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
 import fetch from 'fetch';
 

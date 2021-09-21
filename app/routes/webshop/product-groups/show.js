@@ -3,8 +3,8 @@ import { inject as service } from '@ember/service';
 
 export default class WebshopProductGroupsShowRoute extends Route {
   @service store;
-  
+
   model(params) {
-    return this.store.find('product-group', params.id);
+    return this.store.findRecord('product-group', params.id, { include: "child-groups" });
   }
 }
