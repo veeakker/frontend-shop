@@ -4,14 +4,14 @@
     class="product-image"
     src={{this.imageUrl}}
     srcset={{concat this.imageUrl " 244w, " this.largeImageUrl " 500w, " this.doubleLargeImageUrl " 1000w"}}
-    this alt="Detail picture of product" />
+    this alt="Detail" />
 {{/if}}
 {{#if (and this.imageUrl (not @large))}}
   <img
     src={{this.imageUrl}}
     class="product-image"
-    alt="Detail picture of product">
+    alt="Detail">
 {{/if}}
-{{#if (not this.imageUrl)}}
-  <img src="/images/meat-image.jpg" class="product-image" alt="Placeholder of shown product">
-{{/if}}
+{{#unless this.imageUrl}}
+  <img src="/images/meat-image.jpg" class="product-image" alt="Placeholder product">
+{{/unless}}

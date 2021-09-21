@@ -1,10 +1,8 @@
-import { computed } from '@ember/object';
 import Model, { attr } from '@ember-data/model';
 
 export default class FileModel extends Model {
   @attr() filename;
 
-  @computed('id')
   get downloadUrl(){
     if( this.id )
       return `/files/${this.id}/download`;

@@ -1,6 +1,8 @@
 /* eslint-env node */
 'use strict';
 
+// TODO: we removed "ember-cli-deploy-ssh-index": "^1.0.0",
+
 module.exports = function(deployTarget) {
   let ENV = {
     build: {}

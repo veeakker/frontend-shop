@@ -1,11 +1,10 @@
 import { tracked } from '@glimmer/tracking';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
 export default class TopMenuComponent extends Component {
-  classNames = ["top-menu"]
-
-  @tracked mobileOpen = false;
+  @tracked
+  mobileOpen = false;
 
   get mobileIsOpenClass() {
     return this.mobileOpen && "mobile-open";
@@ -13,12 +12,12 @@ export default class TopMenuComponent extends Component {
 
   @action
   openNav(){
-    this.set('mobileOpen', true);
+    this.mobileOpen = true;
   }
 
   @action
   closeNav(){
-    this.set('mobileOpen', false);
+    this.mobileOpen = false;
   }
 
 }

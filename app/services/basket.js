@@ -1,29 +1,34 @@
-import { get, set, computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import { set } from '@ember/object';
 import Service, { inject as service } from '@ember/service';
-import { alias } from '@ember/object/computed';
 import fetch from 'fetch';
+import { use, Resource } from 'ember-could-get-used-to-this';
 
-export default class BasketService extends Service {
+class BasketFetcher extends Resource {
+  @tracked value
   @service store
 
-  async init(){
-    super.init(...arguments);
-
+  async setup() {
     const result = await (await fetch(`/current-basket/ensure`)).json();
     this.store.pushPayload( result );
     const basket = this.store.peekRecord('basket', result.data.id);
     await basket.reload();
     await basket.orderLines;
-    this.set('basket', basket);
+    this.value = basket;
   }
 
-  basket = null;
+}
 
-  @alias( 'basket.orderLines' )
-  orderLines;
+export default class BasketService extends Service {
+  @service store
+  @use basket = new BasketFetcher(() => true)
+
+  get orderLines() {
+    return this.basket?.orderLines;
+  }
 
   async saveBasket(){
-    await this.basket.save();
+    await this.basket?.save();
   }
 
   /**
@@ -62,13 +67,13 @@ export default class BasketService extends Service {
     this.objectForOffering( offering ) && true;
   }
 
-  @computed( 'orderLines.@each.price', 'orderLines.@each.product' )
   get totalPrice() {
+    // TODO: this could be a resource
     // sum all prices
     if( this.orderLines ){
       return this
         .orderLines
-        .filter( (line) => get(line, 'product.isEnabled') )
+        .filter( (line) => line.product.isEnabled )
         .map( (ol) => ol.price )
         .reduce( (a,b) => a+b, 0 );
     }

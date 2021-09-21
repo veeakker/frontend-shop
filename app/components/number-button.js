@@ -1,6 +1,5 @@
 import { action } from '@ember/object';
-import { or } from '@ember/object/computed';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
 function nextItemInArray( array, item ) {
   const currentIndex = array.indexOf( item );
@@ -20,7 +19,9 @@ function previousItemInArray( array, item ) {
 export default class NumberButtonComponent extends Component {
   defaultOptions = [1,2,3,4,5,6,7,8,9]
 
-  @or( "options", "defaultOptions" ) optionsArray;
+  get optionsArray() {
+    return this.args.options?.length ? this.args.options : this.defaultOptions;
+  }
 
   classNames = ['number-input'];
 
@@ -29,21 +30,21 @@ export default class NumberButtonComponent extends Component {
   }
 
   executeChange( newValue ) {
-    if( this.onChange )
-      this.onChange( newValue );
+    if( this.args.onChange )
+      this.args.onChange( newValue );
     else
-      this.set( 'value', newValue );
+      console.warn("You must consume the value of a number button through onChange");
   }
 
   @action
   increaseValue(){
-    const next = nextItemInArray( this.optionsArray, this.value );
+    const next = nextItemInArray( this.optionsArray, this.args.value );
     this.executeChange( next );
   }
 
   @action
   decreaseValue(){
-    const previous = previousItemInArray( this.optionsArray, this.value );
+    const previous = previousItemInArray( this.optionsArray, this.args.value );
     this.executeChange( previous );
   }
 }
