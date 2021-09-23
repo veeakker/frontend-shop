@@ -45,7 +45,6 @@ export default class ProductCardComponent extends Component {
 
   @service basket
 
-  @tracked selected = null;
   @tracked possibleOffers = [];
 
   get firstOffer() {
@@ -85,7 +84,6 @@ export default class ProductCardComponent extends Component {
   }
 
   async updateOffers(unit) {
-    debugger
     var units = {
       "c62": "st",
       "KGM": "kg",
