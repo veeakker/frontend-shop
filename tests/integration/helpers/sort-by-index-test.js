@@ -3,14 +3,14 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Helper | elements', function(hooks) {
+module('Integration | Helper | sortByIndex', function(hooks) {
   setupRenderingTest(hooks);
 
-  // Replace this with your real tests.
+  // TODO: Replace this with your real tests.
   test('it renders', async function(assert) {
     this.set('inputValue', '1234');
 
-    await render(hbs`{{elements inputValue}}`);
+    await render(hbs`{{sort-by-index this.inputValue}}`);
 
     assert.dom(this.element).hasText('1234');
   });

@@ -1,13 +1,9 @@
-import { computed } from '@ember/object';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
 export default class EachCountComponent extends Component {
-  tagName = ""
-
-  @computed("count")
   get eachArray() {
     const arr = [];
-    for( let idx = 0; idx < ( this.count || 0 ); idx ++ )
+    for( let idx = 0; idx < ( this.args.count || 0 ); idx ++ )
       arr.push( idx );
     return arr;
   }
