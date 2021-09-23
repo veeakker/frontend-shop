@@ -51,19 +51,22 @@ export default class WebshopProductController extends Controller {
   }
 
   async checkFavourite() {
-    let currentUser = await (await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, {include: "person"})).person;
-    let favourites = await this.store.findAll('favourite');
+    try {
+      let currentUser = await (await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, { include: "person" })).person;
+      let favourites = await this.store.findAll('favourite');
 
-    for (let i = 0; i < favourites.length; i++) {
-      const favourite = await this.store.findRecord('favourite', favourites['content'][i].id, {include: 'person,product', reload: true});
+      for (let i = 0; i < favourites.length; i++) {
+        const favourite = await this.store.findRecord('favourite', favourites['content'][i].id, { include: 'person,product', reload: true });
 
-      if (favourite.person.get('id') == currentUser.id && favourite.product.get('id') == this.model.id) {
-        this.favouriteRecord = favourite;
-        return;
+        if (favourite.person.get('id') == currentUser.id && favourite.product.get('id') == this.model.id) {
+          this.favouriteRecord = favourite;
+          return;
+        }
       }
+      this.favouriteRecord = null;
+    } catch (e) {
+      this.favouriteRecord = null;
     }
-
-    this.favouriteRecord = null;
   }
 
   @action
