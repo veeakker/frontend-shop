@@ -25,10 +25,14 @@
         <div class="per-pakje">
           Per pakje:
           <div class="per-pakje-input">
-            <ProductCard::Offers @product={{@product}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
+            <ProductCard::Offers @offers={{this.possibleOffers}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
             {{#if @product.offerings}}
               <div class="eenheid">
-                <ProductCard::OfferType @units={{this.availableUnits}} @onChange={{action (mut this.selectedUnit)}} />
+                <select class="select-eenheid" name="units" onchange={{action "selectValue" value="target.value"}}>      
+                  {{#each this.availableUnits as |unit|}}        
+                    <option value={{unit}}>{{unit}}</option>      
+                  {{/each}}    
+                </select>
               </div>
             {{/if}}
           </div>

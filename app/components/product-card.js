@@ -28,7 +28,7 @@ class OfferTypeResource extends Resource {
       .map( (value) => { switch ( value ) {
         case "C62": return "st";
         case "KGM": return "kg";
-        case "GR": return "g";
+        case "GRM": return "g";
         default: return "st";
       } } );
   }
@@ -44,6 +44,9 @@ export default class ProductCardComponent extends Component {
   @tracked selectedOffer = null;
 
   @service basket
+
+  @tracked selected = null;
+  @tracked possibleOffers = [];
 
   get firstOffer() {
     return this.args.product?.sortedOfferings?.firstObject;
@@ -75,29 +78,35 @@ export default class ProductCardComponent extends Component {
     this.packageCount = 1;
   }
 
+  @action
+  selectValue(unit) {
+    this.selectedUnit = unit;
+    this.updateOffers(unit)
+  }
+
+  async updateOffers(unit) {
+    debugger
+    var units = {
+      "c62": "st",
+      "KGM": "kg",
+      "GRM": "g"
+    };
+    const offerings = await this.args.product.offerings
+    this.possibleOffers = [];
+    
+    
+    offerings.forEach(offer => {
+      if ( units[offer.typeAndQuantity.get('unit')] == unit) {
+        this.possibleOffers.push(offer);
+      }
+    });
+  }
+  
+
   @use
   units = new OfferTypeResource( () => [this.args.product] )
-
 
   get availableUnits() {
     return this.units;
   }
-
-  // get getUnits() {
-  //   // var possibleUnits = [];
-  //   // const offerings = this.args.product.offerings;
-
-  //   // TODO: Fixen
-  //   // if (offerings != null) {
-  //   //   this.args.product.offerings.forEach( async offer => {
-  //   //     const unit = this.store.findRecord('type-and-quantity', offer.id);
-
-  //   //     if (!possibleUnits.includes(unit)) {
-  //   //       possibleUnits.push(unit);
-  //   //     }
-  //   //   });
-  //   // }
-
-  //   return ['KGM', 'G'];
-  // }
 }
