@@ -27,7 +27,7 @@ export default class MuSemtechAuthenticator extends Base {
     }
   }
 
-  async restore(data) {
+  async restore(/*data*/) {
     const result = await fetch('/sessions/current', {
       method: 'GET',
       headers: new Headers({

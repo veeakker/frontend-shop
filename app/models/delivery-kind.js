@@ -1,5 +1,4 @@
 import Model, { attr, hasMany } from '@ember-data/model';
-import { computed } from '@ember/object';
 
 export default class DeliveryKindModel extends Model {
   @attr() label;
@@ -7,7 +6,6 @@ export default class DeliveryKindModel extends Model {
   @attr() description;
   @hasMany('delivery-place') deliveryPlaces;
 
-  @computed('uri')
   get simpleName(){
     const uri = this.uri;
     if( uri == "http://veeakker.be/delivery-kinds/winkel" )
@@ -24,7 +22,6 @@ export default class DeliveryKindModel extends Model {
       return "onbekend";
   }
 
-  @computed('uri')
   get normalizedLabel(){
     const uri = this.uri;
     if( uri == "http://veeakker.be/delivery-kinds/winkel" )

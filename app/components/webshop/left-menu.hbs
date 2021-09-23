@@ -1,7 +1,6 @@
 <div class="sub-menu ml-4">
-  <Webshop::LeftMenu::ParentGroups @topGroup={{@productGroup}} @productGroup={{@productGroup}} />
   <ul class="mt-5 pl-0">
-    {{#each this.sortedSubGroups as |group|}}
+    {{#each (sort-by-index @productGroup.childGroups) as |group|}}
       <li>
         <LinkTo @route="webshop.product-groups.show.subgroups.show" @models={{elements @productGroup group}} class="uppercase">{{group.label}}</LinkTo>
       </li>

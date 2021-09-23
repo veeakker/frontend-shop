@@ -24,16 +24,16 @@ export default class ProductCardComponent extends Component {
   @service basket
 
   get firstOffer() {
-    return this.args.product && this.args.product.sortedOfferings.firstObject;
+    return this.args.product?.sortedOfferings?.firstObject;
   }
 
   get currentOffer(){
     // It is not clear why we have to base ourselves on the id
     // property in this case, but that seems to make it work.
-    if( this.selectedOffer && this.selectedOffer.id ){
+    if( this.selectedOffer?.id ){
       return this.selectedOffer;
     }
-    if( this.firstOffer && this.firstOffer.id ){
+    if( this.firstOffer?.id ){
       return this.firstOffer;
     }
     return null;
@@ -47,15 +47,15 @@ export default class ProductCardComponent extends Component {
   async add() {
     this.basket.addOffer( this.currentOffer, this.packageCount );
     await wait(500);
-    this.set('showDetail', false);
+    this.showDetail = false;
     await wait(500);
-    this.set('selectedOffer', null);
-    this.set('packageCount', 1);
+    this.selectedOffer = null;
+    this.packageCount = 1;
   }
 
   get getUnits() {
-    var possibleUnits = [];
-    const offerings = this.args.product.offerings;
+    // var possibleUnits = [];
+    // const offerings = this.args.product.offerings;
 
     // TODO: Fixen
     // if (offerings != null) {
@@ -68,7 +68,6 @@ export default class ProductCardComponent extends Component {
     //   });
     // }
 
-    return ['KGM', 'G']
-    
+    return ['KGM', 'G'];
   }
 }

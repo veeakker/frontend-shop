@@ -16,7 +16,7 @@
         <div class="amounts">
           <div class="configuration">
             <div class="per-pakje">
-              Per pakje: 
+              Per pakje:
               <div class="per-pakje-input">
                 <ProductCard::Offers @product={{this.model}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
                 {{#if this.model.offerings}}
@@ -26,9 +26,9 @@
                 {{/if}}
               </div>
             </div>
-      
+
             <div class="pakjes">
-              Pakjes: <NumberButton @value={{this.packageCount}} />
+              Pakjes: <NumberButton @value={{this.packageCount}} @onChange={{action (mut this.packageCount)}} />
             </div>
           </div>
 
@@ -38,9 +38,9 @@
         <button class="button-product" type="button" {{action this.add}}>Bestellen</button>
         {{#if this.session.isAuthenticated}}
           {{#if this.favouriteRecord}}
-            <button class="fav-button" {{on "click" this.unFavourite}}><i class="fas fa-heart"></i></button>
+            <button class="fav-button" {{on "click" this.unFavourite}} type="button"><i class="fas fa-heart"></i></button>
           {{else}}
-            <button class="fav-button" {{on "click" this.favourite}}><i class="far fa-heart"></i></button>
+            <button class="fav-button" {{on "click" this.favourite}} type="button"><i class="far fa-heart"></i></button>
           {{/if}}
         {{/if}}
       {{else}}

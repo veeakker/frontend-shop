@@ -1,13 +1,10 @@
-import Component from '@ember/component';
-import { tracked } from '@glimmer/tracking';
+import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
 
-export default class ProductCardOfferTypeCompnonent extends Component {
-    @tracked currentUnit = null;
-    @tracked possibleUnits = this.units;
-
-    @action selectValue(unit) {
-        this.currentUnit = unit;
-    }
+export default class ProductCardOfferTypeComponent extends Component {
+  @action
+  selectValue(unit) {
+    this.args.onChange( unit );
+  }
 }

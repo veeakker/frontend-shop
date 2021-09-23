@@ -7,12 +7,12 @@
       {{#if this.session.isAuthenticated}}
         <LinkTo @route="webshop.account"><i class="fas fa-user-alt"></i></LinkTo>
         <LinkTo @route="webshop.favourites"><i class="fas fa-heart"></i></LinkTo>
-        <button type="menu" {{on "click" this.logout}}><i class="fas fa-sign-out-alt"></i></button>
+        <button {{on "click" this.logout}} type="button"><i class="fas fa-sign-out-alt"></i></button>
       {{else}}
         <LinkTo @route="webshop.login">Log in</LinkTo>
       {{/if}}
       {{!-- TODO: create single page help --}} <LinkTo @route="webshop.help"><i class="fas fa-question-circle"></i></LinkTo>
-      
+
       <LinkTo @route="webshop.basket">
         {{#if this.basket.orderLines.length}}
           {{this.basket.orderLines.length}}
@@ -24,8 +24,8 @@
   </div>
 
   <div class="scrollable-header menu-header">
-    {{#each this.sortedProductGroups as |productGroup|}}
-      <LinkTo @route="webshop.product-groups.show" @model={{productGroup}}>{{productGroup.label}}</LinkTo>
+    {{#each (sort-by-index this.model) as |productGroup|}}
+      <LinkTo @route="webshop.product-groups.show" @model={{productGroup.id}}>{{productGroup.label}}</LinkTo>
     {{/each}}
   </div>
 </div>
