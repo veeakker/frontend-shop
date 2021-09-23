@@ -28,7 +28,7 @@
             <ProductCard::Offers @product={{@product}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
             {{#if @product.offerings}}
               <div class="eenheid">
-                <ProductCard::OfferType @units={{this.getUnits}} @onChange={{action (mut this.selectedUnit)}} />
+                <ProductCard::OfferType @units={{this.availableUnits}} @onChange={{action (mut this.selectedUnit)}} />
               </div>
             {{/if}}
           </div>
