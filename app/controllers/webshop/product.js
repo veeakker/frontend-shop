@@ -2,6 +2,8 @@ import { tracked } from '@glimmer/tracking';
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
+import RSVP from 'rsvp';
+import { use, Resource } from 'ember-could-get-used-to-this';
 
 const wait = function( time ) {
   return new Promise((success) => {
@@ -9,11 +11,35 @@ const wait = function( time ) {
   });
 };
 
+class OfferTypeResource extends Resource {
+  @tracked value
+
+  async setup() {
+    const product = await this.args.positional[0];
+    const offerings = (await product.offerings).toArray();
+    await RSVP.all(offerings);
+    let typeAndQuantityValues =
+      (await RSVP.all(offerings.map((o) => o.typeAndQuantity)))
+        .toArray()
+        .map((typeAndQuantity) => typeAndQuantity.unit);
+
+    this.value =
+      [...new Set(typeAndQuantityValues)]
+      .map( (value) => { switch ( value ) {
+        case "C62": return "st";
+        case "KGM": return "kg";
+        case "GRM": return "g";
+        default: return "st";
+      } } );
+  }
+}
+
 export default class WebshopProductController extends Controller {
   @tracked packageCount = 1;
 
   @tracked selectedOffer = null;
   @tracked favouriteRecord = null;
+  @tracked possibleOffers = [];
 
   @service basket;
   @service store;
@@ -95,10 +121,34 @@ export default class WebshopProductController extends Controller {
     this.favouriteRecord = null;
   }
 
-  get getUnits() {
-    // TODO: Fixen
+  @action
+  selectValue(unit) {
+    this.selectedUnit = unit;
+    this.updateOffers(unit)
+  }
 
-    return ['KGM', 'G'];
+  async updateOffers(unit) {
+    var units = {
+      "c62": "st",
+      "KGM": "kg",
+      "GRM": "g"
+    };
+    const offerings = await this.model.offerings
+    this.possibleOffers = [];
+    
+    
+    offerings.forEach(offer => {
+      if ( units[offer.typeAndQuantity.get('unit')] == unit) {
+        this.possibleOffers.push(offer);
+      }
+    });
+  }
 
+
+  @use
+  units = new OfferTypeResource( () => [this.model] )
+
+  get availableUnits() {
+    return this.units;
   }
 }
