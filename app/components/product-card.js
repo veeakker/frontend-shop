@@ -1,8 +1,9 @@
+import RSVP from 'rsvp';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-// import { wait } from 'ember-animated';
+import { use, Resource } from 'ember-could-get-used-to-this';
 
 const wait = function( time ) {
   return new Promise((success) => {
@@ -10,14 +11,35 @@ const wait = function( time ) {
   });
 };
 
+class OfferTypeResource extends Resource {
+  @tracked value
+
+  async setup() {
+    const product = await this.args.positional[0];
+    const offerings = (await product.offerings).toArray();
+    await RSVP.all(offerings);
+    let typeAndQuantityValues =
+      (await RSVP.all(offerings.map((o) => o.typeAndQuantity)))
+        .toArray()
+        .map((typeAndQuantity) => typeAndQuantity.unit);
+
+    this.value =
+      [...new Set(typeAndQuantityValues)]
+      .map( (value) => { switch ( value ) {
+        case "C62": return "st";
+        case "KGM": return "kg";
+        case "GR": return "g";
+        default: return "st";
+      } } );
+  }
+}
+
 export default class ProductCardComponent extends Component {
   @service store;
 
   @tracked showDetail = false;
 
   packageCount = 1
-
-  tagName = ""
 
   @tracked selectedOffer = null;
 
@@ -53,21 +75,29 @@ export default class ProductCardComponent extends Component {
     this.packageCount = 1;
   }
 
-  get getUnits() {
-    // var possibleUnits = [];
-    // const offerings = this.args.product.offerings;
+  @use
+  units = new OfferTypeResource( () => [this.args.product] )
 
-    // TODO: Fixen
-    // if (offerings != null) {
-    //   this.args.product.offerings.forEach( async offer => {
-    //     const unit = this.store.findRecord('type-and-quantity', offer.id);
 
-    //     if (!possibleUnits.includes(unit)) {
-    //       possibleUnits.push(unit);
-    //     }
-    //   });
-    // }
-
-    return ['KGM', 'G'];
+  get availableUnits() {
+    return this.units;
   }
+
+  // get getUnits() {
+  //   // var possibleUnits = [];
+  //   // const offerings = this.args.product.offerings;
+
+  //   // TODO: Fixen
+  //   // if (offerings != null) {
+  //   //   this.args.product.offerings.forEach( async offer => {
+  //   //     const unit = this.store.findRecord('type-and-quantity', offer.id);
+
+  //   //     if (!possibleUnits.includes(unit)) {
+  //   //       possibleUnits.push(unit);
+  //   //     }
+  //   //   });
+  //   // }
+
+  //   return ['KGM', 'G'];
+  // }
 }
