@@ -1,0 +1,17 @@
+.textbook {
+  h1, h2, h3, p {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0;
+    color: #443B36;
+  }
+
+  h1, h2, h3 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
+  p {
+    margin-bottom: 1em;
+  }
+}
