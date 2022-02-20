@@ -1,6 +1,55 @@
-{{! template-lint-disable "no-triple-curlies" --}}
-{{{this.model.description}}}
-{{! template-lint-enable "no-triple-curlies" --}}
+<div class="textbook">
+  {{#if (eq this.model.uri "http://veeakker.be/delivery-kinds/winkel")}}
+    <p>Reeds meer dan 30 jaar heeft Veeakker een slagerij in Leuven. </p>
+    <p>Regelmatig bieden we regelmatig leuke promoties aan, zo is het iedere maandag 'gehaktdag', een actie waarbij je bij iedere aankoop van '500 gram, 250 gram gratis' krijgt.</p>
+  {{else if (eq this.model.uri "http://veeakker.be/delivery-kinds/toeren")}}
+    <p>De ‘Toeren’ zijn leveringsrondes waarbij voornamelijk aan particuliere klanten geleverd wordt.  Sinds het prille begin van Veeakker werde​n op deze manier producten rechtstreeks aan de klant verdeeld over gans Vlaanderen. Iedere toer wordt nog steeds om de 4 weken gereden. De data van deze rondes liggen voor het hele jaar vast. De meeste leveringsrondes vinden plaats op zaterdag. Alleen ‘Toer Hasselt’ wordt gereden op vrijdagen.</p>
+    <p>In 1986 deed Veeakker de eerste ‘Home delivery’ over gans Vlaanderen.</p>
+    <p>Momenteel zijn er zijn twee soorten toeren: Toeren aan huis en Toeren met vaste stopplaatsen. </p>
+    <p>Voorlopig bieden we enkel thuisleveringen aan in de regio Mechelen en Tielt Winge. </p>
+    <p>Al onze andere toeren zijn toeren met een vaste stopplaatsen. Voordeel is dat je als consument exact weet wanneer je de levering kan ophalen.</p>
+    <p>Op iedere locatie die we aandoen blijven we 15 minuten staan. Je parkeert je auto of fiets naast onze camionette,  kortom binnen de 5 minuten ben je weer klaar.</p>
+    <p>Je vindt alle locaties, uren en data over het jaar op onze web shop. Je kan er je uurwerk op gelijk stellen.</p>
 
-{{outlet}}
+    <h2>Hoe bestel je?</h2>
+    <p>Je stelt je bestelling samen in de webshop en geeft aan dat je de bestelling wil laten leveren via de Toeren. Je duidt aan op welke toer en welk afhaalpunt je pakketje geleverd mag worden. Je kan je bestelling plaatsten tot ten laatste zondagnacht voor de levering. De eerstkomende zaterdag kan je je pakketje komen ophalen op het afgesproken tijdstip, op de afgesproken plaats. Je betaalt bij afhaling van de bestelling. De betaling kan cash of met bankcontact.</p>
 
+    <p>Opgelet! De prijs van je bestelling die je te zien krijgt op de webshop is een indicatieve prijs, vermits het gewogen producten zijn kunnen we de prijs niet op voorhand laten zien. {{!-- TODO: Add this as comments are added to orders for routes.  Klanten die ingelogd zijn en hun bestelling via de Toeren afhalen (of geleverd krijgen), krijgen de mogelijkheid om extra wensen te formuleren bij de producten (bijvoorbeeld hoe je iets gesneden wil hebben). --}}</p>
+
+    <p>Voor de gewone Toeren is er geen leveringskost. Voor de toeren met levering aan huis is het gratis voor bestellingen van minimum €125. Onder dat bedrag wordt er €10 leveringskost aangerekend.</p>
+
+    <p>Volgende toeren worden om de 4 weken gereden en doen volgende steden en gemeentes aan.  De exacte stopplaatsen vind je terug op de kaart hierboven.</p>
+  {{else if (eq this.model.uri "http://veeakker.be/delivery-kinds/natuurwinkels")}}
+    <p>Bij deze winkels kan je ook producten van Veeakker laten leveren.  Je bent vrij om je producten af te halen wanneer je wil, en je kan er in vele gevallen nog andere heerlijke producten vinden.</p>
+  {{else if (eq this.model.uri "http://veeakker.be/delivery-kinds/buurderijen")}}
+    <p>We zijn aanwezig op een heel aantal buurderijen, doorgaans een keer per maand.  Plaats je bestelling op de winkel van de buurderij.</p>
+  {{else if (eq this.model.uri "http://veeakker.be/delivery-kinds/webshop")}}
+    <p>
+      Sinds de jaren ’80 organiseren we onze Toeren, die in praktijk een webshop avant-la-lettre waren. Maar tijden veranderen en ook wij willen onze, ooit heel vernieuwende, maar intussen verouderde webshop vernieuwen. Daarom hebben we <LinkTo @route="webshop">een nieuwe, gebruiksvriendelijke webshop</LinkTo> uitgewerkt.
+    </p>
+    <p>
+      Het systeem is heel eenvoudig, je kiest je producten, de manier van leveren, de betaalmethode en je rekent af.
+    </p>
+
+    <p>
+      Je pakje wordt dan afhankelijk van je keuze geleverd aan huis:
+      <ul>
+        <li>via DPD (€/levering – gratis voor bestellingen vanaf €150)</li>
+        <li>of om de 4 weken op een vastgelegde dag via de Toers aan huis (€10 / levering - gratis voor bestellingen van min. €125)</li>
+        <li>of gratis opgehaald op een afgesproken moment en punt via de Toeren of de natuurwinkels.</li>
+      </ul>
+      Afhankelijk van het type van levering betaal je op voorhand of bij levering / afhaling.
+    </p>
+
+    <p>
+      Krijg je je bestelling nu aan huis of in een natuurwinkel geleverd, dan kan je dat nog steeds. Bij het aanmaken van je account kies je de manier waarop je je bestellingen wenst te ontvangen.
+    </p>
+    <p>
+      Wil je graag shoppen zonder een account aan te maken, dan kies je bij de aflevering hoe je je bestelling graag geleverd krijgt.
+    </p>
+  {{else}}
+    {{! template-lint-disable "no-triple-curlies" --}}
+    {{{this.model.description}}}
+    {{! template-lint-enable "no-triple-curlies" --}}
+  {{/if}}
+</div>
