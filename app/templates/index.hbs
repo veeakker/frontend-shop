@@ -8,14 +8,14 @@
       <div class="logo-slo"><LinkTo @route="application"><img about="http://veeakker.be/" property="logo" src="/images/logo-veeakker-rechts.png" alt="Veeakker"/></LinkTo></div>
     </div>
   </div>
-  
+
   <div class="waarden">
     <h1>Veeakker is</h1>
     <Design::Forks/>
     <div class="waarden3">
-      <div class="waarden1"><a href="klant.aspx"><img src="images/klant.png" alt="Gericht op de bewuste klant" /></a></div>
-      <div class="waarden1"><a href="kwaliteit.aspx"><img src="images/kwaliteit.png" alt="Versheid en kwaliteit" /></a></div>
-      <div class="waarden1"><a href="milieu.aspx"><img src="images/milieu.png" alt="In harmonie met het milieu" /></a></div>
+      <div class="waarden1"><LinkTo @route="values.customer"><img src="images/klant.png" alt="Gericht op de bewuste klant" /></LinkTo></div>
+      <div class="waarden1"><LinkTo @route="values.quality"><img src="images/kwaliteit.png" alt="Versheid en kwaliteit" /></LinkTo></div>
+      <div class="waarden1"><LinkTo @route="values.ecology"><img src="images/milieu.png" alt="In harmonie met het milieu" /></LinkTo></div>
     </div>
   </div>
   <div class="social">
@@ -32,12 +32,12 @@
     <Design::Forks @useDarkImage={{true}} />
     <div class="contact-content">
       <p class="adres">
-          <h3 class="uppercase">Adres</h3>
-          Slagerij - Kantoor<br>
-          Slachthuislaan 3a, 3000 Leuven (B)<br>
-          <a href="mailto:hello@veeakker.be" property="email">hello@veeakker.be</a><br>
-          <a href="tel:+3216206238" property="telephone">016/20.62.38</a><br>
-          Tijdens leveringen: <a href="tel:+32475983162">0475/98.31.62</a><br>
+        <h3 class="uppercase">Adres</h3>
+        Slagerij - Kantoor<br>
+        Slachthuislaan 3a, 3000 Leuven (B)<br>
+        <a href="mailto:hello@veeakker.be" property="email">hello@veeakker.be</a><br>
+        <a href="tel:+3216206238" property="telephone">016/20.62.38</a><br>
+        Tijdens leveringen: <a href="tel:+32475983162">0475/98.31.62</a><br>
       </p>
 
       <div class="kaart"><img src="/images/kaart.png" alt="Map" /></div>
