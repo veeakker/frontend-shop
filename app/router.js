@@ -54,4 +54,10 @@ Router.map(function() {
     this.route('promoted');
     this.route('register');
   });
+
+  this.route('values', function() {
+    this.route('customer');
+    this.route('quality');
+    this.route('ecology');
+  });
 });
