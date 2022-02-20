@@ -14,12 +14,12 @@
   }
 }
 
+.gallery {
+  margin-top: 4rem;
+}
+
 .producten p {
-  margin: 0 auto;
-  max-width: 1040px;
-  color: #443B36;
   text-align: justify;
-  padding: 50px 20px;
 }
 
 .producten .extra-menu {
@@ -60,7 +60,7 @@
   a.active {
     border-bottom: 3px solid #443B36;
     cursor: pointer;
-    
+
     img {
       background-color: #443B36;
       cursor: pointer;

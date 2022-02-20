@@ -91,15 +91,15 @@ export default class ProductCardComponent extends Component {
     };
     const offerings = await this.args.product.offerings
     this.possibleOffers = [];
-    
-    
+
+
     offerings.forEach(offer => {
       if ( units[offer.typeAndQuantity.get('unit')] == unit) {
         this.possibleOffers.push(offer);
       }
     });
   }
-  
+
 
   @use
   units = new OfferTypeResource( () => [this.args.product] )
