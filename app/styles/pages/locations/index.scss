@@ -9,6 +9,8 @@
 
 .leaflet-map {
   height: 16rem;
+  width: 80%;
+  left: 10%;
 }
 
 /*LOCATIES*/
@@ -33,7 +35,6 @@
 }
 
 .locaties .extra-menu {
-  max-width: 1020px;
   margin: 0 auto;
   min-height: 56px;
   overflow: hidden;
@@ -83,7 +84,7 @@
 }
 
 .maps {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .maps img {
