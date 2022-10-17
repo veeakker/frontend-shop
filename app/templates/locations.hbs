@@ -6,6 +6,13 @@
     <h1 class="uppercase">waar zijn we te vinden?</h1>
     <Design::Forks/>
   </div>
+  <div class="extra-menu">
+    <LinkTo @route="locations.kind" @model="butchery">Winkel</LinkTo>
+    <LinkTo @route="locations.kind" @model="routes">Toeren</LinkTo>
+    <LinkTo @route="locations.kind" @model="health-shops">Natuurwinkels</LinkTo>
+    <LinkTo @route="locations.kind" @model="local-farms">Buurderijen</LinkTo>
+    <LinkTo @route="locations.kind" @model="home-delivery">Webshop</LinkTo> {{!-- TODO: moet dit "aan huis" worden? --}}
+  </div><div class="fix">{{outlet}}</div>
   <div class="maps">
     <DeliveryLocationsMap @places={{this.model}} as |marker place|>
       <h3>{{place.deliveryKind.simpleName}}</h3>
@@ -38,13 +45,7 @@
       {{/let}}
     </DeliveryLocationsMap>
   </div>
-  <div class="extra-menu">
-    <LinkTo @route="locations.kind" @model="butchery">Winkel</LinkTo>
-    <LinkTo @route="locations.kind" @model="routes">Toeren</LinkTo>
-    <LinkTo @route="locations.kind" @model="health-shops">Natuurwinkels</LinkTo>
-    <LinkTo @route="locations.kind" @model="local-farms">Buurderijen</LinkTo>
-    <LinkTo @route="locations.kind" @model="home-delivery">Webshop</LinkTo> {{!-- TODO: moet dit "aan huis" worden? --}}
-  </div><div class="fix"></div>
+  
 
-  {{outlet}}
+  
 </div>
