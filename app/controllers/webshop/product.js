@@ -11,7 +11,7 @@ const wait = function (time) {
   });
 };
 
-class OfferAmountsResource extends Resource {
+class OfferingsForUnitResource extends Resource {
   @tracked value
 
   @tracked product
@@ -22,11 +22,9 @@ class OfferAmountsResource extends Resource {
     this.unit = await this.args.positional[1];
 
     const offerings = (await this.product.offerings).toArray();
-    await RSVP.all(offerings);
 
-    const typeAndQuantityNodes =
-      (await RSVP.all(offerings.map((o) => o.typeAndQuantity)))
-        .toArray();
+    await RSVP.all(offerings);
+    await RSVP.all(offerings.map((o) => o.typeAndQuantity));
 
     let unitCode;
     switch (this.unit) {
@@ -45,9 +43,9 @@ class OfferAmountsResource extends Resource {
 
     this.value =
       this.unit
-        ? typeAndQuantityNodes
-          .filter((typeAndQuantity) => typeAndQuantity.unit == unitCode)
-          .sort((a, b) => a.value > b.value ? 1 : -1)
+        ? offerings
+          .filter((offering) => offering.get("typeAndQuantity.unit") == unitCode)
+          .sort((a, b) => a.get("typeAndQuantity.value") > b.get("typeAndQuantity.value") ? 1 : -1)
         : [];
   }
 }
@@ -89,9 +87,8 @@ export default class WebshopProductController extends Controller {
   @service store;
   @service session;
 
-
   get firstOffer() {
-    return this.model.sortedOfferings && this.model.sortedOfferings.firstObject;
+    return this.possibleOffers && this.possibleOffers[0];
   }
 
   get currentOffer() {
@@ -168,28 +165,15 @@ export default class WebshopProductController extends Controller {
   @action
   selectUnit(unit) {
     this.selectedUnit = unit;
-    this.updateOffers(unit);
+    this.selectedOffer = null;
   }
 
-  async updateOffers(unit) {
-    // var units = {
-    //   "c62": "st",
-    //   "KGM": "kg",
-    //   "GRM": "g"
-    // };
-    // const offerings = await this.model.offerings;
-    // this.possibleOffers = [];
-
-
-    // offerings.forEach(offer => {
-    //   if ( units[offer.typeAndQuantity.get('unit')] == unit) {
-    //     this.possibleOffers.push(offer);
-    //   }
-    // });
+  get currentUnit() {
+    return this.selectedUnit || (this.availableUnits && this.availableUnits[0]);
   }
 
   @use
-  possibleOffers = new OfferAmountsResource(() => [this.model, this.selectedUnit])
+  possibleOffers = new OfferingsForUnitResource(() => [this.model, this.currentUnit])
 
   @use
   units = new OfferTypeResource(() => [this.model])
