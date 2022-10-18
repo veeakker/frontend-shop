@@ -6,7 +6,6 @@
     float: left;
     width: 184px;
     border-bottom: 3px solid #AD9A89;
-    margin: 10px;
     margin-top: 0px;
     padding: 10px 10px 7px 10px;
     color: #443B36;
@@ -28,12 +27,18 @@
   }
 }
 
+
 .locaties .extra-menu {
-  max-width: 1020px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   margin: 0 auto;
   min-height: 56px;
   overflow: hidden;
   text-align: center;
+
+}
+.extra-menu{
+  width:fit-content;
 }
 
 @media screen and (min-width: 600px) and (max-width: 1040px) {
@@ -56,5 +61,8 @@
       margin: 0;
       margin-top: 10px;
     }
+  }
+  .extra-menu{
+    width:100%;
   }
 }
