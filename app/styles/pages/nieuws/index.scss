@@ -15,24 +15,27 @@
     margin-top: 76px;
   }
 
-  .column {
-    float: left;
-    width: 25%;
-    padding: 0 10px;
+  .column {    
+    width: 100%;
+    padding:  10px;
     margin-top: 50px;
   }
 
   .row {
-    margin: 0 10px;
-    max-width: 1208px;
-    margin: 0 auto;
+    margin: 10px 10px;
+    max-width: 1208px;    
+    display: grid;
+    grid-template-columns: auto auto auto;
+
   }
 
-  .row:after {
+  /*.row:after {
     content: "";
     display: table;
     clear: both;
-  }
+    no clue of dees nog blangrijk is
+  }*/
+  
 
   .card {
     /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
