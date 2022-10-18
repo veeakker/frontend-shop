@@ -12,12 +12,6 @@
       {{/each}}
       <br />
 
-      {{#each this.possibleOffers as |offer|}}
-        {{offer.value}}
-      {{else}}
-        No offers
-      {{/each}}
-
       {{#if this.model.isEnabled}}
         <div class="amounts">
           <div class="configuration">
@@ -25,15 +19,13 @@
               Per pakje:
               <div class="per-pakje-input">
                 <ProductCard::Offers @offers={{this.possibleOffers}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
-                {{#if this.model.offerings}}
-                  <div class="eenheid">
-                    <select class="select-eenheid" name="units" onchange={{action "selectUnit" value="target.value"}}>
-                      {{#each this.availableUnits as |unit|}}
-                        <option value={{unit}}>{{unit}}</option>
-                      {{/each}}
-                    </select>
-                  </div>
-                {{/if}}
+                <div class="eenheid">
+                  <select class="select-eenheid" name="units" onchange={{action "selectUnit" value="target.value"}}>
+                    {{#each this.availableUnits as |unit|}}
+                      <option value={{unit}}>{{unit}}</option>
+                    {{/each}}
+                  </select>
+                </div>
               </div>
             </div>
 
