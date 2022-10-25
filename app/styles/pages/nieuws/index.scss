@@ -15,27 +15,41 @@
     margin-top: 76px;
   }
 
-  .column {    
-    width: 100%;
-    padding:  10px;
+  .row{
+    display: grid;
+  grid-template-columns: auto auto auto;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1208px;
+  }
+  @media only screen and (max-width: 500px) {
+    .row{
+      grid-template-columns: auto  auto;
+    }  
+  }
+  @media only screen and (max-width: 300px) {
+    .row{
+      grid-template-columns: auto;
+    }  
+  }
+
+  .column {
+    
+    padding: 0 10px;
     margin-top: 50px;
   }
 
-  .row {
-    margin: 10px 10px;
-    max-width: 1208px;    
-    display: grid;
-    grid-template-columns: auto auto auto;
+  /*.row {
+    margin: 0 10px;
+    max-width: 1208px;
+    margin: 0 auto;
+  }*/
 
-  }
-
-  /*.row:after {
+  .row:after {
     content: "";
     display: table;
     clear: both;
-    no clue of dees nog blangrijk is
-  }*/
-  
+  }
 
   .card {
     /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
