@@ -32,11 +32,9 @@ Router.map(function() {
       this.route('payment');
       this.route('finish', { path: "finish/:basket_id" } );
     });
-    this.route('collection-points');
     this.route('conditions');
     this.route('favourites');
     this.route('help');
-    this.route('login');
     this.route('orders');
     this.route('product', { path: "product/:product_id/" }, function() {
       this.route('information');
