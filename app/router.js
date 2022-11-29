@@ -11,7 +11,6 @@ Router.map(function() {
   this.route('contact-us');
   this.route('faq');
   this.route('general-conditions');
-  this.route('login');
   this.route('locations', function() {
     this.route('kind', { path: ":normalized_label" });
   });
@@ -33,7 +32,6 @@ Router.map(function() {
       this.route('payment');
       this.route('finish', { path: "finish/:basket_id" } );
     });
-    this.route('collection-points');
     this.route('conditions');
     this.route('favourites');
     this.route('help');
