@@ -4,6 +4,6 @@ export default class WebshopLoginRoute extends Route {
   @service() session;
 
   beforeModel() {
-    // this.session.prohibitAuthentication('index');
+     this.session.prohibitAuthentication('index');
   }
 }
