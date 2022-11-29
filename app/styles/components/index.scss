@@ -6,3 +6,11 @@
 @import './number-button/index';
 @import './webshop/index';
 @import './design/index';
+
+.kaart{
+    height: 400px; 
+    width: 600px; 
+    border-bottom-right-radius:200px; 
+    border-bottom-left-radius:200px; 
+    border-top-right-radius:200px;
+}
