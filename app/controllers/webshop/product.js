@@ -150,8 +150,8 @@ export default class WebshopProductController extends Controller {
       currentUser.favourites.pushObject(savedFav);
       await currentUser.save();
       this.favouriteRecord = fav;
-    } catch (err) {
-      this.transitionToRoute('webshop.login');
+    } catch(err){
+      this.transitionToRoute('login');
     }
   }
 
