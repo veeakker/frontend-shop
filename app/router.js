@@ -7,6 +7,8 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
+  this.route('collection-points');
+  this.route('login');
   this.route('about');
   this.route('contact-us');
   this.route('faq');
@@ -33,10 +35,8 @@ Router.map(function() {
       this.route('payment');
       this.route('finish', { path: "finish/:basket_id" } );
     });
-    this.route('collection-points');
     this.route('favourites');
     this.route('help');
-    this.route('login');
     this.route('orders');
     this.route('product', { path: "product/:product_id/" }, function() {
       this.route('information');

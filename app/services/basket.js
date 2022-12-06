@@ -73,8 +73,8 @@ export default class BasketService extends Service {
     if( this.orderLines ){
       return this
         .orderLines
-        .filter( (line) => line.product.isEnabled )
-        .map( (ol) => ol.price )
+        .filter( (line) => line.product?.isEnabled )
+        .map( (ol) => ol?.price )
         .reduce( (a,b) => a+b, 0 );
     }
     else return undefined;

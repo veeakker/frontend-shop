@@ -14,18 +14,17 @@
           {{ this.error }}
         {{/if}}
       </div>
-      <Input placeholder="Voornaam" @type="text" @value={{this.firstName}}/>
-      <Input placeholder="Naam" @type="text"  @value={{this.lastName}}/>
-      <Input placeholder="E-mail" @type="email" @value={{this.email}}/>
-      <Input placeholder="Wachtwoord" @type="password"  @value={{this.password}}/>
-      <br>
-      <Input placeholder="Adres" @type="text"  @value={{this.address}}/>
-      <Input placeholder="Postcode" @type="text"  @value={{this.postalCode}}/>
-      <Input placeholder="Provincie" @type="text"  @value={{this.locality}}/>
-      <Input placeholder="Country" @type="text"  @value={{this.country}} disabled/>
-
+        <Input placeholder="Voornaam" @type="text" @value={{this.firstName}} required />
+        <Input required placeholder="Naam" @type="text"  @value={{this.lastName}} required />
+        <Input required placeholder="E-mail" @type="email" @value={{this.email}} required />
+        <Input required placeholder="Wachtwoord" @type="password"  @value={{this.password}} required />
+        <br>
+        <Input required placeholder="Adres" @type="text"  @value={{this.address}} required />
+        <Input required placeholder="Postcode" @type="text"  @value={{this.postalCode}} required />
+        <Input required placeholder="Provincie" @type="text"  @value={{this.locality}} required />
+        <Input required placeholder="Country" @type="text"  @value={{this.country}} disabled/>
       <div class="button-product-cart" {{ on 'click' this.register }}><a href="#">Registreer</a></div>
-      <div class="button-product-cart"><LinkTo @route="webshop.login">Inloggen</LinkTo></div>
+      <div class="button-product-cart"><LinkTo @route="login">Inloggen</LinkTo></div>
     </div>
   </div>
 </div>

@@ -13,6 +13,15 @@
     <LinkTo @route="locations.kind" @model="local-farms">Buurderijen</LinkTo>
     <LinkTo @route="locations.kind" @model="home-delivery">Webshop</LinkTo> {{!-- TODO: moet dit "aan huis" worden? --}}
   </div><div class="fix">{{outlet}}</div>
+  <div class="legende" >
+    <table>
+      <tr>
+        <th><img src="/images/van.png" width="40" height="40" alt="foto van een van"> <p>Toer</p></th>
+        <th><img src="/images/shop.png" width="40" height="40" alt="foto van een shop"> <p>natuurwinkel</p></th>
+        <th><img src="/images/barn.png" width="40" height="40" alt="foto van een bord"> <p>buurderij</p></th>
+      </tr>
+    </table>
+  </div>
   <div class="maps">
     <DeliveryLocationsMap @places={{this.model}} as |marker place|>
       <h3>{{place.deliveryKind.simpleName}}</h3>
