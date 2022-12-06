@@ -9,7 +9,7 @@
         <LinkTo @route="webshop.favourites"><i class="fas fa-heart"></i></LinkTo>
         <button {{on "click" this.logout}} type="button"><i class="fas fa-sign-out-alt"></i></button>
       {{else}}
-        <LinkTo @route="webshop.login">Log in</LinkTo>
+        <LinkTo @route="login">Log in</LinkTo>
       {{/if}}
       {{!-- TODO: create single page help --}} <LinkTo @route="webshop.help"><i class="fas fa-question-circle"></i></LinkTo>
 

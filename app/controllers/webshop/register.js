@@ -50,7 +50,7 @@ export default class WebshopRegisterController extends Controller {
       person.postalAddress = savedAddress;
       person.save();
 
-      this.transitionToRoute('webshop.login');
+      this.transitionToRoute('login');
     } catch(err){
       this.error = err.errors[0].title;
     }
