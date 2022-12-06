@@ -110,7 +110,7 @@ export default class WebshopProductController extends Controller {
       await currentUser.save();
       this.favouriteRecord = fav;
     } catch(err){
-      this.transitionToRoute('webshop.login');
+      this.transitionToRoute('login');
     }
   }
 
