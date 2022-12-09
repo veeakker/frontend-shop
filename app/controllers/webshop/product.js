@@ -5,11 +5,50 @@ import { action } from '@ember/object';
 import RSVP from 'rsvp';
 import { use, Resource } from 'ember-could-get-used-to-this';
 
-const wait = function( time ) {
+const wait = function (time) {
   return new Promise((success) => {
-    window.setTimeout( success, time );
+    window.setTimeout(success, time);
   });
 };
+
+class OfferingsForUnitResource extends Resource {
+  @tracked value
+
+  @tracked product
+  @tracked unit
+
+  async setup() {
+    this.product = await this.args.positional[0];
+    this.unit = await this.args.positional[1];
+
+    const offerings = (await this.product.offerings).toArray();
+
+    await RSVP.all(offerings);
+    await RSVP.all(offerings.map((o) => o.typeAndQuantity));
+
+    let unitCode;
+    switch (this.unit) {
+      case "st":
+        unitCode = "C62";
+        break;
+      case "kg":
+        unitCode = "KGM";
+        break;
+      case "g":
+        unitCode = "GRM";
+        break;
+      default:
+        unitCode = "C62";
+    }
+
+    this.value =
+      this.unit
+        ? offerings
+          .filter((offering) => offering.get("typeAndQuantity.unit") == unitCode)
+          .sort((a, b) => a.get("typeAndQuantity.value") > b.get("typeAndQuantity.value") ? 1 : -1)
+        : [];
+  }
+}
 
 class OfferTypeResource extends Resource {
   @tracked value
@@ -18,19 +57,21 @@ class OfferTypeResource extends Resource {
     const product = await this.args.positional[0];
     const offerings = (await product.offerings).toArray();
     await RSVP.all(offerings);
-    let typeAndQuantityValues =
+    let typeAndQuantityUnits =
       (await RSVP.all(offerings.map((o) => o.typeAndQuantity)))
         .toArray()
         .map((typeAndQuantity) => typeAndQuantity.unit);
 
     this.value =
-      [...new Set(typeAndQuantityValues)]
-      .map( (value) => { switch ( value ) {
-        case "C62": return "st";
-        case "KGM": return "kg";
-        case "GRM": return "g";
-        default: return "st";
-      } } );
+      [...new Set(typeAndQuantityUnits)]
+        .map((value) => {
+          switch (value) {
+            case "C62": return "st";
+            case "KGM": return "kg";
+            case "GRM": return "g";
+            default: return "st";
+          }
+        });
   }
 }
 
@@ -38,24 +79,24 @@ export default class WebshopProductController extends Controller {
   @tracked packageCount = 1;
 
   @tracked selectedOffer = null;
+  @tracked selectedUnit = null;
   @tracked favouriteRecord = null;
-  @tracked possibleOffers = [];
+  // @tracked possibleOffers = [];
 
   @service basket;
   @service store;
   @service session;
 
-
-  get firstOffer(){
-    return this.model.sortedOfferings && this.model.sortedOfferings.firstObject;
+  get firstOffer() {
+    return this.possibleOffers && this.possibleOffers[0];
   }
 
-  get currentOffer(){
+  get currentOffer() {
     // It is not clear why we have to base ourselves on the id
     // property in this case, but that seems to make it work.
-    if( this.selectedOffer && this.selectedOffer.id )
+    if (this.selectedOffer && this.selectedOffer.id)
       return this.selectedOffer;
-    if( this.firstOffer && this.firstOffer.id )
+    if (this.firstOffer && this.firstOffer.id)
       return this.firstOffer;
     return null;
   }
@@ -71,7 +112,7 @@ export default class WebshopProductController extends Controller {
 
   @action
   async add() {
-    this.basket.addOffer( this.currentOffer, this.packageCount );
+    this.basket.addOffer(this.currentOffer, this.packageCount);
     await wait(500);
     this.resetOrder();
   }
@@ -97,7 +138,7 @@ export default class WebshopProductController extends Controller {
 
   @action
   async favourite() {
-    let currentUser = await (await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, {include: "person"})).person;
+    let currentUser = await (await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, { include: "person" })).person;
 
     const favourite = this.store.createRecord('favourite', {
       product: this.model,
@@ -105,12 +146,12 @@ export default class WebshopProductController extends Controller {
     });
     try {
       const fav = await favourite.save();
-      const savedFav = await this.store.findRecord('favourite', fav.id, {reload: true});
+      const savedFav = await this.store.findRecord('favourite', fav.id, { reload: true });
       currentUser.favourites.pushObject(savedFav);
       await currentUser.save();
       this.favouriteRecord = fav;
     } catch(err){
-      this.transitionToRoute('webshop.login');
+      this.transitionToRoute('login');
     }
   }
 
@@ -122,31 +163,20 @@ export default class WebshopProductController extends Controller {
   }
 
   @action
-  selectValue(unit) {
+  selectUnit(unit) {
     this.selectedUnit = unit;
-    this.updateOffers(unit)
+    this.selectedOffer = null;
   }
 
-  async updateOffers(unit) {
-    var units = {
-      "c62": "st",
-      "KGM": "kg",
-      "GRM": "g"
-    };
-    const offerings = await this.model.offerings
-    this.possibleOffers = [];
-    
-    
-    offerings.forEach(offer => {
-      if ( units[offer.typeAndQuantity.get('unit')] == unit) {
-        this.possibleOffers.push(offer);
-      }
-    });
+  get currentUnit() {
+    return this.selectedUnit || (this.availableUnits && this.availableUnits[0]);
   }
-
 
   @use
-  units = new OfferTypeResource( () => [this.model] )
+  possibleOffers = new OfferingsForUnitResource(() => [this.model, this.currentUnit])
+
+  @use
+  units = new OfferTypeResource(() => [this.model])
 
   get availableUnits() {
     return this.units;
