@@ -1,3 +1,4 @@
+import { get } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { set } from '@ember/object';
 import Service, { inject as service } from '@ember/service';
@@ -73,8 +74,8 @@ export default class BasketService extends Service {
     if( this.orderLines ){
       return this
         .orderLines
-        .filter( (line) => line.product?.isEnabled )
-        .map( (ol) => ol?.price || 0 )
+        .filter( (line) => get(line, "product.isEnabled") )
+        .map( (ol) => get(ol, "price") || 0 )
         .reduce( (a,b) => a+b, 0 );
     }
     else return undefined;
