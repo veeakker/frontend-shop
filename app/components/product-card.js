@@ -80,16 +80,16 @@ export default class ProductCardComponent extends Component {
   @action
   selectValue(unit) {
     this.selectedUnit = unit;
-    this.updateOffers(unit)
+    this.updateOffers(unit);
   }
 
   async updateOffers(unit) {
     var units = {
-      "c62": "st",
+      "C62": "st",
       "KGM": "kg",
       "GRM": "g"
     };
-    const offerings = await this.args.product.offerings
+    const offerings = await this.args.product.sortedOfferings;
     this.possibleOffers = [];
 
 
@@ -98,6 +98,8 @@ export default class ProductCardComponent extends Component {
         this.possibleOffers.push(offer);
       }
     });
+
+    this.possibleOffers = [...this.possibleOffers];
   }
 
 

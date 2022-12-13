@@ -1,6 +1,28 @@
+import { get } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import Model, { attr, belongsTo } from '@ember-data/model';
-import { use } from 'ember-could-get-used-to-this';
+import { use, Resource } from 'ember-could-get-used-to-this';
 import asyncResource from '../utils/async-resource';
+
+class PricePerUnit extends Resource {
+  @tracked value;
+
+  async setup() {
+    const offering = this.args.positional[0];
+    await get(offering, "unitPrice");
+    this.value = get(offering,"unitPrice.value");
+  }
+}
+
+class OfferingForProduct extends Resource {
+  @tracked value;
+
+  async setup() {
+    const offering = this.args.positional[0];
+    await get(offering, "typeAndQuantity");
+    this.value = get(offering, "typeAndQuantity.value");
+  }
+}
 
 export default class OrderLineModel extends Model {
   @belongsTo('offering') offering
@@ -14,21 +36,8 @@ export default class OrderLineModel extends Model {
     return amount * price;
   }
 
-  @use product = asyncResource(
-    (() => [this.offering]),
-    async function() {
-      const offering = this.args.positional[0];
-      await offering.typeAndQuantity;
-      return offering.typeAndQuantity.value;
-    })
-
-  @use pricePerUnit = asyncResource(
-    (() => [this.offering]),
-    async function() {
-      const offering = this.args.positional[0];
-      await offering.unitPrice;
-      return offering.unitPrice.value;
-    })
+  @use product = new OfferingForProduct(() => [this.offering]);
+  @use pricePerUnit = new PricePerUnit(() => [this.offering]);
 
   // @alias('offering.typeAndQuantity.product') product;
   // @alias('offering.unitPrice.value') pricePerUnit;
