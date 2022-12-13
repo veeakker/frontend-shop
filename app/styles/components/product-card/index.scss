@@ -157,12 +157,13 @@
 .actions {
   display: flex;
   justify-content: space-evenly;
+  margin-top: -25px;
 }
 
 .button-product {
   max-width: 40%;
   margin-top: 8px;
-
+  border-radius: 5px;
   display: inline-block;
   background-color: $base-primary;
   color: white;
