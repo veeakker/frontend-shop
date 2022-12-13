@@ -6,7 +6,7 @@ export default class extends Component {
   }
 
   get thumbnail() {
-    return this.product?.thumbnail;
+    return this.product?.get("thumbnail");
   }
 
   get imageUrl() {

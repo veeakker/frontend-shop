@@ -6,7 +6,7 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
 
   model( { subgroup_id } ) {
     return this.store.loadRecord('product-group', subgroup_id, {
-      include: "products.offerings.unit-price,products.offerings.type-and-quantity"
+      include: "products.offerings.unit-price,products.offerings.type-and-quantity.product"
     });
   }
 }

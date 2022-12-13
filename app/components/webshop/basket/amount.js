@@ -1,13 +1,14 @@
+import { get } from '@ember/object';
 import Component from '@glimmer/component';
 
 export default class AmountComponent extends Component {
 
   get value() {
-    return this.args.amount.value;
+    return get(this.args, "amount.value");
   }
 
   get unit() {
-    return this.args.unit.value;
+    return get(this.args, "amount.unit");
   }
 
   tagName = ""

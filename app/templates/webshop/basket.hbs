@@ -16,7 +16,7 @@
     {{#each this.basket.orderLines as |orderLine|}}
       <div class="cart-item">
         <LinkTo class="cart-thumbnail" @route="webshop.product" @model={{orderLine.product}}>
-          <ProductCard::Thumbnail  @product={{orderLine.offering.typeAndQuantity.product}} />
+          <ProductCard::Thumbnail @product={{orderLine.offering.typeAndQuantity.product}} />
         </LinkTo>
         <div class="order-info">
           <h3>
