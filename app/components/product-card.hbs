@@ -28,10 +28,10 @@
             <ProductCard::Offers @offers={{this.possibleOffers}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
             {{#if @product.offerings}}
               <div class="eenheid">
-                <select class="select-eenheid" name="units" onchange={{action "selectValue" value="target.value"}}>
-                  {{#each this.availableUnits as |unit|}}
-                    <option value={{unit}}>{{unit}}</option>
-                  {{/each}}
+                <select class="select-eenheid" name="units" onchange={{action "selectValue" value="target.value"}}>      
+                  {{#each this.availableUnits as |unit|}}        
+                    <option value={{unit}}>{{unit}}</option>      
+                  {{/each}}    
                 </select>
               </div>
             {{/if}}
@@ -44,6 +44,9 @@
       </div>
 
       <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
+    </div>
+    <div class="teste">
+      {{euros (mult this.currentOffer.unitPrice.value this.packageCount)}}
     </div>
 
     <div class="actions">
