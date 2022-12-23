@@ -157,9 +157,11 @@
 /*de prijs */
 
 .teste{
-  background-color: red;
   margin-top: -3rem;
   margin-bottom: 3rem;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: rgb(73, 59, 59);
 }
 
 
@@ -167,7 +169,7 @@
 .actions {
   display: flex;
   justify-content: space-evenly;
-  margin-top: -25px;
+  margin-top: -47px;
 }
 
 .button-product {

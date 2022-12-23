@@ -46,7 +46,8 @@
       <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
     </div>
     <div class="teste">
-      {{euros (mult this.currentOffer.unitPrice.value this.packageCount)}}
+      <p>Totaal {{euros (mult this.currentOffer.unitPrice.value this.packageCount)}}</p>
+      
     </div>
 
     <div class="actions">
