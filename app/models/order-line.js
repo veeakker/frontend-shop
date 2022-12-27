@@ -20,7 +20,7 @@ class OfferingForProduct extends Resource {
   async setup() {
     const offering = this.args.positional[0];
     await get(offering, "typeAndQuantity");
-    this.value = get(offering, "typeAndQuantity.value");
+    this.value = get(offering, "typeAndQuantity.product");
   }
 }
 
