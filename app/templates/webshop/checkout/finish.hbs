@@ -44,38 +44,6 @@ Payment status: {{this.model.paymentStatus}} <button type="button" {{on "click" 
 
   </div>
 </div>
-<div class="products-shop">
-  <table class="cart-items">
-    <thead>
-      <tr>
-        <th class="first uppercase">product</th>
-        <th class="uppercase">prijs</th>
-        <th class="uppercase">verpakking</th>
-        <th class="uppercase">aantal</th>
-        <th class="uppercase">totaal</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr class="cart-item">
-        <td class="product-item first">
-          <a href="#" class="image-cart">
-            <img src="/images/ons2.jpg" alt="Meat" />
-          </a>
-          <div class="product-item-details">
-            <span class="cart-title"><a href="#" title="" class="uppercase">product</a></span><br />
-            <span class="cart-variant">1kg</span>
-          </div>
-
-        </td>
-        <td class="price"><span class="money">€13.50</span></td>
-        <td class="packing"><input type="text" value="2"></td>
-        <td class="quantity"><input type="text" value="5"></td>
-        <td class="total"><span class="money">€67.50</span></td>
-      </tr>
-
-    </tbody>
-  </table>
-</div>
+<Webshop::OrderLines @orderLines={{@model.orderLines}} />
 
 {{outlet}}
