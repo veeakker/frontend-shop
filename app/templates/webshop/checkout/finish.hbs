@@ -5,9 +5,10 @@
   <li><LinkTo @route="webshop.checkout.payment">Betalingsgegevens</LinkTo></li>
   <li><span class="breadcrumb-txt">Bevestig Bestelling</span></li>
 </ul>
-<div class="fix"></div>
+<div class="fix">
+  Payment status: {{this.model.paymentStatus}} <button type="button" {{on "click" (action this.refreshBasket)}}>Reload</button>
+</div>
 
-Payment status: {{this.model.paymentStatus}} <button type="button" {{on "click" (action this.refreshBasket)}}>Reload</button>
 
 <div class="checkout-contact">
   <div class="contact-info">
@@ -29,8 +30,11 @@ Payment status: {{this.model.paymentStatus}} <button type="button" {{on "click" 
         <li>Straat 00</li>
         <li>0000 Gemeente</li>
       </ul>
-      <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
-      <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" />
+      <div class="frost-div">
+        <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" />
+        <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
+      </div>
+
     </div>  <div class="fix"></div>
 
     <div class="cart-total">
