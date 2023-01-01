@@ -45,9 +45,14 @@
       <div class="button-product-cart"><a href="#" class="uppercase">bedankt voor je bestelling!</a></div>
     </div><div class="fix"></div>
 
-
   </div>
+
 </div>
-<Webshop::OrderLines @orderLines={{@model.orderLines}} />
+
+<div class="order">
+  <h2>Bestelling's overzicht</h2>
+  <Webshop::OrderLines @orderLines={{@model.orderLines}} />
+</div>
+
 
 {{outlet}}

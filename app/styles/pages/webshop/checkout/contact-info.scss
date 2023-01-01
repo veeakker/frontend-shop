@@ -38,7 +38,7 @@
   border-top-right-radius: 5rem;
 }
 
-.contact-info input, .contact-info textarea {
+.contact-info input, .contact-info textarea, .contact-info-different input, .contact-info-different textarea {
   padding: 10px;
   border: 1px solid $base-primary;
   color: $base-primary;
@@ -49,7 +49,7 @@
   font-family: 'Open Sans';
 }
 
-.contact-info label {
+.contact-info label, .contact-info-different label {
   color: $base-primary;
   font-size: 12px;
   vertical-align: central;
@@ -62,23 +62,6 @@
   align-content: center;
   margin: 2%;
   max-width: 500px;
-}
-
-.contact-info-different input, .contact-info-different textarea {
-  padding: 10px;
-  border: 1px solid $base-primary;
-  color: $base-primary;
-  margin-top: 3px;
-  margin-bottom: 8px;
-  font-size: 16px;
-  background-color: #E1DBD5;
-  font-family: 'Open Sans';
-}
-
-.contact-info-different label {
-  color: $base-primary;
-  font-size: 12px;
-  vertical-align: central;
 }
 
 .contactDetails{
@@ -102,4 +85,18 @@
 .fix{
   text-align: center;
   color: black;
+}
+
+.order{
+  margin-top: 5rem;
+  max-width: 90%;
+  margin: auto;
+  justify-content: center;
+  h2{
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: underline;
+    color: black;
+    text-transform: uppercase;
+  }
 }
