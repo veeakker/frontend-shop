@@ -30,13 +30,15 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-
   margin: 2%;
-
   max-width: 600px;
+  border: 5px solid #443B36;
+  padding: 20px;
+  border-bottom-left-radius: 5rem;
+  border-top-right-radius: 5rem;
 }
 
-.contact-info input, .contact-info textarea {
+.contact-info input, .contact-info textarea, .contact-info-different input, .contact-info-different textarea {
   padding: 10px;
   border: 1px solid $base-primary;
   color: $base-primary;
@@ -47,8 +49,54 @@
   font-family: 'Open Sans';
 }
 
-.contact-info label {
+.contact-info label, .contact-info-different label {
   color: $base-primary;
   font-size: 12px;
   vertical-align: central;
+}
+
+.contact-info-different {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 2%;
+  max-width: 500px;
+}
+
+.contactDetails{
+  color: black;
+  
+  
+  .frost-div{
+    display: flex;
+    flex-direction: row;
+    p{
+      margin-top: 10px;
+      margin-left: 2px;
+    }
+  }
+  .frost{
+    height: 25px;
+    width: 25px;
+  }
+}
+
+.fix{
+  text-align: center;
+  color: black;
+}
+
+.order{
+  margin-top: 5rem;
+  max-width: 90%;
+  margin: auto;
+  justify-content: center;
+  h2{
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: underline;
+    color: black;
+    text-transform: uppercase;
+  }
 }
