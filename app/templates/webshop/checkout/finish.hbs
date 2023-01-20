@@ -5,9 +5,10 @@
   <li><LinkTo @route="webshop.checkout.payment">Betalingsgegevens</LinkTo></li>
   <li><span class="breadcrumb-txt">Bevestig Bestelling</span></li>
 </ul>
-<div class="fix"></div>
+<div class="fix">
+  Payment status: {{this.model.paymentStatus}} <button type="button" {{on "click" (action this.refreshBasket)}}>Reload</button>
+</div>
 
-Payment status: {{this.model.paymentStatus}} <button type="button" {{on "click" (action this.refreshBasket)}}>Reload</button>
 
 <div class="checkout-contact">
   <div class="contact-info">
@@ -29,8 +30,11 @@ Payment status: {{this.model.paymentStatus}} <button type="button" {{on "click" 
         <li>Straat 00</li>
         <li>0000 Gemeente</li>
       </ul>
-      <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
-      <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" />
+      <div class="frost-div">
+        <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" />
+        <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
+      </div>
+
     </div>  <div class="fix"></div>
 
     <div class="cart-total">
@@ -41,41 +45,14 @@ Payment status: {{this.model.paymentStatus}} <button type="button" {{on "click" 
       <div class="button-product-cart"><a href="#" class="uppercase">bedankt voor je bestelling!</a></div>
     </div><div class="fix"></div>
 
-
   </div>
+
 </div>
-<div class="products-shop">
-  <table class="cart-items">
-    <thead>
-      <tr>
-        <th class="first uppercase">product</th>
-        <th class="uppercase">prijs</th>
-        <th class="uppercase">verpakking</th>
-        <th class="uppercase">aantal</th>
-        <th class="uppercase">totaal</th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <tr class="cart-item">
-        <td class="product-item first">
-          <a href="#" class="image-cart">
-            <img src="/images/ons2.jpg" alt="Meat" />
-          </a>
-          <div class="product-item-details">
-            <span class="cart-title"><a href="#" title="" class="uppercase">product</a></span><br />
-            <span class="cart-variant">1kg</span>
-          </div>
-
-        </td>
-        <td class="price"><span class="money">€13.50</span></td>
-        <td class="packing"><input type="text" value="2"></td>
-        <td class="quantity"><input type="text" value="5"></td>
-        <td class="total"><span class="money">€67.50</span></td>
-      </tr>
-
-    </tbody>
-  </table>
+<div class="order">
+  <h2>Bestelling's overzicht</h2>
+  <Webshop::OrderLines @orderLines={{@model.orderLines}} />
 </div>
+
 
 {{outlet}}

@@ -13,32 +13,7 @@
   {{else}}
     <div class="cart-item"></div>
 
-    {{#each this.basket.orderLines as |orderLine|}}
-      <div class="cart-item">
-        <LinkTo class="cart-thumbnail" @route="webshop.product" @model={{orderLine.product}}>
-          <ProductCard::Thumbnail @product={{orderLine.offering.typeAndQuantity.product}} />
-        </LinkTo>
-        <div class="order-info">
-          <h3>
-            <LinkTo @route="webshop.product" @model={{orderLine.product}}>
-              {{orderLine.offering.typeAndQuantity.product.label}}
-            </LinkTo>
-          </h3>
-          <h4>Bevat: <Webshop::Basket::Amount @amount={{orderLine.offering.typeAndQuantity}} /></h4>
-        </div>
-        <div class="order-extra">
-          <h4>{{euros orderLine.pricePerUnit}} / pakje</h4>
-          <i class="fas fa-times"></i>
-          <h4>{{orderLine.amount}}</h4>
-          <br>
-          <br>
-          <button id="remove-button" {{action this.removeOrderLine orderLine.offering orderLine.amount}} type="button">
-            <i class="fas fa-trash"></i>
-          </button>
-          <h4 id="total-text">Totaal: {{euros orderLine.price}}</h4>
-        </div>
-      </div>
-    {{/each}}
+    <Webshop::OrderLines @orderLines={{this.basket.orderLines}} />
 
     <div class="cart-total">
       <p class="cart-price"><span class="money">{{euros this.basket.totalPrice}}</span></p>
