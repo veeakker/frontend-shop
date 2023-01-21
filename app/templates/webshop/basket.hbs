@@ -13,7 +13,7 @@
   {{else}}
     <div class="cart-item"></div>
 
-    <Webshop::OrderLines @orderLines={{this.basket.orderLines}} />
+    <Webshop::OrderLines @removeOrderLine={{fn this.removeOrderLine}} @orderLines={{this.basket.orderLines}} />
 
     <div class="cart-total">
       <p class="cart-price"><span class="money">{{euros this.basket.totalPrice}}</span></p>
