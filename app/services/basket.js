@@ -66,7 +66,7 @@ export default class BasketService extends Service {
 
   hasOffering( offering ) {
     this.objectForOffering( offering ) && true;
-  }
+  } 
 
   get totalPrice() {
     // TODO: this could be a resource

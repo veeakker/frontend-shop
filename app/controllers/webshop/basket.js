@@ -9,4 +9,4 @@ export default class WebshopBasketController extends Controller {
   removeOrderLine(offering, amount) {
     this.basket.removeOffer( offering, amount );
   }
-}
+} 
