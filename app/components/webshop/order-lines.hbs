@@ -17,9 +17,11 @@
       <h4>{{orderLine.amount}}</h4>
       <br>
       <br>
-      <button id="remove-button" {{on "click" (fn @removeOrderLine orderLine.offering orderLine.amount)}} type="button">
-        <i class="fas fa-trash"></i>
-      </button>
+      {{#if @removeOrderLine}}
+        <button id="remove-button" {{on "click" (fn @removeOrderLine orderLine.offering orderLine.amount)}} type="button">
+          <i class="fas fa-trash"></i>
+        </button>
+      {{/if}}
       <h4 id="total-text">Totaal: {{euros orderLine.price}}</h4>
     </div>
   </div>

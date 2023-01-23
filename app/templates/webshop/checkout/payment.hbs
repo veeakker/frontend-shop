@@ -58,11 +58,11 @@
 
 
     <div class="cart-total">
-      <p>Prijs <span class="money">€67.50</span></p>
-      <p>Prijs levering <span class="money">€x</span></p>
+      <p>Prijs <span class="money">{{euros this.basket.totalPrice}}</span></p>
+      <p>Prijs levering: <span class="money">gratis</span></p>
       <p>BTW 6% <span class="money">€x</span></p>
       <p>Totaalprijs <span class="money">€x</span></p>    <br />
-      <div class="button-product-cart uppercase"><LinkTo @route="webshop.checkout.finish">bevestig</LinkTo></div>
+      <div class="button-product-cart uppercase"><a href={{this.paymentUrl}}>betaal</a></div>
     </div><div class="fix"></div>
 
 
