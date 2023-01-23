@@ -4,6 +4,7 @@ import { set } from '@ember/object';
 import Service, { inject as service } from '@ember/service';
 import fetch from 'fetch';
 import { use, Resource } from 'ember-could-get-used-to-this';
+import { action } from '@ember/object';
 
 class BasketFetcher extends Resource {
   @tracked value
@@ -23,6 +24,11 @@ class BasketFetcher extends Resource {
 export default class BasketService extends Service {
   @service store
   @use basket = new BasketFetcher(() => true)
+
+  @action
+  setDeliveryPlace( deliveryPlace ) {
+    this.basket.deliveryPlace = deliveryPlace;
+  }
 
   get orderLines() {
     return this.basket?.orderLines;
