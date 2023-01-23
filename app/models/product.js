@@ -29,7 +29,7 @@ export default class ProductModel extends Model {
   @attr('number') sortIndex;
   @attr('uri-set') productLabels;
   @hasMany('product-group') productGroups;
-  @hasMany('offering') offerings;
+  @hasMany('offering', { inverse: null }) offerings;
   @belongsTo('unit-price-specification') unitPrice;
   @belongsTo('quantitative-value') targetUnit;
   @belongsTo('file') thumbnail;
