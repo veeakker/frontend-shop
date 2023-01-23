@@ -21,6 +21,8 @@ class EnsureAddressResource extends Resource {
 
 export default class BasketModel extends Model {
   @attr() paymentStatus;
+  @attr('boolean') hasCustomDeliveryPlace;
+  @attr() deliveryType;
   @hasMany('order-line') orderLines;
   @belongsTo('delivery-place') deliveryPlace;
   @belongsTo('fullAddress') deliveryAddress;

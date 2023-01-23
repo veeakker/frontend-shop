@@ -37,16 +37,11 @@
     {{/if}}
 
     {{#if (eq this.deliveryMethod "postal")}}
-      <label class="containerCheck">
+      <Webshop::Checkout::Delivery::Checkbox @for={{true}} @current={{this.basket.basket.hasCustomDeliveryPlace}}>
         Levering informatie anders dan contact informatie
-        <input
-          type="checkbox"
-          checked={{this.differentDeliveryInfo}}
-          {{on "click" (action (mut this.differentDeliveryInfo) (not this.differentDeliveryInfo))}} />
-        <span class="checkmark"></span>
-      </label>
+      </Webshop::Checkout::Delivery::Checkbox>
 
-      {{#if this.differentDeliveryInfo}}
+      {{#if this.basket.basket.hasCustomDeliveryPlace}}
         <div class="contact-info-different">
           <h2>Vul je lever gegevens in:</h2>
           <Input @value={{mut this.basket.basket.delivery.name}} placeholder="Naam" /> <br />
