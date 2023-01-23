@@ -11,7 +11,16 @@ export default class WebshopCheckoutController extends Controller {
   }
 
   get deliveryMethod() {
-    return this.currentDeliveryMethod;
+    switch (this.basket?.basket?.deliveryType) {
+      case "http://veeakker.be/delivery-methods/postal":
+        return "postal";
+      case "http://veeakker.be/delivery-methods/tour":
+        return "tour";
+      case "http://veeakker.be/delivery-methods/shop":
+        return "shop";
+      default:
+        return "tour";
+    }
   }
 
   set deliveryMethod(method) {
