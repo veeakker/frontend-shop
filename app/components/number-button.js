@@ -23,8 +23,6 @@ export default class NumberButtonComponent extends Component {
     return this.args.options?.length ? this.args.options : this.defaultOptions;
   }
 
-  classNames = ['number-input'];
-
   constructor(){
     super(...arguments);
   }

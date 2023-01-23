@@ -1,3 +1,4 @@
+import { get } from '@ember/object';
 import RSVP from 'rsvp';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
@@ -34,6 +35,37 @@ class OfferTypeResource extends Resource {
   }
 }
 
+const UNIT_TO_CODE = {
+  "st": "C62",
+  "kg": "KGM",
+  "g": "GRM"
+};
+
+class AvailableOffersResource extends Resource {
+  @tracked value
+
+  async setup() {
+    const [offerings,unit] = this.args.positional;
+
+    console.log({offerings,unit});
+
+    // const offerings = await product.sortedOfferings;
+
+    const results = [];
+
+    if( await offerings )
+      for (const offer of offerings) {
+        const taq = await offer.typeAndQuantity;
+        if (taq.unit == UNIT_TO_CODE[unit])
+          results.push(offer);
+      }
+
+    console.log({availableOfferings: results, unit });
+
+    this.value = results;
+  }
+}
+
 export default class ProductCardComponent extends Component {
   @service store;
 
@@ -42,14 +74,46 @@ export default class ProductCardComponent extends Component {
   packageCount = 1
 
   @tracked selectedOffer = null;
+  @tracked selectedUnit = null;
 
   @service basket
 
-  @tracked possibleOffers = [];
+  // @tracked possibleOffers = [];
+
+  constructor() {
+    super(...arguments);
+    this.asyncInit();
+  }
+
+  async asyncInit() {
+    const offerings = (await this.args.product.offerings).toArray();
+
+    for( const offering of offerings ) {
+      await offering;
+      await offering.typeAndQuantity;
+    }
+
+    this.selectedUnit = this.currentUnit;
+    console.log({ units: this.units, offers: this.possibleOffers }); // init values
+  }
+
+  get currentUnit() {
+    if (this.selectedUnit) {
+      return this.selectedUnit;
+    } else {
+      return this.availableUnits?.firstObject;
+    }
+  }
 
   get firstOffer() {
-    return this.args.product?.sortedOfferings?.firstObject;
-  }
+    if (this.currentUnit) {
+      const unit = this.currentUnit;
+      return this
+        .args.product?.sortedOfferings?.filter( (offering) =>
+          offering?.typeAndQuantity?.get("unit") == UNIT_TO_CODE[unit]
+        ).firstObject;
+    }
+  };
 
   get currentOffer(){
     // It is not clear why we have to base ourselves on the id
@@ -80,28 +144,11 @@ export default class ProductCardComponent extends Component {
   @action
   selectValue(unit) {
     this.selectedUnit = unit;
-    this.updateOffers(unit);
+    this.selectedOffer = null;
   }
 
-  async updateOffers(unit) {
-    var units = {
-      "C62": "st",
-      "KGM": "kg",
-      "GRM": "g"
-    };
-    const offerings = await this.args.product.sortedOfferings;
-    this.possibleOffers = [];
-
-
-    offerings.forEach(offer => {
-      if ( units[offer.typeAndQuantity.get('unit')] == unit) {
-        this.possibleOffers.push(offer);
-      }
-    });
-
-    this.possibleOffers = [...this.possibleOffers];
-  }
-
+  @use
+  possibleOffers = new AvailableOffersResource( () => [this.args.product?.sortedOfferings, this.currentUnit] );
 
   @use
   units = new OfferTypeResource( () => [this.args.product] )
