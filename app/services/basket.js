@@ -13,10 +13,11 @@ class BasketFetcher extends Resource {
   async setup() {
     const result = await (await fetch(`/current-basket/ensure`)).json();
     this.store.pushPayload( result );
-    const basket = this.store.peekRecord('basket', result.data.id);
-    await basket.reload();
-    await basket.orderLines;
-    this.value = basket;
+    const baskets = await this.store.query('basket', {
+      ":id:": result.data.id,
+      include: "order-lines.offering.type-and-quantity.product,order-lines.offering.unit-price"
+    });
+    this.value = baskets.firstObject;
   }
 
 }
