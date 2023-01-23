@@ -72,17 +72,16 @@ export default class BasketService extends Service {
 
   hasOffering( offering ) {
     this.objectForOffering( offering ) && true;
-  } 
+  }
 
   get totalPrice() {
     // TODO: this could be a resource
     // sum all prices
     if( this.orderLines ){
-      return this
-        .orderLines
-        .filter( (line) => get(line, "product.isEnabled") )
-        .map( (ol) => get(ol, "price") || 0 )
-        .reduce( (a,b) => a+b, 0 );
+      const orderLines = this.orderLines;
+      const enabledOrderLines = orderLines.filter( (line) => get(line, "product.isEnabled") );
+      const prices = enabledOrderLines.map( (ol) => get(ol, "price") || 0 );
+      return prices.reduce( (a,b) => a+b, 0);
     }
     else return undefined;
   }
