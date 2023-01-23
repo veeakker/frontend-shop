@@ -29,10 +29,14 @@ export default class WebshopCheckoutPaymentController extends Controller {
       const response = await fetch("/payments", requestInfo);
       const body = await response.json();
 
-      const paymentUrl = body.data.attributes.paymentUrl;
+      const paymentUrl = body.data?.attributes?.paymentUrl;
       this.paymentUrl = paymentUrl;
 
-      window.location.href = paymentUrl;
+      if (paymentUrl) {
+        window.location.href = paymentUrl;
+      } else {
+        console.error("Payment redirect URL not found");
+      }
     }
   }
 }

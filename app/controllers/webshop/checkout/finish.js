@@ -7,6 +7,6 @@ export default class WebshopCheckoutController extends Controller {
 
   @action
   refreshBasket(){
-    this.basket.basket.reload();
+    this.model.reload();
   }
 }
