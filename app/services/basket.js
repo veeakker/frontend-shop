@@ -14,7 +14,7 @@ class BasketFetcher extends Resource {
     const result = await (await fetch(`/current-basket/ensure`)).json();
     this.store.pushPayload( result );
     const baskets = await this.store.query('basket', {
-      ":id:": result.data.id,
+      "filter[:id:]": result.data.id,
       include: "order-lines.offering.type-and-quantity.product,order-lines.offering.unit-price"
     });
     this.value = baskets.firstObject;
