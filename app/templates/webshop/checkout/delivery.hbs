@@ -26,7 +26,7 @@
 
     {{#if (eq this.deliveryMethod "tour")}}
       <div class="delivery-map">
-        <Webshop::Checkout::Delivery::LocationsMap @locationName="tour" @select = {{ this.basket.setDeliveryPlace }}/>
+        <Webshop::Checkout::Delivery::LocationsMap @locationName="tour" @select={{this.basket.setDeliveryPlace}}/>
       </div>
     {{/if}}
 
