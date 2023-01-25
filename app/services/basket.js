@@ -29,6 +29,7 @@ export default class BasketService extends Service {
   @action
   setDeliveryPlace( deliveryPlace ) {
     this.basket.deliveryPlace = deliveryPlace;
+    this.basket.save();
   }
 
   get orderLines() {
