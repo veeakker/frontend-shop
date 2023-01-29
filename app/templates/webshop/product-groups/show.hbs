@@ -1,5 +1,5 @@
 <div class="scrollable-header submenu-header">
-  {{#each @model.childGroups as |group|}}
+  {{#each (sort-by-index @model.childGroups) as |group|}}
     <LinkTo @route="webshop.product-groups.show.subgroups.show" @models={{elements @model.id group.id}}>{{group.label}}
 </LinkTo>
   {{/each}}

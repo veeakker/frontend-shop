@@ -24,7 +24,7 @@
   </div>
 
   <div class="scrollable-header menu-header">
-    {{#each (sort-by-index this.model) as |productGroup|}}
+    {{#each (sort-by-index @model) as |productGroup|}}
       <LinkTo @route="webshop.product-groups.show" @model={{productGroup.id}}>{{productGroup.label}}</LinkTo>
     {{/each}}
   </div>
