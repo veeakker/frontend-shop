@@ -11,8 +11,6 @@ export default class SortByIndex extends Resource {
     await entities;
     entities = entities.toArray();
     await RSVP.all( entities );
-    entities.sortBy(options.property);
-
-    this.value = entities;
+    this.value = entities.sortBy(options.property);
   }
 }
