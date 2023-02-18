@@ -21,6 +21,7 @@ export default class FullAddressModel extends Model {
   @attr('string') name;
   @attr('string') company;
   @attr('string') telephone;
+  @attr('string') email;
   @belongsTo('postal-address') postalAddress;
 
   @use
