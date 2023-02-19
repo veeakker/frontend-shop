@@ -38,13 +38,10 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
 
-  padding: 4% 5%;
+  margin: 1em 1em;
+  padding: 0.5em;
 
   border-bottom: 3px solid $base-primary;
-
-  div {
-    margin: 3%;
-  }
 
   h4 {
     color: $base-secondary;
@@ -56,7 +53,7 @@
 }
 
 .order-info {
-  padding-bottom: 4%;
+  /* padding-bottom: 4em; */
 
   h3 a {
     color: $base-primary;
@@ -71,7 +68,7 @@
 }
 
 
-.order-extra {  
+.order-extra {
   i {
     color: $base-secondary;
   }
@@ -128,7 +125,7 @@
     padding: 10px 50px;
   }
 
-  a:hover { 
+  a:hover {
     background-color: $base-secondary;
   }
 }
