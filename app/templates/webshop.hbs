@@ -6,12 +6,12 @@
     <div>
       {{#if this.session.isAuthenticated}}
         <LinkTo @route="webshop.account"><i class="fas fa-user-alt"></i></LinkTo>
-        <LinkTo @route="webshop.favourites"><i class="fas fa-heart"></i></LinkTo>
+        {{!-- <LinkTo @route="webshop.favourites"><i class="fas fa-heart"></i></LinkTo>  --}}
         <button {{on "click" this.logout}} type="button"><i class="fas fa-sign-out-alt"></i></button>
       {{else}}
         <LinkTo @route="login">Log in</LinkTo>
       {{/if}}
-      <!-- <LinkTo @route="webshop.help"><i class="fas fa-question-circle"></i></LinkTo> -->
+      {{!-- <LinkTo @route="webshop.help"><i class="fas fa-question-circle"></i></LinkTo>  --}}
 
       <LinkTo @route="webshop.basket">
         {{#if this.basket.orderLines.length}}
