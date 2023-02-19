@@ -15,7 +15,11 @@
     <Webshop::Checkout::Delivery::Checkbox @for="postal" @current={{this.deliveryMethod}}>
       Thuislevering (€25 - gratis vanaf €150 - gratis tot 27.05.2023)
     </Webshop::Checkout::Delivery::Checkbox>
-
+    {{#if (eq this.deliveryMethod "postal")}}
+      <Webshop::Checkout::Delivery::Checkbox @for={{true}} @current={{this.basket.basket.hasCustomDeliveryPlace}}>
+        Leveren op een andere locatie
+      </Webshop::Checkout::Delivery::Checkbox>
+    {{/if}}
     <Webshop::Checkout::Delivery::Checkbox @for="tour" @current={{this.deliveryMethod}}>
       Afhaalpunt op Tour Veeakker - gratis
     </Webshop::Checkout::Delivery::Checkbox>
@@ -33,10 +37,6 @@
     {{/if}}
 
     {{#if (eq this.deliveryMethod "postal")}}
-      <Webshop::Checkout::Delivery::Checkbox @for={{true}} @current={{this.basket.basket.hasCustomDeliveryPlace}}>
-        Leveren op een andere locatie
-      </Webshop::Checkout::Delivery::Checkbox>
-
       {{#if this.basket.basket.hasCustomDeliveryPlace}}
         <div class="contact-info-different">
           <h2>Vul je lever gegevens in:</h2>
