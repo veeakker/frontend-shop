@@ -2,8 +2,7 @@
   <li><LinkTo @route="webshop.basket">Winkelmandje</LinkTo></li>
   <li><LinkTo @route="webshop.checkout.contact-info">Uw Gegevens</LinkTo></li>
   <li><LinkTo @route="webshop.checkout.delivery">Levering / Afhaling</LinkTo></li>
-  <li><LinkTo @route="webshop.checkout.payment">Betalingsgegevens</LinkTo></li>
-  <li><span class="breadcrumb-txt">Bevestig Bestelling</span></li>
+  <li><span class="breadcrumb-txt">Klaar</span></li>
 </ul>
 <div class="fix">
   Payment status: {{this.model.paymentStatus}} <button type="button" {{on "click" (action this.refreshBasket)}}>Reload</button>
