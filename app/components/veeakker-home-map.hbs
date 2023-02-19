@@ -1,5 +1,5 @@
 <div class="veeakker-home-map__leaflet-map">
-  <LeafletMap style="height: 400px; width: 600px; border-bottom-right-radius:200px; border-bottom-left-radius:200px; border-top-right-radius:200px;" @lat={{this.butcheryLat}} @lng={{this.butcheryLng}} @zoom={{this.defaultZoom}} as |map|>
+  <LeafletMap style="height: 400px; width: 600px; border-bottom-right-radius:0; border-bottom-left-radius:4rem; border-top-right-radius:4rem;" @lat={{this.butcheryLat}} @lng={{this.butcheryLng}} @zoom={{this.defaultZoom}} as |map|>
     <map.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" />
     <map.marker @location={{this.veeakkerButcheryLocation}} as |marker|>
       <marker.popup>
