@@ -7,7 +7,7 @@
   width: 100%;
   display: inline-block;
   overflow: hidden;
-  
+
   div {
     float: right;
     padding: 10px;
@@ -34,18 +34,28 @@
 
 .menu-header {
   background-color: $base-primary;
-  
+
   a:hover {
     background-color: $base-primary-highlighted;
+  }
+
+  a.active {
+    /* text-decoration: underline !important; */
+    border-bottom: solid white 1px;
   }
 }
 
 .submenu-header {
   width: 100%;
   background-color: $base-secondary;
-  
+
   a:hover {
     background-color: $base-secondary-highlighted;
+  }
+
+  a.active {
+    /* text-decoration: underline !important; */
+    border-bottom: solid white 2px;
   }
 }
 
@@ -54,14 +64,14 @@
     overflow: auto;
     white-space: nowrap;
     justify-content: center;
-  
+
     a {
       display: inline-block;
       text-decoration: none;
       text-align: center;
       color: white;
       font-size: 16px;
-  
+
       padding: 15px;
     }
   }
@@ -73,14 +83,14 @@
     white-space: nowrap;
     justify-content: center;
     text-align: center;
-  
+
     a {
       display: inline-block;
       text-decoration: none;
       text-align: center;
       color: white;
       font-size: 16px;
-  
+
       padding: 15px;
     }
   }
