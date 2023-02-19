@@ -39,7 +39,7 @@ export default class WebshopRegisterController extends Controller {
         postalCode: this.postalCode,
         streetAddress: this.address
       });
-  
+
       const savedAddress = address.save();
 
       let savedAccount = await this.store.findRecord('account', account.id, {include: "person", reload: true});

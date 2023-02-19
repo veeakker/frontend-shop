@@ -1,4 +1,3 @@
-import { get } from '@ember/object';
 import RSVP from 'rsvp';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
@@ -112,8 +111,10 @@ export default class ProductCardComponent extends Component {
         .args.product?.sortedOfferings?.filter( (offering) =>
           offering?.typeAndQuantity?.get("unit") == UNIT_TO_CODE[unit]
         ).firstObject;
+    } else {
+      return null;
     }
-  };
+  }
 
   get currentOffer(){
     // It is not clear why we have to base ourselves on the id
