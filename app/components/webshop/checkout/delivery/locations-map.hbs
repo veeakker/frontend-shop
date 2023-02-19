@@ -1,8 +1,8 @@
-<h3 class="map-title">Selecteer een voorkeur locatie</h3>
+<h3 class="map-title">Selecteer je afhaalpunt</h3>
 
-<DeliveryLocationsMap @places={{this.locations}} class="h-64" as |marker location|>
+<DeliveryLocationsMap @places={{this.locations}} class="locations-map" as |marker location|>
   {{!-- yield marker location --}}
   {{!-- TODO: add location name to model and show it here --}}
   <h3>{{location.deliveryKind.simpleName}}</h3>
-  Please click <button type="button" {{on 'click' (fn @select location)}}>here</button> to select this location
+  Klik <button type="button" {{on 'click' (fn @select location)}}>here</button> om deze locatie te selecteren.
 </DeliveryLocationsMap>
