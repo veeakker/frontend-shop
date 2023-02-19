@@ -9,13 +9,10 @@
           {{orderLine.offering.typeAndQuantity.product.label}}
         </LinkTo>
       </h3>
-      <h4>Bevat: <Webshop::Basket::Amount @amount={{orderLine.offering.typeAndQuantity}} /></h4>
+      <h4><Webshop::Basket::Amount @amount={{orderLine.offering.typeAndQuantity}} /> <i class="fas fa-times"></i>{{orderLine.amount}} pakje{{#if (gte orderLine.amount 2)}}s{{/if}}</h4>
     </div>
     <div class="order-extra">
       <h4>{{euros orderLine.pricePerUnit}} / pakje</h4>
-      <i class="fas fa-times"></i>
-      <h4>{{orderLine.amount}}</h4>
-      <br>
       <br>
       {{#if @removeOrderLine}}
         <button id="remove-button" {{on "click" (fn @removeOrderLine orderLine.offering orderLine.amount)}} type="button">
