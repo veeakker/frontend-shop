@@ -17,6 +17,9 @@ module.exports = function (defaults) {
         'images/packages/*',
         'images/product-labels/*'
       ]
+    },
+    'ember-simple-auth': {
+      useSessionSetupMethod: true
     }
   });
 
