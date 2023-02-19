@@ -9,6 +9,7 @@
 <div class="delivery-contact">
   <div class="contact-info">
     <h2>Kies je methode van levering / afhaling</h2>
+    <LinkTo @route="collection-points" id="extra-info">Klik hier voor meer info over leveringen / afhaalpunten</LinkTo>
 
     <br /><br />
 
@@ -28,6 +29,18 @@
       <div class="delivery-map">
         <Webshop::Checkout::Delivery::LocationsMap @locationName="tour" @select={{this.basket.setDeliveryPlace}}/>
       </div>
+
+      {{#if this.basket.basket.deliveryPlace}}
+        {{#let this.basket.basket.deliveryPlace as |deliveryPlace|}}
+          <div class="delivery-place">
+            <h4>Geselecteerde punt</h4>
+            <p>
+              {{deliveryPlace.postalAddress.streetAddress}} <br/>
+              {{deliveryPlace.postalAddress.postalCode}} {{deliveryPlace.postalAddress.locality}}
+            </p>
+          </div>
+        {{/let}}
+      {{/if}}
     {{/if}}
 
     {{#if (eq this.deliveryMethod "shop")}}
@@ -50,11 +63,9 @@
       {{/if}}
     {{/if}}
 
-    <div id="frost-disclaimer">
-      <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" /><p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
-    </div>
-
-    <LinkTo @route="collection-points" id="extra-info">Meer info over leveringen / afhaalpunten</LinkTo>
+    <!-- <div id="frost-disclaimer">
+         <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" /><p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
+         </div> -->
 
     <div class="cart-total">
       {{!-- TODO: Do we need to have the BTW etc in here or can we render the total price? --}}

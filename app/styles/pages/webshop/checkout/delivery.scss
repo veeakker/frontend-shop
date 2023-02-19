@@ -6,10 +6,13 @@
   margin-top: 60px;
 }
 
+.delivery-place {
+  text-align: center;
+}
+
 #frost-disclaimer {
   align-content: center;
   margin: 8px 0;
-  font-family: 'open-sans';
 
   p {
     display: inline;
@@ -22,7 +25,5 @@
 #extra-info {
   color: $base-primary;
   text-decoration: none;
-  font-family: 'open-sans';
-  font-size: 18px;
-  font-weight: bold;
+  margin-bottom: 2rem;
 }

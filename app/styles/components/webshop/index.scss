@@ -1,11 +1,11 @@
 @import './checkbox.scss';
 
 .map-title{
-    text-align: center;   
+    text-align: center;
 }
 
-.h-64{
-    border-top-right-radius: 8rem;
-    border-bottom-right-radius: 8rem;
-    border-bottom-left-radius: 8rem;
+.locations-map {
+  border-top-right-radius: 4rem;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 4rem;
 }

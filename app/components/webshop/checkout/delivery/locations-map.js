@@ -25,8 +25,7 @@ export default class WebshopCheckoutDeliveryLocationsMap extends Component {
       // TODO: is this split correct? first is pickup when we want, the
       // other is when they want.
       if( this.shownLocationName == "tour" ){
-        allowedTypes = [uriForNormalizedLabel( "routes" ),
-                        uriForNormalizedLabel( "local-farms" )];
+        allowedTypes = [uriForNormalizedLabel( "routes" )];
       } else if( this.shownLocationName == "shop" ) {
         allowedTypes = [uriForNormalizedLabel( "health-shops" )];
       }
