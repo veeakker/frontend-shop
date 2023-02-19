@@ -27,6 +27,7 @@ export default class BasketModel extends Model {
   @belongsTo('delivery-place') deliveryPlace;
   @belongsTo('fullAddress') deliveryAddress;
   @belongsTo('fullAddress') invoiceAddress;
+  @belongsTo('person') customer;
 
   @use
   delivery = new EnsureAddressResource(() => [this, "deliveryAddress"]);
