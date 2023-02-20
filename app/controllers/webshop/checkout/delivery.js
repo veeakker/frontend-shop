@@ -1,3 +1,4 @@
+import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
@@ -5,6 +6,7 @@ import Controller from '@ember/controller';
 export default class WebshopCheckoutController extends Controller {
   @service basket
   @tracked currentDeliveryMethod;
+  @service router
 
   get payDirectly() {
     return this.deliveryMethod == "postal";
@@ -33,5 +35,19 @@ export default class WebshopCheckoutController extends Controller {
       this.basket.basket.deliveryType = null;
 
     this.basket.basket.save();
+  }
+
+  @action
+  async confirmOrder() {
+    const basket = this.basket.basket;
+    await this.basket.basket.deepPersist();
+    await fetch(`/confirm-basket/${basket.id}`, {
+        method: "post",
+        headers: {
+          'Accept': 'application/vnd.api+json'
+        }
+      });
+    this.basket.reloadBasket();
+    this.router.transitionTo("webshop.checkout.finish", basket );
   }
 }

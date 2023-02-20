@@ -11,6 +11,7 @@ class BasketFetcher extends Resource {
   @service store
 
   async setup() {
+    console.log(this.args.positional[0]); // ensuring we use the input variable
     const result = await (await fetch(`/current-basket/ensure`)).json();
     this.store.pushPayload( result );
     const baskets = await this.store.query('basket', {
@@ -24,7 +25,9 @@ class BasketFetcher extends Resource {
 
 export default class BasketService extends Service {
   @service store
-  @use basket = new BasketFetcher(() => true)
+  @tracked
+  fetchDate = new Date();
+  @use basket = new BasketFetcher(() => [this.fetchDate])
 
   @action
   setDeliveryPlace( deliveryPlace ) {
@@ -38,6 +41,12 @@ export default class BasketService extends Service {
 
   async saveBasket(){
     await this.basket?.save();
+  }
+
+  reloadBasket() {
+    // reset fetchDate, which is used in the basket Resource, should
+    // ensure the basket resource is recomputed
+    this.fetchDate = new Date();
   }
 
   /**

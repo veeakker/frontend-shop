@@ -117,7 +117,7 @@
   text-align: right;
   margin: 15px 0;
 
-  a {
+  a,button {
     background-color: $base-primary;
     color: white;
     font-size: 16px;
@@ -125,7 +125,7 @@
     padding: 10px 50px;
   }
 
-  a:hover {
+  a:hover, button:hover {
     background-color: $base-secondary;
   }
 }

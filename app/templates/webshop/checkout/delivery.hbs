@@ -75,7 +75,7 @@
       {{!-- <p>BTW 6% <span class="money">€x</span></p>  --}}
       <p class="cart-price">Totaalprijs <span class="money">{{euros this.basket.totalPrice}}</span></p>    <br />
       <div class="button-product-cart">
-        <LinkTo @route="webshop.checkout.payment" @disabled={{not this.deliveryMethod}}>{{if this.payDirectly "Betalen" "Bevestigen"}}</LinkTo>
+        <button type="button" {{on "click" (fn this.confirmOrder)}}>Bevestigen</button>
       </div>
     </div>
   </div>
