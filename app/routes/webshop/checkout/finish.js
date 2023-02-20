@@ -6,7 +6,7 @@ export default class WebshopCheckoutFinishRoute extends Route {
 
   async model({basket_id}) {
     const baskets = await this.store.query('basket', {
-      ":id:": basket_id,
+      "filter[:id:]": basket_id,
       include: "order-lines.offering.type-and-quantity.product,order-lines.offering.unit-price,delivery-address.postal-address,invoice-address.postal-address"
     });
     return baskets.firstObject;
