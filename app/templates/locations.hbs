@@ -11,7 +11,7 @@
     <LinkTo @route="locations.kind" @model="routes">Toeren</LinkTo>
     <LinkTo @route="locations.kind" @model="health-shops">Natuurwinkels</LinkTo>
     <LinkTo @route="locations.kind" @model="local-farms">Buurderijen</LinkTo>
-    <LinkTo @route="locations.kind" @model="home-delivery">Webshop</LinkTo> {{!-- TODO: moet dit "aan huis" worden? --}}
+    <LinkTo @route="locations.kind" @model="home-delivery">Aan huis</LinkTo> {{!-- TODO: moet dit "aan huis" worden? --}}
   </div><div class="fix">{{outlet}}</div>
   <div class="legende" >
     <table>
@@ -33,7 +33,7 @@
         {{/if}}
         {{#if (eq normalizedLabel "routes")}}
           <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
-            Klik hier om meer te weten over leveringen via toeren.
+            Klik hier om meer te weten over leveringen via Toeren.
           </LinkTo>
         {{/if}}
         {{#if (eq normalizedLabel "health-shops")}}
