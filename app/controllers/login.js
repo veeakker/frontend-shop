@@ -21,7 +21,7 @@ export default class WebshopLoginController extends Controller {
           email: this.email,
           password: this.password
         });
-        this.transitionToRoute('webshop.account');
+        this.transitionToRoute('webshop');
 
       } catch(err){
         this.error = err.errors[0].title;
