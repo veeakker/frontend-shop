@@ -10,15 +10,22 @@ class BasketFetcher extends Resource {
   @tracked value
   @service store
 
-  async setup() {
+  async getBasket(isUpdate = false) {
     console.log(this.args.positional[0]); // ensuring we use the input variable
     const result = await (await fetch(`/current-basket/ensure`)).json();
+    if ( isUpdate ) {
+      this.value.set("orderLines",[]);
+    }
     this.store.pushPayload( result );
-    const baskets = await this.store.query('basket', {
-      "filter[:id:]": result.data.id,
-      include: "order-lines.offering.type-and-quantity.product,order-lines.offering.unit-price"
-    });
-    this.value = baskets.firstObject;
+    this.value = this.store.peekRecord('basket', result.data[0].id);
+  }
+
+  async setup() {
+    await this.getBasket(false);
+  }
+
+  async update() {
+    await this.getBasket(true);
   }
 
 }
@@ -53,28 +60,39 @@ export default class BasketService extends Service {
    * Adds <amount> items of type <offering> to the orderLines
    */
   async addOffer( offering, amount ){
-    if( this.hasOffering( offering ) ) {
-      const obj = this.objectForOffering( offering );
-      obj.set( 'amount',  obj.amount + amount );
-    } else {
-      const orderLine = this.store.createRecord('order-line', { offering, amount });
-      await orderLine.save();
-      this.orderLines.pushObject(orderLine);
-    }
-
-    await this.saveBasket();
+    // TODO: support combining order lines in API by summing data.
+    await fetch(`/current-basket/add-order-line`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/vnd.api+json"
+      },
+      body: JSON.stringify({
+        offeringUuid: offering.id,
+        amount: amount
+      })
+    });
+    this.reloadBasket();
   }
 
   /**
    * Removes <amount> items of type <offering> from the orderLines.
    */
-  removeOffer( offering, amount ){
+  async removeOffer( offering, amount ){
     const obj = this.objectForOffering( offering );
+    // TODO: update amount through basket service
     set(obj, 'amount', obj.amount - amount);
     if( obj.amount <= 0 ) {
-      this.orderLines.removeObject( obj );
+      await fetch(`/current-basket/delete-order-line`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/vnd.api+json"
+        },
+        body: JSON.stringify({
+          orderLineUuid: obj.id
+        })
+      });
     }
-    this.saveBasket();
+    this.reloadBasket();
   }
 
   objectForOffering( offering ) {
