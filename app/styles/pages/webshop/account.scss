@@ -5,6 +5,11 @@
   border-bottom: 3px solid $base-primary-highlighted;
 }
 
+.my-account {
+  max-width: 50em;
+  margin: auto;
+}
+
 #account-information {
   display: flex;
   flex-direction: column;
@@ -18,8 +23,29 @@
     color: $base-primary;
   }
 
-  p, dl, dd {
-    text-align: left;
-    color: $base-secondary;
+  /* p, dl, dd { */
+  /*   text-align: left; */
+  /*   color: $base-secondary; */
+  /* } */
+
+  dl {
+    color: #726056;
+
+    dt { margin-top: 1em; font-weight: bold }
+    dt:after { content: ":" }
+    dd {
+      margin-left: 0;
+      margin-top: 0;
+      display: flex;
+      /* color: #726056; */
+
+      input {
+        /* color: #726056; */
+        padding: 10px;
+        border: 1px solid #443b36;
+        background-color: #E1DBD5;
+        width: 100%;
+      }
+    }
   }
 }
