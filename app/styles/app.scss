@@ -3,6 +3,18 @@
 @import './components/index';
 @import './pages/index';
 
+/* generic buttons */
+
+button.button {
+  background-color: #443b36;
+  color: white;
+  font-size: 16px;
+  font-family: "Open Sans";
+  padding: 10px 50px;
+  margin: 15px 0;
+  border: none;
+}
+
 /* greyed out pictures of disabled products */
 .product-disabled img.product-image {
   filter: grayscale(1);
