@@ -26,7 +26,11 @@ class BasketFetcher extends Resource {
     const basket = this.store.peekRecord('basket', result.data[0].id);
 
     try {
-      const deliveryPlace = await this.store.find("delivery-place", deliveryPlaceId);
+      const deliveryPlace = (await this.store.query("delivery-place", {
+        "filter[:id:]": deliveryPlaceId,
+        include: "delivery-kind,geo-coordinate,postal-address"
+      })).firstObject;
+      // const deliveryPlace = await this.store.find("delivery-place", deliveryPlaceId);
       basket.set("deliveryPlace", deliveryPlace);
     } catch (e) {
       console.warn("Something went wrong loading the default delivery place");

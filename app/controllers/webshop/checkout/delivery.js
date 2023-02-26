@@ -38,14 +38,16 @@ export default class WebshopCheckoutController extends Controller {
   @action
   async confirmOrder() {
     const basket = this.basket.basket;
+    const basketId = basket.id;
+    console.log(`Confirming basket ${basket.id}`);
     await this.basket.persistDeliveryInfo();
-    await fetch(`/confirm-basket/${basket.id}`, {
+    await fetch(`/confirm-basket/${basketId}`, {
         method: "post",
         headers: {
           'Accept': 'application/vnd.api+json'
         }
       });
     await this.basket.reloadBasket();
-    this.router.transitionTo("webshop.checkout.finish", basket.id );
+    this.router.transitionTo("webshop.checkout.finish", basketId );
   }
 }
