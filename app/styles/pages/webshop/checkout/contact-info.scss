@@ -16,8 +16,8 @@
 .checkout-contact p {
   color: $base-primary;
   display: inline-block;
-  float: right;
   margin-top: 22px;
+  line-height: 2em;
 
   a {
     color: $base-primary;
@@ -66,11 +66,14 @@
 
 .contactDetails{
   color: black;
-  
-  
+
+
   .frost-div{
+    margin-top: 2em;
+
     display: flex;
     flex-direction: row;
+
     p{
       margin-top: 10px;
       margin-left: 2px;
@@ -79,6 +82,9 @@
   .frost{
     height: 25px;
     width: 25px;
+    margin-right: 1ex;
+    position: relative;
+    top: 1.5ex;
   }
 }
 

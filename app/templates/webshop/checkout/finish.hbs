@@ -4,10 +4,6 @@
   <li><LinkTo @route="webshop.checkout.delivery">Levering / Afhaling</LinkTo></li>
   <li><span class="breadcrumb-txt">Klaar</span></li>
 </ul>
-<div class="fix">
-  Payment status: {{this.basket.paymentStatus}} <button type="button" {{on "click" (action this.refreshBasket)}}>Reload</button>
-</div>
-
 
 <div class="checkout-contact">
   <div class="contact-info">
@@ -15,68 +11,68 @@
     <div class="contactDetails">
       <h2>Je bestelling is succesvol geplaatst!</h2><br /><br />
       <h3>Contact informatie</h3>
-      {{#let this.basket.invoiceAddress as |address|}}
-        <li>Facturatiegegevens</li>
-        <ul>
-          {{#if address.company}}
-            <li>{{address.company}}</li>
+      {{#if this.basket.customer}}
+        {{!-- Show customer contact information --}}
+      {{else}}
+        {{#let this.basket.invoiceAddress as |address|}}
+          <ul>
+            {{#if address.company}}
+              <li>{{address.company}}</li>
+            {{/if}}
+            <li>{{address.firstName}} {{address.lastName}}</li>
+            <li>{{address.postalAddress.streetAddress}}</li>
+            <li>{{address.postalAddress.postalCode}} {{address.postalAddress.locality}}</li>
+            <li>{{address.telephone}}</li>
+          </ul>
+        {{/let}}
+        {{#if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/postal")}}
+          {{#if this.basket.hasCustomDeliveryPlace}}
+            {{#let this.basket.deliveryAddress as |address|}}
+              <h3>Levering op</h3>
+              <ul>
+                {{#if address.company}}
+                  <li>{{address.company}}</li>
+                {{/if}}
+                <li>{{address.firstName}} {{address.lastName}}</li>
+                <li>{{address.postalAddress.streetAddress}}</li>
+                <li>{{address.postalAddress.postalCode}} {{address.postalAddress.locality}}</li>
+                <li>{{address.telephone}}</li>
+              </ul>
+            {{/let}}
           {{/if}}
-          <li>{{address.firstName}} {{address.lastName}}</li>
-          <li>{{address.postalAddress.streetAddress}}</li>
-          <li>{{address.postalAddress.postalCode}} {{address.postalAddress.locality}}</li>
-          <li>{{address.telephone}}</li>
-        </ul>
-      {{/let}}
-      {{#if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/postal")}}
-        {{#if this.basket.hasCustomDeliveryPlace}}
-          {{#let this.basket.deliveryAddress as |address|}}
-            <h3>Levering op</h3>
-            <ul>
-              {{#if address.company}}
-                <li>{{address.company}}</li>
-              {{/if}}
-              <li>{{address.firstName}} {{address.lastName}}</li>
-              <li>{{address.postalAddress.streetAddress}}</li>
-              <li>{{address.postalAddress.postalCode}} {{address.postalAddress.locality}}</li>
-              <li>{{address.telephone}}</li>
-            </ul>
-          {{/let}}
+        {{else if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/tour")}}
+          <h3>Levering op toer</h3>
+          <ul>
+            {{#let this.basket.deliveryPlace.postalAddress as |postalAddress|}}
+              <li>{{postalAddress.streetAddress}}</li>
+              <li>{{postalAddress.postalCode}} {{postalAddress.locality}}</li>
+            {{/let}}
+          </ul>
+        {{else if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/shop")}}
+          Afhalen in de winkel.
         {{/if}}
-      {{else if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/tour")}}
-        <h3>Levering op toer</h3>
-        <ul>
-          {{#let this.basket.deliveryPlace.postalAddress as |postalAddress|}}
-            <li>{{postalAddress.streetAddress}}</li>
-            <li>{{postalAddress.postalCode}} {{postalAddress.locality}}</li>
-          {{/let}}
-        </ul>
-      {{else if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/shop")}}
-        Afhalen in de winkel.
       {{/if}}
       <div class="frost-div">
         <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" />
         <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
       </div>
-
-    </div>  <div class="fix"></div>
-
+    </div>
     <div class="cart-total">
-      <p class="cart-price">Prijs levering <span class="money">GRATIS</span></p>
+      <p class="cart-price">
+        Prijs levering <span class="money">gratis</span> <br/>
+        Totaalprijs <span class="money">{{euros this.totalCost}}</span>
+      </p>
       {{!-- <p>BTW 6% <span class="money">€x</span></p>  --}}
-      <p class="cart-price">Totaalprijs <span class="money">{{euros this.basket.totalPrice}}</span></p>    <br />
-      <div class="button-product-cart"><a href="#" class="uppercase">bedankt voor je bestelling!</a></div>
-    </div><div class="fix"></div>
-
+      <h1 class="button-product-cart">bedankt voor je bestelling!</h1>
+    </div>
   </div>
-
 </div>
 
 <div class="order">
-  <h2>Bestelling's overzicht</h2>
+  <h2>Bestelde producten</h2>
   {{#if this.basket.orderLines}}
     <Webshop::OrderLines @orderLines={{this.basket.orderLines}} />
   {{/if}}
 </div>
-
 
 {{outlet}}
