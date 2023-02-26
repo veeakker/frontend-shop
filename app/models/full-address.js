@@ -18,7 +18,8 @@ class EnsureAddressResource extends Resource {
 }
 
 export default class FullAddressModel extends Model {
-  @attr('string') name;
+  @attr('string') firstName;
+  @attr('string') lastName;
   @attr('string') company;
   @attr('string') telephone;
   @attr('string') email;

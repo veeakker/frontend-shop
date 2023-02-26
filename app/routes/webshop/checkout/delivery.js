@@ -7,6 +7,8 @@ export default class WebshopDeliveryRoute extends Route {
 
   @action
   async willTransition(_transition) {
-    this.basket.basket.deepPersist();
+    await this.basket.persistDeliveryInfo();
+    // TODO: store core information through basket instead
+    // this.basket.basket.deepPersist();
   }
 }

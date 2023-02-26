@@ -103,6 +103,49 @@ export default class BasketService extends Service {
     this.objectForOffering( offering ) && true;
   }
 
+  /**
+   * The basket itself connects to invoice information which is
+   * persisted through the basket service with this method.
+   */
+  async persistInvoiceInfo() {
+    const basket = this.basket;
+    const invoiceAddress = basket.invoiceAddress.content; // TODO: find better way to unpack
+    const invoicePostal = invoiceAddress.postalAddress.content; // TODOi find better way to unpack
+
+    await fetch('/current-basket/persist-invoice-info', {
+      method: "POST",
+      headers: {
+        'Content-Type': "application/vnd.api+json"
+      },
+      body: JSON.stringify({
+        basketUuid: basket.id,
+        invoiceAddress: invoiceAddress.serialize().data,
+        invoicePostal: invoicePostal.serialize().data
+      })});
+  }
+
+ /**
+   * The basket itself connects to delivery information which is
+   * persisted through the basket service with this method.
+   */
+  async persistDeliveryInfo() {
+    const basket = this.basket;
+    const deliveryAddress = basket.deliveryAddress.content; // TODO: find better way to unpack
+    const deliveryPostal = deliveryAddress.postalAddress.content; // TODOi find better way to unpack
+
+    await fetch('/current-basket/persist-delivery-info', {
+      method: "POST",
+      headers: {
+        'Content-Type': "application/vnd.api+json"
+      },
+      body: JSON.stringify({
+        basketUuid: basket.id,
+        deliveryAddress: deliveryAddress.serialize().data,
+        deliveryPostal: deliveryPostal.serialize().data
+      })});
+  }
+
+
   get totalPrice() {
     // TODO: this could be a resource
     // sum all prices
