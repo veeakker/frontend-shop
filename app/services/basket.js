@@ -16,8 +16,23 @@ class BasketFetcher extends Resource {
     if ( isUpdate ) {
       this.value.set("orderLines",[]);
     }
+    let deliveryPlaceId = result.data[0]?.relationships["delivery-place"]?.data?.id;
+    if( deliveryPlaceId ) {
+      delete result.data[0].relationships["delivery-place"];
+      // TODO: set delivery place when it is retrieved.
+    }
+
     this.store.pushPayload( result );
-    this.value = this.store.peekRecord('basket', result.data[0].id);
+    const basket = this.store.peekRecord('basket', result.data[0].id);
+
+    try {
+      const deliveryPlace = await this.store.find("delivery-place", deliveryPlaceId);
+      basket.set("deliveryPlace", deliveryPlace);
+    } catch (e) {
+      console.warn("Something went wrong loading the default delivery place");
+    }
+
+    this.value = basket;
   }
 
   async setup() {
@@ -39,15 +54,10 @@ export default class BasketService extends Service {
   @action
   setDeliveryPlace( deliveryPlace ) {
     this.basket.deliveryPlace = deliveryPlace;
-    this.basket.save();
   }
 
   get orderLines() {
     return this.basket?.orderLines;
-  }
-
-  async saveBasket(){
-    await this.basket?.save();
   }
 
   reloadBasket() {
@@ -132,6 +142,9 @@ export default class BasketService extends Service {
     const basket = this.basket;
     const deliveryAddress = basket.deliveryAddress.content; // TODO: find better way to unpack
     const deliveryPostal = deliveryAddress.postalAddress.content; // TODOi find better way to unpack
+    const hasCustomDeliveryPlace = basket.hasCustomDeliveryPlace;
+    const deliveryPlaceUuid = basket.deliveryPlace.get("id");
+    const deliveryType = basket.deliveryType;
 
     await fetch('/current-basket/persist-delivery-info', {
       method: "POST",
@@ -141,7 +154,10 @@ export default class BasketService extends Service {
       body: JSON.stringify({
         basketUuid: basket.id,
         deliveryAddress: deliveryAddress.serialize().data,
-        deliveryPostal: deliveryPostal.serialize().data
+        deliveryPostal: deliveryPostal.serialize().data,
+        hasCustomDeliveryPlace,
+        deliveryPlaceUuid,
+        deliveryType
       })});
   }
 

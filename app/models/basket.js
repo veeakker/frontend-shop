@@ -23,6 +23,8 @@ export default class BasketModel extends Model {
   @attr() paymentStatus;
   @attr('boolean') hasCustomDeliveryPlace;
   @attr() deliveryType;
+  @attr() changedAt;
+  @attr() orderStatus;
   @hasMany('order-line') orderLines;
   @belongsTo('delivery-place') deliveryPlace;
   @belongsTo('fullAddress') deliveryAddress;
