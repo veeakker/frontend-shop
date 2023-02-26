@@ -6,7 +6,9 @@ export default class WebshopDeliveryRoute extends Route {
   @service basket;
 
   @action
-  async willTransition(_transition) {
-    await this.basket.persistDeliveryInfo();
+  async willTransition(transition) {
+    if( transition.to.name !== "webshop.checkout.finish" ) {
+      await this.basket.persistDeliveryInfo();
+    }
   }
 }

@@ -1,12 +1,15 @@
+import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
+import { BasketFetcher } from '../../../services/basket';
+import { use } from 'ember-could-get-used-to-this';
 
 export default class WebshopCheckoutController extends Controller {
-  @service basket
+  @use basket = new BasketFetcher(() => [this.fetchDate, this.model])
+  @tracked fetchDate = new Date();
 
   @action
   refreshBasket(){
-    this.model.reload();
+    this.fetchDate = new Date();
   }
 }
