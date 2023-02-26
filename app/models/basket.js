@@ -29,15 +29,23 @@ export default class BasketModel extends Model {
   @belongsTo('fullAddress') invoiceAddress;
   @belongsTo('person') customer;
 
-  @use
-  delivery = new EnsureAddressResource(() => [this, "deliveryAddress"]);
-
-  @use
-  invoice = new EnsureAddressResource(() => [this, "invoiceAddress"]);
-
-  async deepPersist() {
-    await this.delivery?.deepPersist();
-    await this.invoice?.deepPersist();
-    await this.save();
+  get delivery() {
+    return this.deliveryAddress;
   }
+
+  get invoice() {
+    return this.invoiceAddress;
+  }
+
+  // @use
+  // delivery = new EnsureAddressResource(() => [this, "deliveryAddress"]);
+
+  // @use
+  // invoice = new EnsureAddressResource(() => [this, "invoiceAddress"]);
+
+  // async deepPersist() {
+  //   await this.delivery?.deepPersist();
+  //   await this.invoice?.deepPersist();
+  //   await this.save();
+  // }
 }

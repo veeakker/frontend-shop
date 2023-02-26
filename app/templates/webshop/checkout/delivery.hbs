@@ -52,12 +52,14 @@
       {{#if this.basket.basket.hasCustomDeliveryPlace}}
         <div class="contact-info-different">
           <h2>Vul je lever gegevens in:</h2>
-          <Input @value={{mut this.basket.basket.delivery.name}} placeholder="Naam" /> <br />
+          <Input @value={{mut this.basket.basket.delivery.firstName}} placeholder="Voornaam" /> <br />
+          <Input @value={{mut this.basket.basket.delivery.lastName}} placeholder="Achternaam" /> <br />
           <Input @value={{mut this.basket.basket.delivery.company}} placeholder="Bedrijf + BTW nummer (optioneel)" /> <br />
           <Input @value={{mut this.basket.basket.delivery.address.streetAddress}} placeholder="Straat + huisnummer" /> <br />
           <Input @value={{mut this.basket.basket.delivery.address.postalCode}} placeholder="Postcode" /> <br />
           <Input @value={{mut this.basket.basket.delivery.address.locality}} placeholder="Gemeente" /> <br />
           <Input @value={{mut this.basket.basket.delivery.telephone}} placeholder="Gsm / Tel waarop bereikbaar bij alevering / afhaling" /> <br />
+          <Input @value={{mut this.basket.basket.delivery.email}} placeholder="E-mail adres" /> <br />
         </div>
       {{/if}}
     {{/if}}
