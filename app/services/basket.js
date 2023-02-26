@@ -12,7 +12,7 @@ class BasketFetcher extends Resource {
 
   async getBasket(isUpdate = false) {
     console.log(this.args.positional[0]); // ensuring we use the input variable
-    const result = await (await fetch(`/current-basket/ensure`)).json();
+    const result = await (await fetch(this.basketUrl)).json();
     if ( isUpdate ) {
       this.value.set("orderLines",[]);
     }
@@ -43,6 +43,13 @@ class BasketFetcher extends Resource {
     await this.getBasket(true);
   }
 
+  get basketUrl() {
+    if( this.args.positional[1] ) {
+      return `/current-basket/previous/${this.args.positional[1]}`;
+    } else {
+      return "/current-basket/ensure";
+    }
+  }
 }
 
 export default class BasketService extends Service {
@@ -174,3 +181,5 @@ export default class BasketService extends Service {
     else return undefined;
   }
 }
+
+export { BasketFetcher };

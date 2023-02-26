@@ -5,7 +5,7 @@
   <li><span class="breadcrumb-txt">Klaar</span></li>
 </ul>
 <div class="fix">
-  Payment status: {{this.model.paymentStatus}} <button type="button" {{on "click" (action this.refreshBasket)}}>Reload</button>
+  Payment status: {{this.basket.paymentStatus}} <button type="button" {{on "click" (action this.refreshBasket)}}>Reload</button>
 </div>
 
 
@@ -15,34 +15,34 @@
     <div class="contactDetails">
       <h2>Je bestelling is succesvol geplaatst!</h2><br /><br />
       <h3>Contact informatie</h3>
-      {{#let this.model.invoiceAddress as |address|}}
+      {{#let this.basket.invoiceAddress as |address|}}
         <li>Facturatiegegevens</li>
         <ul>
           {{#if address.company}}
             <li>{{address.company}}</li>
           {{/if}}
-          <li>{{address.name}}</li>
+          <li>{{address.firstName}} {{address.lastName}}</li>
           <li>{{address.postalAddress.streetAddress}}</li>
           <li>{{address.postalAddress.postalCode}} {{address.postalAddress.locality}}</li>
           <li>{{address.telephone}}</li>
         </ul>
       {{/let}}
-      {{#if (eq this.model.deliveryType "http://veeakker.be/delivery-methods/postal")}}
-        {{#if this.model.hasCustomDeliveryPlace}}
-          {{#let this.model.deliveryAddress as |address|}}
+      {{#if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/postal")}}
+        {{#if this.basket.hasCustomDeliveryPlace}}
+          {{#let this.basket.deliveryAddress as |address|}}
             <h3>Levering op</h3>
             <ul>
               {{#if address.company}}
                 <li>{{address.company}}</li>
               {{/if}}
-              <li>{{address.name}}</li>
+              <li>{{address.firstName}} {{address.lastName}}</li>
               <li>{{address.postalAddress.streetAddress}}</li>
               <li>{{address.postalAddress.postalCode}} {{address.postalAddress.locality}}</li>
               <li>{{address.telephone}}</li>
             </ul>
           {{/let}}
         {{/if}}
-      {{else if (eq this.model.deliveryType "http://veeakker.be/delivery-methods/tour")}}
+      {{else if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/tour")}}
         <h3>Levering op toer</h3>
         <ul>
           {{#let this.basket.deliveryPlace.postalAddress as |postalAddress|}}
@@ -50,7 +50,7 @@
             <li>{{postalAddress.postalCode}} {{postalAddress.locality}}</li>
           {{/let}}
         </ul>
-      {{else if (eq this.model.deliveryType "http://veeakker.be/delivery-methods/shop")}}
+      {{else if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/shop")}}
         Afhalen in de winkel.
       {{/if}}
       <div class="frost-div">
@@ -63,7 +63,7 @@
     <div class="cart-total">
       <p class="cart-price">Prijs levering <span class="money">GRATIS</span></p>
       {{!-- <p>BTW 6% <span class="money">€x</span></p>  --}}
-      <p class="cart-price">Totaalprijs <span class="money">{{euros this.model.totalPrice}}</span></p>    <br />
+      <p class="cart-price">Totaalprijs <span class="money">{{euros this.basket.totalPrice}}</span></p>    <br />
       <div class="button-product-cart"><a href="#" class="uppercase">bedankt voor je bestelling!</a></div>
     </div><div class="fix"></div>
 
@@ -73,8 +73,8 @@
 
 <div class="order">
   <h2>Bestelling's overzicht</h2>
-  {{#if this.model.orderLines}}
-    <Webshop::OrderLines @orderLines={{this.model.orderLines}} />
+  {{#if this.basket.orderLines}}
+    <Webshop::OrderLines @orderLines={{this.basket.orderLines}} />
   {{/if}}
 </div>
 
