@@ -1,4 +1,9 @@
 {{!-- template-lint-disable no-triple-curlies --}}
 {{{model.description}}}
 
+{{#if (and this.model.targetUnit.unit this.model.targetUnit.value)}}
+  <p>
+    Richtgewicht is {{this.model.targetUnit.value}}{{human-unit this.model.targetUnit.unit}} per stuk
+  </p>
+{{/if}}
 {{outlet}}
