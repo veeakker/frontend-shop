@@ -9,6 +9,7 @@ export default class WebshopContactInfoRoute extends Route {
   @action
   async willTransition(_transition) {
     await this.basket.persistInvoiceInfo();
+    this.controller.showWarnings = false;
   }
 
   async activate() {
