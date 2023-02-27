@@ -37,7 +37,17 @@
           <ProductCard::PackagesImage @count={{this.packageCount}} @offer={{this.currentOffer}} />
         </div>
 
+        <div>
+          {{#if this.currentOffer}}
+            {{#if (eq this.packageCount 1)}}
+              {{euros this.currentOffer.unitPrice.value}}
+            {{else}}
+              {{euros this.currentOffer.unitPrice.value}} x {{this.packageCount}} = {{euros (mult this.currentOffer.unitPrice.value this.packageCount)}}
+            {{/if}}
+          {{/if}}
+        </div>
         <button class="button-product" type="button" {{action this.add}}>Bestellen</button>
+
         {{#if this.session.isAuthenticated}}
           {{#if this.favouriteRecord}}
             <button class="fav-button" {{on "click" this.unFavourite}} type="button"><i class="fas fa-heart"></i></button>
