@@ -77,6 +77,14 @@ export default class BasketService extends Service {
     this.fetchDate = new Date();
   }
 
+  async requestMerge() {
+    await fetch('/current-basket/merge-graphs', {
+      method: "POST",
+      headers: {
+        "Accept": "application/vnd.api+json"
+      }});
+  }
+
   /**
    * Adds <amount> items of type <offering> to the orderLines
    */

@@ -5,6 +5,7 @@ import { inject as service } from '@ember/service';
 
 export default class WebshopLoginController extends Controller {
   @service session;
+  @service basket;
 
   @tracked email;
   @tracked password;
@@ -21,6 +22,9 @@ export default class WebshopLoginController extends Controller {
           email: this.email,
           password: this.password
         });
+        debugger;
+        await this.basket.requestMerge();
+        this.basket.reloadBasket();
         this.transitionToRoute('webshop');
 
       } catch(err){

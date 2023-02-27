@@ -4,21 +4,23 @@
     <div class="contact-info">
       <h1 class="tab-title">Registreer</h1>
       <Design::Forks @useDarkImage={{true}}/>
-      <br>
       <div class="error-message">
-        {{#if this.error }}
-          {{ this.error }}
-        {{/if}}
+        <ul>
+          {{#each this.errors as |error|}}
+            <li>{{error.title}}</li>
+          {{/each}}
+        </ul>
       </div>
-      <Input placeholder="Voornaam" @type="text" @value={{this.firstName}} required />
-      <Input required placeholder="Naam" @type="text"  @value={{this.lastName}} />
       <Input required placeholder="E-mail" @type="email" @value={{this.email}} />
       <Input required placeholder="Wachtwoord" @type="password"  @value={{this.password}} />
-      <br />
+      <hr />
+      <Input placeholder="Voornaam" @type="text" @value={{this.firstName}} required />
+      <Input required placeholder="Achternaam" @type="text"  @value={{this.lastName}} />
       <Input required placeholder="Straat huisnummer" @type="text"  @value={{this.address}} />
       <Input required placeholder="Postcode" @type="text"  @value={{this.postalCode}} />
       <Input required placeholder="Gemeente" @type="text"  @value={{this.locality}} />
-      <div class="button-product-cart"><a {{ on 'click' this.register }} href="#">Registreer</a></div>
+      <Input required placeholder="Telefoonnummer" @type="text"  @value={{this.telephone}} />
+      <div class="button-product-cart"><button type="button" class="button" {{on "click" this.register}}>Registreer</button></div>
       <div class="button-product-cart"><LinkTo @route="login">Inloggen</LinkTo></div>
     </div>
   </div>

@@ -16,8 +16,9 @@ export default class WebshopRegisterController extends Controller {
   @tracked locality;
   @tracked postalCode;
   @tracked address;
+  @tracked telephone;
 
-  @tracked error = [];
+  @tracked errors = [];
   @tracked success;
 
   @action
@@ -31,28 +32,33 @@ export default class WebshopRegisterController extends Controller {
     });
 
     try {
-      const account = await newAccount.save();
+      const response = await fetch( "/accounts", {
+        method: "POST",
+        headers: {
+          accept: "application/vnd.api+json",
+          "content-type": "application/vnd.api+json"
+        },
+        body: JSON.stringify({
+          data: {
+            attributes: {
+              email: this.email,
+              password: this.password,
+              "first-name": this.firstName,
+              "last-name": this.lastName,
+              "street-address": this.address,
+              locality: this.locality,
+              postal: this.postalCode,
+              phone: this.telephone
+            }
+          }
+        })});
 
-      const address = this.store.createRecord('postal-address', {
-        country: this.country,
-        locality: this.locality,
-        postalCode: this.postalCode,
-        streetAddress: this.address
-      });
-
-      const savedAddress = address.save();
-
-      let savedAccount = await this.store.findRecord('account', account.id, {include: "person", reload: true});
-
-      let person = await savedAccount.person;
-      person.firstName = this.firstName;
-      person.lastName = this.lastName;
-      person.postalAddress = savedAddress;
-      person.save();
-
+      if( ! response.ok ) {
+        throw await response.json();
+      }
       this.transitionToRoute('login');
     } catch(err){
-      this.error = err.errors[0].title;
+      this.errors = err.errors;
     }
   }
 }

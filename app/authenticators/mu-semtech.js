@@ -2,7 +2,8 @@ import Base from 'ember-simple-auth/authenticators/base';
 import fetch, { Headers } from 'fetch';
 
 export default class MuSemtechAuthenticator extends Base {
-  async authenticate(options) {    const result = await fetch('/sessions', {
+  async authenticate(options) {
+    const result = await fetch('/sessions', {
       method: 'POST',
       headers: new Headers({
         Accept: 'application/vnd.api+json',
