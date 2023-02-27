@@ -36,6 +36,10 @@
   padding: 20px;
   border-bottom-left-radius: 5rem;
   border-top-right-radius: 5rem;
+
+  .error {
+    color: #443B36;
+  }
 }
 
 .contact-info input, .contact-info textarea, .contact-info-different input, .contact-info-different textarea {

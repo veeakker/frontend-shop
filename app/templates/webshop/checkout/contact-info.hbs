@@ -24,7 +24,21 @@
     <Input @value={{mut this.basket.basket.invoice.telephone}} placeholder="Gsm / Tel waarop bereikbaar bij levering / afhaling" /> <br />
     <Input @value={{mut this.basket.basket.invoice.email}} placeholder="E-mail adres" /> <br />
 
-    <div class="button-product-cart"><LinkTo @route="webshop.checkout.delivery">Verder bestellen</LinkTo></div>
+    {{#if this.showWarnings}}
+      <ul class="error">
+        {{#each this.warnings as |warning|}}
+          <li>{{warning}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
+
+    <div class="button-product-cart">
+      {{#if this.warnings}}
+        <button {{on "click" (fn (mut this.showWarnings) true)}} type="button">Verder bestellen</button>
+      {{else}}
+        <LinkTo disabled @route="webshop.checkout.delivery">Verder bestellen</LinkTo>
+      {{/if}}
+    </div>
   </div>
 </div>
 
