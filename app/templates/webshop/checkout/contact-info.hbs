@@ -34,9 +34,9 @@
 
     <div class="button-product-cart">
       {{#if this.warnings}}
-        <button {{on "click" (fn (mut this.showWarnings) true)}} type="button">Verder bestellen</button>
+        <button {{on "click" (fn (mut this.showWarnings) true)}} type="button">Naar levering</button>
       {{else}}
-        <LinkTo disabled @route="webshop.checkout.delivery">Verder bestellen</LinkTo>
+        <LinkTo disabled @route="webshop.checkout.delivery">Naar levering</LinkTo>
       {{/if}}
     </div>
   </div>
