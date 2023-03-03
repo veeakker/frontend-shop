@@ -13,7 +13,8 @@
     <br /><br />
 
     <Webshop::Checkout::Delivery::Checkbox @for="postal" @current={{this.deliveryMethod}}>
-      Thuislevering (€25 - gratis vanaf €150 - gratis tot 27.05.2023)
+      <!-- Thuislevering (€25 - gratis vanaf €150 - gratis tot 27.05.2023) -->
+      Thuislevering regio Leuven (€25 - gratis vanaf €150 - gratis tot 27.05.2023)
     </Webshop::Checkout::Delivery::Checkbox>
     {{#if (eq this.deliveryMethod "postal")}}
       <Webshop::Checkout::Delivery::Checkbox @for={{true}} @current={{this.basket.basket.hasCustomDeliveryPlace}}>
