@@ -27,7 +27,13 @@
 
     {{#if (eq this.deliveryMethod "tour")}}
       <div class="delivery-map">
-        <Webshop::Checkout::Delivery::LocationsMap @locationName="tour" @select={{this.basket.setDeliveryPlace}}/>
+        <Webshop::Checkout::Delivery::LocationsMap
+          @locationName="tour"
+          @select={{this.basket.setDeliveryPlace}}
+          @baseZoom={{if this.basket.basket.deliveryPlace 12 9}}
+          @baseLat={{this.basket.basket.deliveryPlace.geoCoordinate.latitude}}
+          @baseLng={{this.basket.basket.deliveryPlace.geoCoordinate.longitude}}
+        />
       </div>
 
       {{#if this.basket.basket.deliveryPlace}}
