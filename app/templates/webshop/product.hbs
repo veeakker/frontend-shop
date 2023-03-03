@@ -40,9 +40,9 @@
         <div>
           {{#if this.currentOffer}}
             {{#if (eq this.packageCount 1)}}
-              {{euros this.currentOffer.unitPrice.value}}
+              {{euros this.currentOffer.unitPrice.value}}/pakje
             {{else}}
-              {{euros this.currentOffer.unitPrice.value}} x {{this.packageCount}} = {{euros (mult this.currentOffer.unitPrice.value this.packageCount)}}
+              {{euros this.currentOffer.unitPrice.value}}/pakje x {{this.packageCount}}pakjes = {{euros (mult this.currentOffer.unitPrice.value this.packageCount)}}
             {{/if}}
           {{/if}}
         </div>
