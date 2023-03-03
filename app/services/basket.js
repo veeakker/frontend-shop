@@ -6,12 +6,29 @@ import fetch from 'fetch';
 import { use, Resource } from 'ember-could-get-used-to-this';
 import { action } from '@ember/object';
 
+const DEFAULT_DELIVERY_PLACE_ID = "93c60ad0-2b37-4111-90ee-411b483dd3fb";
+
+
+class ExternalPromise {
+  constructor() {
+    this.reset();
+  }
+
+  reset() {
+    this.promise = new Promise((res,rej) => {
+      this.resolve = res;
+      this.reject = rej;
+    });
+  }
+}
+
 class BasketFetcher extends Resource {
   @tracked value
   @service store
 
   async getBasket(isUpdate = false) {
-    console.log(this.args.positional[0]); // ensuring we use the input variable
+    // console.log(this.args.positional[0]); // ensuring we use the input variable
+    const pBasket = this.args.positional[0];
     const result = await (await fetch(this.basketUrl)).json();
     if ( isUpdate ) {
       this.value.set("orderLines",[]);
@@ -37,6 +54,7 @@ class BasketFetcher extends Resource {
     }
 
     this.value = basket;
+    pBasket.resolve(basket);
   }
 
   async setup() {
@@ -58,9 +76,9 @@ class BasketFetcher extends Resource {
 
 export default class BasketService extends Service {
   @service store
-  @tracked
-  fetchDate = new Date();
-  @use basket = new BasketFetcher(() => [this.fetchDate])
+  @tracked basketPromise = new ExternalPromise(); // use pBasket instead!
+  @use basket = new BasketFetcher(() => [this.basketPromise])
+
 
   @action
   setDeliveryPlace( deliveryPlace ) {
@@ -74,7 +92,17 @@ export default class BasketService extends Service {
   reloadBasket() {
     // reset fetchDate, which is used in the basket Resource, should
     // ensure the basket resource is recomputed
-    this.fetchDate = new Date();
+    // this.fetchDate = new Date();
+    this.basketPromise.reject();
+    this.basketPromise = new ExternalPromise();
+  }
+
+  /**
+   * Promise variant of the basket.
+   */
+  get pBasket() {
+    console.log({basket: this.basket}); // use the basket
+    return this.basketPromise.promise;
   }
 
   async requestMerge() {
