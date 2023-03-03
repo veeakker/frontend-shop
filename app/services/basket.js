@@ -44,7 +44,7 @@ class BasketFetcher extends Resource {
 
     try {
       const deliveryPlace = (await this.store.query("delivery-place", {
-        "filter[:id:]": deliveryPlaceId,
+        "filter[:id:]": deliveryPlaceId || DEFAULT_DELIVERY_PLACE_ID,
         include: "delivery-kind,geo-coordinate,postal-address"
       })).firstObject;
       // const deliveryPlace = await this.store.find("delivery-place", deliveryPlaceId);
