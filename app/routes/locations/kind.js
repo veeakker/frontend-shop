@@ -13,7 +13,9 @@ export default class LocationsKindRoute extends Route {
     if ( foundDeliveryKind ) {
       return foundDeliveryKind;
     } else {
-      return this.store.query( 'delivery-kind', { "filter[:uri:]": uri } ).then( (kinds) => {
+      return this.store.query( 'delivery-kind', {
+        "filter[:uri:]": uri
+      } ).then( (kinds) => {
         return kinds.firstObject;
       } );
     }
