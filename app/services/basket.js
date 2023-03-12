@@ -6,6 +6,7 @@ import fetch from 'fetch';
 import { use, Resource } from 'ember-could-get-used-to-this';
 import { action } from '@ember/object';
 
+// const DEFAULT_DELIVERY_PLACE_ID = "60f710bd-5022-4bd1-be7c-46eebbf3dfb1";
 const DEFAULT_DELIVERY_PLACE_ID = "93c60ad0-2b37-4111-90ee-411b483dd3fb";
 
 
