@@ -21,7 +21,7 @@ export default class WebshopCheckoutController extends Controller {
       case "http://veeakker.be/delivery-methods/shop":
         return "shop";
       default:
-        return "tour";
+        return "shop";
     }
   }
 
