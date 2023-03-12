@@ -23,7 +23,7 @@
     </table>
   </div>
   <div class="maps">
-    <DeliveryLocationsMap @places={{this.model}} as |marker place|>
+    <DeliveryLocationsMap @places={{(filter-enabled this.model)}} as |marker place|>
       <h3>{{place.deliveryKind.simpleName}}</h3>
       {{#let place.deliveryKind.normalizedLabel as |normalizedLabel|}}
         {{#if (eq normalizedLabel "butchery")}}

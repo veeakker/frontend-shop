@@ -18,10 +18,12 @@ export default class WebshopCheckoutDeliveryLocationsMap extends Component {
     defineProperty( this, 'fetchLocations', task( function*(){
       const allPlaces = yield this.store.loadRecords('delivery-place', {
         include: "delivery-kind,geo-coordinate.postal-address,postal-address",
-        "page[size]": 250
+        "page[size]": 500,
+        "filter[is-enabled]": true
       });
 
       let allowedTypes = [];
+
       // TODO: is this split correct? first is pickup when we want, the
       // other is when they want.
       if( this.shownLocationName == "tour" ){
@@ -32,8 +34,9 @@ export default class WebshopCheckoutDeliveryLocationsMap extends Component {
 
       this.set(
         'locations',
-        allPlaces.filter(
-          (place) => allowedTypes.includes( place.get('deliveryKind.uri') ) ) );
+        allPlaces.filter( (place) =>
+          allowedTypes.includes( place.get('deliveryKind.uri') )
+            && place.isEnabled ) );
     } ).restartable() );
   }
 
@@ -43,5 +46,4 @@ export default class WebshopCheckoutDeliveryLocationsMap extends Component {
       this.fetchLocations.perform();
     }
   }
-
 }
