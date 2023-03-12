@@ -25,10 +25,14 @@
         Leveren op een andere locatie
       </Webshop::Checkout::Delivery::Checkbox>
     {{/if}}
-    <Webshop::Checkout::Delivery::Checkbox @for="tour" @current={{this.deliveryMethod}}>
-      Afhaalpunt op Toer Veeakker - gratis
+    <Webshop::Checkout::Delivery::Checkbox @for="shop" @current={{this.deliveryMethod}}>
+      Afhaalpunt in natuurvoedingswinkel - gratis
     </Webshop::Checkout::Delivery::Checkbox>
-
+    <!--
+         <Webshop::Checkout::Delivery::Checkbox @for="tour" @current={{this.deliveryMethod}}>
+         Afhaalpunt op Toer Veeakker - gratis
+         </Webshop::Checkout::Delivery::Checkbox>
+    -->
     {{#if (eq this.deliveryMethod "tour")}}
       <div class="delivery-map">
         <Webshop::Checkout::Delivery::LocationsMap
@@ -39,24 +43,31 @@
           @baseLng={{this.basket.basket.deliveryPlace.geoCoordinate.longitude}}
         />
       </div>
-
-      {{#if this.basket.basket.deliveryPlace}}
-        {{#let this.basket.basket.deliveryPlace as |deliveryPlace|}}
-          <div class="delivery-place">
-            <h4>Geselecteerde punt</h4>
-            <p>
-              {{deliveryPlace.postalAddress.streetAddress}} <br/>
-              {{deliveryPlace.postalAddress.postalCode}} {{deliveryPlace.postalAddress.locality}}
-            </p>
-          </div>
-        {{/let}}
-      {{/if}}
     {{/if}}
 
     {{#if (eq this.deliveryMethod "shop")}}
       <div class="delivery-map">
-        <Webshop::Checkout::Delivery::LocationsMap @locationName="shop" />
+        <Webshop::Checkout::Delivery::LocationsMap
+          @locationName="shop"
+          @select={{this.basket.setDeliveryPlace}}
+          @baseZoom={{if this.basket.basket.deliveryPlace 12 9}}
+          @baseLat={{this.basket.basket.deliveryPlace.geoCoordinate.latitude}}
+          @baseLng={{this.basket.basket.deliveryPlace.geoCoordinate.longitude}}
+        />
       </div>
+    {{/if}}
+
+    {{#if (and this.basket.basket.deliveryPlace (or (eq this.deliveryMethod "shop") (eq this.deliveryMethod "tour")))}}
+      {{#let this.basket.basket.deliveryPlace as |deliveryPlace|}}
+        <div class="delivery-place">
+          <h4>Geselecteerde punt</h4>
+          <p>
+            {{deliveryPlace.label}} <br />
+            {{deliveryPlace.postalAddress.streetAddress}} <br/>
+            {{deliveryPlace.postalAddress.postalCode}} {{deliveryPlace.postalAddress.locality}}
+          </p>
+        </div>
+      {{/let}}
     {{/if}}
 
     {{#if (eq this.deliveryMethod "postal")}}
