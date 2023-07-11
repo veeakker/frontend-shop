@@ -6,6 +6,7 @@ import { tracked } from '@glimmer/tracking';
 export default class WebshopController extends Controller {
   @service basket;
   @service session;
+  @service banner;
   @tracked loggedIn = false;
 
   @action
