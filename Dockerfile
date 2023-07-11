@@ -4,6 +4,7 @@ LABEL maintainer="info@redpencil.io"
 
 WORKDIR /app
 COPY package.json .
+COPY .npmrc-build /root/.npmrc
 RUN npm install
 COPY . .
 RUN npx browserslist@latest --update-db
