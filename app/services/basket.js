@@ -209,6 +209,23 @@ export default class BasketService extends Service {
       })});
   }
 
+  /**
+   * Save the comment for an orderLine in the basket.
+   */
+  async persistComment( orderLine, comment ) {
+    const basket = this.basket;
+    await fetch('/current-basket/add-comment-to-order-line', {
+      method: "POST",
+      headers: {
+        'Content-Type': "application/vnd.api+json"
+      },
+      body: JSON.stringify({
+        orderLineUuid: orderLine.id,
+        comment: comment
+      })
+    });
+    orderLine.commentPersisted();
+  }
 
   get totalPrice() {
     // TODO: this could be a resource
