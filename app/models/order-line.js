@@ -2,15 +2,14 @@ import { get } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import Model, { attr, belongsTo } from '@ember-data/model';
 import { use, Resource } from 'ember-could-get-used-to-this';
-import asyncResource from '../utils/async-resource';
 
 class PricePerUnit extends Resource {
   @tracked value;
 
   async setup() {
-    const offering = this.args.positional[0];
+    const offering = await this.args.positional[0];
     await get(offering, "unitPrice");
-    this.value = get(offering,"unitPrice.value");
+    setTimeout(() => this.value = get(offering,"unitPrice.value"), 50);
   }
 }
 
@@ -18,15 +17,32 @@ class OfferingForProduct extends Resource {
   @tracked value;
 
   async setup() {
-    const offering = this.args.positional[0];
+    const offering = await this.args.positional[0];
     await get(offering, "typeAndQuantity");
-    this.value = get(offering, "typeAndQuantity.product");
+    setTimeout( () => this.value = get(offering, "typeAndQuantity.product"), 50);
   }
 }
 
 export default class OrderLineModel extends Model {
   @belongsTo('offering') offering
   @attr('number') amount
+  @attr() comment
+
+  @tracked commentChanged;
+
+  get monitoredComment() {
+    return this.comment;
+  }
+
+  set monitoredComment(value) {
+    this.comment = value;
+    this.commentChanged = true;
+  }
+
+  commentPersisted() {
+    // called by basket service
+    this.commentChanged = false;
+  }
 
   get price() {
     // we don't use defaults here, as an NaN or undefined price is

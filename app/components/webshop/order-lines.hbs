@@ -10,6 +10,23 @@
         </LinkTo>
       </h3>
       <h4><Webshop::Basket::Amount @amount={{orderLine.offering.typeAndQuantity}} /> <i class="fas fa-times"></i>{{orderLine.amount}} pakje{{#if (gte orderLine.amount 2)}}s{{/if}}</h4>
+      {{#if @removeOrderLine}} {{!-- editable --}}
+        <Util::OpenClosed @defaultOpen={{orderLine.monitoredComment}}>
+          <:open>
+            <Textarea style="width: 100%" @value={{orderLine.monitoredComment}} placeholder="Opmerking" />
+            {{#if orderLine.commentChanged}}
+              <button type="button" {{on "click" (fn this.persistCommentFn orderLine)}}>Opslaan</button>
+            {{/if}}
+          </:open>
+          <:closed as |commentHolder|>
+            <button type="button" {{on "click" commentHolder.makeOpenFn}}>Voeg opmerking toe</button>
+          </:closed>
+        </Util::OpenClosed>
+      {{else}}
+        {{#if orderLine.monitoredComment}}
+          <span style="color: black;">{{orderLine.monitoredComment}}</span>
+        {{/if}}
+      {{/if}}
     </div>
     <div class="order-extra">
       <h4>{{euros orderLine.pricePerUnit}} / pakje</h4>
