@@ -4,10 +4,12 @@ import Component from '@glimmer/component';
 export default class AmountComponent extends Component {
 
   get value() {
+    // eslint-disable-next-line ember/no-get
     return get(this.args, "amount.value");
   }
 
   get unit() {
+    // eslint-disable-next-line ember/no-get
     return get(this.args, "amount.unit");
   }
 

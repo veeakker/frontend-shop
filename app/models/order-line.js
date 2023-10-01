@@ -8,7 +8,9 @@ class PricePerUnit extends Resource {
 
   async setup() {
     const offering = await this.args.positional[0];
+    // eslint-disable-next-line ember/no-get
     await get(offering, "unitPrice");
+    // eslint-disable-next-line ember/no-get
     setTimeout(() => this.value = get(offering,"unitPrice.value"), 50);
   }
 }
@@ -18,7 +20,9 @@ class OfferingForProduct extends Resource {
 
   async setup() {
     const offering = await this.args.positional[0];
+    // eslint-disable-next-line ember/no-get
     await get(offering, "typeAndQuantity");
+    // eslint-disable-next-line ember/no-get
     setTimeout( () => this.value = get(offering, "typeAndQuantity.product"), 50);
   }
 }

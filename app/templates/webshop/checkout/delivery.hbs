@@ -13,7 +13,6 @@
     <br /><br />
 
     <Webshop::Checkout::Delivery::Checkbox @for="postal" @current={{this.deliveryMethod}}>
-      <!-- Thuislevering (€25 - gratis vanaf €150 - gratis tot 27.05.2023) -->
       Thuislevering regio Leuven (gratis tot 27.05.2023 - nadien €25 leverkost voor bestellingen onder €150)
       <ul>
         <li>Postcodes 3000-3018 via fietskoerier op <i>vrijdag namiddag</i></li>
@@ -28,11 +27,11 @@
     <Webshop::Checkout::Delivery::Checkbox @for="shop" @current={{this.deliveryMethod}}>
       Afhaalpunt in natuurvoedingswinkel - gratis
     </Webshop::Checkout::Delivery::Checkbox>
-    <!--
-         <Webshop::Checkout::Delivery::Checkbox @for="tour" @current={{this.deliveryMethod}}>
-         Afhaalpunt op Toer Veeakker - gratis
-         </Webshop::Checkout::Delivery::Checkbox>
-    -->
+    {{!--
+      <Webshop::Checkout::Delivery::Checkbox @for="tour" @current={{this.deliveryMethod}}>
+      Afhaalpunt op Toer Veeakker - gratis
+      </Webshop::Checkout::Delivery::Checkbox>
+    --}}
     {{#if (eq this.deliveryMethod "tour")}}
       <div class="delivery-map">
         <Webshop::Checkout::Delivery::LocationsMap
@@ -86,16 +85,16 @@
       {{/if}}
     {{/if}}
 
-    <!-- <div id="frost-disclaimer">
+    {{!-- <div id="frost-disclaimer">
          <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" /><p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
-         </div> -->
+         </div> --}}
 
     <div class="cart-total">
       {{!-- TODO: Do we need to have the BTW etc in here or can we render the total price? --}}
       {{!-- TODO: Can we make price excluding taxes and delivery cost less visible than the total price? --}}
       {{!-- TODO: Take price of delivery into account --}}
       {{!-- <p>Prijs <span class="money">€67.50</span></p> --}}
-      <!-- <p class="cart-price">Prijs levering <span class="money">GRATIS</span></p> -->
+      {{!-- <p class="cart-price">Prijs levering <span class="money">GRATIS</span></p> --}}
       {{!-- <p>BTW 6% <span class="money">€x</span></p>  --}}
       <p class="cart-price">Totaalprijs <span class="money">{{euros this.basket.totalPrice}}</span></p>    <br />
       <div class="button-product-cart">

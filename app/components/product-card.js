@@ -46,7 +46,7 @@ class AvailableOffersResource extends Resource {
   async setup() {
     const [offerings,unit] = this.args.positional;
 
-    console.log({offerings,unit});
+    // console.log({offerings,unit});
 
     // const offerings = await product.sortedOfferings;
 
@@ -59,7 +59,7 @@ class AvailableOffersResource extends Resource {
           results.push(offer);
       }
 
-    console.log({availableOfferings: results, unit });
+    // console.log({availableOfferings: results, unit });
 
     this.value = results;
   }
@@ -93,7 +93,7 @@ export default class ProductCardComponent extends Component {
     }
 
     this.selectedUnit = this.currentUnit;
-    console.log({ units: this.units, offers: this.possibleOffers }); // init values
+    // console.log({ units: this.units, offers: this.possibleOffers }); // init values
   }
 
   get currentUnit() {

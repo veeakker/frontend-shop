@@ -35,6 +35,7 @@ export default class WebshopCheckoutPaymentController extends Controller {
       if (paymentUrl) {
         window.location.href = paymentUrl;
       } else {
+        // eslint-disable-next-line no-console
         console.error("Payment redirect URL not found");
       }
     }

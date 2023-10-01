@@ -26,11 +26,6 @@ export default class WebshopRegisterController extends Controller {
     event.preventDefault();
     this.error = [];
 
-    const newAccount = this.store.createRecord('account', {
-      email: this.email,
-      password: this.password
-    });
-
     try {
       const response = await fetch( "/accounts", {
         method: "POST",

@@ -10,7 +10,7 @@ class BannersResource extends Resource {
   value = [];
 
   async setup() {
-    console.log(`Fetching banner on ${this.args.positional}`);
+    // console.log(`Fetching banner on ${this.args.positional}`);
     const banners = await this.store.query('banner', { filter: { "is-enabled": true } });
     this.value = banners
       .filter( (b) => b.isEnabled)
@@ -19,7 +19,7 @@ class BannersResource extends Resource {
   }
 
   update() {
-    console.log(`Upadting banner on ${this.args.positional}`);
+    // console.log(`Upadting banner on ${this.args.positional}`);
   }
 }
 
