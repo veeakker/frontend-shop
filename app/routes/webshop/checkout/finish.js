@@ -16,7 +16,10 @@ export default class WebshopCheckoutFinishRoute extends Route {
 
     for (const orderLine of (await basket.orderLines).toArray()) {
       const offering = await orderLine.get("offering");
+      // TODO: verify ember get is necessary in the next two lines
+      // eslint-disable-next-line ember/no-get
       const unitPrice = await get(offering, "unitPrice");
+      // eslint-disable-next-line ember/no-get
       const amount = await get(orderLine, "amount");
       totalCost += unitPrice.value * amount;
     }

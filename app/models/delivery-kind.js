@@ -1,5 +1,39 @@
 import Model, { attr, hasMany } from '@ember-data/model';
 
+const knownLabels = [{
+  uri: "http://veeakker.be/delivery-kinds/winkel",
+  simpleName: "winkel",
+  normalizedLabel: "butchery"
+},{
+  uri: "http://veeakker.be/delivery-kinds/toeren",
+  simpleName: "toer",
+  normalizedLabel: "routes",
+},{
+  uri: "http://veeakker.be/delivery-kinds/natuurwinkels",
+  simpleName: "natuurwinkel",
+  normalizedLabel: "health-shops"
+},{
+  uri: "http://veeakker.be/delivery-kinds/buurderijen",
+  simpleName: "buurderij",
+  normalizedLabel: "local-farms"
+},{
+  uri: "http://veeakker.be/delivery-kinds/webshop",
+  simpleName: "webshop",
+  normalizedLabel: "home-delivery"
+}];
+
+/**
+ * Allows to retrieve the kind obect, notFound is returned when no match
+ * was found.
+ */
+function kindBy( key, value, notFound ) {
+  for( const label of knownLabels )
+    if( label[key] == value )
+      return label;
+
+  return notFound;
+}
+
 export default class DeliveryKindModel extends Model {
   @attr() label;
   @attr() uri;
@@ -7,51 +41,16 @@ export default class DeliveryKindModel extends Model {
   @hasMany('delivery-place') deliveryPlaces;
 
   get simpleName(){
-    const uri = this.uri;
-    if( uri == "http://veeakker.be/delivery-kinds/winkel" )
-      return "winkel";
-    if( uri == "http://veeakker.be/delivery-kinds/toeren")
-      return "toer";
-    if( uri == "http://veeakker.be/delivery-kinds/natuurwinkels")
-      return "natuurwinkel";
-    if( uri == "http://veeakker.be/delivery-kinds/buurderijen")
-      return "buurderij";
-    if( uri == "http://veeakker.be/delivery-kinds/webshop")
-      return "webshop";
-    else
-      return "onbekend";
+    return kindBy( "uri", this.uri, { simpleName: "onbekend" } ).simpleName;
   }
 
   get normalizedLabel(){
-    const uri = this.uri;
-    if( uri == "http://veeakker.be/delivery-kinds/winkel" )
-      return "butchery";
-    if( uri == "http://veeakker.be/delivery-kinds/toeren")
-      return "routes";
-    if( uri == "http://veeakker.be/delivery-kinds/natuurwinkels")
-      return "health-shops";
-    if( uri == "http://veeakker.be/delivery-kinds/buurderijen")
-      return "local-farms";
-    if( uri == "http://veeakker.be/delivery-kinds/webshop")
-      return "home-delivery";
-    else
-      return "unknown";
+    return kindBy( "uri", this.uri, { normalizedLabel: "unknown" } ).noramlizedLabel;
   }
 }
 
 function uriForNormalizedLabel( label ) {
-  if( label == "butchery" )
-    return "http://veeakker.be/delivery-kinds/winkel";
-  if( label =="routes" )
-    return "http://veeakker.be/delivery-kinds/toeren";
-  if( label =="health-shops" )
-    return "http://veeakker.be/delivery-kinds/natuurwinkels";
-  if( label =="local-farms" )
-    return "http://veeakker.be/delivery-kinds/buurderijen";
-  if( label =="home-delivery" )
-    return "http://veeakker.be/delivery-kinds/webshop";
-  else
-    return "unknown";
+  return kindBy( "normalizedLabel", label, { uri: "unknown" } ).uri;
 }
 
 export { uriForNormalizedLabel }

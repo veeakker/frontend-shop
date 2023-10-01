@@ -30,3 +30,4 @@
 /.vs
 /package-lock.json
 /.log
+yarn.lock

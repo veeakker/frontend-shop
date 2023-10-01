@@ -31,6 +31,7 @@ export default class NumberButtonComponent extends Component {
     if( this.args.onChange )
       this.args.onChange( newValue );
     else
+      // eslint-disable-next-line no-console
       console.warn("You must consume the value of a number button through onChange");
   }
 

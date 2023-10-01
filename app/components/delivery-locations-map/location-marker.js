@@ -36,10 +36,12 @@ export default class DeliveryLocationsMapLocationMarkerComponent extends Compone
   }
 
   get simpleName() {
+    // eslint-disable-next-line ember/no-get
     return get(this.args.place, "deliveryKind.simpleName");
   }
 
   get iconConfig() {
+    // eslint-disable-next-line ember/no-get
     const name = get(this.args.place, "deliveryKind.simpleName");
 
     if ( name === "toer" )

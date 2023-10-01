@@ -7,7 +7,6 @@
     <Design::Forks/>
   </div>
   <div class="extra-menu">
-    <!-- <LinkTo @route="locations.kind" @model="butchery">Winkel</LinkTo> -->
     <LinkTo @route="locations.kind" @model="routes">Toeren</LinkTo>
     <LinkTo @route="locations.kind" @model="health-shops">Natuurwinkels</LinkTo>
     <LinkTo @route="locations.kind" @model="local-farms">Buurderijen</LinkTo>
@@ -15,22 +14,19 @@
   </div><div class="fix">{{outlet}}</div>
   <div class="legende" >
     <table>
-      <tr>
-        <th><img src="/images/van.png" width="40" height="40" alt="foto van een van"> <p>Toer</p></th>
-        <th><img src="/images/shop.png" width="40" height="40" alt="foto van een shop"> <p>natuurwinkel</p></th>
-        <th><img src="/images/barn.png" width="40" height="40" alt="foto van een bord"> <p>buurderij</p></th>
-      </tr>
+      <tbody>
+        <tr>
+          <th><img src="/images/van.png" width="40" height="40" alt="foto van een van"> <p>Toer</p></th>
+          <th><img src="/images/shop.png" width="40" height="40" alt="foto van een shop"> <p>natuurwinkel</p></th>
+          <th><img src="/images/barn.png" width="40" height="40" alt="foto van een bord"> <p>buurderij</p></th>
+        </tr>
+      </tbody>
     </table>
   </div>
   <div class="maps">
-    <DeliveryLocationsMap @places={{(filter-enabled this.model)}} as |marker place|>
+    <DeliveryLocationsMap @places={{this.enabledLocations}} as |marker place|>
       <h3>{{place.deliveryKind.simpleName}}</h3>
       {{#let place.deliveryKind.normalizedLabel as |normalizedLabel|}}
-        {{#if (eq normalizedLabel "butchery")}}
-          <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
-            Klik hier om meer te weten over de slagerij als afhaal-locatie.
-          </LinkTo>
-        {{/if}}
         {{#if (eq normalizedLabel "routes")}}
           <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
             Klik hier om meer te weten over leveringen via Toeren.

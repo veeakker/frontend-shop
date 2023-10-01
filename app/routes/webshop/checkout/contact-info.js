@@ -7,8 +7,9 @@ export default class WebshopContactInfoRoute extends Route {
   @service session;
 
   @action
-  async willTransition(_transition) {
+  async willTransition(/* transition */) {
     await this.basket.persistInvoiceInfo();
+    // eslint-disable-next-line ember/no-controller-access-in-routes
     this.controller.showWarnings = false;
   }
 

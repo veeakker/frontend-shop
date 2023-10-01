@@ -39,7 +39,6 @@ export default class WebshopCheckoutController extends Controller {
   async confirmOrder() {
     const basket = this.basket.basket;
     const basketId = basket.id;
-    console.log(`Confirming basket ${basket.id}`);
     await this.basket.persistDeliveryInfo();
     await fetch(`/confirm-basket/${basketId}`, {
         method: "post",

@@ -51,6 +51,8 @@ class BasketFetcher extends Resource {
       // const deliveryPlace = await this.store.find("delivery-place", deliveryPlaceId);
       basket.set("deliveryPlace", deliveryPlace);
     } catch (e) {
+      // TODO: provide warning to end user
+      // eslint-disable-next-line no-console
       console.warn("Something went wrong loading the default delivery place");
     }
 
@@ -102,6 +104,7 @@ export default class BasketService extends Service {
    * Promise variant of the basket.
    */
   get pBasket() {
+    // eslint-disable-next-line no-console
     console.log({basket: this.basket}); // use the basket
     return this.basketPromise.promise;
   }
@@ -213,7 +216,6 @@ export default class BasketService extends Service {
    * Save the comment for an orderLine in the basket.
    */
   async persistComment( orderLine, comment ) {
-    const basket = this.basket;
     await fetch('/current-basket/add-comment-to-order-line', {
       method: "POST",
       headers: {
@@ -232,7 +234,9 @@ export default class BasketService extends Service {
     // sum all prices
     if( this.orderLines ){
       const orderLines = this.orderLines;
+      // eslint-disable-next-line ember/no-get
       const enabledOrderLines = orderLines.filter( (line) => get(line, "product.isEnabled") );
+      // eslint-disable-next-line ember/no-get
       const prices = enabledOrderLines.map( (ol) => get(ol, "price") || 0 );
       return prices.reduce( (a,b) => a+b, 0);
     }
