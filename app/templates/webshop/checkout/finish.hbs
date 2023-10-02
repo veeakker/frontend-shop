@@ -21,7 +21,15 @@
         </p>
       <h3>Contact informatie</h3>
       {{#if this.basket.customer}}
-        {{!-- Show customer contact information --}}
+        {{#let this.basket.customer as |customer|}}
+          <ul>
+            <li>{{customer.firstName}} {{customer.lastName}}</li>
+            <li>{{customer.postalAddress.streetAddress}}</li>
+            <li>{{customer.postalAddress.postalCode}} {{customer.postalAddress.locality}}</li>
+            <li>{{customer.email}}</li>
+            <li>{{customer.phone}}</li>
+          </ul>
+        {{/let}}
       {{else}}
         {{#let this.basket.invoiceAddress as |address|}}
           <ul>

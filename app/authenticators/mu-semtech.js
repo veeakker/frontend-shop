@@ -1,7 +1,10 @@
+import { inject as service } from '@ember/service';
 import Base from 'ember-simple-auth/authenticators/base';
 import fetch, { Headers } from 'fetch';
 
 export default class MuSemtechAuthenticator extends Base {
+  @service store;
+
   async authenticate(options) {
     const result = await fetch('/sessions', {
       method: 'POST',
@@ -21,6 +24,8 @@ export default class MuSemtechAuthenticator extends Base {
     });
 
     if (result.ok) {
+      // TODO: this must return the same data as restore does
+
       return result.json();
     } else {
       const response = await result.json();
@@ -38,7 +43,9 @@ export default class MuSemtechAuthenticator extends Base {
     });
 
     if (result.ok) {
-      return result.json();
+      const payload = await result.json();
+      this.store.pushPayload( { data: payload.included } );
+      return payload.data;
     } else {
       throw result;
     }
