@@ -1,49 +1,56 @@
-import { defineProperty } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import { use, Resource } from 'ember-could-get-used-to-this';
 import { uriForNormalizedLabel } from 'veeakker/models/delivery-kind';
-import { task } from 'ember-concurrency';
+import wait from '../../../../utils/wait';
+
+class LocationsFilterResource extends Resource {
+  @tracked value = [];
+
+  async setup() {
+    const [places,acceptedLabels] = this.args.positional;
+    const allowedKinds = acceptedLabels
+          .map( (label) => uriForNormalizedLabel(label) )
+          .uniq();
+
+    await wait(1);
+
+    this.value = places.filter((place) => {
+      return allowedKinds.includes(place.get('deliveryKind.uri'))
+        && place.isEnabled;
+    });
+  }
+}
 
 export default class WebshopCheckoutDeliveryLocationsMap extends Component {
   @service store
+  @tracked allPlaces = [];
 
-  locations = null;
-
-  shownLocationName = null;
-
-  init(){
-    super.init(...arguments);
-    // TODO: migrate to ember-concurrency-decorator once that's in a
-    // stable and usable state.
-    defineProperty( this, 'fetchLocations', task( function*(){
-      const allPlaces = yield this.store.loadRecords('delivery-place', {
-        include: "delivery-kind,geo-coordinate.postal-address,postal-address",
-        "page[size]": 500,
-        "filter[is-enabled]": true
-      });
-
-      let allowedTypes = [];
-
-      // TODO: is this split correct? first is pickup when we want, the
-      // other is when they want.
-      if( this.shownLocationName == "tour" ){
-        allowedTypes = [uriForNormalizedLabel( "routes" )];
-      } else if( this.shownLocationName == "shop" ) {
-        allowedTypes = [uriForNormalizedLabel( "health-shops" )];
-      }
-
-      this.set(
-        'locations',
-        allPlaces.filter( (place) =>
-          allowedTypes.includes( place.get('deliveryKind.uri') )
-            && place.isEnabled ) );
-    } ).restartable() );
+  constructor() {
+    super(...arguments);
+    this.loadPlaces();
   }
 
-  didReceiveAttrs(){
-    if( this.locationName != this.shownLocationName ) {
-      this.shownLocationName = this.locationName;
-      this.fetchLocations.perform();
+  @use
+  locations = new LocationsFilterResource(() => [this.allPlaces, [this.locationLabel]]);
+
+  get locationLabel() {
+    switch (this.args.locationName) {
+      case "tour":
+        return "routes";
+      case "shop":
+        return "health-shops";
     }
+
+    return null;
+  }
+
+  async loadPlaces() {
+    this.allPlaces = await this.store.loadRecords('delivery-place', {
+      include: "delivery-kind,geo-coordinate.postal-address,postal-address",
+      "page[size]": 500,
+      "filter[is-enabled]": true
+    });
   }
 }

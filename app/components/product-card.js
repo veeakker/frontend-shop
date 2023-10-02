@@ -4,12 +4,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { use, Resource } from 'ember-could-get-used-to-this';
-
-const wait = function( time ) {
-  return new Promise((success) => {
-    window.setTimeout( success, time );
-  });
-};
+import wait from '../utils/wait';
 
 class OfferTypeResource extends Resource {
   @tracked value
