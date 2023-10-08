@@ -13,13 +13,13 @@
       {{#if @removeOrderLine}} {{!-- editable --}}
         <Util::OpenClosed @defaultOpen={{orderLine.monitoredComment}}>
           <:open>
-            <Textarea style="width: 100%" @value={{orderLine.monitoredComment}} placeholder="Opmerking" />
-            {{#if orderLine.commentChanged}}
-              <button type="button" {{on "click" (fn this.persistCommentFn orderLine)}}>Opslaan</button>
+          <Textarea style="width: 100%" @value={{orderLine.monitoredComment}} placeholder="Opmerking" />
+          {{#if orderLine.commentChanged}}
+            <button class="button-product" type="button" {{on "click" (fn this.persistCommentFn orderLine)}}>Opslaan</button>
             {{/if}}
           </:open>
           <:closed as |commentHolder|>
-            <button type="button" {{on "click" commentHolder.makeOpenFn}}>Voeg opmerking toe</button>
+            <button class="add-comment-button" type="button" {{on "click" commentHolder.makeOpenFn}}>Voeg opmerking toe</button>
           </:closed>
         </Util::OpenClosed>
       {{else}}
