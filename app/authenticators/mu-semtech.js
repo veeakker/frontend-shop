@@ -24,9 +24,9 @@ export default class MuSemtechAuthenticator extends Base {
     });
 
     if (result.ok) {
-      // TODO: this must return the same data as restore does
-
-      return result.json();
+      const payload = await result.json();
+      this.store.pushPayload( { data: payload.included } );
+      return payload.data;
     } else {
       const response = await result.json();
       throw response;
