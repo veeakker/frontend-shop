@@ -20,7 +20,7 @@
           </ul>
         </p>
       <h3>Contact informatie</h3>
-      {{#if this.basket.customer}}
+      {{#if this.basket.customer.id}}
         {{#let this.basket.customer as |customer|}}
           <ul>
             <li>{{customer.firstName}} {{customer.lastName}}</li>
