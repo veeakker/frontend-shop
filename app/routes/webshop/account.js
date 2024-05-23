@@ -10,12 +10,13 @@ export default class WebshopAccountRoute extends Route {
   }
 
   async model(){
-    let acc = await this.store.peekRecord('account', this.session.data.authenticated.relationships.account.data.id);
-    return acc;
+    const accounts = await this.store.query('account', { page: { size: 1 }, include: "person,person.postal-address" });
+    const account = accounts.toArray()[0];
+    return account;
   }
 
   setupController(controller) {
-    super(...arguments);
+    super.setupController(...arguments);
     controller.activate();
   }
 }

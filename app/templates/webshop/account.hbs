@@ -4,7 +4,7 @@
   <h1 class="tab-title">Mijn account</h1>
 
   <Design::Forks @useDarkImage={{true}} />
-  <p id="account-name">{{this.model.person.firstName}} {{this.model.person.lastName}}</p>
+  <p id="account-name">{{@model.person.firstName}} {{@model.person.lastName}}</p>
 
   <div id="account-information">
     <h1>Locatie</h1>
@@ -12,32 +12,32 @@
       <dt>Voornaam</dt>
       <dd>
         <input
-          {{on "input" (e/pipe (e/str-val) (e/set-prop this.model.person "firstName"))}}
-          value={{this.model.person.firstName}} />
+          {{on "input" (e/pipe (e/str-val) (e/set-prop @model.person "firstName"))}}
+          value={{@model.person.firstName}} />
       </dd>
       <dt>Achternaam</dt>
       <dd>
         <input
-          {{on "input" (e/pipe (e/str-val) (e/set-prop this.model.person "lastName"))}}
-          value={{this.model.person.lastName}} />
+          {{on "input" (e/pipe (e/str-val) (e/set-prop @model.person "lastName"))}}
+          value={{@model.person.lastName}} />
       </dd>
       <dt>Straat</dt>
       <dd>
         <input
-          {{on "input" (e/pipe (e/str-val) (e/set-prop this.model.person.postalAddress "streetAddress"))}}
-          value={{this.model.person.postalAddress.streetAddress}}>
+          {{on "input" (e/pipe (e/str-val) (e/set-prop @model.person.postalAddress "streetAddress"))}}
+          value={{@model.person.postalAddress.streetAddress}}>
       </dd>
       <dt>Postcode</dt>
       <dd>
         <input
-          {{on "input" (e/pipe (e/str-val) (e/set-prop this.model.person.postalAddress "postalCode"))}}
-          value={{this.model.person.postalAddress.postalCode}}>
+          {{on "input" (e/pipe (e/str-val) (e/set-prop @model.person.postalAddress "postalCode"))}}
+          value={{@model.person.postalAddress.postalCode}}>
       </dd>
       <dt>Gemeente</dt>
       <dd>
         <input
-          {{on "input" (e/pipe (e/str-val) (e/set-prop this.model.person.postalAddress "locality"))}}
-          value={{this.model.person.postalAddress.locality}}>
+          {{on "input" (e/pipe (e/str-val) (e/set-prop @model.person.postalAddress "locality"))}}
+          value={{@model.person.postalAddress.locality}}>
       </dd>
     </dl>
     <h1>Contact</h1>
@@ -45,15 +45,15 @@
       <dt>Telefoonnummer</dt>
       <dd>
         <input
-          {{on "input" (e/pipe (e/str-val) (e/set-prop this.model.person "phone"))}}
-          value={{this.model.person.phone}}>
+          {{on "input" (e/pipe (e/str-val) (e/set-prop @model.person "phone"))}}
+          value={{@model.person.phone}}>
       </dd>
       <dt>Email</dt>
-      <dd>{{this.model.email}}</dd>
+      <dd>{{@model.email}}</dd>
     </dl>
     <button type="button" class="button" {{on "click" (fn this.save)}}>Opslaan</button>
     {{#if this.saved}}
-      <p class="info-message">Wijzigingen opgeslaan</p>
+      <p class="info-message">Wijzigingen opgeslagen</p>
     {{/if}}
   </div>
 </div>

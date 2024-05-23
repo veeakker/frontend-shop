@@ -18,7 +18,6 @@ export default class WebshopAccountController extends Controller {
   }
 
   activate() {
-    alert("yo");
     this.saved = false;
   }
 }
