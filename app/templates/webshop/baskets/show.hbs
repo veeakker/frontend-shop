@@ -1,0 +1,14 @@
+{{page-title "Show"}}
+
+<div class="container">
+  <h1>Showing basket</h1>
+</div>
+
+
+<div class="order">
+  <h2>Bestelde producten</h2>
+  <Webshop::OrderLines @orderLines={{@model.orderLines}} />
+</div>
+
+
+{{outlet}}

@@ -53,6 +53,7 @@ Router.map(function() {
     });
     this.route('promoted');
     this.route('register');
+    this.route('baskets', function() {});
   });
 
   this.route('values', function() {

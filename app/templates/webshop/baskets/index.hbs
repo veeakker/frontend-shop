@@ -1,0 +1,33 @@
+{{page-title "Index"}}
+
+<div class="textbook">
+  <p>
+    <table>
+      <thead>
+        <tr>
+          <th>Status change</th><th>Status</th><th>Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each @model as |basket|}}
+          <tr>
+            <td>{{basket.statusChangedAt}}</td>
+            <td>{{basket.orderStatus}}</td>
+            <td>{{basket.customer.firstName}} {{basket.customer.lastName}}</td>
+            <td>
+              {{#if (eq basket.orderStatus this.CONFIRMED)}}
+                {{!-- TODO: make custom page for showing old basket --}}
+                <LinkTo @route="webshop.baskets.show" @model={{basket}}>
+                  Toon mandje
+                </LinkTo>
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </p>
+</div>
+
+
+{{outlet}}

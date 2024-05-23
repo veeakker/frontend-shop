@@ -4,7 +4,7 @@ export default class BasketModel extends Model {
   @attr() paymentStatus;
   @attr('boolean') hasCustomDeliveryPlace;
   @attr() deliveryType;
-  @attr() changedAt;
+  @attr() statusChangedAt;
   @attr() orderStatus;
   @hasMany('order-line') orderLines;
   @belongsTo('delivery-place') deliveryPlace;
@@ -20,3 +20,7 @@ export default class BasketModel extends Model {
     return this.invoiceAddress;
   }
 }
+
+const CONFIRMED = "http://veeakker.be/order-statuses/confirmed";
+
+export { CONFIRMED };
