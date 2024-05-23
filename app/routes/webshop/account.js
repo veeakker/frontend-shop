@@ -13,4 +13,9 @@ export default class WebshopAccountRoute extends Route {
     let acc = await this.store.peekRecord('account', this.session.data.authenticated.relationships.account.data.id);
     return acc;
   }
+
+  setupController(controller) {
+    super(...arguments);
+    controller.activate();
+  }
 }

@@ -52,6 +52,9 @@
       <dd>{{this.model.email}}</dd>
     </dl>
     <button type="button" class="button" {{on "click" (fn this.save)}}>Opslaan</button>
+    {{#if this.saved}}
+      <p class="info-message">Wijzigingen opgeslaan</p>
+    {{/if}}
   </div>
 </div>
 
