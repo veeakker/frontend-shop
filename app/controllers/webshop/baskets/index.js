@@ -1,5 +1,6 @@
 import { tracked } from '@glimmer/tracking';
 import Controller from '@ember/controller';
+import { CONFIRMED } from 'veeakker/models/basket';
 
 export default class WebshopBasketsIndexController extends Controller {
   @tracked
@@ -7,4 +8,5 @@ export default class WebshopBasketsIndexController extends Controller {
 
   queryParams = ['page'];
 
+  CONFIRMED = CONFIRMED;
 }

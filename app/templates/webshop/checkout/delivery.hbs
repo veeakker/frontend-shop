@@ -27,11 +27,11 @@
     <Webshop::Checkout::Delivery::Checkbox @for="shop" @current={{this.deliveryMethod}}>
       Afhaalpunt in natuurvoedingswinkel - gratis
     </Webshop::Checkout::Delivery::Checkbox>
-    {{!--
-      <Webshop::Checkout::Delivery::Checkbox @for="tour" @current={{this.deliveryMethod}}>
+
+    <Webshop::Checkout::Delivery::Checkbox @for="tour" @current={{this.deliveryMethod}}>
       Afhaalpunt op Toer Veeakker - gratis
-      </Webshop::Checkout::Delivery::Checkbox>
-    --}}
+    </Webshop::Checkout::Delivery::Checkbox>
+
     {{#if (eq this.deliveryMethod "tour")}}
       <div class="delivery-map">
         <Webshop::Checkout::Delivery::LocationsMap

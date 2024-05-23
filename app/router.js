@@ -53,7 +53,9 @@ Router.map(function() {
     });
     this.route('promoted');
     this.route('register');
-    this.route('baskets', function() {});
+    this.route('baskets', function() {
+      this.route('show', { path: "/:basket_id/" } );
+    });
   });
 
   this.route('values', function() {
