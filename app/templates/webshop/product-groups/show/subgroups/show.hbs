@@ -1,16 +1,11 @@
-<h1 class="tab-title">Producten in de kijker ({{@model.products.length}})</h1>
+{{!-- <h1 class="tab-title">Producten in de kijker</h1>  --}}
+
 <Design::Forks @useDarkImage={{true}} />
 
 <div class="products">
   {{#each (sort-by-index @model.products) as |product|}}
     <ProductCard @product={{product}} />
   {{/each}}
-
-  {{!--
-    {{#each (filter-enabled (sort-by-index @model.products)) as |product|}}
-    <ProductCard @product={{product}} />
-    {{/each}}
-    --}}
 </div>
 
 {{outlet}}
