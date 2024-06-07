@@ -1,13 +1,22 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
+function arr(thing) {
+  if( thing instanceof Array )
+    return thing;
+  else if (thing != null && thing != undefined)
+    return [thing];
+  else
+    return [];
+}
+
 export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
   @service store
 
   async model({ subgroup_id }) {
     const productGroup = await this.store.find('product-group', subgroup_id);
     const productsURL = "/search/products?" + (new URLSearchParams({
-      "filter[product-group-ids]": subgroup_id, // TODO: is this correct without :term: ? can probably be enabled again after re-index
+      "filter[:term:product-group-ids]": subgroup_id,
       "page[number]": 0,
       "page[size]": 250,
       "filter[is-enabled]": true
@@ -18,6 +27,7 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
     let allIncluded = [];
     let includedToTransform = [];
 
+    // helper for transforming nested object
     function transformAttribute({ key, sourceKey = key, targetKey = key, targetType = key, targetObject, transformer, multi = true, transformIncluded = true }) {
       // transforms a supplied attribute for key through lambda for each
       // of the solutions.  ensures related objects will be transformed later.
@@ -55,6 +65,16 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
       delete product["attributes"]["uri"];
       delete product["attributes"]["uuid"];
       delete product["highlight"];
+
+      // set the product.offering.typeAndQuantity.product backlinked relationship
+      for (const offering of arr(product.attributes.offerings)) {
+        for (const typeAndQuantity of arr(offering["type-and-quantity"])) {
+          typeAndQuantity["relationships"] ||= {};
+          typeAndQuantity["relationships"]["product"] = {
+            data: { type: "products", id: product.id }
+          };
+        }
+      }
 
       transformAttribute({
         key: "product-groups",
@@ -113,6 +133,8 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
           allIncluded.push(item);
         } else if( type == "type-and-quantity" ) {
           item["type"] = "type-and-quantities";
+          item.relationships = item.attributes.relationships;
+          delete item.attributes.relationships;
           allIncluded.push(item);
         } else if( type == "unit-price" ) {
           item["type"] = "unit-price-specifications",
@@ -126,9 +148,5 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
     const products = productsPayload.data.map(({ id }) => this.store.peekRecord('product', id));
 
     return { productGroup, products: products };
-
-    // return this.store.loadRecord('product-group', subgroup_id, {
-    //   include: "products.offerings.unit-price,products.offerings.type-and-quantity.product"
-    // });
   }
 }
