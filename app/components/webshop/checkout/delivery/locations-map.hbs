@@ -3,6 +3,8 @@
 <DeliveryLocationsMap @baseZoom={{@baseZoom}} @baseLat={{@baseLat}} @baseLng={{@baseLng}} @places={{this.locations}} class="locations-map" as |marker location|>
   {{!-- yield marker location --}}
   {{!-- TODO: add location name to model and show it here --}}
-  <h3>{{location.deliveryKind.simpleName}}</h3>
+  <h3>{{location.deliveryKind.simpleName}} {{location.label}}</h3>
+  <p>{{location.postalAddress.streetAddress}}<br/>{{location.postalAddress.postalCode}} {{location.postalAddress.locality}}</p>
+
   Klik <button type="button" {{on 'click' (fn @select location)}}>hier</button> om deze locatie te selecteren.
 </DeliveryLocationsMap>

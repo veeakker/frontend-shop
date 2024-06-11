@@ -6,6 +6,13 @@
   margin-top: 60px;
 }
 
+.delivery-map .leaflet-map {
+  height: 25rem;
+  width: 100%;
+  left: 0;
+  border: solid white 2px;
+}
+
 .delivery-place {
   text-align: center;
 }
