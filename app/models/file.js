@@ -21,7 +21,7 @@ export default class FileModel extends Model {
 
     // build the resulting uri
     if( this.id )
-      return `/images/${this.id}?${query}`;
+      return `/imgs/${this.id}?${query}`;
 
     return undefined;
   }
