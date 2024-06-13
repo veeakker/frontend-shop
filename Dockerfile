@@ -7,7 +7,7 @@ COPY package.json .
 COPY .npmrc-build /root/.npmrc
 RUN npm install
 COPY . .
-RUN npx browserslist@latest --update-db
+# RUN npx update-browserslist-db@latest
 RUN ember build -prod
 
 FROM semtech/static-file-service:0.2.0
