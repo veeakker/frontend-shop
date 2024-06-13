@@ -10,6 +10,6 @@ COPY . .
 RUN npx browserslist@latest --update-db
 RUN ember build -prod
 
-FROM semtech/ember-proxy-service:1.4.0
+FROM semtech/static-file-service:0.2.0
 
-COPY --from=builder /app/dist /app
+COPY --from=builder /app/dist /data
