@@ -63,4 +63,5 @@ Router.map(function() {
     this.route('quality');
     this.route('ecology');
   });
+  this.route('overview');
 });
