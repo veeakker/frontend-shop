@@ -24,7 +24,15 @@ export default class WebshopCheckoutFinishRoute extends Route {
       totalCost += unitPrice.value * amount;
     }
 
-    // Ship the basket as the model
+    // 3. Let's calculate the basket again a bit later because it seems
+    // like it doesn't update on first render
+    setTimeout(async () =>
+      this.store.pushPayload(
+        await (await fetch(`/current-basket/previous/${basket_id}`)).json()
+      ),
+      1000);
+
+    // 4. Ship the basket as the model
     return { basket, totalCost };
   }
 }
