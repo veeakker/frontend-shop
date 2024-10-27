@@ -23,22 +23,15 @@ class OfferTypeResource extends Resource {
   @tracked value
 
   async setup() {
-    const product = await this.args.positional[0];
-    const offerings = (await product.offerings).toArray();
-    await RSVP.all(offerings);
-    let typeAndQuantityValues =
-      (await RSVP.all(offerings.map((o) => o.typeAndQuantity)))
-        .toArray()
-        .map((typeAndQuantity) => typeAndQuantity.unit);
+    const units = [...new Set(
+      (this.args.positional[0] || [])
+        .map(({unit}) => unit ))];
 
-    this.value =
-      [...new Set(typeAndQuantityValues)]
-      .map( (value) => { switch ( value ) {
-        case "C62": return "st";
-        case "KGM": return "kg";
-        case "GRM": return "g";
-        default: return "st";
-      } } );
+    this.value = [
+      units.find((x) => x == "C62") && "st",
+      units.find((x) => x == "GRM") && "g",
+      units.find((x) => x == "KGM") && "kg"
+    ].filter((x) => x);
   }
 }
 
@@ -65,7 +58,9 @@ class UnpackedOfferingsResource extends Resource {
   @tracked value;
 
   async setup() {
-    const [offerings] = this.args.positional;
+    const [product] = await this.args.positional;
+    const offerings = await RSVP.all( (await product.offerings).toArray() );
+
     this.value = await unpackOfferings( offerings );
   }
 }
@@ -191,18 +186,21 @@ export default class ProductCardComponent extends Component {
   selectOffer(offer) {
     if (offer instanceof OfferingModel) { // clicking to fast may yield an unitialized number component
       this.selectedOffer = offer;
+    } else {
+      console.log(`Could not select offer ${offer}`);
     }
   }
 
   // NOTE: we are sorting twice now, our current smarter sorting of
   // possibleOffers should land in sortedOfferings and perhaps that can
-  // be made to supply the unpacked variant.
+  // be made to supply the unpacked variant.  Sorting is also available
+  // in Product model.
   @use
-  unpackedOfferings = new UnpackedOfferingsResource( () => [this.args.product?.sortedOfferings] );
+  unpackedOfferings = new UnpackedOfferingsResource( () => [this.args.product] );
 
   @use
   possibleOffers = new AvailableOffersResource( () => [this.unpackedOfferings, this.currentUnit] );
 
   @use
-  availableUnits = new OfferTypeResource( () => [this.args.product] )
+  availableUnits = new OfferTypeResource( () => [this.unpackedOfferings] )
 }
