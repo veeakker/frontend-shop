@@ -24,7 +24,10 @@ export default class WebshopCheckoutPaymentController extends Controller {
             redirectUrl: `http://${(new URL(window.location.href)).host}/webshop/checkout/finish/${basketId}`
           } } } ),
         method: "POST",
-        headers: { "Content-Type": "application/vnd.api+json" } };
+        headers: {
+          "Content-Type": "application/vnd.api+json",
+          "Accept": "application/vnd.api+json"
+        } };
 
       const response = await fetch("/payments", requestInfo);
       const body = await response.json();

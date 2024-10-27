@@ -21,7 +21,9 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
       "page[size]": 250,
       "filter[is-enabled]": true
     })).toString();
-    const productsPayload = await (await fetch(productsURL)).json();
+    const productsPayload = await (await fetch(productsURL, {
+      headers: { accept: "application/vnd.api+json" }
+    })).json();
 
     // ingest all products into the store
     let allIncluded = [];
