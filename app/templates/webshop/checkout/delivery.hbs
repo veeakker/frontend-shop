@@ -13,11 +13,7 @@
     <br /><br />
 
     <Webshop::Checkout::Delivery::Checkbox @for="postal" @current={{this.deliveryMethod}}>
-      Thuislevering regio Leuven (gratis tot 27.05.2023 - nadien €25 leverkost voor bestellingen onder €150)
-      <ul>
-        <li>Postcodes 3000-3018 via fietskoerier op <i>vrijdag namiddag</i></li>
-        <li>Andere postcodes aan huis levering <i>zaterdag voormiddag</i></li>
-      </ul>
+      Thuislevering regio Leuven: Wekelijkse levering op zaterdag voormiddag, tenzij anders afgesproken.  Voor bestellingen onder €150 kan een leverkost van €25 in rekening gebracht worden.
     </Webshop::Checkout::Delivery::Checkbox>
     {{#if (eq this.deliveryMethod "postal")}}
       <Webshop::Checkout::Delivery::Checkbox @for={{true}} @current={{this.basket.basket.hasCustomDeliveryPlace}}>
