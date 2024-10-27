@@ -125,6 +125,13 @@
     .per-pakje-input {
       display: flex;
       align-items: flex-end;
+
+      .number-input {
+        user-select: none;
+        .number-value {
+          min-width: 4ex;
+        }
+      }
     }
 
     .select-eenheid {
