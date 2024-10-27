@@ -25,6 +25,10 @@
         <div class="per-pakje">
           Per pakje:
           <div class="per-pakje-input">
+            <div style="display: none">
+              {{!-- rendering possible offers off screen ensures Offers gets updated as needed --}}
+              {{#each this.possibleOffers as |offer|}}({{offer.typeAndQuantity.value}}{{offer.typeAndQuantity.unit}}){{/each}}
+            </div>
             <ProductCard::Offers @offers={{this.possibleOffers}} @onChange={{this.selectOffer}} @selected={{this.selectedOffer}} />
             {{#if @product.offerings}}
               <div class="eenheid">
