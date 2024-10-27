@@ -1,13 +1,13 @@
 <div class="number-input">
   <div class="number-button">
-    <button id="minus-button" {{action this.decreaseValue}} type="button" >-</button>
-    <div id="number-value">
+    <button class="minus-button" {{action this.decreaseValue}} type="button" >-</button>
+    <div class="number-value">
       {{#if @key}}
         {{get @value @key}}
       {{else}}
         {{@value}}
       {{/if}}
     </div>
-    <button id="plus-button" {{action this.increaseValue}} type="button">+</button>
+    <button class="plus-button" {{action this.increaseValue}} type="button">+</button>
   </div>
 </div>
