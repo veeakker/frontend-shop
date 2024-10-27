@@ -30,7 +30,11 @@ class BasketFetcher extends Resource {
   async getBasket(isUpdate = false) {
     // console.log(this.args.positional[0]); // ensuring we use the input variable
     const pBasket = this.args.positional[0];
-    const result = await (await fetch(this.basketUrl)).json();
+    const result = await (await fetch(this.basketUrl,{
+      headers: {
+        accept: "application/vnd.api+json"
+      }
+    })).json();
     if ( isUpdate ) {
       this.value.set("orderLines",[]);
     }
@@ -125,7 +129,8 @@ export default class BasketService extends Service {
     await fetch(`/current-basket/add-order-line`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/vnd.api+json"
+        "Content-Type": "application/vnd.api+json",
+        "Accept": "application/vnd.api+json"
       },
       body: JSON.stringify({
         offeringUuid: offering.id,
@@ -146,7 +151,8 @@ export default class BasketService extends Service {
       await fetch(`/current-basket/delete-order-line`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/vnd.api+json"
+          "Content-Type": "application/vnd.api+json",
+        "Accept": "application/vnd.api+json"
         },
         body: JSON.stringify({
           orderLineUuid: obj.id
@@ -176,7 +182,8 @@ export default class BasketService extends Service {
     await fetch('/current-basket/persist-invoice-info', {
       method: "POST",
       headers: {
-        'Content-Type': "application/vnd.api+json"
+        'Content-Type': "application/vnd.api+json",
+        "Accept": "application/vnd.api+json"
       },
       body: JSON.stringify({
         basketUuid: basket.id,
@@ -219,7 +226,8 @@ export default class BasketService extends Service {
     await fetch('/current-basket/add-comment-to-order-line', {
       method: "POST",
       headers: {
-        'Content-Type': "application/vnd.api+json"
+        'Content-Type': "application/vnd.api+json",
+        "Accept": "application/vnd.api+json"
       },
       body: JSON.stringify({
         orderLineUuid: orderLine.id,

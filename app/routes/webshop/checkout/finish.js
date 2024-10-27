@@ -7,7 +7,9 @@ export default class WebshopCheckoutFinishRoute extends Route {
     // preloaded so we can easily traverse for calculations.
 
     // 1. Fetch the basket itself
-    const basketJsonInfo = await (await fetch(`/current-basket/previous/${basket_id}`)).json();
+    const basketJsonInfo = await (await fetch(`/current-basket/previous/${basket_id}`, {
+      headers: { accept: "application/vnd.api+json" }
+    } )).json();
     this.store.pushPayload( basketJsonInfo );
     const basket = this.store.peekRecord('basket', basketJsonInfo.data[0].id);
 
@@ -28,7 +30,9 @@ export default class WebshopCheckoutFinishRoute extends Route {
     // like it doesn't update on first render
     setTimeout(async () =>
       this.store.pushPayload(
-        await (await fetch(`/current-basket/previous/${basket_id}`)).json()
+        await (await fetch(`/current-basket/previous/${basket_id}`, {
+          headers: { accept: "application/vnd.api+json" }
+        } )).json()
       ),
       1000);
 
