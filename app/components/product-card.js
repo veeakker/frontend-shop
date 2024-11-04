@@ -89,7 +89,7 @@ class AvailableOffersResource extends Resource {
 
       // sort the offerings
       const sortedOfferingObjects = consideredOfferingObjects
-        .sort(({quantity: a}, {quantity: b}) => a > b);
+        .sort(({quantity: a}, {quantity: b}) => a - b);
 
       // extract the desired objects
       const sortedOfferings = sortedOfferingObjects
@@ -133,14 +133,14 @@ export default class ProductCardComponent extends Component {
     if ( unpacked.find(({unit}) => unit == "C62") ) {
       return unpacked
         .filter(({unit}) => unit == "C62")
-        .sort(({quantity: a},{quantity: b}) => a > b)
+        .sort(({quantity: a},{quantity: b}) => a - b)
         .firstObject
         .offering;
     // then check the lowest amount of g or kgfor now
     } else if ( unpacked.find(({unit}) => unit == "GRM" || unit == "KGM") ) {
       return unpacked
         .filter(({unit}) => unit == "GRM" || unit == "KGM")
-        .sort(({quantity: a},{quantity: b}) => a > b)
+        .sort(({quantity: a},{quantity: b}) => a - b)
         .firstObject
         .offering;
     // lastly just return the first object because this is weird
