@@ -1,6 +1,23 @@
 import { inject as service } from '@ember/service';
 import Base from 'ember-simple-auth/authenticators/base';
 import fetch, { Headers } from 'fetch';
+import { setUser, /* captureMessage */ } from '@sentry/ember';
+
+// we assume the response of authenticate and restore both contain the session
+function setGlitchtipUserFromResponse(resp) {
+  const session = resp?.data?.id;
+  const email = resp?.included?.find((r) => r.type=="accounts")?.attributes?.email;
+  try {
+    if ( session || email ) {
+      setUser({session, email});
+    } else {
+      setUser({ id: `unknown-${Math.floor(Math.random()*1000000)}` });
+    }
+    // captureMessage( { message: "User initialized" });
+  } catch (e) {
+    console.warn(`Could not set up glitchtip ${e}`);
+  }
+}
 
 export default class MuSemtechAuthenticator extends Base {
   @service store;
@@ -25,6 +42,7 @@ export default class MuSemtechAuthenticator extends Base {
 
     if (result.ok) {
       const payload = await result.json();
+      setGlitchtipUserFromResponse(payload);
       this.store.pushPayload( { data: payload.included } );
       return payload.data;
     } else {
@@ -44,9 +62,11 @@ export default class MuSemtechAuthenticator extends Base {
 
     if (result.ok) {
       const payload = await result.json();
+      setGlitchtipUserFromResponse(payload);
       this.store.pushPayload( { data: payload.included } );
       return payload.data;
     } else {
+      setGlitchtipUserFromResponse(null);
       throw result;
     }
   }
@@ -59,9 +79,11 @@ export default class MuSemtechAuthenticator extends Base {
         'Content-Type': 'application/vnd.api+json'
       })
     });
-    if (result.ok)
+    if (result.ok) {
+      setGlitchtipUserFromResponse(null);
       return result;
-    else
+    } else {
       throw result;
+    }
   }
 }
