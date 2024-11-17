@@ -21,6 +21,18 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+
+    sentry: {
+      dsn: '{{SENTRY_DSN}}',
+      environment: '{{SENTRY_ENVIRONMENT}}'
+    },
+    '@sentry/ember': {
+      // You can disable performance to limit amount of data sent over
+      // the wire.  Probably doesn't hurt to get started but is ideally
+      // turned off after a while
+
+      // disablePerformance: true
+    }
   };
 
   if (environment === 'development') {
