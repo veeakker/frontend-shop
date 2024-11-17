@@ -45,7 +45,7 @@ export default class DeliveryKindModel extends Model {
   }
 
   get normalizedLabel(){
-    return kindBy( "uri", this.uri, { normalizedLabel: "unknown" } ).noramlizedLabel;
+    return kindBy( "uri", this.uri, { normalizedLabel: "unknown" } ).normalizedLabel;
   }
 }
 

@@ -25,29 +25,12 @@
   </div>
   <div class="maps">
     <DeliveryLocationsMap @places={{this.enabledLocations}} as |marker place|>
-      <h3>{{place.deliveryKind.simpleName}}</h3>
-      {{#let place.deliveryKind.normalizedLabel as |normalizedLabel|}}
-        {{#if (eq normalizedLabel "routes")}}
-          <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
-            Klik hier om meer te weten over leveringen via Toeren.
-          </LinkTo>
-        {{/if}}
-        {{#if (eq normalizedLabel "health-shops")}}
-          <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
-            Klik hier om meer te weten over leveringen via natuurwinkels.
-          </LinkTo>
-        {{/if}}
-        {{#if (eq normalizedLabel "local-farms")}}
-          <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
-            Klik hier om meer te weten over leveringen via buurderijen.
-          </LinkTo>
-        {{/if}}
-        {{#if (eq normalizedLabel "home-delivery")}}
-          <LinkTo @route="locations.kind" @model={{place.deliveryKind}}>
-            Klik hier om meer te weten over thuisleveringen.
-          </LinkTo>
-        {{/if}}
-      {{/let}}
+      <h3>{{place.deliveryKind.simpleName}} {{place.label}}</h3>
+      <p>{{place.postalAddress.streetAddress}}<br/>{{place.postalAddress.postalCode}} {{place.postalAddress.locality}}</p>
+
+      <LinkTo @route="locations.kind" @model={{place.deliveryKind.normalizedLabel}}>
+        Klik hier om meer te weten over leveringen via {{place.deliveryKind.simpleName}}.
+      </LinkTo>
     </DeliveryLocationsMap>
   </div>
 
