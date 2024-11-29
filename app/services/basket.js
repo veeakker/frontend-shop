@@ -207,7 +207,8 @@ export default class BasketService extends Service {
     await fetch('/current-basket/persist-delivery-info', {
       method: "POST",
       headers: {
-        'Content-Type': "application/vnd.api+json"
+        'Content-Type': "application/vnd.api+json",
+        'Accept': "application/vnd.api+json"
       },
       body: JSON.stringify({
         basketUuid: basket.id,
