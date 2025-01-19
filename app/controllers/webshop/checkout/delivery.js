@@ -35,6 +35,23 @@ export default class WebshopCheckoutController extends Controller {
       this.basket.basket.deliveryType = null;
   }
 
+  get canConfirmBasket() {
+    try {
+      switch (this.deliveryMethod) {
+      case "postal":
+        return true;
+      case "tour":
+        return this.basket.basket.deliveryPlace.get("deliveryKind.uri") == "http://veeakker.be/delivery-kinds/toeren";
+      case "shop":
+        return this.basket.basket.deliveryPlace.get("deliveryKind.uri") == "http://veeakker.be/delivery-kinds/natuurwinkels";
+      default:
+        return false;
+      }
+    } catch (e) {
+      return false; // one of the objects doesn't exist
+    }
+  }
+
   @action
   async confirmOrder() {
     const basket = this.basket.basket;
