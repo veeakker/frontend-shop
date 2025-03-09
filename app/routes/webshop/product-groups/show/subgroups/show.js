@@ -95,6 +95,20 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
       });
 
       transformAttribute({
+        key: "unit-price",
+        targetObject: product,
+        multi: false,
+        transformer({ uuid }) { return { id: uuid, type: "unit-price-specification" }; }
+      });
+
+      transformAttribute({
+        key: "target-unit",
+        targetObject: product,
+        multi: false,
+        transformer({ uuid }) { return { id: uuid, type: "quantitative-value" }; }
+      });
+
+      transformAttribute({
         key: "thumbnail",
         targetObject: product,
         multi: false,
