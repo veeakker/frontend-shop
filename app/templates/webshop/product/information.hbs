@@ -1,9 +1,18 @@
 {{!-- template-lint-disable no-triple-curlies --}}
 {{{model.description}}}
 
-{{#if (and this.model.targetUnit.unit this.model.targetUnit.value)}}
-  <p>
-    Richtgewicht is {{this.model.targetUnit.value}}{{human-unit this.model.targetUnit.unit}} per stuk
-  </p>
-{{/if}}
+<dl class="general-product-information">
+  {{#if (and this.model.targetUnit.unit this.model.targetUnit.value)}}
+    <dt>Richtgewicht</dt>
+    <dd>{{this.model.targetUnit.value}}{{human-unit this.model.targetUnit.unit}} per stuk</dd>
+  {{/if}}
+  {{#if (and this.model.unitPrice.value this.model.unitPrice.unit)}}
+    <dt>Eenheidsprijs</dt>
+    <dd>€{{this.model.unitPrice.value}} per {{human-unit this.model.unitPrice.unit}}</dd>
+  {{/if}}
+  {{#if this.model.plu}}
+    <dt>PLU</dt>
+    <dd>{{this.model.plu}}</dd>
+  {{/if}}
+</dl>
 {{outlet}}
