@@ -28,6 +28,32 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
+}
+
+dl.general-product-information {
+  /* Shows the PLU, target weight and target price */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0ex;
+
+  dt {
+    text-align: right;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+
+  dt::after {
+    content: ":";
+    margin-right: 5px;
+  }
+
+  dd {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .info-img {
@@ -56,7 +82,7 @@
   .pakjes {
     margin-left: 30px;
   }
-  
+
   .configuration {
     justify-content: flex-start;
   }
