@@ -29,14 +29,18 @@
       {{/if}}
     </div>
     <div class="order-extra">
-      <h4>{{euros orderLine.pricePerUnit}} / pakje</h4>
-      <br>
-      {{#if @removeOrderLine}}
-        <button id="remove-button" {{on "click" (fn @removeOrderLine orderLine.offering orderLine.amount)}} type="button">
-          <i class="fas fa-trash"></i>
-        </button>
+      {{#if (has-block "order-extra")}}
+        {{yield orderLine to="order-extra"}}
+      {{else}}
+        <h4>{{euros orderLine.pricePerUnit}} / pakje</h4>
+        <br>
+        {{#if @removeOrderLine}}
+          <button id="remove-button" {{on "click" (fn @removeOrderLine orderLine.offering orderLine.amount)}} type="button">
+            <i class="fas fa-trash"></i>
+          </button>
+        {{/if}}
+        <h4 id="total-text">Totaal: {{euros orderLine.price}}</h4>
       {{/if}}
-      <h4 id="total-text">Totaal: {{euros orderLine.price}}</h4>
     </div>
   </div>
 {{/each}}

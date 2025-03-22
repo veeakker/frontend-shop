@@ -22,5 +22,6 @@ export default class BasketModel extends Model {
 }
 
 const CONFIRMED = "http://veeakker.be/order-statuses/confirmed";
+const DRAFT = "http://veeakker.be/order-statuses/draft";
 
-export { CONFIRMED };
+export { CONFIRMED, DRAFT };

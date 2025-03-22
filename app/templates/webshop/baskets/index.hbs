@@ -5,15 +5,20 @@
     <table>
       <thead>
         <tr>
-          <th>Status change</th><th>Status</th><th>Owner</th>
+          <th>Status gewijzigd op</th><th>Status</th><th>Link naar mandje</th>
         </tr>
       </thead>
       <tbody>
         {{#each @model as |basket|}}
           <tr>
-            <td>{{basket.statusChangedAt}}</td>
-            <td>{{basket.orderStatus}}</td>
-            <td>{{basket.customer.firstName}} {{basket.customer.lastName}}</td>
+            <td>{{locale-date basket.statusChangedAt}}</td>
+            <td>
+              {{#if (eq basket.orderStatus this.CONFIRMED)}}
+                bevestigd
+              {{else if (eq basket.orderStatus this.DRAFT)}}
+                ontwerp
+              {{/if}}
+            </td>
             <td>
               {{#if (eq basket.orderStatus this.CONFIRMED)}}
                 {{!-- TODO: make custom page for showing old basket --}}

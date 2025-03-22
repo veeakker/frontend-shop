@@ -1,13 +1,47 @@
-{{page-title "Show"}}
+{{page-title "Veeakker mandje"}}
 
-<div class="container">
-  <h1>Showing basket</h1>
+<ul class="breadcrumb-cart">
+  <li><LinkTo @route="webshop.baskets.index">Winkelmandjes</LinkTo></li>
+  <li><LinkTo @route="webshop.baskets.show">Dit mandje</LinkTo></li>
+</ul>
+
+<div class="checkout-contact">
+  <div class="contact-info">
+    <div class="contactDetails">
+      <h2 style="font-size: 150%">Mandje {{#if (and (eq @model.orderStatus this.CONFIRMED) @model.statusChangedAt)}} ingezonden op {{locale-date @model.statusChangedAt}}{{/if}}</h2>
+      {{#if (eq @model.deliveryType "http://veeakker.be/delivery-methods/postal")}}
+        <h3>Geleverd aan huis</h3>
+        {{else if (eq @model.deliveryType "http://veeakker.be/delivery-methods/tour")}}
+        <h3>Geleverd op toer</h3>
+        {{else if (eq @model.deliveryType "http://veeakker.be/delivery-methods/shop")}}
+        <h3>Geleverd in natuurwinkel</h3>
+      {{/if}}
+      <p>
+        {{#if (eq @model.deliveryType "http://veeakker.be/delivery-methods/tour")}}
+          {{#let @model.deliveryPlace.postalAddress as |postalAddress|}}
+            {{postalAddress.streetAddress}}<br />
+            {{postalAddress.postalCode}} {{postalAddress.locality}}
+          {{/let}}
+        {{else if (eq @model.deliveryType "http://veeakker.be/delivery-methods/shop")}}
+          {{#let @model.deliveryPlace.postalAddress as |postalAddress|}}
+            {{postalAddress.streetAddress}}<br />
+            {{postalAddress.postalCode}} {{postalAddress.locality}}
+          {{/let}}
+        {{/if}}
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="order">
   <h2>Bestelde producten</h2>
-  <Webshop::OrderLines @orderLines={{@model.orderLines}} />
+  <Webshop::OrderLines @orderLines={{@model.orderLines}}>
+    <:order-extra as |orderLine|>
+      <button type="button" {{on "click" (fn this.addToBasket orderLine)}}>
+        <i class="fas fa-plus"></i> Voeg toe aan huidig mandje
+      </button>
+    </:order-extra>
+  </Webshop::OrderLines>
 </div>
-
 
 {{outlet}}

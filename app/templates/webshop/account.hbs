@@ -1,9 +1,8 @@
 {{outlet}}
 
 <div class="my-account">
-  <h1 class="tab-title">Mijn account</h1>
+  <Account::Links />
 
-  <Design::Forks @useDarkImage={{true}} />
   <p id="account-name">{{@model.person.firstName}} {{@model.person.lastName}}</p>
 
   <div id="account-information">
