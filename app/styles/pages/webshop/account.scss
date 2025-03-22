@@ -10,6 +10,15 @@
   margin: auto;
 }
 
+.tab-title {
+  a {
+    color: $base-primary;
+  }
+  a.active {
+    border-bottom: solid 2px;
+  }
+}
+
 #account-information {
   display: flex;
   flex-direction: column;

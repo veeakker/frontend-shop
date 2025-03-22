@@ -133,7 +133,7 @@ export default class BasketService extends Service {
         "Accept": "application/vnd.api+json"
       },
       body: JSON.stringify({
-        offeringUuid: offering.id,
+        offeringUuid: get(offering, "id"),
         amount: amount
       })
     });
