@@ -11,7 +11,9 @@
       <h2 style="font-size: 150%">Je bestelling is succesvol geplaatst</h2><br /><br />
       <h3>NIEUW! Andere producten rechtstreeks van de boer?</h3>
       <p>
-        Bestel ze op <a style="text-decoration: underline !important" href={{or (and (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/tour") this.basket.deliveryPlace.deliveryRoute.lfwLink) "https://localfoodworks.eu/bestellen/market/9"}}>Local Food Works</a> en we leveren ze samen.  Selecteer de markt in overeenstemming met je leverdatum.
+        {{#let (or (and (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/tour") (or this.basket.deliveryPlace.lfwLink this.basket.deliveryPlace.deliveryRoute.lfwLink)) "https://localfoodworks.eu/bestellen/market/9") as |lfwLink|}}
+          Bestel ze op <a style="text-decoration: underline !important" href={{lfwLink}}>Local Food Works</a> en we leveren ze samen.  Selecteer de markt in overeenstemming met je leverdatum.
+        {{/let}}
       </p>
       <h3>Wanneer geleverd?</h3>
       <p>
