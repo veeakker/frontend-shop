@@ -68,6 +68,8 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
       delete product["attributes"]["uuid"];
       delete product["highlight"];
 
+      product["attributes"]["product-labels"] = arr(product["attributes"]["product-labels"]);
+
       // set the product.offering.typeAndQuantity.product backlinked relationship
       for (const offering of arr(product.attributes.offerings)) {
         for (const typeAndQuantity of arr(offering["type-and-quantity"])) {
