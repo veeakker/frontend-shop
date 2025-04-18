@@ -1,6 +1,6 @@
 <div class="number-input">
   <div class="number-button">
-    <button class="minus-button" {{action this.decreaseValue}} type="button" >-</button>
+    <button class="minus-button" disabled={{not this.hasPrevious}} {{action this.decreaseValue}} type="button" >-</button>
     <div class="number-value">
       {{#if @key}}
         {{get @value @key}}
@@ -8,6 +8,6 @@
         {{@value}}
       {{/if}}
     </div>
-    <button class="plus-button" {{action this.increaseValue}} type="button">+</button>
+    <button class="plus-button" disabled={{not this.hasNext}} {{action this.increaseValue}} type="button">+</button>
   </div>
 </div>

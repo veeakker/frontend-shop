@@ -23,6 +23,14 @@ export default class NumberButtonComponent extends Component {
     return this.args.options?.length ? this.args.options : this.defaultOptions;
   }
 
+  get hasNext() {
+    return nextItemInArray( this.optionsArray, this.args.value ) !== this.args.value;
+  }
+
+  get hasPrevious() {
+    return previousItemInArray( this.optionsArray, this.args.value ) !== this.args.value;
+  }
+
   constructor(){
     super(...arguments);
   }
