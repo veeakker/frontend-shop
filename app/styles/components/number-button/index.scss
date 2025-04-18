@@ -8,11 +8,19 @@
 }
 
 .minus-button, .plus-button {
-    display: inline-block;
-    padding: 0.25rem;
-    border: none;
+  display: inline-block;
+  padding: 0.25rem;
+  border: none;
+  transition: all 0.5s ease-out;
+}
+
+.minus-button[disabled], .plus-button[disabled] {
+  background-color: inherit;
+  color: #f1f1f1;
 }
 
 .number-value {
-    display: inline-block;
+  display: inline-block;
+  user-select: none;
+  text-align: center;
 }
