@@ -20,7 +20,7 @@
               <div class="per-pakje-input">
                 <ProductCard::Offers @offers={{this.possibleOffers}} @onChange={{action (mut this.selectedOffer)}} @selected={{this.currentOffer}} />
                 <div class="eenheid">
-                  <select class="select-eenheid" name="units" onchange={{action "selectUnit" value="target.value"}}>
+                  <select class="select-eenheid" name="units" onchange={{action "selectUnit" value="target.value"}} disabled={{if (sub this.availableUnits.length 1) "" "disabled"}}>
                     {{#each this.availableUnits as |unit|}}
                       <option value={{unit}}>{{unit}}</option>
                     {{/each}}
