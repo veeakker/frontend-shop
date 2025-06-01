@@ -20,6 +20,11 @@ module.exports = function (defaults) {
     },
     'ember-simple-auth': {
       useSessionSetupMethod: true
+    },
+    // we always want sourcemaps
+    sourcemaps: {
+      enabled: true,
+      extensions: ['js', 'css', 'hbs']
     }
   });
 
