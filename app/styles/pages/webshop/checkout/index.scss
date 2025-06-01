@@ -1,15 +1,16 @@
-@import './contact-info.scss';
-@import './delivery.scss';
+@use 'contact-info.scss';
+@use 'delivery.scss';
+@use "../../../config/colors";
 
 /* BREADCRUMB CHECKOUT */
 .breadcrumb-txt {
-  color: $base-primary;
+  color: colors.$base-primary;
   font-weight: bold;
   font-size: 20px;
 }
 
 .breadcrumb-nxt {
-  color: $base-primary;
+  color: colors.$base-primary;
   font-size: 20px;
 }
 
@@ -28,7 +29,7 @@ ul.breadcrumb-cart {
     font-size: 15px;
   
     a {
-      color: $base-primary;
+      color: colors.$base-primary;
       text-decoration: none;
       font-family: 'Open Sans';
       font-size: 20px;
@@ -38,7 +39,7 @@ ul.breadcrumb-cart {
 
 ul.breadcrumb-cart li + li:before {
   padding: 8px;
-  color: $base-primary;
+  color: colors.$base-primary;
   content: ">";
 }
 

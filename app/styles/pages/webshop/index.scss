@@ -1,6 +1,6 @@
-@import './promotions/index';
-@import './basket';
-@import './webshop';
-@import './product.scss';
-@import './checkout/index.scss';
-@import './account.scss';
+@use 'promotions/index';
+@use 'basket';
+@use 'webshop';
+@use 'product.scss';
+@use 'checkout/index.scss' as index2;
+@use 'account.scss';

@@ -1,3 +1,3 @@
-@import './gallery/index';
-@import './textbook/index';
-@import './collection-ponts/index';
+@use 'gallery/index';
+@use 'textbook/index' as index2;
+@use 'collection-ponts/index' as index3;

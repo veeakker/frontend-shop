@@ -1,3 +1,5 @@
+@use "../../config/colors";
+
 /*MAIN*/
 .top-menu {
   background-image: url('/images/header-groot.jpg');
@@ -44,7 +46,7 @@
   .mobile-open {
     width: 100%;
     display: inline-block;
-    background-color: $base-primary;
+    background-color: colors.$base-primary;
 
     display: flex;
     flex-direction: column;
@@ -53,7 +55,7 @@
       padding: 10px;
       text-align: center;
       color: white;
-      border-bottom: solid 1px $neutral-background;
+      border-bottom: solid 1px colors.$neutral-background;
       margin: 0 5px;
     }
   }

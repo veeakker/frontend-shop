@@ -1,13 +1,15 @@
+@use "../../config/colors";
+
 .contact-content {
     width: 100%;
     padding: 5% 0;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    color: $base-primary;
+    color: colors.$base-primary;
 
     p a {
-        color: $base-secondary;
+        color: colors.$base-secondary;
     }
 }
 
@@ -16,13 +18,13 @@
 }
 
 .faq a {
-  border-bottom: 3px solid $base-primary;
+  border-bottom: 3px solid colors.$base-primary;
   padding: 10px;
   font-family: 'Open Sans';
-  color: $base-primary;
+  color: colors.$base-primary;
 }
 
 .faq a:hover {
-  background-color: $base-primary;
+  background-color: colors.$base-primary;
   color: #ffffff;
 }

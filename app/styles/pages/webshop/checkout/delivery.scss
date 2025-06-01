@@ -1,5 +1,7 @@
+@use "../../../config/colors";
+
 .delivery-contact {
-  color: $base-primary;
+  color: colors.$base-primary;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -30,7 +32,7 @@
 }
 
 #extra-info {
-  color: $base-primary;
+  color: colors.$base-primary;
   text-decoration: none;
   margin-bottom: 2rem;
 }

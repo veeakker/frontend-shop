@@ -2,12 +2,13 @@
 // The /app/templates/products/ route will have its style in
 // /app/templates/products/index.scss (or any of its subfolders
 // grouped in index.scss).
-@import './products/index';
-@import './locations/index';
-@import './webshop/index';
-@import './over-ons/index';
-@import './nieuws/index';
-@import './contact/index';
+@use 'products/index';
+@use 'locations/index' as index2;
+@use 'webshop/index' as index3;
+@use 'over-ons/index' as index4;
+@use 'nieuws/index' as index5;
+@use 'contact/index' as index6;
+@use "../config/colors";
 
 body {
   width: 100%;
@@ -31,7 +32,7 @@ h1 {
 }
 
 .button-style {
-  background-color: $base-primary;
+  background-color: colors.$base-primary;
   color: white;
   font-size: 16px;
   font-family: 'Open Sans';
@@ -41,7 +42,7 @@ h1 {
 }
 
 .button-style:hover {
-  background-color: $base-secondary;
+  background-color: colors.$base-secondary;
 }
 
 .error-message {
@@ -217,7 +218,7 @@ h1 {
 
 #contact {
   width: 100%;
-  color: $base-primary;
+  color: colors.$base-primary;
   font-family: 'Open Sans';
 }
 
