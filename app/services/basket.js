@@ -52,7 +52,7 @@ class BasketFetcher extends Resource {
         "filter[:id:]": deliveryPlaceId || DEFAULT_DELIVERY_PLACE_ID,
         include: "delivery-kind,geo-coordinate,postal-address"
       })).firstObject;
-      // const deliveryPlace = await this.store.find("delivery-place", deliveryPlaceId);
+      // const deliveryPlace = await this.store.findRecord("delivery-place", deliveryPlaceId);
       basket.set("deliveryPlace", deliveryPlace);
     } catch (e) {
       // TODO: provide warning to end user
@@ -81,11 +81,31 @@ class BasketFetcher extends Resource {
   }
 }
 
+class TotalPriceResource extends Resource {
+  @tracked value
+  @service store
+
+  get totalPrice() {
+  }
+
+  async setup() {
+    const orderLines = await this.args.positional[1];
+    if( orderLines?.length ){
+      // eslint-disable-next-line ember/no-get
+      const enabledOrderLines = orderLines.filter( (line) => get(line, "product.isEnabled") );
+      // eslint-disable-next-line ember/no-get
+      const prices = enabledOrderLines.map( (ol) => get(ol, "price") || 0 );
+      return prices.reduce( (a,b) => a+b, 0);
+    } else {
+      return undefined;
+    }
+  }
+}
+
 export default class BasketService extends Service {
   @service store
   @tracked basketPromise = new ExternalPromise(); // use pBasket instead!
   @use basket = new BasketFetcher(() => [this.basketPromise])
-
 
   @action
   setDeliveryPlace( deliveryPlace ) {
@@ -238,19 +258,7 @@ export default class BasketService extends Service {
     orderLine.commentPersisted();
   }
 
-  get totalPrice() {
-    // TODO: this could be a resource
-    // sum all prices
-    if( this.orderLines ){
-      const orderLines = this.orderLines;
-      // eslint-disable-next-line ember/no-get
-      const enabledOrderLines = orderLines.filter( (line) => get(line, "product.isEnabled") );
-      // eslint-disable-next-line ember/no-get
-      const prices = enabledOrderLines.map( (ol) => get(ol, "price") || 0 );
-      return prices.reduce( (a,b) => a+b, 0);
-    }
-    else return undefined;
-  }
+  @use totalPrice = new TotalPriceResource(() => [this.orderLines])
 }
 
 export { BasketFetcher };

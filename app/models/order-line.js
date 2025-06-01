@@ -28,7 +28,7 @@ class OfferingForProduct extends Resource {
 }
 
 export default class OrderLineModel extends Model {
-  @belongsTo('offering') offering
+  @belongsTo('offering', { async: true, inverse: null }) offering
   @attr('number') amount
   @attr() comment
 

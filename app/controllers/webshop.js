@@ -4,6 +4,7 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 
 export default class WebshopController extends Controller {
+  @service router;
   @service basket;
   @service session;
   @service banner;
@@ -13,7 +14,8 @@ export default class WebshopController extends Controller {
   async logout() {
     try {
       await this.session.invalidate('authenticator:mu-semtech');
-      this.transitionToRoute('webshop');
+
+      this.router.transitionTo('webshop');
     } catch(err){
       this.error = err.errors[0].detail;
     }

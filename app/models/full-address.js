@@ -23,7 +23,7 @@ export default class FullAddressModel extends Model {
   @attr('string') company;
   @attr('string') telephone;
   @attr('string') email;
-  @belongsTo('postal-address') postalAddress;
+  @belongsTo('postal-address', { async: true, inverse: null }) postalAddress;
 
   @use
   address = new EnsureAddressResource(() => [this]);

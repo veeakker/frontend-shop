@@ -28,11 +28,11 @@ export default class ProductModel extends Model {
   @attr('number') plu;
   @attr('number') sortIndex;
   @attr('uri-set') productLabels;
-  @hasMany('product-group') productGroups;
-  @hasMany('offering', { inverse: null }) offerings;
-  @belongsTo('unit-price-specification') unitPrice;
-  @belongsTo('quantitative-value') targetUnit;
-  @belongsTo('file') thumbnail;
+  @hasMany('product-group', { async: true, inverse: "products" } ) productGroups;
+  @hasMany('offering', { async: true, inverse: null }) offerings;
+  @belongsTo('unit-price-specification', { async: true, inverse: null } ) unitPrice;
+  @belongsTo('quantitative-value', { async: true, inverse: null } ) targetUnit;
+  @belongsTo('file', { async: true, inverse: null } ) thumbnail;
 
   @use sortedOfferings = new SortOfferings(() => [this.offerings]);
 

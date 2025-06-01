@@ -14,7 +14,7 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
   @service store
 
   async model({ subgroup_id }) {
-    const productGroup = await this.store.find('product-group', subgroup_id);
+    const productGroup = await this.store.findRecord('product-group', subgroup_id);
     const productsURL = "/search/products?" + (new URLSearchParams({
       "filter[:term:product-group-ids]": subgroup_id,
       "page[number]": 0,

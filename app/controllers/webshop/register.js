@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class WebshopRegisterController extends Controller {
+  @service router;
   @service store;
   @service session;
 
@@ -51,7 +52,7 @@ export default class WebshopRegisterController extends Controller {
       if( ! response.ok ) {
         throw await response.json();
       }
-      this.transitionToRoute('login');
+      this.router.transitionTo('login');
     } catch(err){
       this.errors = err.errors;
     }
