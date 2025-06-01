@@ -47,7 +47,7 @@ export default class WebshopCheckoutDeliveryLocationsMap extends Component {
   }
 
   async loadPlaces() {
-    this.allPlaces = await this.store.loadRecords('delivery-place', {
+    this.allPlaces = await this.store.query('delivery-place', {
       include: "delivery-kind,geo-coordinate.postal-address,postal-address",
       "page[size]": 500,
       "filter[is-enabled]": true
