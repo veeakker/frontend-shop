@@ -5,8 +5,9 @@ export default class WebshopProductRoute extends Route {
   @service store
 
   model(params){
-    return this.store.loadRecord('product', params["product_id"], {
-      include: "offerings.unit-price,offerings.type-and-quantity"
+    return this.store.findRecord('product', params["product_id"], {
+      include: "offerings.unit-price,offerings.type-and-quantity",
+      reload: true
     });
   }
 
