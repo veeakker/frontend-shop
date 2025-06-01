@@ -2,16 +2,22 @@ import { get } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import Model, { attr, belongsTo } from '@ember-data/model';
 import { use, Resource } from 'ember-could-get-used-to-this';
+import ExternalPromise from 'veeakker/utils/external-promise';
 
 class PricePerUnit extends Resource {
   @tracked value;
 
   async setup() {
     const offering = await this.args.positional[0];
+    const externalPromise = this.args.positional[1];
     // eslint-disable-next-line ember/no-get
-    await get(offering, "unitPrice");
+    const unitPrice = await offering.unitPrice;
     // eslint-disable-next-line ember/no-get
-    setTimeout(() => this.value = get(offering,"unitPrice.value"), 50);
+    setTimeout(() => {
+      const price = unitPrice.value;
+      this.value = price;
+      externalPromise.resolve(price);
+    }, 50);
   }
 }
 
@@ -20,10 +26,33 @@ class OfferingForProduct extends Resource {
 
   async setup() {
     const offering = await this.args.positional[0];
+    const externalPromise = this.args.positional[1];
     // eslint-disable-next-line ember/no-get
     await get(offering, "typeAndQuantity");
     // eslint-disable-next-line ember/no-get
-    setTimeout( () => this.value = get(offering, "typeAndQuantity.product"), 50);
+    setTimeout(
+      async () => {
+        this.value = await get(offering, "typeAndQuantity.product")
+        externalPromise.resolve(this.value);
+      }, 50);
+  }
+}
+
+class PriceResource extends Resource {
+  @tracked value;
+
+  async setup() {
+    const [orderLine, pPricePerUnit, pricePromise] = this.args.positional;
+    const pricePerUnit = await pPricePerUnit;
+
+    if (orderLine.amount && pricePerUnit) {
+      this.value = orderLine.amount * pricePerUnit;
+      pricePromise.resolve(this.value);
+    } else {
+      // we don't use defaults here, as an NaN or undefined price is
+      // probably preferred over an incorrect one.
+      this.value = undefined;
+    }
   }
 }
 
@@ -56,9 +85,27 @@ export default class OrderLineModel extends Model {
     return amount * price;
   }
 
-  @use product = new OfferingForProduct(() => [this.offering]);
-  @use pricePerUnit = new PricePerUnit(() => [this.offering]);
+  @tracked productPromise = new ExternalPromise();
+  @use product = new OfferingForProduct(() => [this.offering, this.productPromise]);
+  get pProduct() {
+    // eslint-disable-next-line no-console
+    console.log({product: this.product}); // do something with the product
+    return this.productPromise.promise;
+  }
 
-  // @alias('offering.typeAndQuantity.product') product;
-  // @alias('offering.unitPrice.value') pricePerUnit;
+  @tracked pricePerUnitPromise = new ExternalPromise();
+  @use pricePerUnit = new PricePerUnit(() => [this.offering, this.pricePerUnitPromise]);
+  get pPricePerUnit() {
+    // eslint-disable-next-line no-console
+    console.log({pricePerUnit: this.pricePerUnit}); // do something with the pricePerUnit
+    return this.pricePerUnitPromise.promise;
+  }
+
+  @tracked pricePromise = new ExternalPromise();
+  @use price = new PriceResource( () => [this, this.pPricePerUnit, this.pricePromise] )
+  get pPrice() {
+    // eslint-disable-next-line no-console
+    console.log({price: this.price}); // do something with the price
+    return this.pricePromise.promise;
+  }
 }

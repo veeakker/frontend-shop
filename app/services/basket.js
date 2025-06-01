@@ -5,23 +5,10 @@ import Service, { inject as service } from '@ember/service';
 import fetch from 'fetch';
 import { use, Resource } from 'ember-could-get-used-to-this';
 import { action } from '@ember/object';
+import ExternalPromise from 'veeakker/utils/external-promise';
 
 // const DEFAULT_DELIVERY_PLACE_ID = "60f710bd-5022-4bd1-be7c-46eebbf3dfb1";
 const DEFAULT_DELIVERY_PLACE_ID = "93c60ad0-2b37-4111-90ee-411b483dd3fb";
-
-
-class ExternalPromise {
-  constructor() {
-    this.reset();
-  }
-
-  reset() {
-    this.promise = new Promise((res,rej) => {
-      this.resolve = res;
-      this.reject = rej;
-    });
-  }
-}
 
 class BasketFetcher extends Resource {
   @tracked value
@@ -85,19 +72,31 @@ class TotalPriceResource extends Resource {
   @tracked value
   @service store
 
-  get totalPrice() {
-  }
-
   async setup() {
-    const orderLines = await this.args.positional[1];
+    const orderLines = await this.args.positional[0];
     if( orderLines?.length ){
       // eslint-disable-next-line ember/no-get
-      const enabledOrderLines = orderLines.filter( (line) => get(line, "product.isEnabled") );
-      // eslint-disable-next-line ember/no-get
-      const prices = enabledOrderLines.map( (ol) => get(ol, "price") || 0 );
-      return prices.reduce( (a,b) => a+b, 0);
+      const enabledOrderLines = [];
+      for ( let orderLine of orderLines ) {
+        // eslint-disable-next-line ember/no-get
+        let ol = await orderLine;
+        let product = await ol.pProduct;
+        if ( product.isEnabled ) {
+          enabledOrderLines.push(ol);
+        }
+      }
+      // const enabledOrderLines = orderLines.filter( (line) => get(line, "product.isEnabled") );
+      // const prices = enabledOrderLines.map( (ol) => get(ol, "price") || 0 );
+
+      // NOTE: this strategy prefers to render no price if we could not correctly calculate it.  That may not be
+      // preferred either.
+      let totalPrice = 0;
+      for( let orderLine of enabledOrderLines ) {
+        totalPrice += await orderLine.pPrice;
+      }
+      this.value = totalPrice;
     } else {
-      return undefined;
+      this.value = undefined;
     }
   }
 }
