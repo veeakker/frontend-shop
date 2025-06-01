@@ -17,6 +17,7 @@ export default function setupGlitchtip() {
       });
     }
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.warn(`Could not init glitchtip ${e}`);
   }
 }

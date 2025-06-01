@@ -5,6 +5,6 @@ import { inject as service } from '@ember/service';
 export default class ProductsIndexRoute extends Route {
   @service router;
   activate() {
-    later( () => this.router.transit('products.beef') );
+    later( () => this.router.transitionTo('products.beef') );
   }
 }

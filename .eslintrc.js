@@ -18,7 +18,8 @@ module.exports = {
     // 'plugin:ember/recommended' // disabled on 20250601182554
   ],
   env: {
-    browser: true
+    browser: true,
+    es6: true
   },
   rules: {},
   overrides: [

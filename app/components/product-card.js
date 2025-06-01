@@ -6,6 +6,7 @@ import Component from '@glimmer/component';
 import { use, Resource } from 'ember-could-get-used-to-this';
 import wait from '../utils/wait';
 import OfferingModel from '../models/offering';
+import { captureMessage } from '@sentry/ember';
 
 const UNIT_TO_CODE = {
   "st": "C62",
@@ -145,7 +146,9 @@ export default class ProductCardComponent extends Component {
         .offering;
     // lastly just return the first object because this is weird
     } else {
-      console.warn("Just returning the first available offering")
+      captureMessage(`Just returning the first available offering as defaultOffering`, {
+        extra: { unpacked }
+      });
       return unpacked.firstObject?.offering;
     }
   }
@@ -187,7 +190,9 @@ export default class ProductCardComponent extends Component {
     if (offer instanceof OfferingModel) { // clicking to fast may yield an unitialized number component
       this.selectedOffer = offer;
     } else {
-      console.log(`Could not select offer ${offer}`);
+      captureMessage(`Could not select offer ${offer} because it is not an "OfferingModel"`, {
+        offer
+      });
     }
   }
 

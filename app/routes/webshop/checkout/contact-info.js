@@ -24,7 +24,7 @@ export default class WebshopContactInfoRoute extends Route {
       // const account = await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, {include: "person"});
       // this.basket.basket.customer = account.person;
       // await this.basket.basket.save();
-      this.router.transit("webshop.checkout.delivery");
+      this.router.transitionTo("webshop.checkout.delivery");
     }
   }
 }
