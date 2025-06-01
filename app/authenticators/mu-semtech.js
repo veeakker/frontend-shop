@@ -15,6 +15,7 @@ function setGlitchtipUserFromResponse(resp) {
     }
     // captureMessage( { message: "User initialized" });
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.warn(`Could not set up glitchtip ${e}`);
   }
 }

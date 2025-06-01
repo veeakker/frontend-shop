@@ -4,6 +4,6 @@ import { inject as service } from '@ember/service';
 export default class WebshopProductIndexRoute extends Route {
   @service router;
   activate() {
-    this.router.transit("webshop.product.information", this.modelFor('webshop.product'));
+    this.router.transitionTo("webshop.product.information", this.modelFor('webshop.product'));
   }
 }
