@@ -1,8 +1,8 @@
 // Style files for specific Ember Components.  Folder name should be
 // the name of the ember component.
 
-@import './top-menu/index';
-@import './product-card/index';
-@import './number-button/index';
-@import './webshop/index';
-@import './design/index';
+@use 'top-menu/index';
+@use 'product-card/index' as index2;
+@use 'number-button/index' as index3;
+@use 'webshop/index' as index4;
+@use 'design/index' as index5;

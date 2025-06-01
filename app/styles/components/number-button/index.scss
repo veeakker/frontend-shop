@@ -1,9 +1,11 @@
+@use "../../config/colors";
+
 .number-button {
     margin-top: 1px;
-    background-color: $light-base ;
+    background-color: colors.$light-base ;
     display: inline-block;
     border: none;
-    color: $base-primary;
+    color: colors.$base-primary;
     height: 25px;
 }
 

@@ -1,8 +1,10 @@
+@use "../../config/colors";
+
 #account-name {
   font-size: 35px;
-  color:$base-primary;
+  color:colors.$base-primary;
   margin: 50px;
-  border-bottom: 3px solid $base-primary-highlighted;
+  border-bottom: 3px solid colors.$base-primary-highlighted;
 }
 
 .my-account {
@@ -12,7 +14,7 @@
 
 .tab-title {
   a {
-    color: $base-primary;
+    color: colors.$base-primary;
   }
   a.active {
     border-bottom: solid 2px;
@@ -29,7 +31,7 @@
 
   h1 {
     text-align: left;
-    color: $base-primary;
+    color: colors.$base-primary;
   }
 
   /* p, dl, dd { */

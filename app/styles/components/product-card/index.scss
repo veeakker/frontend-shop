@@ -1,4 +1,6 @@
-@import './thumbnail.scss';
+@use 'thumbnail.scss';
+@use "../../config/animations";
+@use "../../config/colors";
 
 .product-card {
   width: 300px;
@@ -9,10 +11,10 @@
 
   text-align: center;
 
-  border: 3px solid $light-base;
+  border: 3px solid colors.$light-base;
 
   &, * {
-    transition: all $normal-transition-time ease-out;
+    transition: all animations.$normal-transition-time ease-out;
   }
 
   .picture-info, .description {
@@ -30,7 +32,7 @@
   }
 
   .description {
-    color: $base-primary;
+    color: colors.$base-primary;
     font-family: 'Open Sans';
 
     .product-title {
@@ -77,8 +79,8 @@
         img {
           width: 22px;
           color: white;
-          border: solid 0.5px $base-primary;
-          background-color: $light-base;
+          border: solid 0.5px colors.$base-primary;
+          background-color: colors.$light-base;
         }
       }
     }
@@ -120,7 +122,7 @@
     align-items: flex-end;
     justify-content: space-evenly;
 
-    color:$base-primary;
+    color:colors.$base-primary;
 
     .per-pakje-input {
       display: flex;
@@ -135,11 +137,11 @@
     }
 
     .select-eenheid {
-      background-color: $light-base;
+      background-color: colors.$light-base;
       margin-left: 2px;
       height: 25px;
       border: none;
-      color: $base-primary;
+      color: colors.$base-primary;
     }
   }
 
@@ -184,7 +186,7 @@
   margin-top: 8px;
   border-radius: 5px;
   display: inline-block;
-  background-color: $base-primary;
+  background-color: colors.$base-primary;
   color: white;
   font-size: 15px;
   font-family: 'Open Sans';
@@ -192,5 +194,5 @@
 }
 
 .button-product:hover {
-  background-color: $base-secondary;
+  background-color: colors.$base-secondary;
 }

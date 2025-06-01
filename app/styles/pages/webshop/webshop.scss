@@ -1,3 +1,5 @@
+@use "../../config/colors";
+
 .webshop-header {
   width: 100%;
   margin: 0;
@@ -25,7 +27,7 @@ h1.banner {
   a, button {
     text-decoration: none;
     text-align: center;
-    color:$base-primary;
+    color:colors.$base-primary;
     font-size: 22px;
     padding: 10px;
     margin: 0 5px;
@@ -35,16 +37,16 @@ h1.banner {
   }
 
   a:hover, button:hover {
-    color: $base-secondary;
+    color: colors.$base-secondary;
     cursor: pointer;
   }
 }
 
 .menu-header {
-  background-color: $base-primary;
+  background-color: colors.$base-primary;
 
   a:hover {
-    background-color: $base-primary-highlighted;
+    background-color: colors.$base-primary-highlighted;
   }
 
   a.active {
@@ -55,10 +57,10 @@ h1.banner {
 
 .submenu-header {
   width: 100%;
-  background-color: $base-secondary;
+  background-color: colors.$base-secondary;
 
   a:hover {
-    background-color: $base-secondary-highlighted;
+    background-color: colors.$base-secondary-highlighted;
   }
 
   a.active {

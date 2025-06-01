@@ -1,7 +1,8 @@
-@import './config/index';
-@import './fonts/fontello';
-@import './components/index';
-@import './pages/index';
+@use 'config/index';
+@use 'fonts/fontello';
+@use 'components/index' as index2;
+@use 'pages/index' as index3;
+@use "config/colors";
 
 /* generic buttons */
 
@@ -39,7 +40,7 @@ button.button {
 
 footer {
   width: 100%;
-  background-color: $base-primary;
+  background-color: colors.$base-primary;
   display: flex;
   justify-content: center;
   align-content: center;

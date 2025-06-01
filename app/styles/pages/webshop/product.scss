@@ -1,10 +1,12 @@
+@use "../../config/colors";
+
 #product {
   padding: 5%;
 
   .fav-button {
     text-decoration: none;
     text-align: center;
-    color:$base-primary;
+    color:colors.$base-primary;
     font-size: 22px;
     padding: 10px;
     margin: 0 5px;
@@ -14,7 +16,7 @@
   }
 
   .fav-button:hover {
-    color: $base-secondary;
+    color: colors.$base-secondary;
     cursor: pointer;
   }
 
@@ -65,7 +67,7 @@ dl.general-product-information {
 
 .info-txt {
   margin: 2.5%;
-  color: $base-primary;
+  color: colors.$base-primary;
   text-align: left;
   width: 600px;
 
@@ -137,6 +139,6 @@ dl.general-product-information {
 
   p {
     margin: 20px 0;
-    color: $base-primary;
+    color: colors.$base-primary;
   }
 }

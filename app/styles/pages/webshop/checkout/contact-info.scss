@@ -1,3 +1,5 @@
+@use "../../../config/colors";
+
 .checkout-contact {
   width: 100%;
   display: flex;
@@ -6,7 +8,7 @@
 }
 
 .checkout-contact h2 {
-  color: $base-primary;
+  color: colors.$base-primary;
   display: inline-block;
   text-align: center;
   margin-top: 20px;
@@ -14,13 +16,13 @@
 }
 
 .checkout-contact p {
-  color: $base-primary;
+  color: colors.$base-primary;
   display: inline-block;
   margin-top: 22px;
   line-height: 2em;
 
   a {
-    color: $base-primary;
+    color: colors.$base-primary;
     font-weight: bold;
   }
 }
@@ -44,8 +46,8 @@
 
 .contact-info input, .contact-info textarea, .contact-info-different input, .contact-info-different textarea {
   padding: 10px;
-  border: 1px solid $base-primary;
-  color: $base-primary;
+  border: 1px solid colors.$base-primary;
+  color: colors.$base-primary;
   margin-top: 3px;
   margin-bottom: 8px;
   font-size: 16px;
@@ -54,7 +56,7 @@
 }
 
 .contact-info label, .contact-info-different label {
-  color: $base-primary;
+  color: colors.$base-primary;
   font-size: 12px;
   vertical-align: central;
 }
