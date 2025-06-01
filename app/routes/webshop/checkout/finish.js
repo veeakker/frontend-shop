@@ -1,7 +1,10 @@
+import { service } from '@ember/service';
 import { get } from '@ember/object';
 import Route from '@ember/routing/route';
 
 export default class WebshopCheckoutFinishRoute extends Route {
+  @service store;
+
   async model({basket_id}) {
     // Let's ensure we have a basket loaded in the route with everything
     // preloaded so we can easily traverse for calculations.

@@ -163,7 +163,7 @@ export default class BasketService extends Service {
    * Removes <amount> items of type <offering> from the orderLines.
    */
   async removeOffer( offering, amount ){
-    const obj = this.objectForOffering( offering );
+    const obj = await this.objectForOffering( offering );
     // TODO: update amount through basket service
     set(obj, 'amount', obj.amount - amount);
     if( obj.amount <= 0 ) {
@@ -181,12 +181,8 @@ export default class BasketService extends Service {
     this.reloadBasket();
   }
 
-  objectForOffering( offering ) {
-    return this.orderLines.findBy( "offering", offering );
-  }
-
-  hasOffering( offering ) {
-    this.objectForOffering( offering ) && true;
+  async objectForOffering( offering ) {
+    return (await this.orderLines).findBy( "offering", offering );
   }
 
   /**
