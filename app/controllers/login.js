@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class WebshopLoginController extends Controller {
+  @service router;
   @service session;
   @service basket;
 
@@ -24,7 +25,7 @@ export default class WebshopLoginController extends Controller {
         });
         await this.basket.requestMerge();
         this.basket.reloadBasket();
-        this.transitionToRoute('webshop');
+        this.router.transitionTo('webshop');
 
       } catch(err){
         this.error = err.errors[0].title;

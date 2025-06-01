@@ -5,7 +5,7 @@ export default class PersonModel extends Model {
   @attr('string') lastName;
   @attr('string') email;
   @attr('string') phone;
-  @belongsTo('postal-address') postalAddress;
-  @hasMany('account') accounts;
-  @hasMany('favourite') favourites;
+  @belongsTo('postal-address', { async: true, inverse: null}) postalAddress;
+  @hasMany('account', { async: true, inverse: "person" }) accounts;
+  @hasMany('favourite', { async: true, inverse: "person" }) favourites;
 }

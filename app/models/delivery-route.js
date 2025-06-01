@@ -4,5 +4,5 @@ export default class DeliveryRouteModel extends Model {
   @attr('string') label;
   @attr('date') nextDeliveryDate;
   @attr('string') lfwLink;
-  @hasMany('delivery-place') deliveryPlaces;
+  @hasMany('delivery-place', { async: true, inverse: "deliveryRoute" }) deliveryPlaces;
 }

@@ -76,6 +76,7 @@ class OfferTypeResource extends Resource {
 }
 
 export default class WebshopProductController extends Controller {
+  @service router;
   @tracked packageCount = 1;
 
   @tracked selectedOffer = null;
@@ -151,7 +152,7 @@ export default class WebshopProductController extends Controller {
       await currentUser.save();
       this.favouriteRecord = fav;
     } catch(err){
-      this.transitionToRoute('login');
+      this.router.transitionTo('login');
     }
   }
 

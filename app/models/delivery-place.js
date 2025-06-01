@@ -4,8 +4,8 @@ export default class DeliveryPlaceModel extends Model {
   @attr() label;
   @attr('boolean') isEnabled;
   @attr() lfwLink;
-  @belongsTo('delivery-kind') deliveryKind;
-  @belongsTo('geo-coordinate') geoCoordinate;
-  @belongsTo('postal-address') postalAddress;
-  @belongsTo('delivery-route') deliveryRoute;
+  @belongsTo('delivery-kind', { async: true, inverse: "deliveryPlaces" }) deliveryKind;
+  @belongsTo('geo-coordinate', { async: true, inverse: null }) geoCoordinate;
+  @belongsTo('postal-address', { async: true, inverse: null }) postalAddress;
+  @belongsTo('delivery-route', { async: true, inverse: "deliveryPlaces" }) deliveryRoute;
 }

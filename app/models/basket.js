@@ -6,11 +6,11 @@ export default class BasketModel extends Model {
   @attr() deliveryType;
   @attr() statusChangedAt;
   @attr() orderStatus;
-  @hasMany('order-line') orderLines;
-  @belongsTo('delivery-place') deliveryPlace;
-  @belongsTo('fullAddress') deliveryAddress;
-  @belongsTo('fullAddress') invoiceAddress;
-  @belongsTo('person') customer;
+  @hasMany('order-line', { async: true, inverse: null }) orderLines;
+  @belongsTo('delivery-place', { async: true, inverse: null }) deliveryPlace;
+  @belongsTo('fullAddress', { async: true, inverse: null }) deliveryAddress;
+  @belongsTo('fullAddress', { async: true, inverse: null }) invoiceAddress;
+  @belongsTo('person', { async: true, inverse: null }) customer;
 
   get delivery() {
     return this.deliveryAddress;

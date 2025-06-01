@@ -3,7 +3,7 @@ import Model, { attr, belongsTo } from '@ember-data/model';
 export default class GeoCoordinateModel extends Model {
   @attr() latitude;
   @attr() longitude;
-  @belongsTo('postal-address') postalAddress;
+  @belongsTo('postal-address', { async: true, inverse: null }) postalAddress;
 
   get location(){
     if( this.latitude && this.longitude ) {

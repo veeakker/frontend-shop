@@ -9,8 +9,7 @@ export default class SortByIndex extends Resource {
     let entities = this.args.positional[0];
     const options = Object.assign( {property: "sortIndex"}, this.args.named.options);
     if ( entities ) {
-      await entities;
-      entities = entities.toArray();
+      entities = (await entities).toArray();
       await RSVP.all(entities);
       this.value = entities.sortBy(options.property);
     }

@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 
 export default class WebshopContactInfoRoute extends Route {
+  @service router;
   @service basket;
   @service session;
 
@@ -23,7 +24,7 @@ export default class WebshopContactInfoRoute extends Route {
       // const account = await this.store.findRecord('account', this.session.data.authenticated.relationships.account.data.id, {include: "person"});
       // this.basket.basket.customer = account.person;
       // await this.basket.basket.save();
-      this.transitionTo("webshop.checkout.delivery");
+      this.router.transit("webshop.checkout.delivery");
     }
   }
 }
