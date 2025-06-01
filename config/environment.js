@@ -22,6 +22,10 @@ module.exports = function (environment) {
       // when it is created
     },
 
+    plausible: {
+      domain: '{{ANALYTICS_APP_DOMAIN}}',
+      apiHost: '{{ANALYTICS_API_HOST}}',
+    },
     sentry: {
       dsn: '{{SENTRY_DSN}}',
       environment: '{{SENTRY_ENVIRONMENT}}'
@@ -41,6 +45,10 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.plausible = {
+      domain: 'shop.veeakker.be',
+      apiHost: 'https://analytics.veeakker.be',
+    };
   }
 
   if (environment === 'test') {
