@@ -43,6 +43,7 @@ Router.map(function() {
       this.route('ingredients');
       this.route('nutricional-values');
       this.route('allergenics');
+      this.route('supplier');
     });
     this.route('product-groups', function() {
       this.route('show', { path: ":id" }, function() {

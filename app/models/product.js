@@ -2,6 +2,21 @@ import { tracked } from '@glimmer/tracking';
 import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 import { use, Resource } from 'ember-could-get-used-to-this';
 
+class SupplierResource extends Resource {
+  @tracked value
+
+  async setup() {
+    let offerings = await this.args.positional[0];
+    for (let offering of offerings) {
+      let supplier = await offering.supplier;
+      if( supplier ) {
+        this.value = supplier;
+        return
+      }
+    }
+  }
+}
+
 class SortOfferings extends Resource {
   @tracked value
 
@@ -35,6 +50,7 @@ export default class ProductModel extends Model {
   @belongsTo('file', { async: true, inverse: null } ) thumbnail;
 
   @use sortedOfferings = new SortOfferings(() => [this.offerings]);
+  @use supplier = new SupplierResource(() => [this.offerings]);
 
   get labelArray() {
     const enabled = (this.productLabels || []);
