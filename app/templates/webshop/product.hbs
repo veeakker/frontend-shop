@@ -73,6 +73,9 @@
     {{#if this.model.allergensText}}
       <LinkTo @route="webshop.product.allergenics" @model={{this.model}}><h5>allergenen</h5></LinkTo>
     {{/if}}
+    {{#if this.model.supplier}}
+      <LinkTo @route="webshop.product.supplier" @model={{this.model}}><h5>leverancier</h5></LinkTo>
+    {{/if}}
     <p>{{outlet}}</p>
     <Design::Gallery />
   </div>

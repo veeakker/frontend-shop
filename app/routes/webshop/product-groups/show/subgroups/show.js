@@ -144,6 +144,12 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
             multi: false,
             transformer({ uuid }) { return { type: "unit-price-specifications", id: uuid }; }
           });
+          transformAttribute({
+            key: "supplier",
+            targetObject: item,
+            multi: false,
+            transformer({ uuid }) { return { type: "business-entities", id: uuid }; }
+          });
           item["type"] = "offerings";
           allIncluded.push( item );
         } else if( type == "thumbnail" ) {
@@ -156,6 +162,9 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
           allIncluded.push(item);
         } else if( type == "unit-price" ) {
           item["type"] = "unit-price-specifications",
+          allIncluded.push(item);
+        } else if( type == "supplier") {
+          item["type"] = "business-entities";
           allIncluded.push(item);
         }
       }
