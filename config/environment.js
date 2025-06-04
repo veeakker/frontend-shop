@@ -46,7 +46,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.plausible = {
-      domain: 'shop.veeakker.be',
+      domain: 'dev.veeakker.be',
       apiHost: 'https://analytics.veeakker.be',
     };
   }
