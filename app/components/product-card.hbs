@@ -16,7 +16,12 @@
 
   <div class="description">
     <div class="product-title">{{#if @product}}{{@product.label}}{{else}}Kotelet{{/if}}</div>
-    <div class="alternative-terms">{{@product.altLabel}}</div>
+    {{#if (and @product.altLabel (not (eq @product.altLabel "")))}}
+      <div class="alternative-terms">{{@product.altLabel}}</div>
+    {{/if}}
+    {{#if (and @product.supplier.name (not (eq @product.supplier.name "")))}}
+      <div class="alternative-terms">{{@product.supplier.name}}</div>
+    {{/if}}
   </div>
 
   {{#if @product.isEnabled}}
