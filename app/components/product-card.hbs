@@ -19,8 +19,8 @@
     {{#if (and @product.altLabel (not (eq @product.altLabel "")))}}
       <div class="alternative-terms">{{@product.altLabel}}</div>
     {{/if}}
-    {{#if (and @product.supplier.name (not (eq @product.supplier.name "")))}}
-      <div class="alternative-terms">{{@product.supplier.name}}</div>
+    {{#if (and this.supplier (not (eq this.supplier.name "")))}}
+      <div class="alternative-terms">{{this.supplier.name}}</div>
     {{/if}}
   </div>
 
