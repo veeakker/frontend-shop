@@ -103,6 +103,7 @@ class TotalPriceResource extends Resource {
 
 export default class BasketService extends Service {
   @service store
+  @service plausible
   @tracked basketPromise = new ExternalPromise(); // use pBasket instead!
   @use basket = new BasketFetcher(() => [this.basketPromise])
 
@@ -157,6 +158,7 @@ export default class BasketService extends Service {
       })
     });
     this.reloadBasket();
+    this.plausible.trackEvent('add-product');
   }
 
   /**

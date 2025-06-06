@@ -103,6 +103,17 @@ class AvailableOffersResource extends Resource {
   }
 }
 
+class SupplierResource extends Resource {
+  @tracked value
+
+  async setup() {
+    const [offer] = await this.args.positional;
+    if ( offer ) {
+      this.value = await offer.supplier;
+    }
+  }
+}
+
 export default class ProductCardComponent extends Component {
   @service store;
 
@@ -195,6 +206,9 @@ export default class ProductCardComponent extends Component {
       });
     }
   }
+
+  @use
+  supplier = new SupplierResource( () => [this.selectedOffer] )
 
   // NOTE: we are sorting twice now, our current smarter sorting of
   // possibleOffers should land in sortedOfferings and perhaps that can

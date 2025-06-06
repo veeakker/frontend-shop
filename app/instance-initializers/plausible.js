@@ -12,7 +12,7 @@ export function initialize(application) {
       apiHost,
       enableAutoOutboundTracking: true,
       // enable when testing new features and update plausible in dev config/environment.js if needed
-      trackLocalhost: false,
+      trackLocalhost: true,
     });
   }
 }
