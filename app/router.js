@@ -58,6 +58,8 @@ Router.map(function() {
       this.route('show', { path: "/:basket_id/" } );
     });
   });
+  // ap (afhaalpunt) is a quick entry to a location based on a slug
+  this.route('at-delivery-point', { path: "/ap/:slug" });
 
   this.route('values', function() {
     this.route('customer');
