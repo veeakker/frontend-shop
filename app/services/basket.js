@@ -216,7 +216,7 @@ export default class BasketService extends Service {
   async persistDeliveryInfo() {
     const basket = this.basket;
     const deliveryAddress = basket.deliveryAddress.content; // TODO: find better way to unpack
-    const deliveryPostal = deliveryAddress.postalAddress.content; // TODOi find better way to unpack
+    const deliveryPostal = deliveryAddress.postalAddress.content; // TODO: find better way to unpack
     const hasCustomDeliveryPlace = basket.hasCustomDeliveryPlace;
     const deliveryPlaceUuid = basket.deliveryPlace.get("id");
     const deliveryType = basket.deliveryType;
