@@ -8,4 +8,5 @@ export default class DeliveryPlaceModel extends Model {
   @belongsTo('geo-coordinate', { async: true, inverse: null }) geoCoordinate;
   @belongsTo('postal-address', { async: true, inverse: null }) postalAddress;
   @belongsTo('delivery-route', { async: true, inverse: "deliveryPlaces" }) deliveryRoute;
+  @belongsTo('business-entity', { async: true, inverse: null }) businessEntity;
 }

@@ -1,3 +1,4 @@
+import { get } from '@ember/object';
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
@@ -12,15 +13,24 @@ function arr(thing) {
 
 export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
   @service store
+  @service basket
 
   async model({ subgroup_id }) {
     const productGroup = await this.store.findRecord('product-group', subgroup_id);
-    const productsURL = "/search/products?" + (new URLSearchParams({
+    // if the basket has a location set and that location has a business entity connected to it, then we want to filter on that business entit
+    let basket = await this.basket.pBasket;
+    let place = basket && await basket.deliveryPlace;
+    let businessEntity = place && await place.businessEntity;
+    const searchQueryParams = {
       "filter[:term:product-group-ids]": subgroup_id,
       "page[number]": 0,
       "page[size]": 250,
       "filter[is-enabled]": true
-    })).toString();
+    };
+    if ( businessEntity?.id )
+      searchQueryParams["filter[:term:available-at-or-from-ids]"] = businessEntity.id;
+
+    const productsURL = "/search/products?" + (new URLSearchParams(searchQueryParams)).toString();
     const productsPayload = await (await fetch(productsURL, {
       headers: { accept: "application/vnd.api+json" }
     })).json();
