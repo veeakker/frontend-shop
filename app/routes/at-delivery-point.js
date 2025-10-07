@@ -16,7 +16,7 @@ export default class AtDeliveryPointRoute extends Route {
     }
     // TODO get the deliveryType dynamically.
     basket.deliveryType = "http://veeakker.be/delivery-methods/shop";
-    basket.save();
+    await basket.save();
     this.router.transitionTo("webshop");
   }
 }

@@ -3,8 +3,32 @@ import { inject as service } from '@ember/service';
 
 export default class WebshopProductGroupsShowRoute extends Route {
   @service store;
+  @service basket;
+  @service router;
 
-  model(params) {
-    return this.store.findRecord('product-group', params.id, { include: "child-groups" });
+  async model(params) {
+    let businessEntity = await this.basket.getBusinessEntity();
+
+    return {
+        children: await this.store.query('product-group', {
+          "filter[parent-groups][:id:]": params.id,
+          "filter[products][offerings][available-at-or-from][:id:]": businessEntity ? businessEntity.id : undefined,
+          "filter[products][is-enabled]": true
+        }),
+        parent: await this.store.findRecord('product-group', params.id)
+    }
+  }
+
+  async afterModel() {
+    super.afterModel(...arguments);
+    const isCurrentRoute =
+          this.router.currentRouteName == this.routeName
+            || this.router.currentRouteName == this.routeName + ".index";
+    if ( isCurrentRoute ) {
+      const productGroups = (await this.controllerFor("webshop.product-groups.show").model).children;
+      const sortedProductGroups = [...productGroups].sort( (a,b) => a.sortIndex - b.sortIndex );
+      if (sortedProductGroups.length)
+        this.router.transitionTo("webshop.product-groups.show.subgroups.show", sortedProductGroups[0].id);
+    }
   }
 }

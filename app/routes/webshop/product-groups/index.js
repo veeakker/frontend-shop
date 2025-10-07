@@ -6,7 +6,9 @@ export default class WebshopProductGroupsIndexRoute extends Route {
   @service router;
 
   async activate() {
-    const productGroups = await this.store.query('product-group', { "filter[:has-no:parent-groups]": "yes" });
-    this.router.transitionTo("webshop.product-groups.show", productGroups.sortBy("sortIndex").firstObject);
+    const productGroups = (await this.controllerFor("webshop.product-groups")).model;
+    const sortedProductGroups = [...productGroups].sort( (a,b) => a.sortIndex - b.sortIndex );
+    if (sortedProductGroups.length)
+      this.router.transitionTo("webshop.product-groups.show", sortedProductGroups[0].id);
   }
 }
