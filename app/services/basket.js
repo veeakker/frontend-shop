@@ -26,21 +26,20 @@ class BasketFetcher extends Resource {
       this.value.set("orderLines",[]);
     }
     let deliveryPlaceId = result.data[0]?.relationships["delivery-place"]?.data?.id;
-    if( deliveryPlaceId ) {
-      delete result.data[0].relationships["delivery-place"];
-      // TODO: set delivery place when it is retrieved.
-    }
 
     this.store.pushPayload( result );
     const basket = this.store.peekRecord('basket', result.data[0].id);
 
     try {
-      const deliveryPlace = (await this.store.query("delivery-place", {
+      // fetch delivery-place with extra information
+      await this.store.query("delivery-place", {
         "filter[:id:]": deliveryPlaceId || DEFAULT_DELIVERY_PLACE_ID,
-        include: "delivery-kind,geo-coordinate,postal-address"
-      })).firstObject;
-      // const deliveryPlace = await this.store.findRecord("delivery-place", deliveryPlaceId);
-      basket.set("deliveryPlace", deliveryPlace);
+        include: "delivery-kind,geo-coordinate,postal-address,business-entity"
+      });
+      // const deliveryPlace = deliveryPlaces.firstObject;
+      // // const deliveryPlace = await this.store.findRecord("delivery-place", deliveryPlaceId);
+      // basket.set("deliveryPlace", deliveryPlace);
+      await basket.deliveryPlace; // should come from the cache now
     } catch (e) {
       // TODO: provide warning to end user
       // eslint-disable-next-line no-console
@@ -110,6 +109,20 @@ export default class BasketService extends Service {
   @action
   setDeliveryPlace( deliveryPlace ) {
     this.basket.deliveryPlace = deliveryPlace;
+  }
+
+  async getBusinessEntity() {
+    // TODO: turn into something like pBasket instead
+
+    // Used in various places to determine if an offering is available and if there are products to be shown in a
+    // productGroup.
+    let basket = await this.pBasket;
+    let place = basket
+      && ((await basket.deliveryPlace)
+        || basket.deliveryPlace);
+
+    let businessEntity = place && await place.businessEntity;
+    return businessEntity;
   }
 
   get orderLines() {

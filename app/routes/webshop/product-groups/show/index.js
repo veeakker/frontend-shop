@@ -6,10 +6,10 @@ export default class WebshopProductGroupsShowIndexRoute extends Route {
 
   async activate() {
     // eslint-disable-next-line ember/no-controller-access-in-routes
-    const topGroup = await this.controllerFor("webshop.product-groups.show").model;
-    const childGroups = await topGroup.childGroups;
-    const firstChildGroup = await childGroups.sortBy("sortIndex").firstObject;
-    if( firstChildGroup.id && topGroup.id ) {
+    const childGroups = (await this.controllerFor("webshop.product-groups.show").model).children;
+    const sortedChildGroups = [...childGroups].sort( (a,b) => a.sortIndex - b.sortIndex )[0]
+    const firstChildGroup = sortedChildGroups.length && sortedChildGroups[0];
+    if( firstChildGroup?.id ) {
       this.router.transitionTo('webshop.product-groups.show.subgroups.show', firstChildGroup.id);
     }
   }
