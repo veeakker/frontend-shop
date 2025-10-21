@@ -1,10 +1,22 @@
 @use "../../config/colors";
 
 .cart-item.product-disabled {
-  text-decoration: line-through;
+  * {
+    text-decoration: line-through;
+  }
 
   .product-disabled-message {
     text-decoration: none;
+  }
+}
+.cart-item.not-available-at-location {
+  * {
+    text-decoration: line-through;
+  }
+
+  .product-unavailable-message {
+    text-decoration: none;
+    color: colors.$base-primary;
   }
 }
 

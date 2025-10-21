@@ -8,6 +8,11 @@
     {{!-- <li class="flex"><a href="#"><img src="/images/zoekb.png" width="18" alt="search trigger icon" /></a> <input class="searchbox" type="text" placeholder="zoeken" name="search"> --}}
     {{!-- TODO: make static content dynamic --}}
     <div>
+      {{#if this.basket.deliveryPlace}}
+        <i style="color: grey">
+          Levering bij {{this.basket.deliveryPlace.label}}
+        </i>
+      {{/if}}
       {{#if this.session.isAuthenticated}}
         <LinkTo @route="webshop.account"><i class="fas fa-user-alt"></i></LinkTo>
         {{!-- <LinkTo @route="webshop.favourites"><i class="fas fa-heart"></i></LinkTo>  --}}
@@ -25,12 +30,6 @@
         {{euros this.basket.totalPrice}}
       </LinkTo>
     </div>
-  </div>
-
-  <div class="scrollable-header menu-header">
-    {{#each (sort-by-index @model) as |productGroup|}}
-      <LinkTo @route="webshop.product-groups.show" @model={{productGroup.id}}>{{productGroup.label}}</LinkTo>
-    {{/each}}
   </div>
 </div>
 

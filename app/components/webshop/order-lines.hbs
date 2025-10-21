@@ -1,5 +1,7 @@
 {{#each @orderLines as |orderLine|}}
-  <div class={{concat "cart-item" (if orderLine.product.isEnabled "" " product-disabled")}}>
+  <div class={{concat "cart-item"
+                      (if orderLine.product.isEnabled "" " product-disabled")
+                      (if orderLine.availableForBasketLocation "" " not-available-at-location")}}>
     <LinkTo class="cart-thumbnail" @route="webshop.product" @model={{orderLine.product}}>
       <ProductCard::Thumbnail @product={{orderLine.offering.typeAndQuantity.product}} />
     </LinkTo>
@@ -42,5 +44,11 @@
         <h4 id="total-text">Totaal: {{euros orderLine.price}}</h4>
       {{/if}}
     </div>
+
+    {{#unless orderLine.availableForBasketLocation}}
+      <div class="product-unavailable-message">
+        Dit product is niet beschikbaar op de door u gekozen locatie.  In geval van een winkel biedt deze wellicht een gelijkwaardig alternatief aan.
+      </div>
+    {{/unless}}
   </div>
 {{/each}}
