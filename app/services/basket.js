@@ -67,6 +67,46 @@ class BasketFetcher extends Resource {
   }
 }
 
+class DeliveryPlaceFetcher extends Resource {
+  @tracked value
+
+  async setup() {
+    const [basket, deliveryPlace] = this.args.positional;
+    if ( deliveryPlace ) {
+      this.value = await deliveryPlace;
+    } else if ( basket ) {
+      this.value = await basket.deliveryPlace;
+    } else {
+      this.value = undefined;
+    }
+  }
+}
+
+class BusinessEntityFetcher extends Resource {
+  @tracked value
+
+  async setup() {
+    const [deliveryPlace] = this.args.positional;
+    if ( deliveryPlace ) {
+      this.value = await deliveryPlace.businessEntity;
+    } else {
+      this.value = undefined;
+    }
+  }
+}
+
+class ConstrainingBusinessEntityFetcher extends Resource {
+  @tracked value;
+
+  async setup() {
+    const [businessEntity] = this.args.positional;
+    if ( (await businessEntity?.disallowedProductGroups)?.length )
+      this.value = businessEntity;
+    else
+      this.value = undefined;
+  }
+}
+
 class TotalPriceResource extends Resource {
   @tracked value
   @service store
@@ -105,6 +145,9 @@ export default class BasketService extends Service {
   @service plausible
   @tracked basketPromise = new ExternalPromise(); // use pBasket instead!
   @use basket = new BasketFetcher(() => [this.basketPromise])
+  @use deliveryPlace = new DeliveryPlaceFetcher(() => [this.basket,this.basket?.deliveryPlace])
+  @use businessEntity = new BusinessEntityFetcher(() => [this.deliveryPlace]);
+  @use constrainingBusinessEntity = new ConstrainingBusinessEntityFetcher(() => [this.businessEntity]);
 
   @action
   setDeliveryPlace( deliveryPlace ) {
@@ -123,6 +166,14 @@ export default class BasketService extends Service {
 
     let businessEntity = place && await place.businessEntity;
     return businessEntity;
+  }
+
+  async getConstrainingBusinessEntity() {
+    const entity = await this.getBusinessEntity();
+    if ( (await entity?.disallowedProductGroups)?.length )
+      return entity;
+    else
+      return;
   }
 
   get orderLines() {
