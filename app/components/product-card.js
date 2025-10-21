@@ -109,7 +109,8 @@ class SupplierResource extends Resource {
   async setup() {
     const [offer] = await this.args.positional;
     if ( offer ) {
-      this.value = await offer.supplier;
+      const supplier = await offer.supplier;
+      this.value = supplier;
     }
   }
 }
