@@ -1,3 +1,4 @@
+import { service } from '@ember/service';
 import { get } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import Model, { attr, belongsTo } from '@ember-data/model';
@@ -56,7 +57,25 @@ class PriceResource extends Resource {
   }
 }
 
+class AvailableForBasketLocationResource extends Resource {
+  @tracked value;
+
+  async setup() {
+    const [offering,constrainingBusinessEntity] = this.args.positional;
+    const availableAtOrFrom = await get(await offering, "availableAtOrFrom");
+
+    if ( !constrainingBusinessEntity )
+      this.value = true;
+    else if ( [...availableAtOrFrom].find((be) => be.id == constrainingBusinessEntity.id) )
+      this.value = true;
+    else
+      this.value = false;
+  }
+}
+
 export default class OrderLineModel extends Model {
+  @service basket;
+
   @belongsTo('offering', { async: true, inverse: null }) offering
   @attr('number') amount
   @attr() comment
@@ -108,4 +127,6 @@ export default class OrderLineModel extends Model {
     console.log({price: this.price}); // do something with the price
     return this.pricePromise.promise;
   }
+
+  @use availableForBasketLocation = new AvailableForBasketLocationResource( () => [this.offering,this.basket?.constrainingBusinessEntity]);
 }

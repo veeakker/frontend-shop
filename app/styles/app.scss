@@ -20,6 +20,9 @@ button.button {
 .product-disabled img.product-image {
   filter: grayscale(1);
 }
+.not-available-at-location img.product-image {
+  filter: grayscale(1);
+}
 
 .home-map{
   height: 500;
