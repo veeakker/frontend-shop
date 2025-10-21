@@ -7,13 +7,13 @@ export default class WebshopProductGroupsShowRoute extends Route {
   @service router;
 
   async model(params) {
-    let businessEntity = await this.basket.getBusinessEntity();
+    let businessEntity = await this.basket.getConstrainingBusinessEntity();
 
     return {
         children: await this.store.query('product-group', {
           "filter[parent-groups][:id:]": params.id,
-          "filter[products][offerings][available-at-or-from][:id:]": businessEntity ? businessEntity.id : undefined,
-          "filter[products][is-enabled]": true
+          "filter[products][is-enabled]": true,
+          ...businessEntity ? { "filter[products][offerings][available-at-or-from][:id:]": businessEntity.id } : {}
         }),
         parent: await this.store.findRecord('product-group', params.id)
     }
