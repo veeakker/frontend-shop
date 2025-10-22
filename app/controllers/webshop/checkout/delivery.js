@@ -37,16 +37,16 @@ export default class WebshopCheckoutController extends Controller {
 
   get canConfirmBasket() {
     try {
-      switch (this.deliveryMethod) {
-      case "postal":
-        return true;
-      case "tour":
-        return this.basket.basket.deliveryPlace.get("deliveryKind.uri") == "http://veeakker.be/delivery-kinds/toeren";
-      case "shop":
-        return this.basket.basket.deliveryPlace.get("deliveryKind.uri") == "http://veeakker.be/delivery-kinds/natuurwinkels";
-      default:
+      if ( this.basket.hasUnavailableOrderLines )
         return false;
-      }
+      else if (this.deliveryMethod == "postal" )
+        return true;
+      else if (this.deliveryMethod == "tour" )
+        return this.basket.basket.deliveryPlace.get("deliveryKind.uri") == "http://veeakker.be/delivery-kinds/toeren";
+      else if (this.deliveryMethod == "shop" )
+        return this.basket.basket.deliveryPlace.get("deliveryKind.uri") == "http://veeakker.be/delivery-kinds/natuurwinkels";
+      else
+        return false;
     } catch (e) {
       return false; // one of the objects doesn't exist
     }

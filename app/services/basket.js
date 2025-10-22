@@ -107,6 +107,14 @@ class ConstrainingBusinessEntityFetcher extends Resource {
   }
 }
 
+class AwaitResource extends Resource {
+  @tracked value;
+
+  async setup() {
+    this.value = await this.args.positional[0];
+  }
+}
+
 class TotalPriceResource extends Resource {
   @tracked value
   @service store
@@ -178,6 +186,13 @@ export default class BasketService extends Service {
 
   get orderLines() {
     return this.basket?.orderLines;
+  }
+
+  @use orderLinesR = new AwaitResource(() => [this.basket?.orderLines]);
+  get hasUnavailableOrderLines() {
+    return (this.orderLinesR || []).some( (orderLine) =>
+      ! orderLine.availableForBasketLocation
+    );
   }
 
   reloadBasket() {
