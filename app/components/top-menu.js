@@ -11,12 +11,14 @@ export default class TopMenuComponent extends Component {
   }
 
   @action
-  openNav(){
+  openNav(event){
+    event.preventDefault();
     this.mobileOpen = true;
   }
 
   @action
-  closeNav(){
+  closeNav(event){
+    event.preventDefault();
     this.mobileOpen = false;
   }
 
