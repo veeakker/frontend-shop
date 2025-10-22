@@ -11,11 +11,11 @@
     <LinkTo @route="locations">Locaties</LinkTo>
     <LinkTo @route="contact-us">Contact</LinkTo>
       {{#if this.mobileIsOpenClass}}
-        <a id="mobile-menu" {{action this.closeNav}}>
+        <a id="mobile-menu" {{on "click" this.closeNav}}>
           <i class="fa fa-times"></i>
         </a>
       {{else}}
-        <a id="mobile-menu" {{action this.openNav}}>
+        <a id="mobile-menu" {{on "click" this.openNav}}>
           <i class="fa fa-bars"></i>
         </a>
       {{/if}}
