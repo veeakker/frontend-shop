@@ -18,17 +18,4 @@ export default class WebshopProductGroupsShowRoute extends Route {
         parent: await this.store.findRecord('product-group', params.id)
     }
   }
-
-  async afterModel() {
-    super.afterModel(...arguments);
-    const isCurrentRoute =
-          this.router.currentRouteName == this.routeName
-            || this.router.currentRouteName == this.routeName + ".index";
-    if ( isCurrentRoute ) {
-      const productGroups = (await this.controllerFor("webshop.product-groups.show").model).children;
-      const sortedProductGroups = [...productGroups].sort( (a,b) => a.sortIndex - b.sortIndex );
-      if (sortedProductGroups.length)
-        this.router.transitionTo("webshop.product-groups.show.subgroups.show", sortedProductGroups[0].id);
-    }
-  }
 }
