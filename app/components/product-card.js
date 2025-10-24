@@ -36,7 +36,7 @@ class OfferTypeResource extends Resource {
   }
 }
 
-// Unpack offerings in unit, quantity, offering for easier processing
+// Unpack offerings in unit, quantity, offering, enabled for easier processing
 async function unpackOfferings( offerings ) {
   const rawOfferings = await offerings;
   if (rawOfferings) {
@@ -46,7 +46,8 @@ async function unpackOfferings( offerings ) {
       unpackedOfferings.push( {
         unit: taq.unit,
         quantity: taq.unit == UNIT_TO_CODE["kg"] ? taq.value * 1000 : taq.value,
-        offering: offer
+        offering: offer,
+        enabled: offer.isEnabled
       } );
     }
     return unpackedOfferings;
@@ -218,8 +219,13 @@ export default class ProductCardComponent extends Component {
   @use
   unpackedOfferings = new UnpackedOfferingsResource( () => [this.args.product] );
 
+  get availableOfferings() {
+    const offerings = this.unpackedOfferings || [];
+    return offerings.filter( (o) => o.enabled );
+  }
+
   @use
-  possibleOffers = new AvailableOffersResource( () => [this.unpackedOfferings, this.currentUnit] );
+  possibleOffers = new AvailableOffersResource( () => [this.availableOfferings, this.currentUnit] );
 
   @use
   availableUnits = new OfferTypeResource( () => [this.unpackedOfferings] )

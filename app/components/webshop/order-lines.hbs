@@ -1,6 +1,7 @@
 {{#each @orderLines as |orderLine|}}
   <div class={{concat "cart-item"
-                      (if orderLine.product.isEnabled "" " product-disabled")
+                      (if (and orderLine.product.isEnabled orderLine.offering.isEnabled)
+                          "" " product-disabled")
                       (if orderLine.availableForBasketLocation "" " not-available-at-location")}}>
     <LinkTo class="cart-thumbnail" @route="webshop.product" @model={{orderLine.product}}>
       <ProductCard::Thumbnail @product={{orderLine.offering.typeAndQuantity.product}} />
