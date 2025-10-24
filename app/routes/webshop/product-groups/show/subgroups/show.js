@@ -1,4 +1,3 @@
-import { get } from '@ember/object';
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
@@ -25,6 +24,7 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
       "page[number]": 0,
       "page[size]": 250,
       "filter[is-enabled]": true,
+      "filter[offerings.is-enabled]": true,
       ...businessEntity?.id ? { "filter[:term:available-at-or-from-ids]": businessEntity.id } : {}
     };
 
