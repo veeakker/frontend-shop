@@ -158,6 +158,11 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
             multi: false,
             transformer({ uuid }) { return { type: "business-entities", id: uuid }; }
           });
+          transformAttribute({
+            key: "available-at-or-from",
+            targetObject: item,
+            transformer({ uuid }) { return { type: "business-entities", id: uuid }; }
+          });
           item["type"] = "offerings";
           allIncluded.push( item );
         } else if( type == "thumbnail" ) {
