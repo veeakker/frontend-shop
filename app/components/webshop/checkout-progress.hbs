@@ -1,0 +1,20 @@
+<nav class="checkout-progress" aria-label="Checkout stappen">
+  {{#each this.steps as |step|}}
+    {{#if step.showConnector}}
+      <div class="checkout-progress__connector {{if step.connectorDone "checkout-progress__connector--done"}}"></div>
+    {{/if}}
+    {{#if (and (eq step.state "completed") step.route)}}
+      <LinkTo class="checkout-progress__step checkout-progress__step--completed" @route={{step.route}}>
+        <div class="checkout-progress__circle">✓</div>
+        <span class="checkout-progress__label">{{step.label}}</span>
+      </LinkTo>
+    {{else}}
+      <div class="checkout-progress__step checkout-progress__step--{{step.state}}">
+        <div class="checkout-progress__circle">
+          {{#if (eq step.state "completed")}}✓{{else}}{{step.number}}{{/if}}
+        </div>
+        <span class="checkout-progress__label">{{step.label}}</span>
+      </div>
+    {{/if}}
+  {{/each}}
+</nav>

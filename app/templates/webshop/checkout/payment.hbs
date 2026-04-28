@@ -1,15 +1,7 @@
 {{outlet}}
 
-<ul class="breadcrumb-cart">
-  <li><LinkTo @route="webshop.basket">Winkelmandje</LinkTo></li>
-  <li><LinkTo @route="webshop.checkout.contact-info">Uw Gegevens</LinkTo></li>
-  <li><LinkTo @route="webshop.checkout.delivery">Levering / Afhaling</LinkTo></li>
-  <li><span class="breadcrumb-nxt">Klaar</span></li>
-</ul>
+<Webshop::CheckoutProgress @currentStep="payment" />
 <div class="fix"></div>
-
-
-
 
 <div class="checkout-contact">
   <div class="contact-info">
@@ -25,35 +17,7 @@
 
     <a href={{this.paymentUrl}}>Open</a>
 
-
-    {{!-- <h2>Kies je betalingsmethode</h2> --}}
-
-    <br /><br />
-    {{!-- <label class="containerCheck">
-         <img src="/images/mistercash.png" width="100" />
-         <input type="checkbox">
-         <span class="checkmarkPay"></span>
-         </label>
-         <br />
-         <label class="containerCheck">
-         <img src="/images/visa.png" width="100" />
-         <input type="checkbox">
-         <span class="checkmarkPay"></span>
-         </label>
-         <br />
-         <label class="containerCheck">
-         <img src="/images/mastercard.png" width="100" />
-         <input type="checkbox">
-         <span class="checkmarkPay"></span>
-         </label>
-         <br />
-         <label class="containerCheck">
-         <img src="/images/paypal.png" width="100" />
-         <input type="checkbox">
-         <span class="checkmarkPay"></span>
-         </label> --}}
     <br />
-
 
     <div class="cart-total">
       <p>Prijs <span class="money">{{euros this.basket.totalPrice}}</span></p>
@@ -62,7 +26,6 @@
       <p>Totaalprijs <span class="money">€x</span></p>    <br />
       <div class="button-product-cart uppercase"><a href={{this.paymentUrl}}>betaal</a></div>
     </div><div class="fix"></div>
-
 
   </div>
 </div>

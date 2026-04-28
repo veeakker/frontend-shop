@@ -6,5 +6,5 @@
   <h3>{{location.deliveryKind.simpleName}} {{location.label}}</h3>
   <p>{{location.postalAddress.streetAddress}}<br/>{{location.postalAddress.postalCode}} {{location.postalAddress.locality}}</p>
 
-  Klik <button type="button" {{on 'click' (fn @select location)}}>hier</button> om deze locatie te selecteren.
+  <button type="button" {{on 'click' (fn @select location)}}>Selecteer dit punt</button>
 </DeliveryLocationsMap>

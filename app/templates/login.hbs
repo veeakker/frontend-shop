@@ -7,20 +7,23 @@
 
       <Design::Forks @useDarkImage={{true}}/>
 
-      <br>
-
       <div class="error-message">
-        {{#if this.error }}
-          {{ this.error }}
+        {{#if this.error}}
+          {{this.error}}
         {{/if}}
       </div>
 
-      <Input @type="email" @value={{this.email}} placeholder="E-mail" /> <br />
-      <Input @type="password" @value={{this.password}} placeholder="Wachtwoord" /> <br />
+      <div class="form-field">
+        <label for="login-email">E-mail</label>
+        <Input id="login-email" @type="email" @value={{this.email}} />
+      </div>
+      <div class="form-field">
+        <label for="login-password">Wachtwoord</label>
+        <Input id="login-password" @type="password" @value={{this.password}} />
+      </div>
 
-      <div class="button-product-cart"><a {{on 'click' this.login }} href="#">Inloggen</a></div>
+      <div class="button-product-cart"><a {{on 'click' this.login}} href="#">Inloggen</a></div>
       <div class="button-product-cart"><LinkTo @route="webshop.register">Registreer</LinkTo></div>
-      {{!-- <div class="button-product-cart"><a href="#">Wachtwoord vergeten?</a></div> <!-- TODO: forgot account --> --}}
     </div>
   </div>
 </div>

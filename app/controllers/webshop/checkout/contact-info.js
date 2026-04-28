@@ -1,12 +1,33 @@
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
 import { notEmpty } from '../../../helpers/not-empty';
 
 export default class WebshopCheckoutContactInfoController extends Controller {
   @service basket;
+  @service session;
+  @service router;
 
   @tracked showWarnings;
+  @tracked isSaving = false;
+
+  @action
+  async persistAndContinue() {
+    this.isSaving = true;
+    try {
+      if (this.session.isAuthenticated && this.model) {
+        const { customer, postalAddress } = this.model;
+        if (postalAddress) await postalAddress.save();
+        await customer.save();
+      } else {
+        await this.basket.persistInvoiceInfo();
+      }
+      this.router.transitionTo('webshop.checkout.delivery');
+    } finally {
+      this.isSaving = false;
+    }
+  }
 
   get warnings() {
     const warnings = [];

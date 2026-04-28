@@ -1,9 +1,4 @@
-<ul class="breadcrumb-cart">
-  <li><LinkTo @route="webshop.basket">Winkelmandje</LinkTo></li>
-  <li><LinkTo @route="webshop.checkout.contact-info">Uw Gegevens</LinkTo></li>
-  <li><LinkTo @route="webshop.checkout.delivery">Levering / Afhaling</LinkTo></li>
-  <li><span class="breadcrumb-txt">Klaar</span></li>
-</ul>
+<Webshop::CheckoutProgress @currentStep="finish" />
 
 <div class="checkout-contact">
   <div class="contact-info">
@@ -100,7 +95,6 @@
         Prijs levering <span class="money">gratis</span> <br/>
         Totaalprijs <span class="money">{{euros this.totalCost}}</span>
       </p>
-      {{!-- <p>BTW 6% <span class="money">€x</span></p>  --}}
       <h1 class="button-product-cart">bedankt voor je bestelling!</h1>
     </div>
   </div>

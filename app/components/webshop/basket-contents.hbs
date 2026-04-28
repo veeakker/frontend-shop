@@ -1,0 +1,18 @@
+{{#if @hasUnavailableOrderLines}}
+  <div class="basket-unavailable-banner">
+    <span class="basket-unavailable-banner__icon">⚠️</span>
+    <p>Sommige producten zijn niet beschikbaar op de gekozen locatie. Verwijder ze om verder te gaan.</p>
+  </div>
+{{/if}}
+
+<Webshop::OrderLines @orderLines={{@orderLines}} @removeOrderLine={{@removeOrderLine}} />
+
+<div class="cart-total">
+  <p class="cart-price"><span class="money">{{euros @totalPrice}}</span></p>
+  <p class="cart-message">Exclusief verzendkosten</p>
+  {{#if (and @onCheckout (not @hasUnavailableOrderLines))}}
+    <div class="button-product-cart">
+      <LinkTo @route={{@onCheckout}}>Naar bestellen</LinkTo>
+    </div>
+  {{/if}}
+</div>

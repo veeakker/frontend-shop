@@ -1,0 +1,109 @@
+.checkout-progress {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-8) var(--space-4) var(--space-6);
+  margin: 0 auto;
+  max-width: 560px;
+}
+
+.checkout-progress__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.checkout-progress__circle {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface-card);
+  color: var(--color-text-muted);
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base);
+  line-height: 1;
+}
+
+.checkout-progress__step--completed .checkout-progress__circle {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* completed steps render as <a> via LinkTo */
+a.checkout-progress__step {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover .checkout-progress__circle {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+  }
+
+  &:hover .checkout-progress__label {
+    text-decoration: underline;
+  }
+}
+
+.checkout-progress__step--active .checkout-progress__circle {
+  background: var(--color-accent-tan);
+  border-color: var(--color-accent-tan);
+  color: var(--color-text-inverse);
+  box-shadow: 0 0 0 4px rgba(173, 154, 137, 0.25);
+}
+
+.checkout-progress__label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+  white-space: nowrap;
+  line-height: var(--leading-tight);
+}
+
+.checkout-progress__step--completed .checkout-progress__label,
+.checkout-progress__step--active .checkout-progress__label {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.checkout-progress__connector {
+  flex: 1;
+  height: 2px;
+  background: var(--color-border);
+  margin-top: 17px; /* center on circle: 36px / 2 − 1px */
+  transition: background var(--transition-base);
+  min-width: var(--space-6);
+}
+
+.checkout-progress__connector--done {
+  background: var(--color-primary);
+}
+
+@media (max-width: 480px) {
+  .checkout-progress__label {
+    display: none;
+  }
+
+  .checkout-progress__circle {
+    width: 28px;
+    height: 28px;
+    font-size: var(--text-xs);
+  }
+
+  .checkout-progress__connector {
+    margin-top: 13px;
+    min-width: var(--space-4);
+  }
+}

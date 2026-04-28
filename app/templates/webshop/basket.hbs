@@ -1,24 +1,26 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="products-shop">
-  <h1 class="tab-title">winkelmandje</h1>
+<div class="basket-page">
+  <h1 class="basket-page__title">Winkelmandje</h1>
 
   <Design::Forks @useDarkImage={{true}}/>
 
   {{#if (eq this.basket.orderLines.length 0)}}
     <div class="empty-shop">
       <p>Je hebt nog geen producten in je winkelmandje.</p>
-      <div class="button-product"><LinkTo @route="webshop" class="uppercase">verder winkelen</LinkTo></div>
+      <div class="button-product">
+        <LinkTo @route="webshop" class="uppercase">verder winkelen</LinkTo>
+      </div>
     </div>
   {{else}}
-    <div class="cart-item"></div>
-
-    <Webshop::OrderLines @removeOrderLine={{fn this.removeOrderLine}} @orderLines={{this.basket.orderLines}} />
-
-    <div class="cart-total">
-      <p class="cart-price"><span class="money">{{euros this.basket.totalPrice}}</span></p>
-      <p class="cart-message">Exclusief verzendkosten</p>
-      <div class="button-product-cart"><LinkTo @route="webshop.checkout.contact-info">Naar bestellen</LinkTo></div>
+    <div class="basket-card">
+      <Webshop::BasketContents
+        @orderLines={{this.basket.orderLines}}
+        @totalPrice={{this.basket.totalPrice}}
+        @hasUnavailableOrderLines={{this.basket.hasUnavailableOrderLines}}
+        @removeOrderLine={{fn this.removeOrderLine}}
+        @onCheckout="webshop.checkout.contact-info"
+      />
     </div>
   {{/if}}
 </div>
