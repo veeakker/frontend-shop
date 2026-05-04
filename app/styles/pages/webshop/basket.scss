@@ -1,6 +1,6 @@
-@use "../../config/colors";
+@use "../../config/textures";
 
-/* ── Page layout ───────────────────────────────────────────────────── */
+/* ── Page layout ─────────────────────────────────────────────────── */
 
 .basket-page {
   width: 100%;
@@ -10,33 +10,36 @@
 }
 
 .basket-page__title {
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
   color: var(--color-text-primary);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin: var(--space-6) 0 var(--space-2);
+  letter-spacing: 0.1em;
+  margin: var(--space-8) 0 var(--space-2);
   text-align: center;
+  font-family: 'Varela Round', sans-serif;
 }
 
-/* ── Card container ────────────────────────────────────────────────── */
+/* ── Card container ──────────────────────────────────────────────── */
 
 .basket-card {
-  background: var(--color-surface-card);
+  background-color: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  overflow: hidden; /* clips banner + first/last row to rounded corners */
+  box-shadow: var(--shadow-raised);
+  overflow: hidden; /* clips banner + row backgrounds to rounded corners */
+  @include textures.texture-linen();
 }
 
-/* ── Unavailability banner (full-bleed inside card) ────────────────── */
+/* ── Unavailability banner (full-bleed inside card) ──────────────── */
 
 .basket-unavailable-banner {
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
-  background: #FEF3C7;
-  border-bottom: 1px solid #FCD34D;
+  background: rgba(200, 149, 92, 0.1);
+  border-bottom: 1px solid rgba(200, 149, 92, 0.28);
   padding: var(--space-4) var(--space-6);
+  font-family: 'Open Sans', sans-serif;
 
   .basket-unavailable-banner__icon {
     font-size: var(--text-base);
@@ -45,15 +48,14 @@
   }
 
   p {
-    color: #92400E;
+    color: var(--color-text-muted);
     font-size: var(--text-sm);
     margin: 0;
     line-height: var(--leading-normal);
-    font-family: 'Open Sans', sans-serif;
   }
 }
 
-/* ── Empty basket ──────────────────────────────────────────────────── */
+/* ── Empty basket ────────────────────────────────────────────────── */
 
 .empty-shop {
   margin-top: var(--space-8);
@@ -71,12 +73,12 @@
   }
 }
 
-/* ── Cart items ────────────────────────────────────────────────────── */
+/* ── Cart items ──────────────────────────────────────────────────── */
 
 .cart-item {
   font-family: 'Open Sans', sans-serif;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-4);
   padding: var(--space-5) var(--space-6);
   border-bottom: 1px solid var(--color-border);
@@ -91,15 +93,31 @@
     flex-shrink: 0;
     border-radius: var(--radius-sm);
     overflow: hidden;
-    align-self: center;
+    position: relative;
+    background: var(--color-surface-overlay, #0E0C0A);
+    align-self: flex-start;
+
+    /* Corner vignette that harmonises inconsistent photo backgrounds */
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 52%, rgba(14, 11, 9, 0.45) 100%);
+      pointer-events: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      filter: contrast(1.05) saturate(0.88);
+    }
   }
 }
 
-/* ── Disabled product (offering turned off in system) ──────────────── */
+/* ── Disabled product (offering turned off in system) ────────────── */
 
 .cart-item.product-disabled {
-  opacity: 0.55;
-  background: var(--color-surface);
+  opacity: 0.45;
 
   * {
     text-decoration: line-through;
@@ -107,27 +125,28 @@
 
   .product-disabled-message {
     text-decoration: none;
-    color: var(--color-text-muted);
+    color: var(--color-text-faint);
     font-size: var(--text-sm);
     font-style: italic;
   }
 }
 
-/* ── Unavailable at chosen location ───────────────────────────────── */
+/* ── Unavailable at chosen location ──────────────────────────────── */
 
 .cart-item.not-available-at-location {
-  background: #FFFBEB;
+  background: rgba(200, 149, 92, 0.05);
+  border-left: 2px solid rgba(200, 149, 92, 0.4);
 
   .product-unavailable-message {
     font-size: var(--text-xs);
-    color: #B45309;
+    color: var(--color-text-accent);
     font-style: italic;
     margin: var(--space-2) 0 0;
     text-decoration: none;
   }
 }
 
-/* ── Order info (product name + quantity) ──────────────────────────── */
+/* ── Order info (product name + quantity) ────────────────────────── */
 
 .order-info {
   flex: 1;
@@ -142,9 +161,10 @@
       font-size: var(--text-base);
       font-weight: 700;
       line-height: var(--leading-tight);
+      transition: color var(--transition-fast);
 
       &:hover {
-        text-decoration: underline;
+        color: var(--color-primary);
       }
     }
   }
@@ -165,7 +185,7 @@
   }
 }
 
-/* ── Order extra (price + remove) ──────────────────────────────────── */
+/* ── Order extra (price + remove) ────────────────────────────────── */
 
 .order-extra {
   display: flex;
@@ -178,7 +198,7 @@
 
 .order-price-per-unit {
   display: block;
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
 }
 
@@ -186,49 +206,49 @@
   display: block;
   font-size: var(--text-base);
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-accent-gold);
 }
 
-/* ── Remove button ─────────────────────────────────────────────────── */
+/* ── Remove button ───────────────────────────────────────────────── */
 
 .remove-button {
   border: none;
   background: transparent;
-  color: var(--color-text-muted);
+  color: var(--color-text-faint);
   cursor: pointer;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   line-height: 1;
   transition:
     color var(--transition-fast),
     background var(--transition-fast);
 
   &:hover {
-    color: #DC2626;
-    background: #FEE2E2;
+    color: #E07070;
+    background: rgba(200, 100, 80, 0.12);
   }
 }
 
-/* ── Comment / add-on button ───────────────────────────────────────── */
+/* ── Comment button ──────────────────────────────────────────────── */
 
 .add-comment-button {
-  color: var(--color-secondary);
+  color: var(--color-text-muted);
   border: none;
   background: transparent;
   font-size: var(--text-sm);
-  font-weight: 600;
   font-family: 'Open Sans', sans-serif;
   cursor: pointer;
   padding: 0;
   margin-top: var(--space-2);
+  transition: color var(--transition-fast);
 
   &:hover {
     color: var(--color-primary);
   }
 }
 
-/* ── Cart total ────────────────────────────────────────────────────── */
+/* ── Cart total ──────────────────────────────────────────────────── */
 
 .cart-total {
   display: flex;
@@ -236,28 +256,31 @@
   align-items: flex-end;
   gap: var(--space-1);
   padding: var(--space-5) var(--space-6);
-  border-top: 2px solid var(--color-primary);
+  border-top: 1px solid var(--color-border-strong);
+  background: rgba(200, 149, 92, 0.04);
 }
 
 .cart-price {
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
   font-weight: 700;
   color: var(--color-text-primary);
   margin: 0;
+  font-family: 'Varela Round', sans-serif;
 
   .money {
-    color: var(--color-primary);
+    color: var(--color-accent-gold);
   }
 }
 
 .cart-message {
   font-size: var(--text-xs);
   color: var(--color-text-muted);
-  margin: 0 0 var(--space-2);
+  margin: 0 0 var(--space-3);
   font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.02em;
 }
 
-/* ── Buttons ───────────────────────────────────────────────────────── */
+/* ── Buttons ─────────────────────────────────────────────────────── */
 
 .button-product {
   text-align: center;
@@ -270,13 +293,16 @@
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
     font-size: var(--text-base);
+    font-weight: 700;
     padding: var(--space-3) var(--space-10);
     display: inline-block;
     border-radius: var(--radius-sm);
-    transition: background var(--transition-fast);
+    letter-spacing: 0.05em;
+    transition: background var(--transition-fast), box-shadow var(--transition-fast);
 
     &:hover {
-      background-color: var(--color-secondary);
+      background-color: var(--color-primary-dark);
+      box-shadow: var(--shadow-glow);
     }
   }
 }
@@ -289,26 +315,31 @@
     color: var(--color-text-inverse);
     font-size: var(--text-base);
     font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
     padding: var(--space-3) var(--space-8);
     text-decoration: none;
     border: none;
     border-radius: var(--radius-sm);
     cursor: pointer;
     display: inline-block;
-    transition: background var(--transition-fast);
+    letter-spacing: 0.05em;
+    transition: background var(--transition-fast), box-shadow var(--transition-fast);
   }
 
   a:hover, button:hover {
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary-dark);
+    box-shadow: var(--shadow-glow);
   }
 
   a[disabled], button[disabled] {
     background-color: var(--color-border);
+    color: var(--color-text-faint);
     cursor: not-allowed;
+    box-shadow: none;
   }
 }
 
-/* ── Mobile layout ─────────────────────────────────────────────────── */
+/* ── Mobile ──────────────────────────────────────────────────────── */
 
 @media (max-width: 600px) {
   .basket-page {
@@ -328,6 +359,7 @@
     grid-template-columns: 80px 1fr;
     gap: var(--space-2) var(--space-3);
     padding: var(--space-4);
+    align-items: start;
 
     .cart-thumbnail {
       grid-row: 1 / 3;
@@ -351,10 +383,7 @@
     }
   }
 
-  .basket-unavailable-banner {
-    padding: var(--space-3) var(--space-4);
-  }
-
+  .basket-unavailable-banner,
   .cart-total {
     padding: var(--space-4);
   }

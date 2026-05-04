@@ -1,7 +1,11 @@
+/* Product image sits on a dark card. The ::after vignette harmonises
+   inconsistent photo backgrounds by darkening all four edges equally. */
+
 .product-image {
-    width: 100%;
+  width: 100%;
+  display: block;
 }
 
 .product-image.product-image-default {
-  background-color: #AD9A89
+  background-color: var(--color-surface-card);
 }

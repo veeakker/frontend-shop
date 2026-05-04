@@ -1,68 +1,100 @@
 @use 'config/index';
+@use 'config/textures';
 @use 'fonts/fontello';
 @use 'components/index' as index2;
 @use 'pages/index' as index3;
 @use "config/colors";
 
-/* generic buttons */
+/* ── Global reset / base ─────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-family: 'Open Sans', sans-serif;
+  @include textures.texture-noise(0.055);
+  background-attachment: fixed; /* noise stays still while content scrolls */
+}
+
+/* ── Generic button ──────────────────────────────────────────────── */
 
 button.button {
-  background-color: #443b36;
-  color: white;
-  font-size: 16px;
-  font-family: "Open Sans";
-  padding: 10px 50px;
-  margin: 15px 0;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--text-base);
+  font-family: 'Open Sans', sans-serif;
+  padding: var(--space-3) var(--space-10);
+  margin: var(--space-4) 0;
   border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+    box-shadow: var(--shadow-glow);
+  }
 }
 
-/* greyed out pictures of disabled products */
+/* ── Product state filters ───────────────────────────────────────── */
+
 .product-disabled img.product-image {
-  filter: grayscale(1);
-}
-.not-available-at-location img.product-image {
-  filter: grayscale(1);
+  filter: grayscale(1) brightness(0.5);
 }
 
-.home-map{
-  height: 500;
-  width: auto;
+.not-available-at-location img.product-image {
+  filter: grayscale(0.5) brightness(0.75);
 }
+
+/* ── Layout shell ────────────────────────────────────────────────── */
 
 #page-container {
   position: relative;
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
 }
 
 #content-wrap {
-  padding-bottom: 3.5rem;    /* Footer height */
+  padding-bottom: 3.5rem;
+  flex: 1;
 }
+
+/* ── Footer ──────────────────────────────────────────────────────── */
 
 footer {
   width: 100%;
-  background-color: colors.$base-primary;
+  background-color: var(--color-surface-overlay, #0E0C0A);
+  border-top: 1px solid var(--color-border);
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   margin-top: auto;
+  @include textures.texture-grain();
 
   a {
-    color: white;
-    padding: 1.5rem;
+    color: var(--color-text-muted);
+    padding: var(--space-6);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-text-primary);
+    }
   }
 }
 
-// Footer text has to be full width
 @media only screen and (max-width: 600px) {
   footer {
-    display: flex;
-    width: 100%;
     flex-direction: column;
+
     a {
       text-align: center;
+      padding: var(--space-3) var(--space-6);
     }
   }
 }

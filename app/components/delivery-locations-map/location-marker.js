@@ -8,30 +8,27 @@ export default class DeliveryLocationsMapLocationMarkerComponent extends Compone
   allIconOptions = {
     greenLeaf: {
       iconUrl: '/images/van.png',
-      //shadowUrl: '/images/leaf-shadow.png',
-      iconSize:     [48, 48], // size of the icon
-      shadowSize:   [50, 64], // size of the shadow
-      iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
-      shadowAnchor: [4, 62],  // the same for the shadow
-      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      iconSize:     [48, 48],
+      shadowSize:   [50, 64],
+      iconAnchor:   [20, 20],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [-3, -12]
     },
     orangeLeaf: {
       iconUrl: '/images/shop.png',
-      //shadowUrl: '/images/leaf-shadow.png',
-      iconSize:     [40, 40], // size of the icon
-      shadowSize:   [50, 64], // size of the shadow
-      iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
-      shadowAnchor: [4, 62],  // the same for the shadow
-      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      iconSize:     [40, 40],
+      shadowSize:   [50, 64],
+      iconAnchor:   [20, 20],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [-3, -12]
     },
     redLeaf: {
       iconUrl: '/images/barn.png',
-      //shadowUrl: '/images/leaf-shadow.png',
-      iconSize:     [40, 40], // size of the icon
-      shadowSize:   [50, 64], // size of the shadow
-      iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
-      shadowAnchor: [4, 62],  // the same for the shadow
-      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      iconSize:     [40, 40],
+      shadowSize:   [50, 64],
+      iconAnchor:   [20, 20],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [-3, -12]
     }
   }
 

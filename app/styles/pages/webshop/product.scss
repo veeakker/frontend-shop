@@ -6,7 +6,7 @@
   .fav-button {
     text-decoration: none;
     text-align: center;
-    color:colors.$base-primary;
+    color: var(--color-text-primary);
     font-size: 22px;
     padding: 10px;
     margin: 0 5px;
@@ -16,7 +16,7 @@
   }
 
   .fav-button:hover {
-    color: colors.$base-secondary;
+    color: var(--color-text-muted);
     cursor: pointer;
   }
 
@@ -67,7 +67,7 @@ dl.general-product-information {
 
 .info-txt {
   margin: 2.5%;
-  color: colors.$base-primary;
+  color: var(--color-text-primary);
   text-align: left;
   width: 600px;
 
@@ -109,27 +109,28 @@ dl.general-product-information {
   a {
     display: inline-block;
     width: 180px;
-    border-bottom: 3px solid #AD9A89;
+    border-bottom: 3px solid var(--color-border);
     text-align: center;
     margin: 8px;
-    color: #443B36;
+    color: var(--color-text-primary);
+    transition: background-color var(--transition-base), color var(--transition-base);
   }
 
   a:hover {
-    background-color: #AD9A89;
+    background-color: var(--color-primary-dark);
     cursor: pointer;
-    color: #ffffff;
+    color: var(--color-text-inverse);
   }
 
   a.active {
-    border-bottom: 3px solid #443B36;
+    border-bottom: 3px solid var(--color-primary);
     cursor: pointer;
   }
 
   a.active:hover {
-    background-color: #443B36;
+    background-color: var(--color-primary);
     cursor: pointer;
-    color: #ffffff;
+    color: var(--color-text-inverse);
   }
 
   h5 {
@@ -139,6 +140,6 @@ dl.general-product-information {
 
   p {
     margin: 20px 0;
-    color: colors.$base-primary;
+    color: var(--color-text-primary);
   }
 }

@@ -1,15 +1,13 @@
-@use "../../config/colors";
-
 .contact-content {
     width: 100%;
     padding: 5% 0;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    color: colors.$base-primary;
+    color: var(--color-text-primary);
 
     p a {
-        color: colors.$base-secondary;
+        color: var(--color-text-muted);
     }
 }
 
@@ -18,13 +16,14 @@
 }
 
 .faq a {
-  border-bottom: 3px solid colors.$base-primary;
+  border-bottom: 3px solid var(--color-primary);
   padding: 10px;
   font-family: 'Open Sans';
-  color: colors.$base-primary;
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 .faq a:hover {
-  background-color: colors.$base-primary;
-  color: #ffffff;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
 }

@@ -1,38 +1,36 @@
-{{page-title "Index"}}
+{{page-title "Mijn mandjes"}}
 
-<div class="textbook">
-  <p>
-    <table>
-      <thead>
+<div class="baskets-card">
+  <table>
+    <thead>
+      <tr>
+        <th>Status gewijzigd op</th>
+        <th>Status</th>
+        <th>Mandje</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each @model as |basket|}}
         <tr>
-          <th>Status gewijzigd op</th><th>Status</th><th>Link naar mandje</th>
+          <td>{{locale-date basket.statusChangedAt}}</td>
+          <td>
+            {{#if (eq basket.orderStatus this.CONFIRMED)}}
+              bevestigd
+            {{else if (eq basket.orderStatus this.DRAFT)}}
+              ontwerp
+            {{/if}}
+          </td>
+          <td>
+            {{#if (eq basket.orderStatus this.CONFIRMED)}}
+              <LinkTo @route="webshop.baskets.show" @model={{basket}}>
+                Toon mandje
+              </LinkTo>
+            {{/if}}
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        {{#each @model as |basket|}}
-          <tr>
-            <td>{{locale-date basket.statusChangedAt}}</td>
-            <td>
-              {{#if (eq basket.orderStatus this.CONFIRMED)}}
-                bevestigd
-              {{else if (eq basket.orderStatus this.DRAFT)}}
-                ontwerp
-              {{/if}}
-            </td>
-            <td>
-              {{#if (eq basket.orderStatus this.CONFIRMED)}}
-                {{!-- TODO: make custom page for showing old basket --}}
-                <LinkTo @route="webshop.baskets.show" @model={{basket}}>
-                  Toon mandje
-                </LinkTo>
-              {{/if}}
-            </td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  </p>
+      {{/each}}
+    </tbody>
+  </table>
 </div>
-
 
 {{outlet}}

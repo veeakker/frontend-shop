@@ -1,5 +1,5 @@
 <LeafletMap class="leaflet-map" @lat={{this.baseLat}} @lng={{this.baseLng}} @zoom={{this.baseZoom}} ...attributes as |map|>
-  <map.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" />
+  <map.tile @url={{this.tileUrl}} />
   {{#each @places as |deliveryPlace|}}
     <DeliveryLocationsMap::LocationMarker @place={{deliveryPlace}} @mapMarker={{map.marker}} as |marker deliveryPlace|>
       {{yield marker deliveryPlace}}

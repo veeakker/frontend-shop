@@ -1,10 +1,14 @@
-@use "../../config/colors";
+@use "../../config/textures";
 
 #account-name {
-  font-size: 35px;
-  color:colors.$base-primary;
-  margin: 50px;
-  border-bottom: 3px solid colors.$base-primary-highlighted;
+  font-size: var(--text-3xl);
+  color: var(--color-text-primary);
+  margin: var(--space-12) var(--space-12) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-4);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .my-account {
@@ -14,48 +18,81 @@
 
 .tab-title {
   a {
-    color: colors.$base-primary;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-primary);
+    }
   }
+
   a.active {
-    border-bottom: solid 2px;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
   }
 }
 
 #account-information {
   display: flex;
   flex-direction: column;
-  background-color: white;
-
-  margin: 50px;
-  padding: 20px;
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+  margin: var(--space-8) var(--space-12);
+  padding: var(--space-8);
+  @include textures.texture-linen();
 
   h1 {
     text-align: left;
-    color: colors.$base-primary;
+    color: var(--color-text-primary);
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-6);
+    letter-spacing: 0.04em;
   }
 
-  /* p, dl, dd { */
-  /*   text-align: left; */
-  /*   color: $base-secondary; */
-  /* } */
-
   dl {
-    color: #726056;
+    color: var(--color-text-primary);
 
-    dt { margin-top: 1em; font-weight: bold }
-    dt:after { content: ":" }
+    dt {
+      margin-top: var(--space-4);
+      font-weight: 700;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-muted);
+
+      &::after {
+        content: "";
+      }
+    }
+
     dd {
       margin-left: 0;
-      margin-top: 0;
+      margin-top: var(--space-2);
       display: flex;
-      /* color: #726056; */
 
       input {
-        /* color: #726056; */
-        padding: 10px;
-        border: 1px solid #443b36;
-        background-color: #E1DBD5;
+        padding: var(--space-3);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        background-color: var(--color-surface-input);
+        color: var(--color-text-primary);
+        font-family: 'Open Sans', sans-serif;
+        font-size: var(--text-base);
         width: 100%;
+        transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+        &:focus {
+          outline: none;
+          border-color: var(--color-border-focus);
+          box-shadow: 0 0 0 3px rgba(200, 149, 92, 0.18);
+        }
+
+        &::placeholder {
+          color: var(--color-text-faint);
+        }
       }
     }
   }

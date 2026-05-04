@@ -8,7 +8,7 @@
 <div class="checkout-contact">
   <div class="contact-info">
     <div class="contactDetails">
-      <h2 style="font-size: 150%">Mandje {{#if (and (eq @model.orderStatus this.CONFIRMED) @model.statusChangedAt)}} ingezonden op {{locale-date @model.statusChangedAt}}{{/if}}</h2>
+      <h2>Mandje {{#if (and (eq @model.orderStatus this.CONFIRMED) @model.statusChangedAt)}} ingezonden op {{locale-date @model.statusChangedAt}}{{/if}}</h2>
       {{#if (eq @model.deliveryType "http://veeakker.be/delivery-methods/postal")}}
         <h3>Geleverd aan huis</h3>
         {{else if (eq @model.deliveryType "http://veeakker.be/delivery-methods/tour")}}
@@ -35,13 +35,15 @@
 
 <div class="order">
   <h2>Bestelde producten</h2>
-  <Webshop::OrderLines @orderLines={{@model.orderLines}}>
-    <:order-extra as |orderLine|>
-      <button type="button" {{on "click" (fn this.addToBasket orderLine)}}>
-        <i class="fas fa-plus"></i> Voeg toe aan huidig mandje
-      </button>
-    </:order-extra>
-  </Webshop::OrderLines>
+  <div class="basket-card">
+    <Webshop::OrderLines @orderLines={{@model.orderLines}}>
+      <:order-extra as |orderLine|>
+        <button type="button" {{on "click" (fn this.addToBasket orderLine)}}>
+          <i class="fas fa-plus"></i> Voeg toe aan huidig mandje
+        </button>
+      </:order-extra>
+    </Webshop::OrderLines>
+  </div>
 </div>
 
 {{outlet}}

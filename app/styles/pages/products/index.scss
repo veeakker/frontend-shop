@@ -35,14 +35,15 @@
     text-transform: uppercase;
     display: inline-block;
     width: 150px;
-    border-bottom: 3px solid #AD9A89;
+    border-bottom: 3px solid var(--color-border);
     text-align: center;
     margin: 8px;
-    color: #443B36;
+    color: var(--color-text-primary);
+    transition: background-color var(--transition-base), color var(--transition-base);
 
     img {
       width: 150px;
-      background-color: #AD9A89;
+      background-color: var(--color-border);
     }
 
     h5 {
@@ -52,23 +53,23 @@
   }
 
   a:hover {
-    background-color: #AD9A89;
+    background-color: var(--color-primary-dark);
     cursor: pointer;
-    color: #ffffff;
+    color: var(--color-text-inverse);
   }
 
   a.active {
-    border-bottom: 3px solid #443B36;
+    border-bottom: 3px solid var(--color-primary);
     cursor: pointer;
 
     img {
-      background-color: #443B36;
+      background-color: var(--color-primary);
       cursor: pointer;
     }
   }
 
   a.active:hover {
-    background-color: #443B36;
+    background-color: var(--color-primary);
     cursor: pointer;
   }
 }

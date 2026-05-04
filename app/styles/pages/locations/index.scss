@@ -44,25 +44,26 @@
   display: block;
   float: left;
   width: 184px;
-  border-bottom: 3px solid #AD9A89;
+  border-bottom: 3px solid var(--color-border);
   text-align: center;
   margin: 10px;
-  color: #443B36;
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 .winkel:hover, .toeren:hover, .natuurwinkels:hover, .buurderijen:hover, .webshop:hover {
-  background-color: #AD9A89;
+  background-color: var(--color-primary-dark);
   cursor: pointer;
-  color: #ffffff;
+  color: var(--color-text-inverse);
 }
 
 .winkel.active, .toeren.active, .natuurwinkels.active, .buurderijen.active, .webshop.active {
-  border-bottom: 3px solid #443B36;
+  border-bottom: 3px solid var(--color-primary);
   cursor: pointer;
 }
 
 .winkel.active:hover, .toeren.active:hover, .natuurwinkels.active:hover, .buurderijen.active:hover, .webshop.active:hover {
-  background-color: #443B36;
+  background-color: var(--color-primary);
   cursor: pointer;
 }
 
@@ -74,7 +75,7 @@
 .locaties p {
   margin: 0 auto;
   max-width: 1040px;
-  color: #443B36;
+  color: var(--color-text-primary);
   text-align: justify;
   padding: 0px 20px 30px 20px;
 }
@@ -91,8 +92,37 @@
   width: 100%;
 }
 
-.legende{
+.legende {
   width: 100%;
   display: flex;
   justify-content: center;
+
+  table {
+    border-collapse: collapse;
+  }
+
+  th {
+    padding: var(--space-3) var(--space-6);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+
+  p {
+    margin: var(--space-1) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  img {
+    filter: invert(1) sepia(0.2) brightness(0.88);
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+[data-theme="light"] .legende img {
+  filter: none;
 }

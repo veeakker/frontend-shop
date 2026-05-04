@@ -57,10 +57,10 @@ a.checkout-progress__step {
 }
 
 .checkout-progress__step--active .checkout-progress__circle {
-  background: var(--color-accent-tan);
-  border-color: var(--color-accent-tan);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
   color: var(--color-text-inverse);
-  box-shadow: 0 0 0 4px rgba(173, 154, 137, 0.25);
+  box-shadow: 0 0 0 4px rgba(200, 149, 92, 0.28), var(--shadow-glow);
 }
 
 .checkout-progress__label {
