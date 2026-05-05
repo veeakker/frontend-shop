@@ -5,7 +5,7 @@
 @use 'pages/index' as index3;
 @use "config/colors";
 
-/* ── Global reset / base ─────────────────────────────────────────── */
+/* Global reset / base */
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -19,7 +19,7 @@ body {
   background-attachment: fixed; /* noise stays still while content scrolls */
 }
 
-/* ── Generic button ──────────────────────────────────────────────── */
+/* Generic button */
 
 button.button {
   background-color: var(--color-primary);
@@ -39,7 +39,7 @@ button.button {
   }
 }
 
-/* ── Product state filters ───────────────────────────────────────── */
+/* Product state filters */
 
 .product-disabled img.product-image {
   filter: grayscale(1) brightness(0.5);
@@ -49,7 +49,7 @@ button.button {
   filter: grayscale(0.5) brightness(0.75);
 }
 
-/* ── Layout shell ────────────────────────────────────────────────── */
+/* Layout shell */
 
 #page-container {
   position: relative;
@@ -63,7 +63,7 @@ button.button {
   flex: 1;
 }
 
-/* ── Footer ──────────────────────────────────────────────────────── */
+/* Footer */
 
 footer {
   width: 100%;

@@ -9,27 +9,135 @@
 
 /* Delivery page needs more room for maps */
 .delivery-contact .contact-info {
-  max-width: 720px;
+  max-width: 1100px;
 }
 
-/* ── Map container ───────────────────────────────────────────────── */
+/* Finish page */
 
-.delivery-map {
-  margin: var(--space-4) 0;
+/* Step down from delivery (1100px) toward basket (800px) */
+.finish-page .contact-info {
+  max-width: 800px;
+}
 
-  .leaflet-map {
-    height: 25rem;
-    width: 100%;
-    left: 0; /* overrides the locations-page global left: 10% */
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    /* filter must NOT go here — applying it to the map container
-       creates a new compositing layer that breaks Leaflet's popup
-       and marker pixel-coordinate calculations */
+/* Full-bleed success banner at the top of the card */
+.finish-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  /* bleed to card edges - undoes the card's var(--space-8) padding */
+  margin: calc(-1 * var(--space-8)) calc(-1 * var(--space-8)) var(--space-6);
+  padding: var(--space-5) var(--space-8);
+  background: rgba(200, 149, 92, 0.1);
+  border-bottom: 1px solid rgba(200, 149, 92, 0.25);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.finish-banner__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-base);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.finish-banner strong {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text-accent);
+  font-family: 'Varela Round', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+/* Labeled summary sections (Levering, Contactgegevens) */
+.finish-section {
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
   }
 }
 
-/* ── Selected pickup place card ──────────────────────────────────── */
+.finish-section__label {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.finish-section p {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--leading-normal);
+}
+
+.finish-section__sub {
+  margin-top: var(--space-2) !important;
+  color: var(--color-text-muted) !important;
+}
+
+/* LFW upsell - sits below the order receipt */
+.finish-upsell {
+  max-width: 800px;
+  margin: var(--space-4) auto var(--space-8);
+  padding: var(--space-4) var(--space-6);
+  background: rgba(200, 149, 92, 0.04);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: 'Open Sans', sans-serif;
+
+  p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: var(--leading-normal);
+  }
+
+  strong {
+    color: var(--color-text-primary);
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--color-primary-dark);
+    }
+  }
+}
+
+/* Map container */
+
+.delivery-map {
+  margin: var(--space-4) calc(-1 * var(--space-8));
+
+  .leaflet-map {
+    height: 32rem;
+    width: 100%;
+    left: 0; /* overrides the locations-page global left: 10% */
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+  }
+}
+
+/* Selected pickup place card */
 
 .delivery-place {
   text-align: left;
@@ -57,7 +165,7 @@
   }
 }
 
-/* ── Info link ───────────────────────────────────────────────────── */
+/* Info link */
 
 #extra-info {
   color: var(--color-text-muted);
@@ -73,7 +181,7 @@
   }
 }
 
-/* ── Unavailable items warning ───────────────────────────────────── */
+/* Unavailable items warning */
 
 .unavailable-warning {
   background: rgba(200, 149, 92, 0.08);
@@ -113,7 +221,7 @@
   }
 }
 
-/* ── Leaflet popup — dark brand overrides ────────────────────────── */
+/* Leaflet popup - dark brand overrides */
 
 .leaflet-popup-content-wrapper {
   background: var(--color-surface-card);
@@ -163,6 +271,13 @@
       box-shadow: var(--shadow-glow);
     }
   }
+}
+
+.popup-selected {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-accent);
+  margin: 0;
 }
 
 .leaflet-popup-tip {

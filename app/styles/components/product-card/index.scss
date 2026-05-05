@@ -28,7 +28,7 @@
     margin: 0;
   }
 
-  /* Photo container — dark background absorbs inconsistent photo BGs */
+  /* Photo container - dark background absorbs inconsistent photo BGs */
   .picture-info {
     height: 280px;
     padding: 0;
@@ -105,7 +105,7 @@
     }
   }
 
-  /* Expanded / detail mode — same card height, picture shrinks to reveal ordering UI */
+  /* Expanded / detail mode - same card height, picture shrinks to reveal ordering UI */
   &.detail {
     .picture-info {
       height: 90px;
@@ -131,7 +131,7 @@
       }
     }
 
-    /* All-caps micro-labels for Per pakje / Pakjes — label above input */
+    /* All-caps micro-labels for Per pakje / Pakjes - label above input */
     .per-pakje,
     .pakjes {
       display: flex;
@@ -158,7 +158,7 @@
   }
 }
 
-/* ── Product amounts + configurator ─────────────────────────────── */
+/* Product amounts + configurator */
 
 .amounts {
   min-width: 230px;
@@ -223,7 +223,7 @@
   }
 }
 
-/* ── Price display ───────────────────────────────────────────────── */
+/* Price display */
 
 .teste {
   margin-top: calc(-1 * var(--space-8));
@@ -234,7 +234,7 @@
   text-align: center;
 }
 
-/* ── Actions bar ─────────────────────────────────────────────────── */
+/* Actions bar */
 
 .actions {
   display: flex;

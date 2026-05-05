@@ -1,6 +1,6 @@
 @use "../../config/textures";
 
-/* ── Order history table (baskets/index) ─────────────────────── */
+/* Order history table (baskets/index) */
 
 .my-account table {
   width: 100%;
@@ -48,7 +48,7 @@
   letter-spacing: 0.05em;
 }
 
-/* ── Basket card container ───────────────────────────────────── */
+/* Basket card container */
 
 .baskets-card {
   background-color: var(--color-surface-card);
@@ -60,7 +60,7 @@
   @include textures.texture-linen();
 }
 
-/* ── Breadcrumb (baskets/show) ───────────────────────────────── */
+/* Breadcrumb (baskets/show) */
 
 .breadcrumb-cart {
   display: flex;
@@ -105,7 +105,7 @@
   }
 }
 
-/* ── Order detail section (baskets/show) ─────────────────────── */
+/* Order detail section (baskets/show) */
 
 .order {
   max-width: 800px;

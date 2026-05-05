@@ -1,110 +1,106 @@
 <Webshop::CheckoutProgress @currentStep="finish" />
 
-<div class="checkout-contact">
+<div class="checkout-contact finish-page">
   <div class="contact-info">
-    <div class="contactDetails">
-      <h2 style="font-size: 150%">Je bestelling is succesvol geplaatst</h2><br /><br />
-      <h3>NIEUW! Andere producten rechtstreeks van de boer?</h3>
-      <p>
-        {{#let (or (and (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/tour") (or this.basket.deliveryPlace.lfwLink this.basket.deliveryPlace.deliveryRoute.lfwLink)) "https://localfoodworks.eu/bestellen/market/9") as |lfwLink|}}
-          Bestel ze op <a style="text-decoration: underline !important" href={{lfwLink}}>Local Food Works</a> en we leveren ze samen.  Selecteer de markt in overeenstemming met je leverdatum.
-        {{/let}}
-      </p>
-      <h3>Wanneer geleverd?</h3>
-      <p>
-        Indien besteld voor zondag middernacht is uw bestelling
-        <ul>
-          <li><b>Biotoop:</b> af te halen op vrijdag vanaf 17u00 of zaterdag</li>
-          <li><b>Content:</b> af te halen op vrijdag vanaf 17u00, zaterdag of zondag</li>
-          <!-- <li><b>Fietskoerier:</b> wordt geleverd op vrijdag vanaf 14u00 (postcode 3000-3018)</li> -->
-          <li><b>Toeren:</b> voor de eerstkomende levering<!-- upload list and add link to pdf --></li>
-          <li><b>Aan huis:</b>
-            <ul>
-              <li><b>Regio Leuven:</b> geleverd zaterdag voormiddag</li>
-              <li><b>Andere locaties:</b> geleverd zaterdag doorheen de dag tenzij anders afgesproken</li>
-            </ul>
-          </li>
-        </ul>
-      </p>
+
+    <div class="finish-banner">
+      <span class="finish-banner__icon">✓</span>
+      <strong>Bestelling geplaatst</strong>
     </div>
 
-    <div class="contactDetails">
-      <h3>Contact informatie</h3>
+    <div class="finish-section">
+      <span class="finish-section__label">Levering</span>
+      {{#if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/postal")}}
+        <p>Thuislevering</p>
+        {{#if this.basket.hasCustomDeliveryPlace}}
+          {{#let this.basket.deliveryAddress as |address|}}
+            <p class="finish-section__sub">
+              {{address.firstName}} {{address.lastName}}<br/>
+              {{address.postalAddress.streetAddress}}<br/>
+              {{address.postalAddress.postalCode}} {{address.postalAddress.locality}}
+            </p>
+          {{/let}}
+        {{/if}}
+        <p class="finish-section__sub">
+          Indien besteld voor zondag middernacht:<br/>
+          Regio Leuven: geleverd zaterdag voormiddag<br/>
+          Andere locaties: geleverd zaterdag doorheen de dag, tenzij anders afgesproken
+        </p>
+      {{else if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/tour")}}
+        <p>Toer Veeakker</p>
+        <p class="finish-section__sub">Voor de eerstkomende levering, indien besteld voor zondag middernacht</p>
+        {{#let this.basket.deliveryPlace as |place|}}
+          <p class="finish-section__sub">
+            {{place.label}}<br/>
+            {{place.postalAddress.streetAddress}}<br/>
+            {{place.postalAddress.postalCode}} {{place.postalAddress.locality}}
+          </p>
+        {{/let}}
+      {{else if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/shop")}}
+        <p>Afhalen in bioshop</p>
+        <p class="finish-section__sub">Indien besteld voor zondag middernacht beschikbaar op vrijdag vanaf 17u00 of zaterdag</p>
+        {{#let this.basket.deliveryPlace as |place|}}
+          <p class="finish-section__sub">
+            {{place.label}}<br/>
+            {{place.postalAddress.streetAddress}}<br/>
+            {{place.postalAddress.postalCode}} {{place.postalAddress.locality}}
+          </p>
+        {{/let}}
+      {{/if}}
+    </div>
+
+    <div class="finish-section">
+      <span class="finish-section__label">Contactgegevens</span>
       {{#if this.basket.customer.id}}
         {{#let this.basket.customer as |customer|}}
-          <ul>
-            <li>{{customer.firstName}} {{customer.lastName}}</li>
-            <li>{{customer.postalAddress.streetAddress}}</li>
-            <li>{{customer.postalAddress.postalCode}} {{customer.postalAddress.locality}}</li>
-            <li>{{customer.email}}</li>
-            <li>{{customer.phone}}</li>
-          </ul>
+          <p>
+            {{customer.firstName}} {{customer.lastName}}<br/>
+            {{customer.postalAddress.streetAddress}}<br/>
+            {{customer.postalAddress.postalCode}} {{customer.postalAddress.locality}}<br/>
+            {{customer.email}}
+          </p>
         {{/let}}
       {{else}}
         {{#let this.basket.invoiceAddress as |address|}}
-          <ul>
-            {{#if address.company}}
-              <li>{{address.company}}</li>
-            {{/if}}
-            <li>{{address.firstName}} {{address.lastName}}</li>
-            <li>{{address.postalAddress.streetAddress}}</li>
-            <li>{{address.postalAddress.postalCode}} {{address.postalAddress.locality}}</li>
-            <li>{{address.telephone}}</li>
-          </ul>
+          <p>
+            {{#if address.company}}{{address.company}}<br/>{{/if}}
+            {{address.firstName}} {{address.lastName}}<br/>
+            {{address.postalAddress.streetAddress}}<br/>
+            {{address.postalAddress.postalCode}} {{address.postalAddress.locality}}
+          </p>
         {{/let}}
-        {{#if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/postal")}}
-          {{#if this.basket.hasCustomDeliveryPlace}}
-            {{#let this.basket.deliveryAddress as |address|}}
-              <h3>Levering op</h3>
-              <ul>
-                {{#if address.company}}
-                  <li>{{address.company}}</li>
-                {{/if}}
-                <li>{{address.firstName}} {{address.lastName}}</li>
-                <li>{{address.postalAddress.streetAddress}}</li>
-                <li>{{address.postalAddress.postalCode}} {{address.postalAddress.locality}}</li>
-                <li>{{address.telephone}}</li>
-              </ul>
-            {{/let}}
-          {{/if}}
-        {{else if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/tour")}}
-          <h3>Levering op toer</h3>
-          <ul>
-            {{#let this.basket.deliveryPlace.postalAddress as |postalAddress|}}
-              <li>{{postalAddress.streetAddress}}</li>
-              <li>{{postalAddress.postalCode}} {{postalAddress.locality}}</li>
-            {{/let}}
-          </ul>
-        {{else if (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/shop")}}
-          <h3>Afhalen in bioshop</h3>
-          <ul>
-            {{#let this.basket.deliveryPlace.postalAddress as |postalAddress|}}
-              <li>{{postalAddress.streetAddress}}</li>
-              <li>{{postalAddress.postalCode}} {{postalAddress.locality}}</li>
-            {{/let}}
-          </ul>
-        {{/if}}
       {{/if}}
-      <div class="frost-div">
-        <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" />
-        <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
-      </div>
     </div>
-    <div class="cart-total">
-      <p class="cart-price">
-        Prijs levering <span class="money">gratis</span> <br/>
-        Totaalprijs <span class="money">{{euros this.totalCost}}</span>
-      </p>
-      <h1 class="button-product-cart">bedankt voor je bestelling!</h1>
+
+    <div class="frost-div">
+      <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" />
+      <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
     </div>
+
   </div>
 </div>
 
 <div class="order">
   <h2>Bestelde producten</h2>
   {{#if this.basket.orderLines}}
-    <Webshop::OrderLines @orderLines={{this.basket.orderLines}} />
+    <div class="basket-card">
+      <Webshop::OrderLines @orderLines={{this.basket.orderLines}} />
+      <div class="cart-total">
+        <p class="cart-price">Totaalprijs <span class="money">{{euros this.totalCost}}</span></p>
+        <p class="cart-message">Bedankt voor je bestelling!</p>
+      </div>
+    </div>
   {{/if}}
+</div>
+
+<div class="finish-upsell">
+  {{#let (or (and (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/tour") (or this.basket.deliveryPlace.lfwLink this.basket.deliveryPlace.deliveryRoute.lfwLink)) "https://localfoodworks.eu/bestellen/market/9") as |lfwLink|}}
+    <p>
+      <strong>Andere producten rechtstreeks van de boer?</strong><br/>
+      Bestel ze op <a href={{lfwLink}}>Local Food Works</a> en we leveren ze samen.
+      Selecteer de markt in overeenstemming met je leverdatum.
+    </p>
+  {{/let}}
 </div>
 
 {{outlet}}

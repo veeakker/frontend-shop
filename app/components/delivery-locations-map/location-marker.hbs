@@ -1,5 +1,5 @@
 {{#let
-   (icon iconUrl=this.iconConfig.iconUrl shadowUrl=this.iconConfig.shadowUrl iconSize=this.iconConfig.iconSize shadowSize=this.iconConfig.shadowSize iconAnchor=this.iconConfig.iconAnchor shadowAnchor=this.iconConfig.shadowAnchor popupAnchor=this.iconConfig.popupAnchor)
+   (icon iconUrl=this.iconConfig.iconUrl shadowUrl=this.iconConfig.shadowUrl iconSize=this.iconConfig.iconSize shadowSize=this.iconConfig.shadowSize iconAnchor=this.iconConfig.iconAnchor shadowAnchor=this.iconConfig.shadowAnchor popupAnchor=this.iconConfig.popupAnchor className=(if @selected "marker-selected" ""))
    @place.geoCoordinate.location
    as |markerIcon location|}}
   {{#if location}}

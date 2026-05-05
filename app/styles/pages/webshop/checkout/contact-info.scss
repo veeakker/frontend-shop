@@ -49,7 +49,7 @@
   }
 }
 
-/* ── Auth notice (logged-in confirmation) ────────────────────────── */
+/* Auth notice (logged-in confirmation) */
 
 .auth-notice {
   display: flex;
@@ -93,7 +93,7 @@
   }
 }
 
-/* ── Login prompt (guest) ────────────────────────────────────────── */
+/* Login prompt (guest) */
 
 .login-prompt {
   background: rgba(200, 149, 92, 0.06);
@@ -112,7 +112,7 @@
   }
 }
 
-/* ── Error messages ──────────────────────────────────────────────── */
+/* Error messages */
 
 .error-message {
   color: var(--color-primary);
@@ -127,7 +127,7 @@
   }
 }
 
-/* ── Divider ─────────────────────────────────────────────────────── */
+/* Divider */
 
 .contact-info hr {
   border: none;
@@ -135,7 +135,7 @@
   margin: var(--space-6) 0;
 }
 
-/* ── Form layout ─────────────────────────────────────────────────── */
+/* Form layout */
 
 .form-field {
   display: flex;
@@ -153,7 +153,7 @@
   gap: var(--space-4);
 }
 
-/* ── Inputs ──────────────────────────────────────────────────────── */
+/* Inputs */
 
 .contact-info input,
 .contact-info-different input {
@@ -180,7 +180,7 @@
   }
 }
 
-/* ── Labels ──────────────────────────────────────────────────────── */
+/* Labels */
 
 .contact-info label,
 .contact-info-different label {
@@ -194,7 +194,7 @@
   font-size: var(--text-xs);
 }
 
-/* ── Alternate delivery address section ──────────────────────────── */
+/* Alternate delivery address section */
 
 .contact-info-different {
   width: 100%;
@@ -208,7 +208,7 @@
   }
 }
 
-/* ── CTA buttons ─────────────────────────────────────────────────── */
+/* CTA buttons */
 
 .button-product-cart {
   text-align: right;
@@ -245,7 +245,7 @@
   }
 }
 
-/* ── Confirmation page contact details ───────────────────────────── */
+/* Confirmation page contact details */
 
 .contactDetails {
   color: var(--color-text-primary);

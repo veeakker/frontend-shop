@@ -1,7 +1,6 @@
-/* ── Leaflet map — theme-aware defaults ──────────────────────────────
+/* Leaflet map - theme-aware defaults 
    Targets .leaflet-map, our custom class on <DeliveryLocationsMap>.
-   Does NOT affect veeakker-home-map (no leaflet-map class there).
-   ─────────────────────────────────────────────────────────────────── */
+   Does NOT affect veeakker-home-map (no leaflet-map class there). */
 
 .leaflet-map {
   background: var(--color-surface-card); /* prevents light-grey flash before tiles arrive */
@@ -14,21 +13,39 @@
     filter: invert(1) hue-rotate(180deg) saturate(0.35) brightness(0.95) sepia(0.15);
   }
 
-  /* Dark mode: icons are already dark originals — invert to make visible,
-     then pull brightness well back so they don't float above the tile labels */
-  .leaflet-marker-icon {
+  /* Dark mode: img-based icons - invert to make visible, pull brightness
+     back so they don't float above tile labels.
+     div-icons (home marker) are excluded: they carry their own colours. */
+  .leaflet-marker-icon:not(.leaflet-div-icon) {
     filter: invert(1) sepia(0.25) brightness(0.65);
+  }
+
+  /* Selected place: add amber glow on top of the dark-mode filter */
+  .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
+    filter: invert(1) sepia(0.25) brightness(0.65)
+            drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
+  }
+
+  /* div-icon container: strip Leaflet's default white box */
+  .leaflet-div-icon {
+    background: none !important;
+    border: none !important;
   }
 }
 
 [data-theme="light"] {
-  /* Light mode: light_all tiles — darken to match brand tone */
+  /* Light mode: light_all tiles - darken to match brand tone */
   .leaflet-map .leaflet-tile-pane {
     filter: saturate(0.7) brightness(0.6) sepia(0.3);
   }
 
   /* Light mode: restore original icon colours */
-  .leaflet-map .leaflet-marker-icon {
+  .leaflet-map .leaflet-marker-icon:not(.leaflet-div-icon) {
     filter: none;
+  }
+
+  /* Selected place in light mode: amber glow only */
+  .leaflet-map .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
+    filter: drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
   }
 }

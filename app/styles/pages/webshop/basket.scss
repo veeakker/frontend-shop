@@ -1,6 +1,6 @@
 @use "../../config/textures";
 
-/* ── Page layout ─────────────────────────────────────────────────── */
+/* Page layout */
 
 .basket-page {
   width: 100%;
@@ -19,7 +19,7 @@
   font-family: 'Varela Round', sans-serif;
 }
 
-/* ── Card container ──────────────────────────────────────────────── */
+/* Card container */
 
 .basket-card {
   background-color: var(--color-surface-card);
@@ -30,7 +30,7 @@
   @include textures.texture-linen();
 }
 
-/* ── Unavailability banner (full-bleed inside card) ──────────────── */
+/* Unavailability banner (full-bleed inside card) */
 
 .basket-unavailable-banner {
   display: flex;
@@ -55,7 +55,7 @@
   }
 }
 
-/* ── Empty basket ────────────────────────────────────────────────── */
+/* Empty basket */
 
 .empty-shop {
   margin-top: var(--space-8);
@@ -73,7 +73,7 @@
   }
 }
 
-/* ── Cart items ──────────────────────────────────────────────────── */
+/* Cart items */
 
 .cart-item {
   font-family: 'Open Sans', sans-serif;
@@ -114,7 +114,7 @@
   }
 }
 
-/* ── Disabled product (offering turned off in system) ────────────── */
+/* Disabled product (offering turned off in system) */
 
 .cart-item.product-disabled {
   opacity: 0.45;
@@ -131,7 +131,7 @@
   }
 }
 
-/* ── Unavailable at chosen location ──────────────────────────────── */
+/* Unavailable at chosen location */
 
 .cart-item.not-available-at-location {
   background: rgba(200, 149, 92, 0.05);
@@ -146,7 +146,7 @@
   }
 }
 
-/* ── Order info (product name + quantity) ────────────────────────── */
+/* Order info (product name + quantity) */
 
 .order-info {
   flex: 1;
@@ -185,7 +185,7 @@
   }
 }
 
-/* ── Order extra (price + remove) ────────────────────────────────── */
+/* Order extra (price + remove) */
 
 .order-extra {
   display: flex;
@@ -209,7 +209,7 @@
   color: var(--color-accent-gold);
 }
 
-/* ── Remove button ───────────────────────────────────────────────── */
+/* Remove button */
 
 .remove-button {
   border: none;
@@ -230,7 +230,7 @@
   }
 }
 
-/* ── Comment button ──────────────────────────────────────────────── */
+/* Comment button */
 
 .add-comment-button {
   color: var(--color-text-muted);
@@ -248,7 +248,7 @@
   }
 }
 
-/* ── Cart total ──────────────────────────────────────────────────── */
+/* Cart total */
 
 .cart-total {
   display: flex;
@@ -280,7 +280,7 @@
   letter-spacing: 0.02em;
 }
 
-/* ── Buttons ─────────────────────────────────────────────────────── */
+/* Buttons */
 
 .button-product {
   text-align: center;
@@ -339,7 +339,7 @@
   }
 }
 
-/* ── Mobile ──────────────────────────────────────────────────────── */
+/* Mobile */
 
 @media (max-width: 600px) {
   .basket-page {

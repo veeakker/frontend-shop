@@ -22,12 +22,14 @@
       {{/if}}
       {{!-- <LinkTo @route="webshop.help"><i class="fas fa-question-circle"></i></LinkTo>  --}}
 
-      <LinkTo @route="webshop.basket">
+      <LinkTo @route="webshop.basket" class={{if this.basket.orderLines.length "basket-nav--filled"}}>
         {{#if this.basket.orderLines.length}}
-          {{this.basket.orderLines.length}}
+          <span class="basket-nav__count">{{this.basket.orderLines.length}}</span>
         {{/if}}
         <i class="fas fa-shopping-basket"></i>
-        {{euros this.basket.totalPrice}}
+        {{#if this.basket.orderLines.length}}
+          <span class="basket-nav__price">{{euros this.basket.totalPrice}}</span>
+        {{/if}}
       </LinkTo>
     </div>
   </div>
