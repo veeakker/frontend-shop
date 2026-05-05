@@ -1,0 +1,7 @@
+.veeakker-home-map__leaflet-map {
+  .leaflet-map {
+    height: 400px;
+    width: 100%;
+    border-radius: 0 4rem 0 4rem; /* original asymmetric shape for home/overview pages */
+  }
+}

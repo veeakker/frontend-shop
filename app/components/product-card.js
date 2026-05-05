@@ -174,6 +174,20 @@ export default class ProductCardComponent extends Component {
     return this.args.product?.sortedOfferings?.firstObject;
   }
 
+  get basketCount() {
+    const orderLines = this.basket.orderLinesR;
+    if (!orderLines?.length) return 0;
+
+    const myOfferingIds = new Set(
+      (this.unpackedOfferings || []).map(o => o.offering?.id).filter(Boolean)
+    );
+    if (!myOfferingIds.size) return 0;
+
+    return orderLines
+      .filter(line => myOfferingIds.has(line.belongsTo('offering').id()))
+      .reduce((sum, line) => sum + (line.amount || 0), 0);
+  }
+
   get detailClass() {
     return this.showDetail ? "detail" : "";
   }

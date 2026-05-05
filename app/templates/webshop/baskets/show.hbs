@@ -41,6 +41,9 @@
         <button type="button" {{on "click" (fn this.addToBasket orderLine)}}>
           <i class="fas fa-plus"></i> Voeg toe aan huidig mandje
         </button>
+        {{#if (this.isAlreadyInBasket orderLine)}}
+          <span class="already-in-basket-note">In huidig mandje</span>
+        {{/if}}
       </:order-extra>
     </Webshop::OrderLines>
   </div>

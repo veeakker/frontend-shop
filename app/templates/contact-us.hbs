@@ -1,26 +1,33 @@
-{{outlet}}
 <div class="contact">
   <div class="onstopbanner">
     <h1 class="uppercase">Contacteer Veeakker</h1>
-    <Design::Forks/>
+    <Design::Forks />
   </div>
 
   <div class="contact-content">
-    <p class="adres">
-        <h3 class="uppercase">Adres</h3>
-        Koelhuis - Kantoor<br/>
-        Neringstraat 24<br/>
-        3300 Tienen<br/>
-        <a href="mailto:info@veeakker.be" property="email">info@veeakker.be</a><br>
-        <a href="tel:+3216206238" property="telephone">016/20.62.38</a><br>
-        Tijdens leveringen: <a href="tel:+32475983162">0475/98.31.62</a><br>
-        BTW: BE0502627373<br/>
-        Rekeningnummer: BE31001682654855
-    </p>
+    <div class="contact-details">
+      <span class="contact-section-label">Adres</span>
+      <address class="contact-address">
+        Koelhuis - Kantoor<br />
+        Neringstraat 24<br />
+        3300 Tienen
+      </address>
 
+      <ul class="contact-links">
+        <li><a href="mailto:info@veeakker.be">info@veeakker.be</a></li>
+        <li><a href="tel:+3216206238">016/20.62.38</a></li>
+        <li>Tijdens leveringen: <a href="tel:+32475983162">0475/98.31.62</a></li>
+      </ul>
 
-    <div class="kaart">
-      <h3 class="uppercase">Kaart</h3>
+      <dl class="contact-legal">
+        <dt>BTW</dt>
+        <dd>BE0502627373</dd>
+        <dt>Rekening</dt>
+        <dd>BE31 0016 8265 4855</dd>
+      </dl>
+    </div>
+
+    <div class="contact-map">
       <VeeakkerHomeMap />
     </div>
   </div>

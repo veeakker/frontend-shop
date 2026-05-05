@@ -127,6 +127,15 @@
   }
 }
 
+/* Already-in-basket note under re-order button */
+.already-in-basket-note {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  font-family: 'Open Sans', sans-serif;
+  margin-top: var(--space-1);
+}
+
 /* "Add to current basket" button in order lines */
 .order .cart-item .order-extra button {
   background: transparent;

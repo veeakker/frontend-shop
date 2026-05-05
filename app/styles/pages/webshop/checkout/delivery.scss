@@ -125,6 +125,11 @@
 .delivery-map {
   margin: var(--space-4) calc(-1 * var(--space-8));
 
+  @media (max-width: 600px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .leaflet-map {
     height: 32rem;
     width: 100%;
@@ -288,6 +293,8 @@
   color: var(--color-text-muted) !important;
   font-size: 18px;
   padding: var(--space-2) var(--space-3) !important;
+  right: var(--space-2) !important;
+  top: var(--space-1) !important;
 
   &:hover {
     color: var(--color-text-primary) !important;

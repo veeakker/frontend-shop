@@ -8,7 +8,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-
   overflow: hidden;
 }
 
@@ -36,7 +35,7 @@
     #mobile-menu {
       font-size: 20px;
       display: inline;
-    } 
+    }
 
     a {
       display: none;
@@ -58,21 +57,49 @@
       border-bottom: solid 1px var(--color-border);
       margin: 0 5px;
     }
+
+    a.active {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
   }
 }
 
-
 @media screen and (min-width: 1024px) {
+  .top-menu {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .logo-veeakker {
+    float: none;
+    display: flex;
+    align-items: center;
+  }
+
   #veeakker-menu {
+    float: none;
+    margin: 0 2% 0 0;
+    display: flex;
+    align-items: stretch;
+
     #mobile-menu {
       display: none;
-    } 
-  
+    }
+
     a {
       font-size: 20px;
       color: var(--color-text-primary);
-
       margin-right: 40px;
+      display: flex;
+      align-items: center;
+      border-bottom: 3px solid transparent;
+    }
+
+    a.active {
+      border-bottom: 3px solid var(--color-primary);
     }
   }
 }

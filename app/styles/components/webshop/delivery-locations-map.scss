@@ -69,7 +69,8 @@
 
   .pickup-list {
     height: auto;
-    max-height: 14rem;
+    max-height: none;
+    overflow-y: visible;
     border-left: none;
     border-top: 1px solid var(--color-border);
   }

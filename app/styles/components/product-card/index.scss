@@ -7,6 +7,7 @@
   margin: var(--space-3);
   overflow: hidden;
   height: 360px;
+  position: relative;
   background-color: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -103,6 +104,20 @@
       display: block;
       margin: 0;
     }
+  }
+
+  /* Golden corner fold when this product is already in the basket */
+  &.product-card--in-basket::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 32px 32px 0;
+    border-color: transparent var(--color-primary) transparent transparent;
+    z-index: 4;
   }
 
   /* Expanded / detail mode - same card height, picture shrinks to reveal ordering UI */
@@ -240,6 +255,32 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: calc(-1 * var(--space-10));
+}
+
+.basket-fold-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.basket-fold-badge__count {
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1;
+  transform: rotate(45deg);
+  position: relative;
+  text-align: center;
+  left: 7px;
+  top: -6px;
 }
 
 .button-product {
