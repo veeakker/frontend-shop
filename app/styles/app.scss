@@ -19,6 +19,16 @@ body {
   background-attachment: fixed; /* noise stays still while content scrolls */
 }
 
+[data-theme="light"] body {
+  @include textures.texture-noise(0.035);
+}
+
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) body {
+    @include textures.texture-noise(0.035);
+  }
+}
+
 /* Generic button */
 
 button.button {
@@ -74,6 +84,16 @@ footer {
   align-items: center;
   margin-top: auto;
   @include textures.texture-grain();
+
+  [data-theme="light"] & {
+    @include textures.texture-grain-light();
+  }
+
+  @media (prefers-color-scheme: light) {
+    html:not([data-theme="dark"]) & {
+      @include textures.texture-grain-light();
+    }
+  }
 
   a {
     color: var(--color-text-muted);

@@ -1,4 +1,4 @@
-/* Leaflet map - theme-aware defaults 
+/* Leaflet map - theme-aware defaults
    Targets .leaflet-map, our custom class on <DeliveryLocationsMap>.
    Does NOT affect veeakker-home-map (no leaflet-map class there). */
 
@@ -10,7 +10,7 @@
      water/parks look less garish; saturate tones down the remainder.
      This gives far better readability than dark_all tiles. */
   .leaflet-tile-pane {
-    filter: invert(1) hue-rotate(180deg) saturate(0.35) brightness(0.95) sepia(0.15);
+    filter: invert(1) hue-rotate(180deg) saturate(1.5) brightness(1.1) sepia(0.3);
   }
 
   /* Dark mode: img-based icons - invert to make visible, pull brightness
@@ -36,7 +36,8 @@
 [data-theme="light"] {
   /* Light mode: light_all tiles - darken to match brand tone */
   .leaflet-map .leaflet-tile-pane {
-    filter: saturate(0.7) brightness(0.6) sepia(0.3);
+    /* filter: saturate(0.7) brightness(0.6) sepia(0.3); */
+    filter: saturate(1) brightness(1) sepia(0);
   }
 
   /* Light mode: restore original icon colours */
@@ -47,5 +48,21 @@
   /* Selected place in light mode: amber glow only */
   .leaflet-map .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
     filter: drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) {
+    .leaflet-map .leaflet-tile-pane {
+      filter: saturate(0.8) brightness(0.9) sepia(0.2);
+    }
+
+    .leaflet-map .leaflet-marker-icon:not(.leaflet-div-icon) {
+      filter: none;
+    }
+
+    .leaflet-map .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
+      filter: drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
+    }
   }
 }

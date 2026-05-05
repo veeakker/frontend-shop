@@ -8,6 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/images/logo-veeakker.png">
 
+  <script>
+    (function(){var t=localStorage.getItem('veeakker-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+
   {{content-for "head"}}
 
   <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">

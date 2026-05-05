@@ -1,5 +1,5 @@
-// Reusable texture mixins for the dark premium theme.
-// All at very low opacity — texture should be felt, not seen.
+// Reusable texture mixins — "felt not seen" at all opacity levels.
+// Dark variants use white lines; light variants use near-black lines.
 
 // Subtle noise grain — applied to the app background to add warmth and depth.
 // Uses an SVG feTurbulence filter rendered as a tiling background image.
@@ -9,9 +9,7 @@
   background-repeat: repeat;
 }
 
-// Fine linen weave — applied to card surfaces.
-// Two sets of faint lines crossing at right angles at a slight offset angle,
-// creating a woven textile feel without being distracting.
+// Fine linen weave — applied to card surfaces (dark backgrounds).
 @mixin texture-linen() {
   background-image:
     repeating-linear-gradient(
@@ -30,8 +28,26 @@
     );
 }
 
-// Subtle wood grain — very faint diagonal lines for larger dark surfaces
-// like navigation bars.
+// Fine linen weave — light background variant.
+@mixin texture-linen-light() {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0, 0, 0, 0.018) 3px,
+      rgba(0, 0, 0, 0.018) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 5px,
+      rgba(0, 0, 0, 0.012) 5px,
+      rgba(0, 0, 0, 0.012) 6px
+    );
+}
+
+// Subtle wood grain — faint diagonal lines for larger dark surfaces.
 @mixin texture-grain() {
   background-image: repeating-linear-gradient(
     105deg,
@@ -39,5 +55,16 @@
     transparent 8px,
     rgba(255, 255, 255, 0.008) 8px,
     rgba(255, 255, 255, 0.008) 9px
+  );
+}
+
+// Subtle wood grain — light background variant.
+@mixin texture-grain-light() {
+  background-image: repeating-linear-gradient(
+    105deg,
+    transparent,
+    transparent 8px,
+    rgba(0, 0, 0, 0.010) 8px,
+    rgba(0, 0, 0, 0.010) 9px
   );
 }

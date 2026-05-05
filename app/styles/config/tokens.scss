@@ -31,6 +31,20 @@
   --color-text-inverse:   #14110F;  /* dark-on-light (inside CTA buttons) */
   --color-text-accent:    #C8955C;  /* amber - emphasis, active states */
 
+  /* Navigation on dark photo header — same in both modes since photo never changes */
+  --color-nav-text:       #F0E8DC;
+
+  /* Navigation bar links (category + subcategory nav — always on dark brown bar) */
+  --color-nav-bar-text:       #9A8C7E;
+  --color-nav-bar-text-hover: #F0E8DC;
+  --color-nav-bar-active:     #C8955C;
+
+  /* Navigation bar backgrounds (webshop category nav) */
+  --color-nav-bg:                 #1E1A16;
+  --color-nav-bg-hover:           #2A231D;
+  --color-nav-secondary-bg:       #252019;
+  --color-nav-secondary-bg-hover: #3A3028;
+
   /* Type scale */
   --text-xs:   0.75rem;
   --text-sm:   0.875rem;
@@ -41,9 +55,10 @@
   --text-3xl:  2rem;
   --text-4xl:  2.75rem;
 
-  --leading-tight:  1.2;
-  --leading-normal: 1.5;
-  --leading-loose:  1.7;
+  --leading-tight:   1.2;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.6;
+  --leading-loose:   1.7;
 
   /* Spacing (8-point grid) */
   --space-1:  0.25rem;
@@ -79,30 +94,49 @@
   --transition-slow: 400ms ease;
 }
 
-/* Light theme */
-[data-theme="light"] {
-  --color-primary:        #443B36;
-  --color-primary-dark:   #2A1F17;
-  --color-secondary:      #AD9A89;
-  --color-secondary-dark: #8C7A68;
-  --color-accent-tan:     #AD9A89;
-  --color-accent-eco:     #5A8040;
-  --color-accent-gold:    #A07820;
-  --color-surface:        #E1DBD5;
-  --color-surface-card:   #F5F0EA;
-  --color-surface-input:  #EDE8E2;
-  --color-surface-overlay:#D5CCC4;
-  --color-border:         #C4B8AE;
-  --color-border-strong:  #AD9A89;
-  --color-border-focus:   #443B36;
-  --color-text-primary:   #2A1F17;
-  --color-text-muted:     #6B5D54;
-  --color-text-faint:     #A09088;
-  --color-text-inverse:   #FFFFFF;
-  --color-text-accent:    #443B36;
+/* Light theme — warm parchment, amber accent preserved as brand signature */
+@mixin light-theme-vars {
+  --color-primary:        #B0701E;  /* amber, deeper for contrast on cream */
+  --color-primary-dark:   #8A5410;
+  --color-secondary:      #8A7060;
+  --color-secondary-dark: #6E5848;
+  --color-accent-tan:     #C09060;
+  --color-accent-eco:     #4E7A30;  /* richer sage green */
+  --color-accent-gold:    #C09A18;
+  --color-surface:        #F0E6D2;  /* warm parchment */
+  --color-surface-card:   #FAF5EB;  /* cream near-white */
+  --color-surface-input:  #EDE4D6;
+  --color-surface-overlay:#E0D4C0;
+  --color-border:         #C8B090;
+  --color-border-strong:  #B09070;
+  --color-border-focus:   #B0701E;
+  --color-text-primary:   #1A100A;  /* rich dark chocolate */
+  --color-text-muted:     #6B4A30;
+  --color-text-faint:     #9A7A60;
+  --color-text-inverse:   #FAF5EB;
+  --color-text-accent:    #B0701E;
   --color-error:          #C0392B;
-  --shadow-card:   0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.12);
-  --shadow-float:  0 8px 32px rgba(0, 0, 0, 0.18);
-  --shadow-glow:   0 0 20px rgba(68, 59, 54, 0.25);
+  --color-nav-bg:                 #443b36;  /* old site $base-primary */
+  --color-nav-bg-hover:           #2b2521;  /* old site $base-primary-highlighted */
+  --color-nav-secondary-bg:       #726056;  /* old site $base-secondary */
+  --color-nav-secondary-bg-hover: #584a43;  /* old site $base-secondary-highlighted */
+  /* nav bar links stay white-ish on these dark brown bars */
+  --color-nav-bar-text:       #F0E8DC;
+  --color-nav-bar-text-hover: #FFFFFF;
+  --color-nav-bar-active:     #F0E8DC;
+  --shadow-card:   0 2px 8px  rgba(50, 25,  8, 0.09);
+  --shadow-raised: 0 4px 16px rgba(50, 25,  8, 0.13);
+  --shadow-float:  0 8px 32px rgba(50, 25,  8, 0.19);
+  --shadow-glow:   0 0 24px   rgba(180, 120, 40, 0.35);
+}
+
+[data-theme="light"] {
+  @include light-theme-vars;
+}
+
+/* Auto-detect: apply light theme when OS prefers light, unless manually locked to dark */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    @include light-theme-vars;
+  }
 }

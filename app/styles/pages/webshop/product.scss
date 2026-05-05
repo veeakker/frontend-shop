@@ -4,6 +4,8 @@
   padding: 5%;
 
   .fav-button {
+    display: none;
+
     text-decoration: none;
     text-align: center;
     color: var(--color-text-primary);
@@ -166,6 +168,10 @@ dl.general-product-information {
   color: var(--color-text-primary);
   text-align: left;
   width: 600px;
+
+  .image-of-packages {
+    height: 100px;
+  }
 
   h3 {
     font-size: 20px;
