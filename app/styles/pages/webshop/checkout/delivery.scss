@@ -1,5 +1,3 @@
-@use "../../../config/textures";
-
 .delivery-contact {
   color: var(--color-text-primary);
   width: 100%;
@@ -30,6 +28,12 @@
   background: rgba(200, 149, 92, 0.1);
   border-bottom: 1px solid rgba(200, 149, 92, 0.25);
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+
+  @media (max-width: 600px) {
+    margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-4)) var(--space-6);
+    padding: var(--space-4);
+    border-radius: 0;
+  }
 }
 
 .finish-banner__icon {
@@ -89,6 +93,11 @@
   color: var(--color-text-muted) !important;
 }
 
+/* "Bestelde producten" card on finish page — matches .contact-info width */
+.finish-page ~ .order {
+  padding: 0;
+}
+
 /* LFW upsell - sits below the order receipt */
 .finish-upsell {
   max-width: 800px;
@@ -133,7 +142,7 @@
   .leaflet-map {
     height: 32rem;
     width: 100%;
-    left: 0; /* overrides the locations-page global left: 10% */
+    left: 0;
     border-left: none;
     border-right: none;
     border-top: 1px solid var(--color-border);

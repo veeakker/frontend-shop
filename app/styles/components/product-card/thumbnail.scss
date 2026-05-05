@@ -9,3 +9,16 @@
 .product-image.product-image-default {
   background-color: var(--color-surface-card);
 }
+
+@mixin default-image-light {
+  .product-image-default {
+    filter: invert(1);
+    background-color: transparent; /* let picture-info's light bg show through instead of inverting the card colour */
+  }
+}
+
+[data-theme="light"] { @include default-image-light; }
+
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) { @include default-image-light; }
+}

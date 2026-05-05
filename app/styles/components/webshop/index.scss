@@ -3,12 +3,6 @@
 @use 'delivery-method-card.scss';
 @use 'delivery-locations-map';
 
-.map-title{
-    text-align: center;
-}
-
-.locations-map {
-  border-top-right-radius: 4rem;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 4rem;
+.map-title {
+  text-align: center;
 }

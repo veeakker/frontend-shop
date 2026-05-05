@@ -2,6 +2,18 @@
    Targets .leaflet-map, our custom class on <DeliveryLocationsMap>.
    Does NOT affect veeakker-home-map (no leaflet-map class there). */
 
+@mixin leaflet-light-mode {
+  .leaflet-map .leaflet-tile-pane {
+    filter: none;
+  }
+  .leaflet-map .leaflet-marker-icon:not(.leaflet-div-icon) {
+    filter: none;
+  }
+  .leaflet-map .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
+    filter: drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
+  }
+}
+
 .leaflet-map {
   background: var(--color-surface-card); /* prevents light-grey flash before tiles arrive */
 
@@ -33,36 +45,8 @@
   }
 }
 
-[data-theme="light"] {
-  /* Light mode: light_all tiles - darken to match brand tone */
-  .leaflet-map .leaflet-tile-pane {
-    /* filter: saturate(0.7) brightness(0.6) sepia(0.3); */
-    filter: saturate(1) brightness(1) sepia(0);
-  }
-
-  /* Light mode: restore original icon colours */
-  .leaflet-map .leaflet-marker-icon:not(.leaflet-div-icon) {
-    filter: none;
-  }
-
-  /* Selected place in light mode: amber glow only */
-  .leaflet-map .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
-    filter: drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
-  }
-}
+[data-theme="light"] { @include leaflet-light-mode; }
 
 @media (prefers-color-scheme: light) {
-  html:not([data-theme="dark"]) {
-    .leaflet-map .leaflet-tile-pane {
-      filter: saturate(0.8) brightness(0.9) sepia(0.2);
-    }
-
-    .leaflet-map .leaflet-marker-icon:not(.leaflet-div-icon) {
-      filter: none;
-    }
-
-    .leaflet-map .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
-      filter: drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
-    }
-  }
+  html:not([data-theme="dark"]) { @include leaflet-light-mode; }
 }

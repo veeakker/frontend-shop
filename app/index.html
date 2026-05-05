@@ -9,7 +9,20 @@
   <link rel="icon" href="/images/logo-veeakker.png">
 
   <script>
-    (function(){var t=localStorage.getItem('veeakker-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);})();
+    (function(){
+      function gc(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):null;}
+      function sc(n,v,age){document.cookie=n+'='+encodeURIComponent(v)+'; path=/; max-age='+age+'; SameSite=Lax';}
+      var osNow=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+      var osLast=gc('veeakker-theme-os');
+      var pref=gc('veeakker-theme')||localStorage.getItem('veeakker-theme');
+      sc('veeakker-theme-os',osNow,31536000);
+      if(osLast&&osLast!==osNow){
+        sc('veeakker-theme','',0);
+        try{localStorage.removeItem('veeakker-theme');}catch(e){}
+      } else if(pref==='light'||pref==='dark'){
+        document.documentElement.setAttribute('data-theme',pref);
+      }
+    })();
   </script>
 
   {{content-for "head"}}

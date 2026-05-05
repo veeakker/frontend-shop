@@ -322,12 +322,10 @@
 
 [data-theme="light"] {
   .product-card { @include textures.texture-linen-light(); }
-  .product-image-default { filter: invert(1); background-color: var(--color-primary-light); }
 }
 
 @media (prefers-color-scheme: light) {
   html:not([data-theme="dark"]) {
     .product-card { @include textures.texture-linen-light(); }
-    .product-image-default { filter: invert(1); }
   }
 }

@@ -14,7 +14,7 @@
       </h3>
       <h4><Webshop::Basket::Amount @amount={{orderLine.offering.typeAndQuantity}} /> <i class="fas fa-times"></i>{{orderLine.amount}} pakje{{#if (gte orderLine.amount 2)}}s{{/if}}</h4>
       {{#unless orderLine.availableForBasketLocation}}
-        <p class="product-unavailable-message">Niet beschikbaar op de gekozen locatie.</p>
+        <p class="product-unavailable-message">&#x26A0; Niet beschikbaar op de gekozen locatie.</p>
       {{/unless}}
       {{#if @removeOrderLine}}
         <Util::OpenClosed @defaultOpen={{orderLine.monitoredComment}}>
