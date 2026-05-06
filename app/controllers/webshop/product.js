@@ -21,10 +21,12 @@ class OfferingsForUnitResource extends Resource {
     this.product = await this.args.positional[0];
     this.unit = await this.args.positional[1];
 
-    const offerings = (await this.product.offerings).toArray();
+    const allOfferings = (await this.product.offerings).toArray();
 
-    await RSVP.all(offerings);
-    await RSVP.all(offerings.map((o) => o.typeAndQuantity));
+    await RSVP.all(allOfferings);
+    await Promise.all(allOfferings.map((o) => o.typeAndQuantity));
+
+    const offerings = allOfferings.filter((o) => o.isEnabled);
 
     let unitCode;
     switch (this.unit) {
@@ -55,12 +57,13 @@ class OfferTypeResource extends Resource {
 
   async setup() {
     const product = await this.args.positional[0];
-    const offerings = (await product.offerings).toArray();
-    await RSVP.all(offerings);
-    let typeAndQuantityUnits =
-      (await RSVP.all(offerings.map((o) => o.typeAndQuantity)))
-        .toArray()
-        .map((typeAndQuantity) => typeAndQuantity.unit);
+    const allOfferings = (await product.offerings).toArray();
+    await RSVP.all(allOfferings);
+    await Promise.all(allOfferings.map((o) => o.typeAndQuantity));
+
+    const typeAndQuantityUnits = allOfferings
+      .filter((o) => o.isEnabled)
+      .map((o) => o.get('typeAndQuantity.unit'));
 
     this.value =
       [...new Set(typeAndQuantityUnits)]
