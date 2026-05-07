@@ -13,6 +13,15 @@ export default class WebshopCheckoutContactInfoController extends Controller {
   @tracked isSaving = false;
 
   @action
+  async goForward() {
+    if (!this.session.isAuthenticated && this.warnings.length) {
+      this.showWarnings = true;
+    } else {
+      await this.persistAndContinue();
+    }
+  }
+
+  @action
   async persistAndContinue() {
     this.isSaving = true;
     try {
