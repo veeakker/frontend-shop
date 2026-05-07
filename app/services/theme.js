@@ -71,9 +71,15 @@ export default class ThemeService extends Service {
   }
 
   _apply(preference) {
-    const root = document.documentElement;
-    if (preference === 'light')      root.setAttribute('data-theme', 'light');
-    else if (preference === 'dark')  root.setAttribute('data-theme', 'dark');
-    else                             root.removeAttribute('data-theme');
+    const effective = preference === 'auto'
+      ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+      : preference;
+
+    document.documentElement.setAttribute('data-theme', effective);
+
+    const meta = document.head.querySelector('meta[name="color-scheme"]');
+    if (meta) {
+      meta.content = effective === 'light' ? 'only light' : 'dark';
+    }
   }
 }

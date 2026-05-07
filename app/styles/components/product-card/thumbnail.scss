@@ -18,7 +18,3 @@
 }
 
 [data-theme="light"] { @include default-image-light; }
-
-@media (prefers-color-scheme: light) {
-  html:not([data-theme="dark"]) { @include default-image-light; }
-}

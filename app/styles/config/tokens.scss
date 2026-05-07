@@ -1,4 +1,6 @@
 :root {
+  color-scheme: dark light; /* page manages both themes itself — prevents browser from applying its own auto-dark */
+
   /* Brand / accent */
   /* Primary = the CTA / highlight colour (amber-copper) */
   --color-primary:        #C8955C;
@@ -96,6 +98,7 @@
 
 /* Light theme — warm parchment, amber accent preserved as brand signature */
 @mixin light-theme-vars {
+  color-scheme: only light; /* 'only' prevents browser Auto Dark from overriding explicit light mode */
   --color-primary:        #B0701E;  /* amber, deeper for contrast on cream */
   --color-primary-dark:   #8A5410;
   --color-secondary:      #8A7060;
@@ -134,9 +137,7 @@
   @include light-theme-vars;
 }
 
-/* Auto-detect: apply light theme when OS prefers light, unless manually locked to dark */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    @include light-theme-vars;
-  }
+[data-theme="dark"] {
+  color-scheme: dark; /* explicit dark override — locks native elements to dark even if OS is light */
 }
+

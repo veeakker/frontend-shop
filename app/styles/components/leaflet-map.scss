@@ -4,7 +4,7 @@
 
 @mixin leaflet-light-mode {
   .leaflet-map .leaflet-tile-pane {
-    filter: none;
+    filter: sepia(0.1);
   }
   .leaflet-map .leaflet-marker-icon:not(.leaflet-div-icon) {
     filter: none;
@@ -46,7 +46,3 @@
 }
 
 [data-theme="light"] { @include leaflet-light-mode; }
-
-@media (prefers-color-scheme: light) {
-  html:not([data-theme="dark"]) { @include leaflet-light-mode; }
-}

@@ -2,6 +2,15 @@
   .leaflet-map {
     height: 400px;
     width: 100%;
-    border-radius: 0 4rem 0 4rem; /* original asymmetric shape for home/overview pages */
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-raised);
   }
 }
+
+/* Light mode: apply the same invert filter the dark mode already uses,
+   so the blue default marker reads as warm/gold in both themes. */
+[data-theme="light"] .veeakker-home-map__leaflet-map .leaflet-map .leaflet-marker-icon:not(.leaflet-div-icon) {
+  filter: invert(1) sepia(0.25) brightness(1);
+}
+

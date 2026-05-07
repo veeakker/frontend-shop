@@ -324,8 +324,3 @@
   .product-card { @include textures.texture-linen-light(); }
 }
 
-@media (prefers-color-scheme: light) {
-  html:not([data-theme="dark"]) {
-    .product-card { @include textures.texture-linen-light(); }
-  }
-}

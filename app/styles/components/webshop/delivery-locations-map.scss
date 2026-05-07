@@ -59,7 +59,8 @@
 }
 
 .home-location-marker {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+  /* Always inverted — same warm look as all other standalone map markers */
+  filter: invert(1) sepia(0.25) brightness(1) !important;
 }
 
 @media (max-width: 600px) {
