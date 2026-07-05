@@ -4,7 +4,17 @@
     max-width: 1024px;
     margin: 0 auto;
     padding: 0;
-    color: #443B36;
+    color: var(--color-text-primary);
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-text-accent);
+    }
   }
 
   h1, h2, h3 ,h4 {

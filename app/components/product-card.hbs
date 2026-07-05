@@ -1,4 +1,9 @@
-<div class="product-card {{this.detailClass}}">
+<div class="product-card {{this.detailClass}}{{if this.basketCount " product-card--in-basket"}}">
+  {{#if this.basketCount}}
+    <span class="basket-fold-badge" aria-hidden="true">
+      <span class="basket-fold-badge__count">{{this.basketCount}}</span>
+    </span>
+  {{/if}}
   <div
     class={{concat "picture-info" (if @product.isEnabled "" " product-disabled")}}
     {{action (mut this.showDetail) (not this.showDetail)}}

@@ -141,28 +141,28 @@ export default class ProductCardComponent extends Component {
   async defaultOffering() {
     // TODO: default offering should be a default offering chosen in the backend
     const offerings = (await this.args.product.offerings).toArray();
-    const unpacked = await unpackOfferings(offerings);
+    const unpacked = (await unpackOfferings(offerings)).filter(o => o.enabled);
 
     // first check the lowest amount of pieces which can be ordered,
     if ( unpacked.find(({unit}) => unit == "C62") ) {
       return unpacked
         .filter(({unit}) => unit == "C62")
         .sort(({quantity: a},{quantity: b}) => a - b)
-        .firstObject
-        .offering;
-    // then check the lowest amount of g or kgfor now
+        [0]
+        ?.offering;
+    // then check the lowest amount of g or kg for now
     } else if ( unpacked.find(({unit}) => unit == "GRM" || unit == "KGM") ) {
       return unpacked
         .filter(({unit}) => unit == "GRM" || unit == "KGM")
         .sort(({quantity: a},{quantity: b}) => a - b)
-        .firstObject
-        .offering;
+        [0]
+        ?.offering;
     // lastly just return the first object because this is weird
     } else {
       captureMessage(`Just returning the first available offering as defaultOffering`, {
         extra: { unpacked }
       });
-      return unpacked.firstObject?.offering;
+      return unpacked[0]?.offering;
     }
   }
 
@@ -172,6 +172,20 @@ export default class ProductCardComponent extends Component {
 
   get firstOffer() {
     return this.args.product?.sortedOfferings?.firstObject;
+  }
+
+  get basketCount() {
+    const orderLines = this.basket.orderLinesR;
+    if (!orderLines?.length) return 0;
+
+    const myOfferingIds = new Set(
+      (this.unpackedOfferings || []).map(o => o.offering?.id).filter(Boolean)
+    );
+    if (!myOfferingIds.size) return 0;
+
+    return orderLines
+      .filter(line => myOfferingIds.has(line.belongsTo('offering').id()))
+      .reduce((sum, line) => sum + (line.amount || 0), 0);
   }
 
   get detailClass() {
@@ -228,5 +242,5 @@ export default class ProductCardComponent extends Component {
   possibleOffers = new AvailableOffersResource( () => [this.availableOfferings, this.currentUnit] );
 
   @use
-  availableUnits = new OfferTypeResource( () => [this.unpackedOfferings] )
+  availableUnits = new OfferTypeResource( () => [this.availableOfferings] )
 }

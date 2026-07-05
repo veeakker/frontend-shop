@@ -25,25 +25,18 @@
   @media only screen and (max-width: 500px) {
     .row{
       grid-template-columns: auto  auto;
-    }  
+    }
   }
   @media only screen and (max-width: 300px) {
     .row{
       grid-template-columns: auto;
-    }  
+    }
   }
 
   .column {
-    
     padding: 0 10px;
     margin-top: 50px;
   }
-
-  /*.row {
-    margin: 0 10px;
-    max-width: 1208px;
-    margin: 0 auto;
-  }*/
 
   .row:after {
     content: "";
@@ -52,9 +45,8 @@
   }
 
   .card {
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
     text-align: center;
-    border: 3px solid #443B36;
+    border: 3px solid var(--color-primary);
     padding-bottom: 30px;
   }
 
@@ -68,28 +60,28 @@
 
   .card h3, .card p {
     padding: 13px 16px;
-    color: #443B36;
+    color: var(--color-text-primary);
   }
 
   .card .newsbutton {
-    border-bottom: 3px solid #443B36;
-    /*border: 1px solid #443B36;*/
-    color: #443B36;
+    border-bottom: 3px solid var(--color-primary);
+    color: var(--color-text-primary);
     font-size: 12px;
     padding: 8px 15px 5px 15px;
     width: 110px;
     margin: 0 auto;
+    transition: background-color var(--transition-base), color var(--transition-base);
   }
 
   .card .newsbutton:hover {
-    background-color: #443B36;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
   }
 
   #nieuwsitem p {
     margin: 0 auto;
     max-width: 1040px;
-    color: #443B36;
+    color: var(--color-text-primary);
     text-align: justify;
     padding: 20px 20px 50px 20px;
   }
@@ -105,7 +97,7 @@
     margin: 0 auto;
     font-size: 18px;
     margin-top: 50px;
-    color: #443B36;
+    color: var(--color-text-primary);
     max-width: 1040px;
     padding: 0px 20px;
   }

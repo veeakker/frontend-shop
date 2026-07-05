@@ -1,29 +1,29 @@
 .locaties .extra-menu {
   a {
-    transition: background-color ease-in-out 0.5s;
+    transition: background-color var(--transition-base), color var(--transition-base);
     text-transform: uppercase;
     display: block;
     float: left;
     width: 184px;
-    border-bottom: 3px solid #AD9A89;
+    border-bottom: 3px solid var(--color-border);
     margin-top: 0px;
     padding: 10px 10px 7px 10px;
-    color: #443B36;
+    color: var(--color-text-primary);
     font-size: 83%;
     font-weight: bold;
   }
 
   a:hover {
-    background-color: #AD9A89;
-    color: #ffffff;
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-inverse);
   }
 
   a.active {
-    border-bottom: 3px solid #443B36;
+    border-bottom: 3px solid var(--color-primary);
   }
 
   a.active:hover {
-    background-color: #443B36;
+    background-color: var(--color-primary);
   }
 }
 

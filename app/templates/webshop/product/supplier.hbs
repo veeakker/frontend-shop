@@ -1,7 +1,8 @@
 {{!-- template-lint-disable no-triple-curlies --}}
-<h3>{{this.model.supplier.name}}</h3>
-
-{{{this.model.supplier.description}}}
+<h4 class="tab-supplier-name">{{this.model.supplier.name}}</h4>
+<div class="prose-content">
+  {{{this.model.supplier.description}}}
+</div>
 
 {{page-title "Leverancier"}}
 {{outlet}}

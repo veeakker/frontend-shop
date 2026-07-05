@@ -1,7 +1,11 @@
-$light-base: #f1f1f1;
-$neutral-background: #E1DBD5;
+// Legacy SCSS variables — used by older components that haven't moved to
+// CSS custom properties yet. Keep in sync with tokens.scss semantics.
 
-$base-primary: #443b36;
-$base-primary-highlighted: #2b2521;
-$base-secondary: #726056;
-$base-secondary-highlighted: #584a43;
+$light-base:              #2A231D;
+$neutral-background:      #2A231D;
+
+// Navigation / structural dark surfaces
+$base-primary:            #1E1A16;
+$base-primary-highlighted:#2A231D;
+$base-secondary:          #252019;
+$base-secondary-highlighted: #3A3028;

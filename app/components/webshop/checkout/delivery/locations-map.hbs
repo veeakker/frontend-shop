@@ -1,10 +1,39 @@
 <h3 class="map-title">Selecteer je afhaalpunt</h3>
 
-<DeliveryLocationsMap @baseZoom={{@baseZoom}} @baseLat={{@baseLat}} @baseLng={{@baseLng}} @places={{this.locations}} class="locations-map" as |marker location|>
-  {{!-- yield marker location --}}
-  {{!-- TODO: add location name to model and show it here --}}
-  <h3>{{location.deliveryKind.simpleName}} {{location.label}}</h3>
-  <p>{{location.postalAddress.streetAddress}}<br/>{{location.postalAddress.postalCode}} {{location.postalAddress.locality}}</p>
+<div class="delivery-map-layout">
+  <DeliveryLocationsMap
+    @baseLat={{@baseLat}} @baseLng={{@baseLng}} @baseZoom={{@baseZoom}}
+    @places={{this.locations}}
+    @userLocation={{this.userLocation}}
+    @focusedLocation={{this.focusedLocation}}
+    @selectedPlaceId={{this.selectedPlaceId}}
+    class="locations-map" as |marker location|>
+    <h3>{{location.deliveryKind.simpleName}} {{location.label}}</h3>
+    <p>{{location.postalAddress.streetAddress}}<br/>{{location.postalAddress.postalCode}} {{location.postalAddress.locality}}</p>
+    {{#if (and (eq location.id this.selectedPlaceId) (not (eq location.id this._justSelectedId)))}}
+      <p class="popup-selected">Geselecteerd afhaalpunt</p>
+    {{else}}
+      <button type="button" {{on 'click' (fn this.selectPlace location)}}>Selecteer dit punt</button>
+    {{/if}}
+  </DeliveryLocationsMap>
 
-  Klik <button type="button" {{on 'click' (fn @select location)}}>hier</button> om deze locatie te selecteren.
-</DeliveryLocationsMap>
+  {{#if this.sortedLocations.length}}
+    <ul class="pickup-list">
+      {{#each this.sortedLocations as |place|}}
+        <li>
+          <button type="button"
+            class="pickup-list-item {{if (eq place.id this.selectedPlaceId) "pickup-list-item--selected"}}"
+            {{on "click" (fn this.selectFromList place)}}>
+            <span class="pickup-list-item__name">{{place.label}}</span>
+            <span class="pickup-list-item__meta">
+              {{place.postalAddress.locality}}
+              {{#if this.userLocation}}
+                · {{this.distanceTo place}} km
+              {{/if}}
+            </span>
+          </button>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>

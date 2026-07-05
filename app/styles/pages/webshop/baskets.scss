@@ -1,0 +1,177 @@
+@use "../../config/textures";
+
+/* Order history table (baskets/index) */
+
+.my-account table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Open Sans', sans-serif;
+  font-size: var(--text-sm);
+}
+
+.my-account thead th {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border-strong);
+}
+
+.my-account tbody tr {
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-fast);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: rgba(200, 149, 92, 0.05);
+  }
+}
+
+.my-account tbody td {
+  padding: var(--space-4);
+  color: var(--color-text-primary);
+  vertical-align: middle;
+}
+
+/* Status badge */
+.my-account .status-confirmed,
+.my-account td:nth-child(2) {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Basket card container */
+
+.baskets-card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+  overflow: hidden;
+  margin: var(--space-6) var(--space-12);
+  @include textures.texture-linen();
+}
+
+/* Breadcrumb (baskets/show) */
+
+.breadcrumb-cart {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  padding: var(--space-4) var(--space-12);
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    &::after {
+      content: '›';
+      color: var(--color-text-faint);
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
+
+  a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  /* Current page item */
+  li:last-child a {
+    color: var(--color-text-accent);
+    font-weight: 600;
+  }
+}
+
+/* Order detail section (baskets/show) */
+
+.order {
+  max-width: 800px;
+  margin: var(--space-6) auto var(--space-12);
+  padding: 0 var(--space-4);
+
+  h2 {
+    font-size: var(--text-xl);
+    color: var(--color-text-primary);
+    font-family: 'Varela Round', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 var(--space-4);
+  }
+
+  /* Re-order card container matching basket-card */
+  .basket-card {
+    margin: 0;
+  }
+}
+
+/* Already-in-basket note under re-order button */
+.already-in-basket-note {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  font-family: 'Open Sans', sans-serif;
+  margin-top: var(--space-1);
+}
+
+/* "Add to current basket" button in order lines */
+.order .cart-item .order-extra button {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-family: 'Open Sans', sans-serif;
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-3);
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: rgba(200, 149, 92, 0.08);
+  }
+
+  i {
+    margin-right: var(--space-1);
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 600px) {
+  .breadcrumb-cart {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .baskets-card {
+    margin: var(--space-4) 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}

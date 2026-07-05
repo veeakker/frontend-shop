@@ -11,15 +11,47 @@
           {{/each}}
         </ul>
       </div>
-      <Input required placeholder="E-mail" @type="email" @value={{this.email}} />
-      <Input required placeholder="Wachtwoord" @type="password"  @value={{this.password}} />
+
+      <div class="form-field">
+        <label for="reg-email">E-mail</label>
+        <Input id="reg-email" required @type="email" @value={{this.email}} />
+      </div>
+      <div class="form-field">
+        <label for="reg-password">Wachtwoord</label>
+        <Input id="reg-password" required @type="password" @value={{this.password}} />
+      </div>
+
       <hr />
-      <Input placeholder="Voornaam" @type="text" @value={{this.firstName}} required />
-      <Input required placeholder="Achternaam" @type="text"  @value={{this.lastName}} />
-      <Input required placeholder="Straat huisnummer" @type="text"  @value={{this.address}} />
-      <Input required placeholder="Postcode" @type="text"  @value={{this.postalCode}} />
-      <Input required placeholder="Gemeente" @type="text"  @value={{this.locality}} />
-      <Input required placeholder="Telefoonnummer" @type="text"  @value={{this.telephone}} />
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="reg-firstname">Voornaam</label>
+          <Input id="reg-firstname" required @type="text" @value={{this.firstName}} />
+        </div>
+        <div class="form-field">
+          <label for="reg-lastname">Achternaam</label>
+          <Input id="reg-lastname" required @type="text" @value={{this.lastName}} />
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="reg-address">Straat + huisnummer</label>
+        <Input id="reg-address" required @type="text" @value={{this.address}} />
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="reg-postal">Postcode</label>
+          <Input id="reg-postal" required @type="text" @value={{this.postalCode}} />
+        </div>
+        <div class="form-field">
+          <label for="reg-city">Gemeente</label>
+          <Input id="reg-city" required @type="text" @value={{this.locality}} />
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="reg-phone">Telefoonnummer</label>
+        <Input id="reg-phone" required @type="text" @value={{this.telephone}} />
+      </div>
+
       <div class="button-product-cart"><button type="button" class="button" {{on "click" this.register}}>Registreer</button></div>
       <div class="button-product-cart"><LinkTo @route="login">Inloggen</LinkTo></div>
     </div>

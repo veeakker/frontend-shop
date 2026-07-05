@@ -1,0 +1,16 @@
+<button
+  type="button"
+  class="delivery-method-card {{if (eq @current @id) "delivery-method-card--selected"}}"
+  {{on "click" (action (mut @current) @id)}}
+  ...attributes
+>
+  <span class="delivery-method-card__icon" aria-hidden="true">{{@icon}}</span>
+  <div class="delivery-method-card__content">
+    <strong class="delivery-method-card__title">{{@title}}</strong>
+    <p class="delivery-method-card__description">{{@description}}</p>
+    {{#if @detail}}
+      <p class="delivery-method-card__detail">{{@detail}}</p>
+    {{/if}}
+  </div>
+  <span class="delivery-method-card__price">{{@price}}</span>
+</button>

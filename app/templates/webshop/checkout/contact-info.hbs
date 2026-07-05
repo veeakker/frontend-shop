@@ -1,44 +1,140 @@
 {{outlet}}
-<ul class="breadcrumb-cart">
-  <li><LinkTo @route="webshop.basket">Winkelmandje</LinkTo></li>
-  <li><span class="breadcrumb-txt">Uw Gegevens</span></li>
-  <li><span class="breadcrumb-nxt">Levering / Afhaling</span></li>
-  <li><span class="breadcrumb-nxt">Klaar</span></li>
-</ul>
+<Webshop::CheckoutProgress @currentStep="contact-info" @onAdvance={{this.goForward}} />
 <div class="checkout-contact">
   <div class="contact-info">
-    <h2>Contact informatie</h2>
-    <p>Heeft u al een account? <LinkTo @route="login">Aanmelden</LinkTo></p>
 
-    <Input @value={{this.email}} placeholder="E-mail" />
+    {{#if this.session.isAuthenticated}}
 
-    <br />
+      <div class="auth-notice">
+        <span class="auth-notice__icon">&#x2713;</span>
+        <div>
+          <strong>Je bent aangemeld</strong>
+          <p>Controleer of bewerk je gegevens en ga verder naar de levering.</p>
+        </div>
+      </div>
 
-    <h2>Als gast bestellen</h2>
-    <Input @value={{mut this.basket.basket.invoice.firstName}} placeholder="Voornaam" /> <br />
-    <Input @value={{mut this.basket.basket.invoice.lastName}} placeholder="Achternaam" /> <br />
-    <Input @value={{mut this.basket.basket.invoice.company}} placeholder="Bedrijf + BTW nummer (optioneel)" /> <br />
-    <Input @value={{mut this.basket.basket.invoice.address.streetAddress}} placeholder="Straat + huisnummer" /> <br />
-    <Input @value={{mut this.basket.basket.invoice.address.postalCode}} placeholder="Postcode" /> <br />
-    <Input @value={{mut this.basket.basket.invoice.address.locality}} placeholder="Gemeente" /> <br />
-    <Input @value={{mut this.basket.basket.invoice.telephone}} placeholder="Gsm / Tel waarop bereikbaar bij levering / afhaling" /> <br />
-    <Input @value={{mut this.basket.basket.invoice.email}} placeholder="E-mail adres" /> <br />
+      {{#if this.model}}
 
-    {{#if this.showWarnings}}
-      <ul class="error">
-        {{#each this.warnings as |warning|}}
-          <li>{{warning}}</li>
-        {{/each}}
-      </ul>
+        <h2>Mijn gegevens</h2>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="customer-firstname">Voornaam</label>
+            <Input id="customer-firstname" @value={{mut this.model.customer.firstName}} />
+          </div>
+          <div class="form-field">
+            <label for="customer-lastname">Achternaam</label>
+            <Input id="customer-lastname" @value={{mut this.model.customer.lastName}} />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="customer-street">Straat + huisnummer</label>
+          <Input id="customer-street" @value={{mut this.model.postalAddress.streetAddress}} />
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="customer-postal">Postcode</label>
+            <Input id="customer-postal" @value={{mut this.model.postalAddress.postalCode}} />
+          </div>
+          <div class="form-field">
+            <label for="customer-city">Gemeente</label>
+            <Input id="customer-city" @value={{mut this.model.postalAddress.locality}} />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="customer-phone">GSM / Tel</label>
+          <Input id="customer-phone" @value={{mut this.model.customer.phone}} placeholder="Bereikbaar bij levering / afhaling" />
+        </div>
+
+        <div class="form-field">
+          <label for="customer-email">E-mailadres</label>
+          <Input id="customer-email" @value={{mut this.model.customer.email}} />
+        </div>
+
+        <div class="button-product-cart">
+          <button type="button" {{on "click" this.persistAndContinue}} disabled={{this.isSaving}}>
+            {{if this.isSaving "Bezig met opslaan…" "Opslaan & doorgaan"}}
+          </button>
+        </div>
+
+      {{else}}
+
+        <p>Je accountgegevens konden niet worden geladen. <LinkTo @route="webshop.checkout.delivery">Ga verder naar levering</LinkTo></p>
+
+      {{/if}}
+
+    {{else}}
+
+      <div class="login-prompt">
+        Heeft u al een account?
+        <LinkTo @route="login">Aanmelden</LinkTo>
+      </div>
+
+      <h2>Contactgegevens</h2>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="invoice-firstname">Voornaam</label>
+          <Input id="invoice-firstname" @value={{mut this.basket.basket.invoice.firstName}} />
+        </div>
+        <div class="form-field">
+          <label for="invoice-lastname">Achternaam</label>
+          <Input id="invoice-lastname" @value={{mut this.basket.basket.invoice.lastName}} />
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="invoice-company">Bedrijf + BTW nummer</label>
+        <Input id="invoice-company" @value={{mut this.basket.basket.invoice.company}} placeholder="Optioneel" />
+      </div>
+
+      <div class="form-field">
+        <label for="invoice-street">Straat + huisnummer</label>
+        <Input id="invoice-street" @value={{mut this.basket.basket.invoice.address.streetAddress}} />
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="invoice-postal">Postcode</label>
+          <Input id="invoice-postal" @value={{mut this.basket.basket.invoice.address.postalCode}} />
+        </div>
+        <div class="form-field">
+          <label for="invoice-city">Gemeente</label>
+          <Input id="invoice-city" @value={{mut this.basket.basket.invoice.address.locality}} />
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="invoice-phone">GSM / Tel</label>
+        <Input id="invoice-phone" @value={{mut this.basket.basket.invoice.telephone}} placeholder="Bereikbaar bij levering / afhaling" />
+      </div>
+
+      <div class="form-field">
+        <label for="invoice-email">E-mailadres</label>
+        <Input id="invoice-email" @value={{mut this.basket.basket.invoice.email}} />
+      </div>
+
+      {{#if this.showWarnings}}
+        <ul class="error">
+          {{#each this.warnings as |warning|}}
+            <li>{{warning}}</li>
+          {{/each}}
+        </ul>
+      {{/if}}
+
+      <div class="button-product-cart">
+        {{#if this.warnings}}
+          <button {{on "click" (fn (mut this.showWarnings) true)}} type="button">Naar levering</button>
+        {{else}}
+          <LinkTo @route="webshop.checkout.delivery">Naar levering</LinkTo>
+        {{/if}}
+      </div>
+
     {{/if}}
 
-    <div class="button-product-cart">
-      {{#if this.warnings}}
-        <button {{on "click" (fn (mut this.showWarnings) true)}} type="button">Naar levering</button>
-      {{else}}
-        <LinkTo disabled @route="webshop.checkout.delivery">Naar levering</LinkTo>
-      {{/if}}
-    </div>
   </div>
 </div>
 

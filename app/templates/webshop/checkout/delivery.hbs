@@ -1,32 +1,45 @@
-<ul class="breadcrumb-cart">
-  <li><LinkTo @route="webshop.basket">Winkelmandje</LinkTo></li>
-  <li><LinkTo @route="webshop.checkout.contact-info">Uw Gegevens</LinkTo></li>
-  <li><span class="breadcrumb-txt">Levering / Afhaling</span></li>
-  <li><span class="breadcrumb-nxt">Klaar</span></li>
-</ul>
+<Webshop::CheckoutProgress @currentStep="delivery" />
 
 <div class="delivery-contact">
   <div class="contact-info">
-    <h2>Kies je methode van levering / afhaling</h2>
-    <LinkTo @route="collection-points" id="extra-info">Klik hier voor meer info over leveringen / afhaalpunten</LinkTo>
+    <h2>Kies je levermethode</h2>
+    <LinkTo @route="collection-points" id="extra-info">Meer info over leveringen en afhaalpunten</LinkTo>
 
-    <br /><br />
+    <div class="delivery-methods">
+      <Webshop::Checkout::Delivery::MethodCard
+        @id="postal"
+        @current={{this.deliveryMethod}}
+        @icon="🏠"
+        @title="Thuislevering regio Leuven"
+        @description="Wekelijkse levering op zaterdag voormiddag"
+        @detail="Bij bestelling onder €150 kan €25 leveringskost aangerekend worden"
+        @price="Zie voorwaarden"
+      />
+      <Webshop::Checkout::Delivery::MethodCard
+        @id="shop"
+        @current={{this.deliveryMethod}}
+        @icon="🌿"
+        @title="Afhalen in natuurvoedingswinkel"
+        @description="Kies je afhaallocatie op de kaart"
+        @detail="Vrij te kiezen uit onze partnerswinkels"
+        @price="Gratis"
+      />
+      <Webshop::Checkout::Delivery::MethodCard
+        @id="tour"
+        @current={{this.deliveryMethod}}
+        @icon="📍"
+        @title="Afhaalpunt op Toer Veeakker"
+        @description="Kies je afhaalpunt langs de route"
+        @detail="Mobiel afhaalpunt, telkens op een vaste dag"
+        @price="Gratis"
+      />
+    </div>
 
-    <Webshop::Checkout::Delivery::Checkbox @for="postal" @current={{this.deliveryMethod}}>
-      Thuislevering regio Leuven: Wekelijkse levering op zaterdag voormiddag, tenzij anders afgesproken.  Voor bestellingen onder €150 kan een leverkost van €25 in rekening gebracht worden.
-    </Webshop::Checkout::Delivery::Checkbox>
     {{#if (eq this.deliveryMethod "postal")}}
       <Webshop::Checkout::Delivery::Checkbox @for={{true}} @current={{this.basket.basket.hasCustomDeliveryPlace}}>
         Leveren op een andere locatie
       </Webshop::Checkout::Delivery::Checkbox>
     {{/if}}
-    <Webshop::Checkout::Delivery::Checkbox @for="shop" @current={{this.deliveryMethod}}>
-      Afhaalpunt in natuurvoedingswinkel - gratis
-    </Webshop::Checkout::Delivery::Checkbox>
-
-    <Webshop::Checkout::Delivery::Checkbox @for="tour" @current={{this.deliveryMethod}}>
-      Afhaalpunt op Toer Veeakker - gratis
-    </Webshop::Checkout::Delivery::Checkbox>
 
     {{#if (eq this.deliveryMethod "tour")}}
       <div class="delivery-map">
@@ -55,7 +68,7 @@
     {{#if (and this.basket.basket.deliveryPlace (or (eq this.deliveryMethod "shop") (eq this.deliveryMethod "tour")))}}
       {{#let this.basket.basket.deliveryPlace as |deliveryPlace|}}
         <div class="delivery-place">
-          <h4>Geselecteerde punt</h4>
+          <h4>Geselecteerde afhaalpunt</h4>
           <p>
             {{deliveryPlace.label}} <br />
             {{deliveryPlace.postalAddress.streetAddress}} <br/>
@@ -68,40 +81,59 @@
     {{#if (eq this.deliveryMethod "postal")}}
       {{#if this.basket.basket.hasCustomDeliveryPlace}}
         <div class="contact-info-different">
-          <h2>Vul je lever gegevens in:</h2>
-          <Input @value={{mut this.basket.basket.delivery.firstName}} placeholder="Voornaam" /> <br />
-          <Input @value={{mut this.basket.basket.delivery.lastName}} placeholder="Achternaam" /> <br />
-          <Input @value={{mut this.basket.basket.delivery.company}} placeholder="Bedrijf + BTW nummer (optioneel)" /> <br />
-          <Input @value={{mut this.basket.basket.delivery.address.streetAddress}} placeholder="Straat + huisnummer" /> <br />
-          <Input @value={{mut this.basket.basket.delivery.address.postalCode}} placeholder="Postcode" /> <br />
-          <Input @value={{mut this.basket.basket.delivery.address.locality}} placeholder="Gemeente" /> <br />
-          <Input @value={{mut this.basket.basket.delivery.telephone}} placeholder="Gsm / Tel waarop bereikbaar bij levering / afhaling" /> <br />
-          <Input @value={{mut this.basket.basket.delivery.email}} placeholder="E-mail adres" /> <br />
+          <h2>Lever adres</h2>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="delivery-firstname">Voornaam</label>
+              <Input id="delivery-firstname" @value={{mut this.basket.basket.delivery.firstName}} />
+            </div>
+            <div class="form-field">
+              <label for="delivery-lastname">Achternaam</label>
+              <Input id="delivery-lastname" @value={{mut this.basket.basket.delivery.lastName}} />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="delivery-company">Bedrijf + BTW nummer</label>
+            <Input id="delivery-company" @value={{mut this.basket.basket.delivery.company}} placeholder="Optioneel" />
+          </div>
+          <div class="form-field">
+            <label for="delivery-street">Straat + huisnummer</label>
+            <Input id="delivery-street" @value={{mut this.basket.basket.delivery.address.streetAddress}} />
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="delivery-postal">Postcode</label>
+              <Input id="delivery-postal" @value={{mut this.basket.basket.delivery.address.postalCode}} />
+            </div>
+            <div class="form-field">
+              <label for="delivery-city">Gemeente</label>
+              <Input id="delivery-city" @value={{mut this.basket.basket.delivery.address.locality}} />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="delivery-phone">GSM / Tel</label>
+            <Input id="delivery-phone" @value={{mut this.basket.basket.delivery.telephone}} placeholder="Bereikbaar bij levering" />
+          </div>
+          <div class="form-field">
+            <label for="delivery-email">E-mailadres</label>
+            <Input id="delivery-email" @value={{mut this.basket.basket.delivery.email}} />
+          </div>
         </div>
       {{/if}}
     {{/if}}
 
-    {{!-- <div id="frost-disclaimer">
-         <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" /><p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
-         </div> --}}
-
     <div class="cart-total">
-      {{!-- TODO: Do we need to have the BTW etc in here or can we render the total price? --}}
-      {{!-- TODO: Can we make price excluding taxes and delivery cost less visible than the total price? --}}
-      {{!-- TODO: Take price of delivery into account --}}
-      {{!-- <p>Prijs <span class="money">€67.50</span></p> --}}
-      {{!-- <p class="cart-price">Prijs levering <span class="money">GRATIS</span></p> --}}
-      {{!-- <p>BTW 6% <span class="money">€x</span></p>  --}}
-      <p class="cart-price">Totaalprijs <span class="money">{{euros this.basket.totalPrice}}</span></p>    <br />
+      <p class="cart-price">Totaalprijs <span class="money">{{euros this.basket.totalPrice}}</span></p>
       {{#unless this.canConfirmBasket}}
         <p>
           Kies hoe we leveren, en bevestig je bestelling:
         </p>
       {{/unless}}
       {{#if this.basket.hasUnavailableOrderLines}}
-        <p>
-          Je mandje kan op deze locatie niet volledig geleverd worden.  Kijk op <LinkTo @route="webshop.basket">Winkelmandje</LinkTo> en verwijder de onbeschikbare producten, of kies een andere locatie.
-        </p>
+        <div class="unavailable-warning">
+          <p>Je mandje bevat producten die niet beschikbaar zijn op de gekozen locatie.</p>
+          <LinkTo @route="webshop.basket" class="btn-warning">Bekijk winkelmandje</LinkTo>
+        </div>
       {{else}}
         <div class="button-product-cart">
           <button type="button" disabled={{not this.canConfirmBasket}} {{on "click" (fn this.confirmOrder)}}>Bevestigen</button>

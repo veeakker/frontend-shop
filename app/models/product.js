@@ -21,14 +21,10 @@ class SortOfferings extends Resource {
   @tracked value
 
   async setup() {
-    let offerings = this.args.positional[0];
-    await offerings?.map(async (offering) =>
-      await offering.get('typeAndQuantity.value')
-    );
-
-    this.value =
-      offerings?.toArray()
-        .sort((a, b) => a.get('typeAndQuantity.value') - b.get('typeAndQuantity.value'));
+    let offerings = await this.args.positional[0];
+    if (!offerings) return;
+    await Promise.all(offerings.map((offering) => offering.get('typeAndQuantity.value')));
+    this.value = offerings.toArray().sort((a, b) => a.get('typeAndQuantity.value') - b.get('typeAndQuantity.value'));
   }
 }
 
@@ -76,5 +72,9 @@ export default class ProductModel extends Model {
 
   get enabledLabelArray() {
     return this.labelArray.filter(({ selected }) => selected);
+  }
+
+  get sortOrderValue() {
+    return this.sortIndex ? this.sortIndex - 0.5 : this.plu * 100;
   }
 }

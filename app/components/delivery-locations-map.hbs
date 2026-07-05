@@ -1,7 +1,28 @@
-<LeafletMap class="leaflet-map" @lat={{this.baseLat}} @lng={{this.baseLng}} @zoom={{this.baseZoom}} ...attributes as |map|>
-  <map.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" />
+<LeafletMap class="leaflet-map"
+  @bounds={{this.bounds}}
+  @fitBoundsOptions={{hash padding=(array 50 50) maxZoom=13}}
+  ...attributes as |map|>
+  <map.tile @url={{this.tileUrl}} />
+  {{#if @userLocation}}
+    <map.marker
+      @location={{@userLocation}}
+      @icon={{icon
+        iconUrl="/assets/images/marker-icon-2x.png"
+        shadowUrl="/assets/images/marker-shadow.png"
+        iconSize=(array 25 41)
+        iconAnchor=(array 12 41)
+        popupAnchor=(array 1 -34)
+        shadowSize=(array 41 41)
+        shadowAnchor=(array 12 41)
+        className="home-location-marker"
+      }} />
+  {{/if}}
   {{#each @places as |deliveryPlace|}}
-    <DeliveryLocationsMap::LocationMarker @place={{deliveryPlace}} @mapMarker={{map.marker}} as |marker deliveryPlace|>
+    <DeliveryLocationsMap::LocationMarker
+      @place={{deliveryPlace}}
+      @mapMarker={{map.marker}}
+      @selected={{eq deliveryPlace.id @selectedPlaceId}}
+      as |marker deliveryPlace|>
       {{yield marker deliveryPlace}}
     </DeliveryLocationsMap::LocationMarker>
   {{/each}}

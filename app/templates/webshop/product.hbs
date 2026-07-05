@@ -76,7 +76,7 @@
     {{#if this.model.supplier}}
       <LinkTo @route="webshop.product.supplier" @model={{this.model}}><h5>leverancier</h5></LinkTo>
     {{/if}}
-    <p>{{outlet}}</p>
+    <div class="product-tab-content">{{outlet}}</div>
     <Design::Gallery />
   </div>
 </div>

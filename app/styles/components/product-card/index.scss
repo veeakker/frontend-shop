@@ -1,128 +1,196 @@
 @use 'thumbnail.scss';
 @use "../../config/animations";
-@use "../../config/colors";
+@use "../../config/textures";
 
 .product-card {
-  width: 300px;
-  height: 350px;
-  margin: 1em;
-
+  width: 280px;
+  margin: var(--space-3);
   overflow: hidden;
+  height: 360px;
+  position: relative;
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  @include textures.texture-linen();
+  transition:
+    height animations.$normal-transition-time ease-out,
+    transform animations.$normal-transition-time ease-out,
+    box-shadow animations.$normal-transition-time ease-out,
+    border-color animations.$normal-transition-time ease-out;
 
-  text-align: center;
-
-  border: 3px solid colors.$light-base;
-
-  &, * {
-    transition: all animations.$normal-transition-time ease-out;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-raised);
+    border-color: var(--color-border-strong);
   }
 
   .picture-info, .description {
     margin: 0;
   }
 
+  /* Photo container - dark background absorbs inconsistent photo BGs */
   .picture-info {
-    height: 75%;
+    height: 280px;
     padding: 0;
-  }
-
-  .description {
-    height: 16%;
-    padding: 5%;
-  }
-
-  .description {
-    color: colors.$base-primary;
-    font-family: 'Open Sans';
-
-    .product-title {
-      font-size: 1.4em;
-      font-weight: bold;
-    }
-
-    .alternative-terms {
-      font-size: 0.9em;
-      display: block;
-      height: 2em;
-    }
-  }
-
-  /* greyed out unavailable pictures */
-  .product-disabled .picture img {
-    filter: grayscale(1);
-  }
-
-  .picture-info {
     position: relative;
     overflow: hidden;
-    width: 100%;
+    background-color: var(--color-surface-overlay, #0E0C0A);
+    cursor: pointer;
+    transition: height animations.$normal-transition-time ease-out;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at center, transparent 55%, rgba(14, 11, 9, 0.45) 100%),
+        linear-gradient(to bottom, rgba(14, 11, 9, 0.12) 0%, transparent 25%, transparent 65%, rgba(14, 11, 9, 0.28) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
 
     .picture {
       width: 100%;
       height: 100%;
 
-      img {
+      img:not(.product-image-default) {
         width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: contrast(1.06) saturate(0.88);
+      }
+
+      .product-image-default {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
       }
     }
 
     .icons {
       position: absolute;
-      top: 5%;
-      right: 5%;
+      top: var(--space-2);
+      right: var(--space-2);
+      z-index: 2;
 
       .icon {
-        height: 10px;
-        width: 10px;
         position: relative;
 
         img {
-          width: 22px;
-          color: white;
-          border: solid 0.5px colors.$base-primary;
-          background-color: colors.$light-base;
+          width: 24px;
+          height: 24px;
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--color-border);
+          background-color: var(--color-surface-card);
+          filter: invert(1) sepia(1) saturate(0.5) hue-rotate(10deg) brightness(0.9);
         }
       }
     }
   }
 
-  // Show details or not...
+  .description {
+    padding: var(--space-4);
+    min-height: 80px; /* fills card bottom so amounts never bleed through */
+    text-align: left;
+    color: var(--color-text-primary);
+    font-family: 'Open Sans', sans-serif;
+
+    .product-title {
+      font-size: var(--text-base);
+      font-weight: 700;
+      line-height: var(--leading-tight);
+      margin: 0 0 var(--space-1);
+    }
+
+    .alternative-terms {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      display: block;
+      margin: 0;
+    }
+  }
+
+  /* Golden corner fold when this product is already in the basket */
+  &.product-card--in-basket::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 32px 32px 0;
+    border-color: transparent var(--color-primary) transparent transparent;
+    z-index: 4;
+  }
+
+  /* Expanded / detail mode - same card height, picture shrinks to reveal ordering UI */
   &.detail {
     .picture-info {
-      overflow: hidden;
-      margin-left: -10%;
-      margin-right: -10%;
-      width: 180%;
-      height: 20%;
-
-      img {
-        margin-top: -35%;
-      }
-
-      .icons {
-        right: 40%;
-        top: 15%;
-      }
+      height: 90px;
     }
-    .description .alternative-terms {
-      height: 0em;
-      color: rgba( 255,255,255,0 );
+
+    .description {
+      padding: var(--space-2) var(--space-4);
+      min-height: 50px;
+
+      .alternative-terms {
+        display: none;
+      }
     }
 
     .amounts {
-      margin-top: -1em;
+      padding: var(--space-1) var(--space-3) 0;
+
+      .image-of-packages {
+        height: 44px;
+        padding: 0 var(--space-2);
+        margin-top: var(--space-2);
+        margin-bottom: var(--space-1);
+      }
+    }
+
+    /* All-caps micro-labels for Per pakje / Pakjes - label above input */
+    .per-pakje,
+    .pakjes {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-1);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .teste {
+      margin-top: var(--space-1);
+      margin-bottom: var(--space-1);
+      font-size: var(--text-sm);
+    }
+
+    .actions {
+      margin-top: var(--space-1);
     }
   }
 }
 
+/* Product amounts + configurator */
+
 .amounts {
   min-width: 230px;
+  padding: 0 var(--space-4) var(--space-4);
+
   .configuration {
     display: flex;
     align-items: flex-end;
     justify-content: space-evenly;
-
-    color: colors.$base-primary;
+    color: var(--color-text-primary);
 
     .per-pakje-input {
       display: flex;
@@ -130,6 +198,7 @@
 
       .number-input {
         user-select: none;
+
         .number-value {
           min-width: 4ex;
         }
@@ -137,69 +206,121 @@
     }
 
     .select-eenheid {
-      background-color: colors.$light-base;
+      background-color: var(--color-surface-input);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
       margin-left: 2px;
-      height: 25px;
-      border: none;
-      color: colors.$base-primary;
-    }
+      height: 28px;
+      color: var(--color-text-primary);
+      font-family: 'Open Sans', sans-serif;
+      font-size: var(--text-sm);
 
-    .select-eenheid:disabled {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      padding: 0 1em;
+      &:disabled {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        padding: 0 var(--space-3);
+        opacity: 0.6;
+      }
     }
   }
 
   .image-of-packages {
     display: flex;
-    padding: 5% 10%;
+    padding: var(--space-2) var(--space-4);
+    padding-left: 0;
+    margin-top: 3em;
     height: 50px;
-    margin-bottom: 50px;
+    margin-bottom: var(--space-5);
+    overflow: hidden;
 
     .image-spacing-wrapper {
       flex: 1;
       max-width: 60%;
-      min-width: 30%;
-      margin: 0 -10%;
+      min-width: 15%;
+      overflow: hidden;
+
+      &:not(:last-child) {
+        margin-right: -10%;
+      }
+
       img {
         width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: brightness(0.85) sepia(0.3);
       }
     }
   }
 }
 
-/*de prijs */
+/* Price display */
 
-.teste{
-  margin-top: -3rem;
-  margin-bottom: 3rem;
-  font-size: 1.2em;
+.teste {
+  margin-top: calc(-1 * var(--space-8));
+  margin-bottom: var(--space-8);
+  font-size: var(--text-lg);
   font-weight: 700;
-  color: rgb(73, 59, 59);
+  color: var(--color-accent-gold);
+  text-align: center;
 }
 
-
+/* Actions bar */
 
 .actions {
   display: flex;
   justify-content: space-evenly;
-  margin-top: -47px;
+  margin-top: calc(-1 * var(--space-10));
+}
+
+.basket-fold-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.basket-fold-badge__count {
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1;
+  transform: rotate(45deg);
+  position: relative;
+  text-align: center;
+  left: 7px;
+  top: -6px;
 }
 
 .button-product {
   max-width: 40%;
-  margin-top: 8px;
-  border-radius: 5px;
+  margin-top: var(--space-2);
+  border-radius: var(--radius-sm);
   display: inline-block;
-  background-color: colors.$base-primary;
-  color: white;
-  font-size: 15px;
-  font-family: 'Open Sans';
-  padding: 10px 20px;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--text-sm);
+  font-family: 'Open Sans', sans-serif;
+  padding: var(--space-2) var(--space-5);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .button-product:hover {
-  background-color: colors.$base-secondary;
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-glow);
 }
+
+[data-theme="light"] {
+  .product-card { @include textures.texture-linen-light(); }
+}
+

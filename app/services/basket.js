@@ -32,14 +32,14 @@ class BasketFetcher extends Resource {
 
     try {
       // fetch delivery-place with extra information
-      await this.store.query("delivery-place", {
+      const deliveryPlaces = await this.store.query("delivery-place", {
         "filter[:id:]": deliveryPlaceId || DEFAULT_DELIVERY_PLACE_ID,
         include: "delivery-kind,geo-coordinate,postal-address,business-entity"
       });
-      // const deliveryPlace = deliveryPlaces.firstObject;
-      // // const deliveryPlace = await this.store.findRecord("delivery-place", deliveryPlaceId);
-      // basket.set("deliveryPlace", deliveryPlace);
-      await basket.deliveryPlace; // should come from the cache now
+      if (!deliveryPlaceId && deliveryPlaces.length > 0) {
+        basket.deliveryPlace = deliveryPlaces[0];
+      }
+      await basket.deliveryPlace;
     } catch (e) {
       // TODO: provide warning to end user
       // eslint-disable-next-line no-console

@@ -185,7 +185,10 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
 
     await this.store.pushPayload({ data: transformedProductPayloads, included: allIncluded });
 
-    const products = productsPayload.data.map(({ id }) => this.store.peekRecord('product', id));
+    const products = productsPayload
+          .data
+          .map(({ id }) => this.store.peekRecord('product', id))
+          .sort( (a,b) => a.sortOrderValue - b.sortOrderValue );
 
     return { productGroup, products: products };
   }

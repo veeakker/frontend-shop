@@ -1,0 +1,78 @@
+.delivery-map-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  align-items: stretch;
+}
+
+.pickup-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  height: 32rem;
+  background: var(--color-surface-card);
+  border-left: 1px solid var(--color-border);
+
+  li:last-child .pickup-list-item {
+    border-bottom: none;
+  }
+}
+
+.pickup-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+
+  &:hover {
+    background: rgba(200, 149, 92, 0.08);
+  }
+
+  &--selected {
+    background: rgba(200, 149, 92, 0.12);
+    border-left-color: var(--color-primary);
+
+    .pickup-list-item__name {
+      color: var(--color-text-accent);
+    }
+  }
+
+  &__name {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  &__meta {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+}
+
+.home-location-marker {
+  /* Always inverted — same warm look as all other standalone map markers */
+  filter: invert(1) sepia(0.25) brightness(1) !important;
+}
+
+@media (max-width: 600px) {
+  .delivery-map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pickup-list {
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+  }
+}
