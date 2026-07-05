@@ -13,6 +13,10 @@
   {{else}}
     <div class="cart-item"></div>
 
+    <Webshop::Basket::UnavailableOrderLines
+      @orderLines={{this.basket.orderLines}}
+      @removeOrderLine={{fn this.removeOrderLine}} />
+
     <Webshop::OrderLines @removeOrderLine={{fn this.removeOrderLine}} @orderLines={{this.basket.orderLines}} />
 
     <div class="cart-total">
