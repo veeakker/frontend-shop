@@ -1,0 +1,17 @@
+<section class="basket-card {{if @warning "basket-card--warning" ""}} {{if @hasFooter "basket-card--has-footer" ""}}">
+  {{#if (has-block "title") }}
+    <header class="basket-card__header {{if @warning "basket-card__header--warning" ""}}">
+    {{yield to="title"}}
+  </header>
+  {{/if}}
+
+  <div class="basket-card__body">
+    {{yield to="body"}}
+  </div>
+
+  {{#if (or (has-block "footer") @hasFooter) }}
+    <footer class="basket-card__footer {{if @warning "basket-card__footer--warning" ""}}">
+      {{yield to="footer"}}
+    </footer>
+  {{/if}}
+</section>

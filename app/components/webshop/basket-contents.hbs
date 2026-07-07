@@ -1,22 +1,54 @@
-{{#if @hasUnavailableOrderLines}}
-  <div class="basket-unavailable-banner">
-    <span class="basket-unavailable-banner__icon">&#x26A0;</span>
-    <p>Sommige producten zijn niet beschikbaar op de gekozen locatie. Verwijder ze om verder te gaan.</p>
-  </div>
-{{/if}}
+<div class="basket-cards">
+  {{#if this.notAtLocationOrderLines.length}}
+    <Webshop::Basket::Card @warning={{true}} @hasFooter={{true}}>
+      <:title>
+        <span class="basket-card__header-icon" aria-hidden="true">&#x26A0;</span>
+        <h2 class="basket-card__subtitle">Producten niet beschikbaar op deze locatie</h2>
+      </:title>
 
-<Webshop::Basket::UnavailableOrderLines
-  @orderLines={{@orderLines}}
-  @removeOrderLine={{@removeOrderLine}} />
+      <:body>
+        <Webshop::OrderLines
+          @orderLines={{this.notAtLocationOrderLines}}
+          @removeOrderLine={{@removeOrderLine}}
+          @plainRows={{true}}
+          @hideAvailabilityWarning={{true}} />
+      </:body>
 
-<Webshop::OrderLines @orderLines={{@orderLines}} @removeOrderLine={{@removeOrderLine}} />
-
-<div class="cart-total">
-  <p class="cart-price"><span class="money">{{euros @totalPrice}}</span></p>
-  <p class="cart-message">Exclusief verzendkosten</p>
-  {{#if (and @onCheckout (not @hasUnavailableOrderLines))}}
-    <div class="button-product-cart">
-      <LinkTo @route={{@onCheckout}}>Naar bestellen</LinkTo>
-    </div>
+      <:footer>
+        <div class="basket-card__hint">
+          <p>
+            Verwijder deze producten om verder te gaan, of kies een andere locatie. Op de afhaallocatie is wellicht een gelijkwaardig alternatief beschikbaar.
+          </p>
+        </div>
+      </:footer>
+    </Webshop::Basket::Card>
   {{/if}}
+
+  <Webshop::Basket::Card @hasFooter={{true}}>
+    <:title>
+      <h2 class="basket-card__subtitle">Je volledige mandje</h2>
+    </:title>
+
+    <:body>
+      <Webshop::OrderLines
+        @orderLines={{@orderLines}}
+        @removeOrderLine={{@removeOrderLine}} />
+    </:body>
+
+    <:footer>
+      <div class="cart-total">
+        <p class="cart-price"><span class="money">{{euros @totalPrice}}</span></p>
+        <p class="cart-message">Exclusief verzendkosten</p>
+        {{#if @hasUnavailableOrderLines}}
+          <p class="cart-total__notice">
+            Verwijder de producten die niet beschikbaar zijn om verder te gaan.
+          </p>
+        {{else if @onCheckout}}
+          <div class="button-product-cart">
+            <LinkTo @route={{@onCheckout}}>Naar bestellen</LinkTo>
+          </div>
+        {{/if}}
+      </div>
+    </:footer>
+  </Webshop::Basket::Card>
 </div>

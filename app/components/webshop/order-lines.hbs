@@ -1,51 +1,9 @@
 {{#each @orderLines as |orderLine|}}
-  <div class={{concat "cart-item"
-                      (if (and orderLine.product.isEnabled orderLine.offering.isEnabled)
-                          "" " product-disabled")
-                      (if orderLine.availableForBasketLocation "" " not-available-at-location")}}>
-    <LinkTo class="cart-thumbnail" @route="webshop.product" @model={{orderLine.product}}>
-      <ProductCard::Thumbnail @product={{orderLine.offering.typeAndQuantity.product}} />
-    </LinkTo>
-    <div class="order-info">
-      <h3>
-        <LinkTo @route="webshop.product" @model={{orderLine.product}}>
-          {{orderLine.offering.typeAndQuantity.product.label}}
-        </LinkTo>
-      </h3>
-      <h4><Webshop::Basket::Amount @amount={{orderLine.offering.typeAndQuantity}} /> <i class="fas fa-times"></i>{{orderLine.amount}} pakje{{#if (gte orderLine.amount 2)}}s{{/if}}</h4>
-      {{#unless orderLine.availableForBasketLocation}}
-        <p class="product-unavailable-message">&#x26A0; Niet beschikbaar op de gekozen locatie.</p>
-      {{/unless}}
-      {{#if @removeOrderLine}}
-        <Util::OpenClosed @defaultOpen={{orderLine.monitoredComment}}>
-          <:open>
-            <Textarea style="width: 100%" @value={{orderLine.monitoredComment}} placeholder="Opmerking" />
-            {{#if orderLine.commentChanged}}
-              <button class="add-comment-button" type="button" {{on "click" (fn this.persistCommentFn orderLine)}}>Opslaan</button>
-            {{/if}}
-          </:open>
-          <:closed as |commentHolder|>
-            <button class="add-comment-button" type="button" {{on "click" commentHolder.makeOpenFn}}>Voeg opmerking toe</button>
-          </:closed>
-        </Util::OpenClosed>
-      {{else}}
-        {{#if orderLine.monitoredComment}}
-          <span class="order-comment">{{orderLine.monitoredComment}}</span>
-        {{/if}}
-      {{/if}}
-    </div>
-    <div class="order-extra">
-      {{#if (has-block "order-extra")}}
-        {{yield orderLine to="order-extra"}}
-      {{else}}
-        <span class="order-price-per-unit">{{euros orderLine.pricePerUnit}} / pakje</span>
-        <span class="order-total-price">{{euros orderLine.price}}</span>
-        {{#if @removeOrderLine}}
-          <button class="remove-button" {{on "click" (fn @removeOrderLine orderLine.offering orderLine.amount)}} type="button" aria-label="Verwijder uit winkelmandje">
-            <i class="fas fa-trash"></i>
-          </button>
-        {{/if}}
-      {{/if}}
-    </div>
-  </div>
+  <Webshop::Basket::Row
+    @orderLine={{orderLine}}
+    @removeOrderLine={{@removeOrderLine}}
+    @plainRows={{@plainRows}}
+    @hideAvailabilityWarning={{@hideAvailabilityWarning}}>
+    {{yield orderLine to="order-extra"}}
+  </Webshop::Basket::Row>
 {{/each}}

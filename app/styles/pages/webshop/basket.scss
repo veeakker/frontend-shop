@@ -1,5 +1,4 @@
 @use "../../config/textures";
-@use "../../config/colors";
 
 /* Page layout */
 
@@ -22,6 +21,12 @@
 
 /* Card container */
 
+.basket-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
 .basket-card {
   background-color: var(--color-surface-card);
   border: 1px solid var(--color-border);
@@ -31,29 +36,51 @@
   @include textures.texture-linen();
 }
 
-/* Unavailability banner (full-bleed inside card) */
+.basket-card__body {
+  /* Cart rows render edge-to-edge with the header/footer dividers. */
+}
 
-.basket-unavailable-banner {
+.basket-card__footer {
   display: flex;
-  align-items: flex-start;
+  justify-content: right;
+  padding: var(--space-5) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  background: rgba(200, 149, 92, 0.05);
+}
+
+.basket-card__footer--warning {
+  background: rgba(200, 149, 92, 0.08);
+}
+
+.basket-card__header {
+  display: flex;
+  align-items: center;
   gap: var(--space-3);
-  background: rgba(200, 149, 92, 0.1);
-  border-bottom: 1px solid rgba(200, 149, 92, 0.28);
-  padding: var(--space-4) var(--space-6);
-  font-family: 'Open Sans', sans-serif;
+  padding: var(--space-5) var(--space-6) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(200, 149, 92, 0.05);
+}
 
-  .basket-unavailable-banner__icon {
-    font-size: var(--text-base);
-    flex-shrink: 0;
-    line-height: 1.5;
-  }
+.basket-card__header--warning {
+  background: rgba(200, 149, 92, 0.08);
+}
 
-  p {
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    margin: 0;
-    line-height: var(--leading-normal);
-  }
+.basket-card__header-icon {
+  font-size: var(--text-lg);
+  color: var(--color-accent-gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.basket-card__subtitle {
+  margin: 0;
+  font-family: 'Varela Round', sans-serif;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
 }
 
 /* Empty basket */
@@ -255,10 +282,19 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  text-align: right;
   gap: var(--space-1);
   padding: var(--space-5) var(--space-6);
   border-top: 1px solid var(--color-border-strong);
   background: rgba(200, 149, 92, 0.04);
+}
+
+/* When the cart-total is yielded into a basket-card footer, the footer
+   already provides padding, divider and the header-tinted background. */
+.basket-card__footer .cart-total {
+  padding: 0;
+  border-top: none;
+  background: transparent;
 }
 
 .cart-price {
@@ -279,6 +315,31 @@
   margin: 0 0 var(--space-3);
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 0.02em;
+}
+
+.cart-total__notice {
+  margin: var(--space-2) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+  color: var(--color-text-accent);
+  font-size: var(--text-sm);
+  font-family: 'Open Sans', sans-serif;
+  line-height: var(--leading-normal);
+  max-width: 36ch;
+  text-align: right;
+}
+
+.basket-card__hint {
+  width: 100%;
+
+  p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    max-width: 60ch;
+  }
 }
 
 /* Buttons */
@@ -384,169 +445,32 @@
     }
   }
 
-  .basket-unavailable-banner,
+  .basket-card__header {
+    padding: var(--space-4);
+  }
+
+  .basket-card__footer {
+    padding: var(--space-4);
+  }
+
   .cart-total {
     padding: var(--space-4);
   }
 }
 
-/* Unavailable order lines (prominent sections above the cart list) */
+/* Card header responsiveness */
 
-.unavailable-order-lines {
-  margin: 0 auto;
-  width: 90%;
-}
-
-.unavailable-section {
-  margin: 1.5em 0;
-  padding: 0 0 0.5em 0;
-  border: 1px solid colors.$base-secondary;
-  border-left: 4px solid colors.$base-primary;
-  border-radius: 6px;
-  background: colors.$neutral-background;
-  font-family: 'Open Sans';
-
-  &.currently-unavailable {
-    border-left-color: colors.$base-secondary-highlighted;
-  }
-}
-
-.unavailable-section-title {
-  margin: 0;
-  padding: 0.85em 1em 0.6em 1em;
-  color: colors.$base-primary;
-  font-size: 1.3rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-
-  i {
-    margin-right: 0.5em;
-    color: colors.$base-secondary;
-  }
-}
-
-.unavailable-section-subtitle {
-  margin: 0 1em 0.75em 1em;
-  padding: 0 0 0.75em 0;
-  border-bottom: 1px solid rgba(74, 68, 66, 0.2);
-  color: colors.$base-secondary;
-  font-size: 0.95rem;
-  line-height: 1.45;
-}
-
-.unavailable-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.unavailable-item {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  padding: 0.75em 1em;
-  border-top: 1px solid rgba(74, 68, 66, 0.15);
-
-  &:first-of-type {
-    border-top: none;
-  }
-}
-
-.unavailable-thumbnail {
-  flex: 0 0 56px;
-  width: 56px;
-  align-self: center;
-
-  img.product-image {
-    width: 100%;
-    height: auto;
-    max-height: 56px;
-    object-fit: contain;
-  }
-}
-
-.unavailable-item-body {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.unavailable-item-title {
-  display: block;
-  color: colors.$base-primary;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 1.05rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  &:hover {
-    color: colors.$base-secondary;
-  }
-}
-
-.unavailable-item-amount {
-  display: block;
-  margin-top: 0.15em;
-  color: colors.$base-secondary;
-  font-size: 0.95rem;
-
-  i {
-    margin: 0 6px;
-  }
-}
-
-.unavailable-remove-button {
-  flex: 0 0 auto;
-  border: 1px solid colors.$base-secondary;
-  background: transparent;
-  color: colors.$base-secondary;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 16px;
-
-  &:hover {
-    background: colors.$base-primary;
-    border-color: colors.$base-primary;
-    color: white;
-  }
-}
-
-@media (max-width: 640px) {
-  .unavailable-order-lines {
-    width: 100%;
+@media (max-width: 600px) {
+  .basket-cards {
+    gap: var(--space-4);
   }
 
-  .unavailable-section {
-    margin: 1em 0.25em;
+  .basket-card__header {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
   }
 
-  .unavailable-section-title {
-    font-size: 1.15rem;
-  }
-
-  .unavailable-section-subtitle {
-    font-size: 0.9rem;
-  }
-
-  .unavailable-item {
-    gap: 0.75em;
-    padding: 0.65em 0.75em;
-  }
-
-  .unavailable-thumbnail {
-    flex-basis: 48px;
-    width: 48px;
-  }
-
-  .unavailable-item-title {
-    font-size: 1rem;
+  .basket-card__subtitle {
+    font-size: var(--text-lg);
   }
 }

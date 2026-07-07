@@ -15,15 +15,13 @@
       </div>
     </div>
   {{else}}
-    <div class="basket-card">
-      <Webshop::BasketContents
-        @orderLines={{this.basket.orderLines}}
-        @totalPrice={{this.basket.totalPrice}}
-        @hasUnavailableOrderLines={{this.basket.hasUnavailableOrderLines}}
-        @removeOrderLine={{fn this.removeOrderLine}}
-        @onCheckout="webshop.checkout.contact-info"
-      />
-    </div>
+    <Webshop::BasketContents
+      @orderLines={{this.basket.orderLines}}
+      @totalPrice={{this.basket.totalPrice}}
+      @hasUnavailableOrderLines={{this.basket.hasUnavailableOrderLines}}
+      @removeOrderLine={{fn this.removeOrderLine}}
+      @onCheckout="webshop.checkout.contact-info"
+    />
   {{/if}}
 </div>
 {{outlet}}
