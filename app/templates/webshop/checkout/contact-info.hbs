@@ -1,5 +1,5 @@
 {{outlet}}
-<Webshop::CheckoutProgress @currentStep="contact-info" @onAdvance={{this.goForward}} />
+<Webshop::CheckoutProgress @currentStep="contact-info" />
 <div class="checkout-contact">
   <div class="contact-info">
 
@@ -126,11 +126,9 @@
       {{/if}}
 
       <div class="button-product-cart">
-        {{#if this.warnings}}
-          <button {{on "click" (fn (mut this.showWarnings) true)}} type="button">Naar levering</button>
-        {{else}}
-          <LinkTo @route="webshop.checkout.delivery">Naar levering</LinkTo>
-        {{/if}}
+        <button type="button" {{on "click" this.goForward}} disabled={{this.isSaving}}>
+          {{if this.isSaving "Bezig met opslaan…" "Naar levering"}}
+        </button>
       </div>
 
     {{/if}}

@@ -19,6 +19,7 @@
           <p>
             Verwijder deze producten om verder te gaan, of kies een andere locatie. Op de afhaallocatie is wellicht een gelijkwaardig alternatief beschikbaar.
           </p>
+          <LinkTo @route="webshop.checkout.delivery" class="basket-card__hint-link">Locatie wijzigen</LinkTo>
         </div>
       </:footer>
     </Webshop::Basket::Card>
@@ -45,7 +46,7 @@
           </p>
         {{else if @onCheckout}}
           <div class="button-product-cart">
-            <LinkTo @route={{@onCheckout}}>Naar bestellen</LinkTo>
+            <LinkTo @route={{@onCheckout}}>{{@onCheckoutLabel}}</LinkTo>
           </div>
         {{/if}}
       </div>

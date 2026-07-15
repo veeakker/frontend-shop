@@ -8,11 +8,29 @@
 }
 
 .checkout-progress__step {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-2);
   flex-shrink: 0;
+  position: relative;
+  min-width: 0;
+}
+
+.checkout-progress__step:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  left: calc(-50% + 18px);
+  right: calc(50% + 18px);
+  top: 17px;
+  height: 2px;
+  background: var(--color-border);
+  transition: background var(--transition-base);
+}
+
+.checkout-progress__step--completed:not(:first-child)::before {
+  background: var(--color-primary);
 }
 
 .checkout-progress__circle {
@@ -47,7 +65,7 @@ button.checkout-progress__step {
   text-decoration: none;
   cursor: pointer;
 
-  &:hover .checkout-progress__circle {
+  &.checkout-progress__step--completed:hover .checkout-progress__circle {
     background: var(--color-primary-dark);
     border-color: var(--color-primary-dark);
   }
@@ -65,9 +83,6 @@ button.checkout-progress__step {
 }
 
 .checkout-progress__step--active .checkout-progress__circle {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-text-inverse);
   box-shadow: 0 0 0 4px rgba(200, 149, 92, 0.28), var(--shadow-glow);
 }
 
@@ -80,23 +95,13 @@ button.checkout-progress__step {
   line-height: var(--leading-tight);
 }
 
-.checkout-progress__step--completed .checkout-progress__label,
+.checkout-progress__step--completed .checkout-progress__label {
+  color: var(--color-text-primary);
+}
+
 .checkout-progress__step--active .checkout-progress__label {
   color: var(--color-text-primary);
   font-weight: 600;
-}
-
-.checkout-progress__connector {
-  flex: 1;
-  height: 2px;
-  background: var(--color-border);
-  margin-top: 17px; /* center on circle: 36px / 2 − 1px */
-  transition: background var(--transition-base);
-  min-width: var(--space-6);
-}
-
-.checkout-progress__connector--done {
-  background: var(--color-primary);
 }
 
 @media (max-width: 480px) {
@@ -110,8 +115,9 @@ button.checkout-progress__step {
     font-size: var(--text-xs);
   }
 
-  .checkout-progress__connector {
-    margin-top: 13px;
-    min-width: var(--space-4);
+  .checkout-progress__step:not(:first-child)::before {
+    top: 13px;
+    left: calc(-50% + 14px);
+    right: calc(50% + 14px);
   }
 }

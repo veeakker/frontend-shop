@@ -24,7 +24,11 @@
 .basket-cards {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-8);
+}
+
+.basket-page .forks {
+  margin: var(--space-8) auto var(--space-10);
 }
 
 .basket-card {
@@ -339,6 +343,27 @@
     font-size: var(--text-sm);
     line-height: var(--leading-normal);
     max-width: 60ch;
+  }
+
+  .basket-card__hint-link {
+    display: inline-block;
+    margin-top: var(--space-3);
+    padding: var(--space-2) var(--space-5);
+    background: rgba(200, 149, 92, 0.08);
+    border: 1px solid rgba(200, 149, 92, 0.3);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: background var(--transition-fast), box-shadow var(--transition-fast);
+
+    &:hover {
+      background: rgba(200, 149, 92, 0.12);
+      box-shadow: var(--shadow-glow);
+    }
   }
 }
 

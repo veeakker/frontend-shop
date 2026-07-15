@@ -124,21 +124,36 @@
 
     <div class="cart-total">
       <p class="cart-price">Totaalprijs <span class="money">{{euros this.basket.totalPrice}}</span></p>
-      {{#unless this.canConfirmBasket}}
-        <p>
-          Kies hoe we leveren, en bevestig je bestelling:
-        </p>
-      {{/unless}}
+
       {{#if this.basket.hasUnavailableOrderLines}}
-        <div class="unavailable-warning">
+        <div class="checkout-notice">
           <p>Je mandje bevat producten die niet beschikbaar zijn op de gekozen locatie.</p>
           <LinkTo @route="webshop.basket" class="btn-warning">Bekijk winkelmandje</LinkTo>
         </div>
-      {{else}}
+      {{else if (not this.canConfirmBasket)}}
+        {{#if (eq this.checkoutRequirements.firstUnsatisfiedStep this.checkoutRequirements.basketStep)}}
+          <div class="checkout-notice">
+            <p>Vul je winkelmandje aan om verder te gaan.</p>
+            <LinkTo @route="webshop.basket" class="btn-warning">Naar winkelmandje</LinkTo>
+          </div>
+        {{else if (eq this.checkoutRequirements.firstUnsatisfiedStep this.checkoutRequirements.identityStep)}}
+          <div class="checkout-notice">
+            <p>Vul je contactgegevens in om verder te gaan.</p>
+            <LinkTo @route="webshop.checkout.contact-info" class="btn-warning">Naar contactgegevens</LinkTo>
+          </div>
+        {{else if (eq this.checkoutRequirements.firstUnsatisfiedStep this.checkoutRequirements.deliveryStep)}}
+          <div class="checkout-notice">
+            <p>Kies je levermethode om verder te gaan.</p>
+            <LinkTo @route="webshop.checkout.delivery" class="btn-warning">Naar levering</LinkTo>
+          </div>
+        {{/if}}
+      {{/if}}
+
+      {{#unless this.basket.hasUnavailableOrderLines}}
         <div class="button-product-cart">
           <button type="button" disabled={{not this.canConfirmBasket}} {{on "click" (fn this.confirmOrder)}}>Bevestigen</button>
         </div>
-      {{/if}}
+      {{/unless}}
     </div>
   </div>
 </div>

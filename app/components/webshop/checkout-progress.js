@@ -1,31 +1,35 @@
 import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
 
-const CURRENT_STEP_INDEX = {
-  'basket':       0,
-  'contact-info': 1,
-  'delivery':     2,
-  'payment':      3,
-  'finish':       3,
-};
-
-export default class CheckoutProgressComponent extends Component {
-  get currentIndex() {
-    return CURRENT_STEP_INDEX[this.args.currentStep] ?? 1;
+class CheckoutProgressView {
+  constructor(step, number, active, onFinishRoute) {
+    this.step = step;
+    this.number = number;
+    this.active = active;
+    this.onFinishRoute = onFinishRoute;
   }
 
-  get steps() {
-    const ci = this.currentIndex;
-    const hasOnAdvance = !!this.args.onAdvance;
+  get label()   { return this.step.label; }
+  get route()   { return this.step.route; }
+  get satisfied() { return this.onFinishRoute || this.step.satisfied; }
 
-    const state     = (idx) => idx < ci ? 'completed' : idx === ci ? 'active' : 'upcoming';
-    const isAdvance = (idx) => idx === ci + 1 && hasOnAdvance;
-    const clickable = (idx) => idx < ci || isAdvance(idx);
-
+  get classNames() {
     return [
-      { number: 1, label: 'Winkelmandje', state: state(0), clickable: clickable(0), isAdvance: isAdvance(0), route: 'webshop.basket',                showConnector: false, connectorDone: false  },
-      { number: 2, label: 'Gegevens',     state: state(1), clickable: clickable(1), isAdvance: isAdvance(1), route: 'webshop.checkout.contact-info', showConnector: true,  connectorDone: ci > 0 },
-      { number: 3, label: 'Levering',     state: state(2), clickable: clickable(2), isAdvance: isAdvance(2), route: 'webshop.checkout.delivery',     showConnector: true,  connectorDone: ci > 1 },
-      { number: 4, label: 'Klaar',        state: state(3), clickable: clickable(3), isAdvance: isAdvance(3), route: null,                            showConnector: true,  connectorDone: ci > 2 },
-    ];
+      'checkout-progress__step',
+      `checkout-progress__step--${this.satisfied ? 'completed' : 'pending'}`,
+      this.active ? 'checkout-progress__step--active' : '',
+    ].filter(Boolean).join(' ');
+  }
+}
+
+export default class CheckoutProgressComponent extends Component {
+  @service checkoutRequirements;
+  @service router;
+
+  get steps() {
+    const index = this.checkoutRequirements.stepIndexByAlias[this.args.currentStep] ?? 1;
+    const onFinishRoute = this.router.currentRouteName === 'webshop.checkout.finish';
+    return this.checkoutRequirements.steps.map((step, i) =>
+      new CheckoutProgressView(step, i + 1, i === index, onFinishRoute));
   }
 }

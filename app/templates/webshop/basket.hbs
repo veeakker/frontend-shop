@@ -20,7 +20,8 @@
       @totalPrice={{this.basket.totalPrice}}
       @hasUnavailableOrderLines={{this.basket.hasUnavailableOrderLines}}
       @removeOrderLine={{fn this.removeOrderLine}}
-      @onCheckout="webshop.checkout.contact-info"
+      @onCheckout={{this.checkoutRoute}}
+      @onCheckoutLabel={{this.checkoutLabel}}
     />
   {{/if}}
 </div>

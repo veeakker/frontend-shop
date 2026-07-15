@@ -195,9 +195,9 @@
   }
 }
 
-/* Unavailable items warning */
+/* Checkout-blocking notice */
 
-.unavailable-warning {
+.checkout-notice {
   background: rgba(200, 149, 92, 0.08);
   border: 1px solid rgba(200, 149, 92, 0.3);
   border-radius: var(--radius-md);

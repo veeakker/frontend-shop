@@ -7,9 +7,6 @@ import { use, Resource } from 'ember-could-get-used-to-this';
 import { action } from '@ember/object';
 import ExternalPromise from 'veeakker/utils/external-promise';
 
-// const DEFAULT_DELIVERY_PLACE_ID = "60f710bd-5022-4bd1-be7c-46eebbf3dfb1";
-const DEFAULT_DELIVERY_PLACE_ID = "93c60ad0-2b37-4111-90ee-411b483dd3fb";
-
 class BasketFetcher extends Resource {
   @tracked value
   @service store
@@ -31,19 +28,16 @@ class BasketFetcher extends Resource {
     const basket = this.store.peekRecord('basket', result.data[0].id);
 
     try {
-      // fetch delivery-place with extra information
-      const deliveryPlaces = await this.store.query("delivery-place", {
-        "filter[:id:]": deliveryPlaceId || DEFAULT_DELIVERY_PLACE_ID,
-        include: "delivery-kind,geo-coordinate,postal-address,business-entity"
-      });
-      if (!deliveryPlaceId && deliveryPlaces.length > 0) {
-        basket.deliveryPlace = deliveryPlaces[0];
+      if (deliveryPlaceId) {
+        await this.store.query("delivery-place", {
+          "filter[:id:]": deliveryPlaceId,
+          include: "delivery-kind,geo-coordinate,postal-address,business-entity"
+        });
       }
       await basket.deliveryPlace;
     } catch (e) {
-      // TODO: provide warning to end user
       // eslint-disable-next-line no-console
-      console.warn("Something went wrong loading the default delivery place");
+      console.warn("Something went wrong loading the delivery place");
     }
 
     this.value = basket;
@@ -156,6 +150,20 @@ export default class BasketService extends Service {
   @use deliveryPlace = new DeliveryPlaceFetcher(() => [this.basket,this.basket?.deliveryPlace])
   @use businessEntity = new BusinessEntityFetcher(() => [this.deliveryPlace]);
   @use constrainingBusinessEntity = new ConstrainingBusinessEntityFetcher(() => [this.businessEntity]);
+
+  get deliveryLabel() {
+    const basket = this.basket;
+    if (!basket) {
+      return null;
+    } else {
+      switch (basket.deliveryType) {
+        case 'http://veeakker.be/delivery-methods/postal':
+          return 'Thuislevering regio Leuven';
+        default:
+          return this.deliveryPlace?.get('label');
+      }
+    }
+  }
 
   @action
   setDeliveryPlace( deliveryPlace ) {
@@ -297,7 +305,8 @@ export default class BasketService extends Service {
     const deliveryAddress = basket.deliveryAddress.content; // TODO: find better way to unpack
     const deliveryPostal = deliveryAddress.postalAddress.content; // TODO: find better way to unpack
     const hasCustomDeliveryPlace = basket.hasCustomDeliveryPlace;
-    const deliveryPlaceUuid = basket.deliveryPlace.get("id");
+    const deliveryPlace = basket.deliveryPlace;
+    const deliveryPlaceUuid = deliveryPlace ? deliveryPlace.get("id") : null;
     const deliveryType = basket.deliveryType;
 
     await fetch('/current-basket/persist-delivery-info', {

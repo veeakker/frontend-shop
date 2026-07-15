@@ -9,12 +9,12 @@ export default class WebshopCheckoutContactInfoController extends Controller {
   @service session;
   @service router;
 
-  @tracked showWarnings;
+  @tracked showWarnings = false;
   @tracked isSaving = false;
 
   @action
   async goForward() {
-    if (!this.session.isAuthenticated && this.warnings.length) {
+    if (this.warnings.length) {
       this.showWarnings = true;
     } else {
       await this.persistAndContinue();
@@ -27,8 +27,12 @@ export default class WebshopCheckoutContactInfoController extends Controller {
     try {
       if (this.session.isAuthenticated && this.model) {
         const { customer, postalAddress } = this.model;
-        if (postalAddress) await postalAddress.save();
+        if (postalAddress) {
+          await postalAddress.save();
+          await postalAddress.reload();
+        }
         await customer.save();
+        await customer.reload();
       } else {
         await this.basket.persistInvoiceInfo();
       }

@@ -5,6 +5,7 @@ import Controller from '@ember/controller';
 
 export default class WebshopCheckoutController extends Controller {
   @service basket
+  @service checkoutRequirements
   @tracked currentDeliveryMethod;
   @service router
 
@@ -26,30 +27,20 @@ export default class WebshopCheckoutController extends Controller {
   }
 
   set deliveryMethod(method) {
-    // postal tour shop false
     this.currentDeliveryMethod = method;
 
-    if (method)
+    if (method) {
       this.basket.basket.deliveryType = `http://veeakker.be/delivery-methods/${method}`;
-    else
+      if (method === 'postal') {
+        this.basket.basket.deliveryPlace = null;
+      }
+    } else {
       this.basket.basket.deliveryType = null;
+    }
   }
 
   get canConfirmBasket() {
-    try {
-      if ( this.basket.hasUnavailableOrderLines )
-        return false;
-      else if (this.deliveryMethod == "postal" )
-        return true;
-      else if (this.deliveryMethod == "tour" )
-        return this.basket.basket.deliveryPlace.get("deliveryKind.uri") == "http://veeakker.be/delivery-kinds/toeren";
-      else if (this.deliveryMethod == "shop" )
-        return this.basket.basket.deliveryPlace.get("deliveryKind.uri") == "http://veeakker.be/delivery-kinds/natuurwinkels";
-      else
-        return false;
-    } catch (e) {
-      return false; // one of the objects doesn't exist
-    }
+    return this.checkoutRequirements.allSatisfied;
   }
 
   @action
