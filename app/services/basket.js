@@ -203,6 +203,19 @@ export default class BasketService extends Service {
     );
   }
 
+  get hasDisabledOrderLines() {
+    return (this.orderLinesR || []).some((orderLine) => {
+      const product = get(orderLine, 'product');
+      const offering = get(orderLine, 'offering');
+      return (product && get(product, 'isEnabled') === false) ||
+             (offering && get(offering, 'isEnabled') === false);
+    });
+  }
+
+  get hasUnacceptableOrderLines() {
+    return this.hasUnavailableOrderLines || this.hasDisabledOrderLines;
+  }
+
   reloadBasket() {
     // reset fetchDate, which is used in the basket Resource, should
     // ensure the basket resource is recomputed

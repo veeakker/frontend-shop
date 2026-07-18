@@ -1,4 +1,27 @@
 <div class="basket-cards">
+  {{#if this.disabledOrderLines.length}}
+    <Webshop::Basket::Card @warning={{true}} @hasFooter={{true}}>
+      <:title>
+        <span class="basket-card__header-icon" aria-hidden="true">&#x26A0;</span>
+        <h2 class="basket-card__subtitle">Momenteel niet beschikbaar</h2>
+      </:title>
+
+      <:body>
+        <Webshop::OrderLines
+          @orderLines={{this.disabledOrderLines}}
+          @removeOrderLine={{@removeOrderLine}} />
+      </:body>
+
+      <:footer>
+        <div class="basket-card__hint">
+          <p>
+            Deze producten zijn momenteel niet leverbaar. Verwijder ze om verder te gaan.
+          </p>
+        </div>
+      </:footer>
+    </Webshop::Basket::Card>
+  {{/if}}
+
   {{#if this.notAtLocationOrderLines.length}}
     <Webshop::Basket::Card @warning={{true}} @hasFooter={{true}}>
       <:title>
@@ -9,9 +32,7 @@
       <:body>
         <Webshop::OrderLines
           @orderLines={{this.notAtLocationOrderLines}}
-          @removeOrderLine={{@removeOrderLine}}
-          @plainRows={{true}}
-          @hideAvailabilityWarning={{true}} />
+          @removeOrderLine={{@removeOrderLine}} />
       </:body>
 
       <:footer>
@@ -40,9 +61,15 @@
       <div class="cart-total">
         <p class="cart-price"><span class="money">{{euros @totalPrice}}</span></p>
         <p class="cart-message">Exclusief verzendkosten</p>
-        {{#if @hasUnavailableOrderLines}}
+        {{#if @hasUnacceptableOrderLines}}
           <p class="cart-total__notice">
-            Verwijder de producten die niet beschikbaar zijn om verder te gaan.
+            {{#if (and this.disabledOrderLines.length this.notAtLocationOrderLines.length)}}
+              Verwijder de producten die niet leverbaar zijn op de huidige locatie of <LinkTo @route="webshop.checkout.delivery">kies een andere locatie</LinkTo>. Verwijder de producten die momenteel niet leverbaar zijn en <LinkTo @route="webshop">kies eventueel een alternatief</LinkTo>.
+            {{else if this.disabledOrderLines.length}}
+              Verwijder de producten die momenteel niet beschikbaar zijn om verder te gaan.
+            {{else}}
+              <LinkTo @route="webshop.checkout.delivery">Kies een ander leverpunt</LinkTo> of verwijder de producten die niet beschikbaar zijn op de gekozen locatie om verder te gaan.
+            {{/if}}
           </p>
         {{else if @onCheckout}}
           <div class="button-product-cart">

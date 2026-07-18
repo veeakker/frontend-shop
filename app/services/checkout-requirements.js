@@ -33,7 +33,7 @@ class BasketStep extends CheckoutStep {
 
   get satisfied() {
     const lines = this.requirements.basket.orderLinesR;
-    return !!lines && lines.length > 0 && !this.requirements.basket.hasUnavailableOrderLines;
+    return !!lines && lines.length > 0 && !this.requirements.basket.hasUnacceptableOrderLines;
   }
 }
 

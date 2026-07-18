@@ -146,29 +146,12 @@
   }
 }
 
-/* Disabled product (offering turned off in system) */
-
-.cart-item.product-disabled {
-  opacity: 0.45;
-
-  * {
-    text-decoration: line-through;
-  }
-
-  .product-disabled-message {
-    text-decoration: none;
-    color: var(--color-text-faint);
-    font-size: var(--text-sm);
-    font-style: italic;
-  }
-}
-
-/* Unavailable at chosen location */
-
+.cart-item.product-disabled,
 .cart-item.not-available-at-location {
   background: rgba(200, 149, 92, 0.05);
   border-left: 2px solid rgba(200, 149, 92, 0.4);
 
+  .product-disabled-message,
   .product-unavailable-message {
     font-size: var(--text-xs);
     color: var(--color-text-accent);
@@ -329,8 +312,23 @@
   font-size: var(--text-sm);
   font-family: 'Open Sans', sans-serif;
   line-height: var(--leading-normal);
-  max-width: 36ch;
+  max-width: 48ch;
   text-align: right;
+
+  a {
+    color: var(--color-primary);
+    font-weight: 700;
+    padding: 0;
+    text-decoration: underline;
+    text-decoration-color: rgba(200, 149, 92, 0.4);
+    text-underline-offset: 0.15em;
+    transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-primary-dark);
+      text-decoration-color: var(--color-primary);
+    }
+  }
 }
 
 .basket-card__hint {

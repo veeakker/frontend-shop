@@ -20,6 +20,10 @@
       {{@orderLine.amount}} pakje{{#if (gte @orderLine.amount 2)}}s{{/if}}
     </h4>
 
+    {{#if (and (not @hideDisabledWarning) (or (eq this.productIsEnabled false) (eq this.offeringIsEnabled false)))}}
+      <p class="product-disabled-message">&#x26A0; Momenteel niet beschikbaar.</p>
+    {{/if}}
+
     {{#if (and (not @hideAvailabilityWarning) (not this.availableForBasketLocation))}}
       <p class="product-unavailable-message">&#x26A0; Niet beschikbaar op de gekozen locatie.</p>
     {{/if}}

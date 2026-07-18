@@ -125,9 +125,14 @@
     <div class="cart-total">
       <p class="cart-price">Totaalprijs <span class="money">{{euros this.basket.totalPrice}}</span></p>
 
-      {{#if this.basket.hasUnavailableOrderLines}}
+      {{#if this.basket.hasUnacceptableOrderLines}}
         <div class="checkout-notice">
-          <p>Je mandje bevat producten die niet beschikbaar zijn op de gekozen locatie.</p>
+          {{#if this.basket.hasDisabledOrderLines}}
+            <p>Je mandje bevat producten die momenteel niet beschikbaar zijn.</p>
+          {{/if}}
+          {{#if this.basket.hasUnavailableOrderLines}}
+            <p>Je mandje bevat producten die niet beschikbaar zijn op de gekozen locatie.</p>
+          {{/if}}
           <LinkTo @route="webshop.basket" class="btn-warning">Bekijk winkelmandje</LinkTo>
         </div>
       {{else if (not this.canConfirmBasket)}}
@@ -149,7 +154,7 @@
         {{/if}}
       {{/if}}
 
-      {{#unless this.basket.hasUnavailableOrderLines}}
+      {{#unless this.basket.hasUnacceptableOrderLines}}
         <div class="button-product-cart">
           <button type="button" disabled={{not this.canConfirmBasket}} {{on "click" (fn this.confirmOrder)}}>Bevestigen</button>
         </div>

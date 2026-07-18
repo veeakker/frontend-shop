@@ -18,10 +18,9 @@
     <Webshop::BasketContents
       @orderLines={{this.basket.orderLines}}
       @totalPrice={{this.basket.totalPrice}}
-      @hasUnavailableOrderLines={{this.basket.hasUnavailableOrderLines}}
+      @hasUnacceptableOrderLines={{this.basket.hasUnacceptableOrderLines}}
       @removeOrderLine={{fn this.removeOrderLine}}
-      @onCheckout={{this.checkoutRoute}}
-      @onCheckoutLabel={{this.checkoutLabel}}
+      @onCheckout="webshop.checkout.contact-info"
     />
   {{/if}}
 </div>
