@@ -22,6 +22,12 @@ export default class WebshopRegisterController extends Controller {
   @tracked errors = [];
   @tracked success;
 
+  // Same shape as the login controller's params, so the destination
+  // threads through login -> register -> login.
+  queryParams = ['afterLoginRoute', 'afterLoginModel'];
+  @tracked afterLoginRoute = null;
+  @tracked afterLoginModel = null;
+
   @action
   async register(event) {
     event.preventDefault();
@@ -52,7 +58,12 @@ export default class WebshopRegisterController extends Controller {
       if( ! response.ok ) {
         throw await response.json();
       }
-      this.router.transitionTo('login');
+
+      const query = new URLSearchParams();
+      if (this.afterLoginRoute) query.set('afterLoginRoute', this.afterLoginRoute);
+      if (this.afterLoginModel) query.set('afterLoginModel', this.afterLoginModel);
+      const qs = query.toString();
+      this.router.transitionTo(qs ? `/login?${qs}` : '/login');
     } catch(err){
       this.errors = err.errors;
     }

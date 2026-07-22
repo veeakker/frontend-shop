@@ -23,7 +23,7 @@
       </div>
 
       <div class="button-product-cart"><a {{on 'click' this.login}} href="#">Inloggen</a></div>
-      <div class="button-product-cart"><LinkTo @route="webshop.register">Registreer</LinkTo></div>
+      <div class="button-product-cart"><LinkTo @route="webshop.register" @query={{hash afterLoginRoute=this.afterLoginRoute afterLoginModel=this.afterLoginModel}}>Registreer</LinkTo></div>
     </div>
   </div>
 </div>

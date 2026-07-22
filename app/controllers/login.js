@@ -13,6 +13,13 @@ export default class WebshopLoginController extends Controller {
   @tracked error = [];
   @tracked isLoggedIn = false;
 
+  // `afterLoginRoute` is a route name; `afterLoginModel` is a comma-joined
+  // list of dynamic segments, outermost first, in the order
+  // `transitionTo` accepts.
+  queryParams = ['afterLoginRoute', 'afterLoginModel'];
+  @tracked afterLoginRoute = null;
+  @tracked afterLoginModel = null;
+
   @action
     async login(event) {
       event.preventDefault();
@@ -25,8 +32,15 @@ export default class WebshopLoginController extends Controller {
         });
         await this.basket.requestMerge();
         this.basket.reloadBasket();
-        this.router.transitionTo('webshop');
 
+        if (this.afterLoginRoute) {
+          const models = this.afterLoginModel
+            ? this.afterLoginModel.split(',').filter(Boolean)
+            : [];
+          this.router.transitionTo(this.afterLoginRoute, ...models);
+        } else {
+          this.router.transitionTo('webshop');
+        }
       } catch(err){
         this.error = err.errors[0].title;
       }
