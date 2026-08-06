@@ -4,7 +4,7 @@
   </LinkTo>
 
   <div id="veeakker-menu">
-    <LinkTo @route="webshop">Webshop</LinkTo>
+    <LinkTo @route="webshop" @model={{this.webshop}}>Webshop</LinkTo>
     <LinkTo @route="products">Product info</LinkTo>
     <LinkTo @route="about">Over ons</LinkTo>
     <!-- <LinkTo @route="news">Nieuws</LinkTo> -->
@@ -46,7 +46,7 @@
   </div>
 </div>
 <div class="mobile-menu-links {{this.mobileIsOpenClass}}">
-  <LinkTo @route="webshop">Webshop</LinkTo>
+  <LinkTo @route="webshop" @model={{this.webshop}}>Webshop</LinkTo>
   <LinkTo @route="about">Over ons</LinkTo>
   <LinkTo @route="products">Product info</LinkTo>
   {{!-- <LinkTo @route="news">Nieuws</LinkTo> --}}

@@ -20,6 +20,10 @@ export default class WebshopLoginController extends Controller {
   @tracked afterLoginRoute = null;
   @tracked afterLoginModel = null;
 
+  get webshop() {
+    return this.session.webshop ?? 'all';
+  }
+
   @action
     async login(event) {
       event.preventDefault();
@@ -39,7 +43,8 @@ export default class WebshopLoginController extends Controller {
             : [];
           this.router.transitionTo(this.afterLoginRoute, ...models);
         } else {
-          this.router.transitionTo('webshop');
+          const webshop = await this.session.pWebshop;
+          this.router.transitionTo('webshop', webshop);
         }
       } catch(err){
         this.error = err.errors[0].title;

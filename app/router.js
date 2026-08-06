@@ -26,7 +26,7 @@ Router.map(function() {
     this.route('lamb');
     this.route('pork');
   });
-  this.route('webshop', function() {
+  this.route('webshop', { path: '/s/:shop_slug' }, function() {
     this.route('account');
     this.route('basket');
     this.route('checkout', function() {
@@ -67,4 +67,5 @@ Router.map(function() {
     this.route('ecology');
   });
   this.route('overview');
+  this.route('webshop-not-found', { path: '/webshop-not-found' });
 });

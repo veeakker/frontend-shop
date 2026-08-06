@@ -5,6 +5,7 @@ export default class AtDeliveryPointRoute extends Route {
   @service store;
   @service basket;
   @service router;
+  @service session;
 
   async model({slug}) {
     const basket = await this.basket.pBasket;
@@ -17,6 +18,7 @@ export default class AtDeliveryPointRoute extends Route {
     // TODO get the deliveryType dynamically.
     basket.deliveryType = "http://veeakker.be/delivery-methods/shop";
     await basket.save();
-    this.router.transitionTo("webshop");
+    const webshop = await this.session.pWebshop;
+    this.router.transitionTo("webshop", webshop);
   }
 }
