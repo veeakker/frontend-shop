@@ -1,12 +1,14 @@
 <div class="top-menu">
-  <LinkTo class="logo-veeakker" @route="overview">
+  <LinkTo class="logo-veeakker" @route={{this.logoRoute}} @model={{this.webshop}}>
     <img src="/images/veeakker.png" alt="Veeakker brand name in written front" />
   </LinkTo>
 
   <div id="veeakker-menu">
     <LinkTo @route="webshop" @model={{this.webshop}}>Webshop</LinkTo>
-    <LinkTo @route="products">Product info</LinkTo>
-    <LinkTo @route="about">Over ons</LinkTo>
+    {{#if this.mainSiteEnabled}}
+      <LinkTo @route="products">Product info</LinkTo>
+      <LinkTo @route="about">Over ons</LinkTo>
+    {{/if}}
     <!-- <LinkTo @route="news">Nieuws</LinkTo> -->
     <LinkTo @route="locations">Locaties</LinkTo>
     <LinkTo @route="contact-us">Contact</LinkTo>
@@ -47,8 +49,10 @@
 </div>
 <div class="mobile-menu-links {{this.mobileIsOpenClass}}">
   <LinkTo @route="webshop" @model={{this.webshop}}>Webshop</LinkTo>
-  <LinkTo @route="about">Over ons</LinkTo>
-  <LinkTo @route="products">Product info</LinkTo>
+  {{#if this.mainSiteEnabled}}
+    <LinkTo @route="about">Over ons</LinkTo>
+    <LinkTo @route="products">Product info</LinkTo>
+  {{/if}}
   {{!-- <LinkTo @route="news">Nieuws</LinkTo> --}}
   <LinkTo @route="locations">Locaties</LinkTo>
   <LinkTo @route="contact-us">Contact</LinkTo>

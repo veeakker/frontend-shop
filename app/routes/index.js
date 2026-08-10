@@ -1,11 +1,16 @@
 import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
+import config from 'veeakker/config/environment';
 
 export default class IndexRoute extends Route {
   @service router;
   @service session;
   async activate() {
-    const webshop = await this.session.pWebshop;
-    this.router.transitionTo("webshop", webshop);
+    if (config.mainSite.enabled === 'false') {
+      this.router.transitionTo('/not-found');
+    } else {
+      const webshop = await this.session.pWebshop;
+      this.router.transitionTo("webshop", webshop);
+    }
   }
 }

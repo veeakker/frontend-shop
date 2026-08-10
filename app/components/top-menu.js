@@ -2,6 +2,7 @@ import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
+import config from 'veeakker/config/environment';
 
 export default class TopMenuComponent extends Component {
   @service theme;
@@ -16,6 +17,14 @@ export default class TopMenuComponent extends Component {
 
   get webshop() {
     return this.session.webshop ?? 'all';
+  }
+
+  get mainSiteEnabled() {
+    return config.mainSite.enabled !== 'false';
+  }
+
+  get logoRoute() {
+    return this.mainSiteEnabled ? 'overview' : 'webshop';
   }
 
   @action

@@ -68,4 +68,5 @@ Router.map(function() {
   });
   this.route('overview');
   this.route('webshop-not-found', { path: '/webshop-not-found' });
+  this.route('not-found', { path: '*path' });
 });

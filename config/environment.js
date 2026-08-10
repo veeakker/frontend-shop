@@ -26,6 +26,9 @@ module.exports = function (environment) {
       domain: '{{ANALYTICS_APP_DOMAIN}}',
       apiHost: '{{ANALYTICS_API_HOST}}',
     },
+    mainSite: {
+      enabled: '{{MAIN_SITE_ENABLED}}',
+    },
     sentry: {
       dsn: '{{SENTRY_DSN}}',
       environment: '{{SENTRY_ENVIRONMENT}}'
@@ -49,6 +52,20 @@ module.exports = function (environment) {
       domain: 'dev.veeakker.be',
       apiHost: 'https://analytics.veeakker.be',
     };
+  }
+
+  if (environment === 'multitenant') {
+    // ENV.APP.LOG_RESOLVER = true;
+    // ENV.APP.LOG_ACTIVE_GENERATION = true;
+    // ENV.APP.LOG_TRANSITIONS = true;
+    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.plausible = {
+      domain: 'dev.veeakker.be',
+      apiHost: 'https://analytics.veeakker.be',
+    };
+
+    ENV.mainSite = { enabled: "false" }
   }
 
   if (environment === 'test') {

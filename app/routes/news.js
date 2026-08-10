@@ -1,7 +1,11 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
+import config from 'veeakker/config/environment';
 import { A }  from '@ember/array';
 
 export default class NewsRoute extends Route {
+  @service router;
+
   model() {
     let items = [];
     for (let i = 0; i < 15; ++i) {
@@ -17,5 +21,11 @@ export default class NewsRoute extends Route {
       });
     }
     return A(items);
+  }
+
+  activate() {
+    if (config.mainSite.enabled === 'false') {
+      this.router.transitionTo('/not-found');
+    }
   }
 }
