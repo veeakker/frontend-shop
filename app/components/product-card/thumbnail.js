@@ -1,12 +1,28 @@
 import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
+import { get } from '@ember/object';
 
 export default class extends Component {
+  @service session;
+
   get product() {
     return this.args.product;
   }
 
   get thumbnail() {
     return this.product?.get("thumbnail");
+  }
+
+  get placeholderImageUrl() {
+    const shop = this.session.webshop;
+    if (shop) {
+      const placeholder = get(shop, 'placeholderImage');
+      if (placeholder && placeholder.get('id')) {
+        const size = { width: 244, height: 200 };
+        return placeholder.content?.sizedImageUrl(size);
+      }
+    }
+    return '/images/logo-veeakker.png';
   }
 
   get imageUrl() {

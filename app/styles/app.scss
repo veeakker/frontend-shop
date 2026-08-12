@@ -13,7 +13,7 @@
 body {
   background-color: var(--color-surface);
   color: var(--color-text-primary);
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
   @include textures.texture-noise(0.055);
   background-attachment: fixed; /* noise stays still while content scrolls */
 }
@@ -26,7 +26,7 @@ body {
 
 button.button {
   background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  color: var(--color-text-on-brand);
   font-size: var(--text-base);
   font-family: 'Open Sans', sans-serif;
   padding: var(--space-3) var(--space-10);

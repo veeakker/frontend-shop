@@ -1,3 +1,4 @@
+@use "../../config/textures";
 
 /*MAIN*/
 .top-menu {
@@ -20,6 +21,14 @@
   float: left;
   img {
     height: 50px;
+  }
+  .brand-text {
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-nav-text);
+    line-height: 30px;
   }
 }
 
@@ -64,6 +73,7 @@
     a.active {
       color: var(--color-primary);
       font-weight: 600;
+      background-color: var(--nav-active-background);
     }
   }
 }
@@ -93,7 +103,8 @@
     }
 
     a {
-      font-size: 20px;
+      font-size: var(--nav-font-size);
+      font-weight: var(--nav-font-weight);
       /* always on dark photo — use fixed light colour regardless of theme */
       color: var(--color-nav-text);
       margin-right: 40px;
@@ -103,7 +114,8 @@
     }
 
     a.active {
-      border-bottom: 3px solid var(--color-primary);
+      border-bottom: var(--nav-active-indicator);
+      background-color: var(--nav-active-background);
     }
 
     .theme-toggle {
@@ -135,9 +147,21 @@
   justify-content: center;
   gap: var(--space-2);
   color: var(--color-text-primary);
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
   font-size: var(--text-sm);
   padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--color-border);
   margin: 0 5px;
+}
+
+/* Generic stencil — replace the bitmap wood header with a CSS surface + texture */
+[data-brand="generic"] .top-menu {
+  background-image: none;
+  background-color: var(--color-surface-overlay);
+  border-bottom: 1px solid var(--color-border);
+  @include textures.texture-grain();
+}
+
+[data-theme="light"] [data-brand="generic"] .top-menu {
+  @include textures.texture-grain-light();
 }

@@ -6,7 +6,7 @@
   grid-template-columns: 1fr 2fr;
   gap: var(--space-10);
   align-items: start;
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
 }
 
 .contact-section-label {

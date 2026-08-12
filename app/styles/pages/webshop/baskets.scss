@@ -5,7 +5,7 @@
 .my-account table {
   width: 100%;
   border-collapse: collapse;
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
   font-size: var(--text-sm);
 }
 
@@ -69,7 +69,7 @@
   list-style: none;
   padding: var(--space-4) var(--space-12);
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
   font-size: var(--text-sm);
   color: var(--color-text-muted);
 
@@ -115,7 +115,7 @@
   h2 {
     font-size: var(--text-xl);
     color: var(--color-text-primary);
-    font-family: 'Varela Round', sans-serif;
+    font-family: var(--font-display);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin: 0 0 var(--space-4);
@@ -132,7 +132,7 @@
   display: block;
   font-size: var(--text-xs);
   color: var(--color-primary);
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
   margin-top: var(--space-1);
 }
 
@@ -142,7 +142,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   color: var(--color-text-muted);
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
   font-size: var(--text-xs);
   padding: var(--space-1) var(--space-3);
   cursor: pointer;

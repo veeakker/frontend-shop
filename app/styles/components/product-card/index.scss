@@ -96,7 +96,7 @@
     min-height: 80px; /* fills card bottom so amounts never bleed through */
     text-align: left;
     color: var(--color-text-primary);
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-base);
 
     .product-title {
       font-size: var(--text-base);
@@ -165,7 +165,7 @@
       letter-spacing: 0.07em;
       font-weight: 600;
       color: var(--color-text-muted);
-      font-family: 'Open Sans', sans-serif;
+      font-family: var(--font-base);
     }
 
     .teste {
@@ -212,7 +212,7 @@
       margin-left: 2px;
       height: 28px;
       color: var(--color-text-primary);
-      font-family: 'Open Sans', sans-serif;
+      font-family: var(--font-base);
       font-size: var(--text-sm);
 
       &:disabled {
@@ -290,7 +290,7 @@
   font-size: 11px;
   font-weight: 700;
   color: white;
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
   line-height: 1;
   transform: rotate(45deg);
   position: relative;
@@ -305,9 +305,9 @@
   border-radius: var(--radius-sm);
   display: inline-block;
   background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  color: var(--color-text-on-brand);
   font-size: var(--text-sm);
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
   padding: var(--space-2) var(--space-5);
   border: none;
   cursor: pointer;

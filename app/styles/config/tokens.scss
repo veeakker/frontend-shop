@@ -11,9 +11,11 @@
   --color-secondary-dark: #7A6C60;
 
   /* Accent colours */
-  --color-accent-tan:     #C8955C;  /* same family as primary */
-  --color-accent-eco:     #7A9B62;  /* sage green - ecological elements */
-  --color-accent-gold:    #D4A843;  /* warm gold - prices, premium labels */
+  --color-accent-tan:      #C8955C;  /* same family as primary */
+  --color-accent-secondary: #7A9B62; /* info messages, notices */
+  --color-accent-eco:      var(--color-accent-secondary); /* deprecated alias */
+  --color-accent-highlight: #D4A843; /* prices, premium labels */
+  --color-accent-gold:    var(--color-accent-highlight); /* deprecated alias */
 
   /* Surfaces */
   --color-surface:        #14110F;  /* near-black warm - app background */
@@ -31,10 +33,8 @@
   --color-text-muted:     #9A8C7E;  /* warm grey - secondary / meta */
   --color-text-faint:     #6A5E55;  /* very dim - placeholders, disabled */
   --color-text-inverse:   #14110F;  /* dark-on-light (inside CTA buttons) */
+  --color-text-on-brand:  var(--color-text-inverse);
   --color-text-accent:    #C8955C;  /* amber - emphasis, active states */
-
-  /* Navigation on dark photo header — same in both modes since photo never changes */
-  --color-nav-text:       #F0E8DC;
 
   /* Navigation bar links (category + subcategory nav — always on dark brown bar) */
   --color-nav-bar-text:       #9A8C7E;
@@ -94,6 +94,21 @@
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 400ms ease;
+
+  /* Sanctioned per-shop customization points.
+     These variables are actively supported — upgrades will preserve them.
+     Shops MAY override via shop.style. Overriding with raw CSS is possible
+     but not guaranteed to survive upgrades. */
+  --font-base:             'Open Sans', sans-serif;
+  --font-display:          'Varela Round', sans-serif;
+  --nav-active-background: transparent;
+  --nav-active-indicator:  3px solid var(--color-primary);
+  --nav-font-family:       var(--font-display);
+  --nav-font-size:         20px;
+  --nav-font-weight:       400;
+  --tab-font-size:         var(--text-base);
+  --tab-font-weight:       400;
+  --color-nav-text:        #F0E8DC;
 }
 
 /* Light theme — warm parchment, amber accent preserved as brand signature */
@@ -104,8 +119,10 @@
   --color-secondary:      #8A7060;
   --color-secondary-dark: #6E5848;
   --color-accent-tan:     #C09060;
-  --color-accent-eco:     #4E7A30;  /* richer sage green */
-  --color-accent-gold:    #C09A18;
+  --color-accent-secondary: #4E7A30;  /* richer sage green */
+  --color-accent-eco:     var(--color-accent-secondary); /* deprecated alias */
+  --color-accent-highlight: #C09A18;
+  --color-accent-gold:    var(--color-accent-highlight); /* deprecated alias */
   --color-surface:        #F0E6D2;  /* warm parchment */
   --color-surface-card:   #FAF5EB;  /* cream near-white */
   --color-surface-input:  #EDE4D6;
@@ -117,6 +134,7 @@
   --color-text-muted:     #6B4A30;
   --color-text-faint:     #9A7A60;
   --color-text-inverse:   #FAF5EB;
+  --color-text-on-brand:  var(--color-text-inverse);
   --color-text-accent:    #B0701E;
   --color-error:          #C0392B;
   --color-nav-bg:                 #443b36;  /* old site $base-primary */
@@ -139,5 +157,90 @@
 
 [data-theme="dark"] {
   color-scheme: dark; /* explicit dark override — locks native elements to dark even if OS is light */
+}
+
+/* ---- Generic stencil (multi-tenant) ---- */
+/* Activates via <body data-brand="generic"> set by the application route
+   when mainSite.enabled is false. Single-tenant has no data-brand
+   attribute, so these blocks never match — the veeakker :root and
+   [data-theme="light"] blocks above are the sole cascade. */
+[data-brand="generic"] {
+  /* primitives — a shop overrides these to recolor the whole design */
+  --brand-accent:       #6b7280;
+  --brand-accent-press: #4b5563;
+  --surface-1:  #1a1a1a;
+  --surface-2:  #252525;
+  --surface-3:  #333333;
+  --surface-0:  #0d0d0d;
+  --ink-1:  #e5e5e5;
+  --ink-2:  #9ca3af;
+  --line-1: #3a3a3a;
+
+  /* semantic tokens — all derived from primitives */
+  --color-primary:          var(--brand-accent);
+  --color-primary-dark:     var(--brand-accent-press);
+  --color-secondary:        var(--ink-2);
+  --color-secondary-dark:   color-mix(in srgb, var(--ink-2), var(--surface-1) 50%);
+  --color-accent-tan:       var(--brand-accent);
+  --color-accent-highlight: color-mix(in srgb, var(--brand-accent) 85%, white);
+  --color-accent-gold:      var(--color-accent-highlight);
+  --color-accent-secondary: color-mix(in srgb, var(--brand-accent) 70%, var(--surface-2));
+  --color-accent-eco:       var(--color-accent-secondary);
+
+  --color-surface:          var(--surface-1);
+  --color-surface-card:     var(--surface-2);
+  --color-surface-input:    var(--surface-3);
+  --color-surface-overlay:  var(--surface-0);
+
+  --color-border:           var(--line-1);
+  --color-border-strong:    color-mix(in srgb, var(--line-1), white 12%);
+  --color-border-focus:     var(--brand-accent);
+
+  --color-text-primary:     var(--ink-1);
+  --color-text-muted:       var(--ink-2);
+  --color-text-faint:       color-mix(in srgb, var(--ink-2), var(--surface-1) 50%);
+  --color-text-inverse:     var(--surface-1);
+  --color-text-on-brand:   var(--color-text-inverse);
+  --color-text-accent:      var(--brand-accent);
+
+  --color-nav-text:               var(--ink-1);
+  --color-nav-bar-text:           var(--ink-2);
+  --color-nav-bar-text-hover:     var(--ink-1);
+  --color-nav-bar-active:         var(--brand-accent);
+  --color-nav-bg:                 var(--surface-2);
+  --color-nav-bg-hover:           var(--surface-1);
+  --color-nav-secondary-bg:       color-mix(in srgb, var(--surface-2), var(--surface-3) 50%);
+  --color-nav-secondary-bg-hover: var(--surface-3);
+
+  --color-error:  #E07070;
+
+  --shadow-glow: 0 0 28px color-mix(in srgb, var(--brand-accent) 18%, transparent);
+
+  /* re-declared to re-resolve --color-primary from the generic cascade */
+  --nav-active-indicator: 3px solid var(--color-primary);
+  --font-display: 'Varela Round', sans-serif;
+  --nav-font-family: var(--font-display);
+  --nav-font-size:   20px;
+  --nav-font-weight: 400;
+  --tab-font-size:   var(--text-base);
+  --tab-font-weight: 400;
+  --color-nav-text:  var(--ink-1);
+}
+
+[data-theme="light"] [data-brand="generic"] {
+  /* only override primitives — semantic tokens auto-derive */
+  --brand-accent:       #4b5563;
+  --brand-accent-press: #374151;
+  --surface-1:  #f5f5f5;
+  --surface-2:  #ffffff;
+  --surface-3:  #ebebeb;
+  --surface-0:  #dcdcdc;
+  --ink-1:  #1a1a1a;
+  --ink-2:  #6b7280;
+  --line-1: #d1d5db;
+
+  --shadow-card:   0 2px 8px  rgba(0, 0, 0, 0.08);
+  --shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-float:  0 8px 32px rgba(0, 0, 0, 0.18);
 }
 

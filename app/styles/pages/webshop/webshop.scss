@@ -44,7 +44,7 @@
   }
 
   a.delivery-label {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-base);
     font-size: var(--text-sm);
     font-weight: 400;
     font-style: normal;
@@ -63,13 +63,13 @@
   .basket-nav__count {
     font-size: var(--text-sm);
     font-weight: 700;
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-base);
     vertical-align: middle;
   }
 
   .basket-nav__price {
     font-size: var(--text-sm);
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-base);
     vertical-align: middle;
   }
 }
@@ -114,8 +114,9 @@
     text-decoration: none;
     text-align: center;
     color: var(--color-nav-bar-text);
-    font-size: var(--text-base);
-    font-family: 'Varela Round', sans-serif;
+    font-size: var(--tab-font-size);
+    font-weight: var(--tab-font-weight);
+    font-family: var(--font-display);
     padding: var(--space-4);
     transition: color var(--transition-fast);
 
@@ -133,7 +134,7 @@
   margin: var(--space-8) 0 var(--space-4);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-family: 'Varela Round', sans-serif;
+  font-family: var(--font-display);
 }
 
 /* Product grid */

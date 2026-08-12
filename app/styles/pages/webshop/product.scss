@@ -72,7 +72,7 @@ dl.general-product-information {
   margin: 0 auto var(--space-8);
   padding: 0 var(--space-4);
   color: var(--color-text-primary);
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
 }
 
 /* Prose content from backend HTML */
@@ -117,7 +117,7 @@ dl.general-product-information {
     padding: var(--space-1) var(--space-3);
     font-size: var(--text-sm);
     color: var(--color-text-primary);
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-base);
   }
 
   p {
@@ -141,7 +141,7 @@ dl.general-product-information {
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
   margin-bottom: var(--space-3);
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
 }
 
 /* Supplier name heading */
@@ -151,7 +151,7 @@ dl.general-product-information {
   color: var(--color-text-accent);
   margin: 0 0 var(--space-3);
   padding-top: var(--space-3);
-  font-family: 'Varela Round', sans-serif;
+  font-family: var(--font-display);
 }
 
 .info-img {
@@ -173,7 +173,7 @@ dl.general-product-information {
 
   h3 {
     font-size: 20px;
-    font-family: 'Open Sans';
+    font-family: var(--font-base);
     text-transform: uppercase;
   }
 
@@ -213,13 +213,16 @@ dl.general-product-information {
     text-align: center;
     margin: 8px;
     color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-size: var(--tab-font-size);
+    font-weight: var(--tab-font-weight);
     transition: background-color var(--transition-base), color var(--transition-base);
   }
 
   a:hover {
     background-color: var(--color-primary-dark);
     cursor: pointer;
-    color: var(--color-text-inverse);
+    color: var(--color-text-on-brand);
   }
 
   a.active {
@@ -230,7 +233,7 @@ dl.general-product-information {
   a.active:hover {
     background-color: var(--color-primary);
     cursor: pointer;
-    color: var(--color-text-inverse);
+    color: var(--color-text-on-brand);
   }
 
   h5 {

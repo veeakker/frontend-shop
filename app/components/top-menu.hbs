@@ -1,6 +1,12 @@
-<div class="top-menu">
+<div class="top-menu" style={{if this.topImageUrl (concat "background-image: url('" this.topImageUrl "')")}}>
   <LinkTo class="logo-veeakker" @route={{this.logoRoute}} @model={{this.webshop}}>
-    <img src="/images/veeakker.png" alt="Veeakker brand name in written front" />
+    {{#if this.webshop.logo}}
+      <img src={{this.webshop.logo.downloadUrl}} alt={{this.webshop.label}} />
+    {{else if this.mainSiteEnabled}}
+      <img src="/images/veeakker.png" alt="Veeakker brand name in written front" />
+    {{else}}
+      <span class="brand-text">{{this.webshop.label}}</span>
+    {{/if}}
   </LinkTo>
 
   <div id="veeakker-menu">

@@ -29,7 +29,20 @@ export default class SessionService extends Service {
     this._webshopPromise = new ExternalPromise();
     this._webshopPromise.resolve(webshop);
     if (webshop) {
-      document.documentElement.setAttribute('data-shop', get(webshop, 'slug'));
+      document.body.setAttribute('data-shop', get(webshop, 'slug'));
+      this._injectShopStyle(webshop);
+    }
+  }
+
+  _injectShopStyle(webshop) {
+    const existing = document.getElementById('shop-custom-css');
+    if (existing) existing.remove();
+    const style = get(webshop, 'style');
+    if (style) {
+      const el = document.createElement('style');
+      el.id = 'shop-custom-css';
+      el.textContent = style;
+      document.head.appendChild(el);
     }
   }
 }
