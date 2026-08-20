@@ -13,19 +13,24 @@ function arr(thing) {
 export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
   @service store
   @service basket
+  @service session
 
   async model({ subgroup_id }) {
     const productGroup = await this.store.findRecord('product-group', subgroup_id);
-    // if the basket has a location set and that location has a business entity connected to it, then we want to filter on that business entit
 
+    // if the basket has a location set and that location has a business entity connected to it, then we want to filter on that business entity
     let businessEntity = await this.basket.getConstrainingBusinessEntity();
+    // if a shop has constraints, we want to filter for those
+    let shop = await this.session.getConstrainingShop();
+
     const searchQueryParams = {
       "filter[:term:product-group-ids]": subgroup_id,
       "page[number]": 0,
       "page[size]": 250,
       "filter[is-enabled]": true,
       "filter[offerings.is-enabled]": true,
-      ...businessEntity?.id ? { "filter[:term:available-at-or-from-ids]": businessEntity.id } : {}
+      ...businessEntity?.id ? { "filter[:term:available-at-or-from-ids]": businessEntity.id } : {},
+      ...shop?.id ? { "filter[:term:shop-ids]": shop.id } : {}
     };
 
     const productsURL = "/search/products?" + (new URLSearchParams(searchQueryParams)).toString();

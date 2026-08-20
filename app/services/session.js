@@ -2,7 +2,7 @@ import Service from 'ember-simple-auth/services/session';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { get } from '@ember/object';
-import ExternalPromise from 'veeakker/utils/external-promise';
+import ExternalPromise from '../utils/external-promise';
 
 export default class SessionService extends Service {
   @service store;
@@ -43,6 +43,25 @@ export default class SessionService extends Service {
       el.id = 'shop-custom-css';
       el.textContent = style;
       document.head.appendChild(el);
+    }
+  }
+
+  // Like BasketService.getConstrainingBusinessEntity, the shop to use as constraint for offerings
+  async getConstrainingShop() {
+    const shop = await this.pWebshop;
+    if (shop) {
+      const [deliveryPlaces, disallowedProductGroups, suppliers] = await Promise.all([
+        get(shop, 'deliveryPlaces'),
+        get(shop, 'disallowedProductGroups'),
+        get(shop, 'suppliers')
+      ]);
+      if (deliveryPlaces.length || disallowedProductGroups.length || suppliers.length) {
+        return shop;
+      } else {
+        return;
+      }
+    } else {
+      return;
     }
   }
 }

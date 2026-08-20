@@ -8,6 +8,9 @@ export default class ShopModel extends Model {
   @belongsTo('file', { async: true, inverse: null }) topImage;
   @belongsTo('file', { async: true, inverse: null }) placeholderImage;
   @hasMany('offering', { async: true, inverse: null }) offerings;
+  @hasMany('delivery-place', { async: true, inverse: null }) deliveryPlaces;
+  @hasMany('product-group', { async: true, inverse: null }) disallowedProductGroups;
+  @hasMany('business-entity', { async: true, inverse: null }) suppliers;
 
   get hasCustomTopRegion() {
     const logo = this.logo;
