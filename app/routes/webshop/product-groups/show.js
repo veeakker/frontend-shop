@@ -16,7 +16,7 @@ export default class WebshopProductGroupsShowRoute extends Route {
           "filter[parent-groups][:id:]": params.id,
           "filter[products][is-enabled]": true,
           ...businessEntity ? { "filter[products][offerings][available-at-or-from][:id:]": businessEntity.id } : {},
-          ...shop ? { "filter[products][offerings][available-in-shop][:id:]": shop.id } : {}
+          ...shop ? { "filter[products][offerings][offered-by-shop][:id:]": shop.id } : {}
         }),
         parent: await this.store.findRecord('product-group', params.id)
     }

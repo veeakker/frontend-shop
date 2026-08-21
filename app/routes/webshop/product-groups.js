@@ -15,7 +15,7 @@ export default class WebshopProductGroupsRoute extends Route {
       "filter[child-groups][products][is-enabled]": true,
       "include": "child-groups",
       ...businessEntity ? { "filter[child-groups][products][offerings][available-at-or-from][:id:]": businessEntity.id } : {},
-      ...shop ? { "filter[child-groups][products][offerings][available-in-shop][:id:]": shop.id } : {}
+      ...shop ? { "filter[child-groups][products][offerings][offered-by-shop][:id:]": shop.id } : {}
     });
   }
 }
