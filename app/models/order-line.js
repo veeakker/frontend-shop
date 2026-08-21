@@ -77,6 +77,7 @@ export default class OrderLineModel extends Model {
   @service basket;
 
   @belongsTo('offering', { async: true, inverse: null }) offering
+  @belongsTo('shop', { async: true, inverse: null }) orderedFromShop
   @attr('number') amount
   @attr() comment
 

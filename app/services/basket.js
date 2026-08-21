@@ -19,6 +19,7 @@ class BasketFetcher extends Resource {
         accept: "application/vnd.api+json"
       }
     })).json();
+    this.normalizeOrderLineShop(result);
     if ( isUpdate ) {
       this.value.set("orderLines",[]);
     }
@@ -50,6 +51,21 @@ class BasketFetcher extends Resource {
 
   async update() {
     await this.getBasket(true);
+  }
+
+  // The basketservice returns the shop as a flat shopUuid attribute on
+  // order-lines; Ember Data needs a JSON:API relationship instead.
+  normalizeOrderLineShop(result) {
+    const items = [...(result.included || []), ...(result.data || [])];
+    for (const item of items) {
+      if (item.type === "order-line" && item.attributes?.shopUuid) {
+        if (!item.relationships) item.relationships = {};
+        item.relationships["ordered-from-shop"] = {
+          data: { id: item.attributes.shopUuid, type: "shop" }
+        };
+        delete item.attributes.shopUuid;
+      }
+    }
   }
 
   get basketUrl() {
@@ -145,6 +161,7 @@ class TotalPriceResource extends Resource {
 export default class BasketService extends Service {
   @service store
   @service plausible
+  @service session
   @tracked basketPromise = new ExternalPromise(); // use pBasket instead!
   @use basket = new BasketFetcher(() => [this.basketPromise])
   @use deliveryPlace = new DeliveryPlaceFetcher(() => [this.basket,this.basket?.deliveryPlace])
@@ -245,6 +262,8 @@ export default class BasketService extends Service {
    * Adds <amount> items of type <offering> to the orderLines
    */
   async addOffer( offering, amount ){
+    const shop = await this.session.pWebshop;
+
     // TODO: support combining order lines in API by summing data.
     await fetch(`/current-basket/add-order-line`, {
       method: "POST",
@@ -254,7 +273,8 @@ export default class BasketService extends Service {
       },
       body: JSON.stringify({
         offeringUuid: get(offering, "id"),
-        amount: amount
+        amount: amount,
+        shopUuid: shop?.id
       })
     });
     this.reloadBasket();
