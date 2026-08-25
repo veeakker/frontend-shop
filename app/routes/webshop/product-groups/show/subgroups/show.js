@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import shopSearchParams from 'veeakker/utils/shop-search-params';
 
 function arr(thing) {
   if( thing instanceof Array )
@@ -22,6 +23,7 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
     let businessEntity = await this.basket.getConstrainingBusinessEntity();
     // if a shop has constraints, we want to filter for those
     let shop = await this.session.getConstrainingShop();
+    let shopParams = await shopSearchParams(shop);
 
     const searchQueryParams = {
       "filter[:term:product-group-ids]": subgroup_id,
@@ -30,7 +32,7 @@ export default class WebshopProductGroupsShowSubgroupsShowRoute extends Route {
       "filter[is-enabled]": true,
       "filter[offerings.is-enabled]": true,
       ...businessEntity?.id ? { "filter[:term:available-at-or-from-ids]": businessEntity.id } : {},
-      ...shop?.id ? { "filter[:term:shop-ids]": shop.id } : {}
+      ...shopParams
     };
 
     const productsURL = "/search/products?" + (new URLSearchParams(searchQueryParams)).toString();

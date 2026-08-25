@@ -1,3 +1,28 @@
+{{#if (goedgekozen)}}
+{{outlet}}
+<div class="ggz-auth">
+  <h1 class="tab-title">Inloggen</h1>
+
+  <div class="error-message">
+    {{#if this.error}}
+      {{this.error}}
+    {{/if}}
+  </div>
+
+  <div class="form-field">
+    <label for="login-email">E-mail</label>
+    <Input id="login-email" @type="email" @value={{this.email}} />
+  </div>
+  <div class="form-field">
+    <label for="login-password">Wachtwoord</label>
+    <Input id="login-password" @type="password" @value={{this.password}} />
+  </div>
+
+  <div class="button-product-cart"><a {{on 'click' this.login}} href="#">Inloggen</a></div>
+  <div class="button-product-cart"><LinkTo @route="webshop.register" @model={{this.webshop}} @query={{hash afterLoginRoute=this.afterLoginRoute afterLoginModel=this.afterLoginModel}}>Registreer</LinkTo></div>
+</div>
+{{outlet}}
+{{else}}
 {{outlet}}
 <div class="login">
   <div class="checkout-contact">
@@ -28,3 +53,4 @@
   </div>
 </div>
 {{outlet}}
+{{/if}}

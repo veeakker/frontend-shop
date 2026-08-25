@@ -28,4 +28,9 @@ export default class WebshopRoute extends Route {
       }
     }
   }
+
+  setupController( _controller, model ) {
+    super.setupController(...arguments);
+    this.session.webshop = model;
+  }
 }

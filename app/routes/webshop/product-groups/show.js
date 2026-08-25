@@ -1,5 +1,7 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import productGroupHasProducts from 'veeakker/utils/product-group-has-products';
+import shopSearchParams from 'veeakker/utils/shop-search-params';
 
 export default class WebshopProductGroupsShowRoute extends Route {
   @service store;
@@ -10,15 +12,22 @@ export default class WebshopProductGroupsShowRoute extends Route {
   async model(params) {
     let businessEntity = await this.basket.getConstrainingBusinessEntity();
     let shop = await this.session.getConstrainingShop();
+    let shopParams = await shopSearchParams(shop);
+
+    let allChildren = await this.store.query('product-group', {
+      "filter[parent-groups][:id:]": params.id,
+    });
+
+    let checks = await Promise.all(
+      allChildren.toArray().map(async (child) => ({
+        child,
+        hasProducts: await productGroupHasProducts(child.id, businessEntity, shopParams)
+      }))
+    );
 
     return {
-        children: await this.store.query('product-group', {
-          "filter[parent-groups][:id:]": params.id,
-          "filter[products][is-enabled]": true,
-          ...businessEntity ? { "filter[products][offerings][available-at-or-from][:id:]": businessEntity.id } : {},
-          ...shop ? { "filter[products][offerings][offered-by-shop][:id:]": shop.id } : {}
-        }),
-        parent: await this.store.findRecord('product-group', params.id)
-    }
+      children: checks.filter(c => c.hasProducts).map(c => c.child),
+      parent: await this.store.findRecord('product-group', params.id)
+    };
   }
 }

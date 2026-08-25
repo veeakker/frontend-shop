@@ -92,6 +92,10 @@
     align-items: center;
   }
 
+  [data-brand="goedgekozen"] .ggz-top-wordmark {
+    float: none;
+  }
+
   #veeakker-menu {
     float: none;
     margin: 0 2% 0 0;
@@ -164,4 +168,65 @@
 
 [data-theme="light"] [data-brand="generic"] .top-menu {
   @include textures.texture-grain-light();
+}
+
+/* goedgekozen.be nav band: light linen, meadow active indicator.  Colors
+   use --color-nav-bar-* (not --color-text-*) to stay visible against the
+   shop's --color-nav-bg when data-shop persists on the main page.  Wordmark
+   matches .logo-veeakker's 25px margin and 50px SVG height so the header
+   doesn't jump between shop and main page. */
+[data-brand="goedgekozen"] .ggz-top-menu {
+  background-image: none;
+  background-color: var(--color-nav-bg);
+  border-bottom: 1px solid var(--color-border);
+  @include textures.texture-linen-light();
+  box-shadow: var(--shadow-card);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+[data-theme="dark"] [data-brand="goedgekozen"] .ggz-top-menu {
+  @include textures.texture-linen();
+}
+
+[data-brand="goedgekozen"] .ggz-top-wordmark {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  float: left;
+  margin: 25px;
+  text-decoration: none;
+  color: var(--color-nav-bar-active);
+}
+[data-brand="goedgekozen"] .ggz-top-wordmark__mark {
+  width: 50px;
+  height: 50px;
+}
+[data-brand="goedgekozen"] .ggz-top-wordmark__text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-2xl);
+  color: var(--color-nav-bar-text);
+  letter-spacing: -0.01em;
+}
+[data-brand="goedgekozen"] .ggz-top-wordmark__be {
+  color: var(--color-nav-bar-active);
+}
+
+[data-brand="goedgekozen"] .ggz-top-menu #veeakker-menu a {
+  color: var(--color-nav-bar-text);
+  border-bottom: 3px solid transparent;
+  &:hover {
+    color: var(--color-nav-bar-text-hover);
+  }
+  &.active {
+    color: var(--color-nav-bar-active);
+    border-bottom: var(--nav-active-indicator);
+  }
+}
+
+[data-brand="goedgekozen"] .ggz-top-menu .theme-toggle,
+[data-brand="goedgekozen"] .ggz-shop-header .theme-toggle {
+  color: var(--color-nav-bar-text);
 }

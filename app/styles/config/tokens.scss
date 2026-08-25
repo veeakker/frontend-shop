@@ -159,32 +159,26 @@
   color-scheme: dark; /* explicit dark override — locks native elements to dark even if OS is light */
 }
 
-/* ---- Generic stencil (multi-tenant) ---- */
-/* Activates via <body data-brand="generic"> set by the application route
-   when mainSite.enabled is false. Single-tenant has no data-brand
-   attribute, so these blocks never match — the veeakker :root and
-   [data-theme="light"] blocks above are the sole cascade. */
-[data-brand="generic"] {
-  /* primitives — a shop overrides these to recolor the whole design */
-  --brand-accent:       #6b7280;
-  --brand-accent-press: #4b5563;
-  --surface-1:  #1a1a1a;
-  --surface-2:  #252525;
-  --surface-3:  #333333;
-  --surface-0:  #0d0d0d;
-  --ink-1:  #e5e5e5;
-  --ink-2:  #9ca3af;
-  --line-1: #3a3a3a;
+/* ---- Marketplace semantic derivation (shared) ---- */
+/* For any [data-brand] on #page-container: brands and shops set primitives,
+   this block derives every semantic token from them, so a shop's overrides
+   recolor the full palette.  Standalone (veeakker) sets no data-brand, so
+   this block never matches there. */
+[data-brand] {
+  /* accent primitives: override when the default color-mix doesn't fit a palette */
+  --accent-highlight:       color-mix(in srgb, var(--brand-accent) 85%, white);
+  --accent-secondary:       color-mix(in srgb, var(--brand-accent) 70%, var(--surface-2));
 
-  /* semantic tokens — all derived from primitives */
+  /* semantic tokens: derived from primitives */
   --color-primary:          var(--brand-accent);
   --color-primary-dark:     var(--brand-accent-press);
   --color-secondary:        var(--ink-2);
   --color-secondary-dark:   color-mix(in srgb, var(--ink-2), var(--surface-1) 50%);
-  --color-accent-tan:       var(--brand-accent);
-  --color-accent-highlight: color-mix(in srgb, var(--brand-accent) 85%, white);
+  --color-accent-tan:       var(--brand-accent-warm, var(--brand-accent));
+  --color-accent-warm:      var(--brand-accent-warm, var(--brand-accent));
+  --color-accent-highlight: var(--accent-highlight);
   --color-accent-gold:      var(--color-accent-highlight);
-  --color-accent-secondary: color-mix(in srgb, var(--brand-accent) 70%, var(--surface-2));
+  --color-accent-secondary: var(--accent-secondary);
   --color-accent-eco:       var(--color-accent-secondary);
 
   --color-surface:          var(--surface-1);
@@ -200,7 +194,7 @@
   --color-text-muted:       var(--ink-2);
   --color-text-faint:       color-mix(in srgb, var(--ink-2), var(--surface-1) 50%);
   --color-text-inverse:     var(--surface-1);
-  --color-text-on-brand:   var(--color-text-inverse);
+  --color-text-on-brand:    var(--color-text-inverse);
   --color-text-accent:      var(--brand-accent);
 
   --color-nav-text:               var(--ink-1);
@@ -216,7 +210,6 @@
 
   --shadow-glow: 0 0 28px color-mix(in srgb, var(--brand-accent) 18%, transparent);
 
-  /* re-declared to re-resolve --color-primary from the generic cascade */
   --nav-active-indicator: 3px solid var(--color-primary);
   --font-display: 'Varela Round', sans-serif;
   --nav-font-family: var(--font-display);
@@ -227,8 +220,26 @@
   --color-nav-text:  var(--ink-1);
 }
 
+/* ---- Generic stencil (multi-tenant base) ---- */
+/* Dark-first primitives.  Shops and goedgekozen override these; the shared
+   [data-brand] block above derives all semantic tokens from them. */
+[data-brand="generic"] {
+  --brand-accent:       #6b7280;
+  --brand-accent-press: #4b5563;
+  --surface-1:  #1a1a1a;
+  --surface-2:  #252525;
+  --surface-3:  #333333;
+  --surface-0:  #0d0d0d;
+  --ink-1:  #e5e5e5;
+  --ink-2:  #9ca3af;
+  --line-1: #3a3a3a;
+
+  --shadow-card:   0 2px 12px rgba(0, 0, 0, 0.55);
+  --shadow-raised: 0 4px 24px rgba(0, 0, 0, 0.65);
+  --shadow-float:  0 8px 40px rgba(0, 0, 0, 0.75);
+}
+
 [data-theme="light"] [data-brand="generic"] {
-  /* only override primitives — semantic tokens auto-derive */
   --brand-accent:       #4b5563;
   --brand-accent-press: #374151;
   --surface-1:  #f5f5f5;
@@ -242,5 +253,61 @@
   --shadow-card:   0 2px 8px  rgba(0, 0, 0, 0.08);
   --shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.12);
   --shadow-float:  0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+/* ---- goedgekozen.be brand (marketplace, light-first) ---- */
+/* Overrides generic's primitives, like a shop does.  When a shop swaps in
+   via [data-shop], its primitives win and the semantic tokens follow.  The
+   transition on #page-container (app.scss) smooths the swap. */
+[data-brand="goedgekozen"] {
+  /* primitives: light (default) */
+  --brand-accent:        #2F7D44;  /* meadow green: CTA, links, focus */
+  --brand-accent-press:  #236234;
+  --brand-accent-warm:   #C07A45;  /* terracotta: "well-chosen"/fair&local accent */
+  --accent-highlight:    color-mix(in srgb, var(--brand-accent) 78%, white);
+  --accent-secondary:    color-mix(in srgb, var(--brand-accent) 70%, var(--surface-2));
+  --surface-1: #F6F2E9;            /* linen page bg */
+  --surface-2: #FFFFFF;            /* raised card */
+  --surface-3: #EFE9DB;            /* input */
+  --surface-0: #E4DCC8;            /* overlay */
+  --ink-1: #1C2A20;               /* deep forest text */
+  --ink-2: #5C6B5F;               /* muted olive-grey */
+  --line-1: #D8CFB9;
+
+  /* brand-specific overrides */
+  --color-border-strong:    color-mix(in srgb, var(--line-1), var(--ink-1) 18%);
+  --color-nav-bg-hover:     color-mix(in srgb, var(--surface-2), var(--surface-3) 50%);
+  --color-nav-secondary-bg: var(--surface-3);
+  --color-nav-secondary-bg-hover: color-mix(in srgb, var(--surface-3), var(--line-1) 40%);
+  --color-error:  #B23A2E;
+
+  --shadow-card:   0 2px 8px  rgba(28, 42, 32, 0.08);
+  --shadow-raised: 0 4px 16px rgba(28, 42, 32, 0.12);
+  --shadow-float:  0 8px 32px rgba(28, 42, 32, 0.18);
+  --shadow-glow:   0 0 24px color-mix(in srgb, var(--brand-accent) 22%, transparent);
+
+  --font-display: 'Fraunces', 'Varela Round', serif;
+  --nav-font-weight: 500;
+}
+
+[data-theme="dark"] [data-brand="goedgekozen"] {
+  /* primitives: dark override (opt-in via theme toggle) */
+  --brand-accent:        #5B9D6A;
+  --brand-accent-press:  #3F7D4D;
+  --brand-accent-warm:   #D08F5E;
+  --accent-highlight:    color-mix(in srgb, var(--brand-accent) 78%, white);
+  --accent-secondary:    color-mix(in srgb, var(--brand-accent) 70%, var(--surface-2));
+  --surface-1: #16201A;
+  --surface-2: #1E2A22;
+  --surface-3: #28362C;
+  --surface-0: #0F1713;
+  --ink-1: #EAF2EC;
+  --ink-2: #9BB3A1;
+  --line-1: #2C3A30;
+
+  --shadow-card:   0 2px 12px rgba(0, 0, 0, 0.55);
+  --shadow-raised: 0 4px 24px rgba(0, 0, 0, 0.65);
+  --shadow-float:  0 8px 40px rgba(0, 0, 0, 0.75);
+  --shadow-glow:   0 0 28px color-mix(in srgb, var(--brand-accent) 20%, transparent);
 }
 

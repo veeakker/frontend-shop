@@ -29,6 +29,9 @@ module.exports = function (environment) {
     mainSite: {
       enabled: '{{MAIN_SITE_ENABLED}}',
     },
+    // When mainSite.enabled is false, marketplaceBrand picks the data-brand stencil (application.hbs): 'goedgekozen'
+    // for goedgekozen.be; anything else for the generic stencil.  Standalone veeakker sets no data-brand.
+    marketplaceBrand: '{{MARKETPLACE_BRAND}}',
     sentry: {
       dsn: '{{SENTRY_DSN}}',
       environment: '{{SENTRY_ENVIRONMENT}}'
@@ -66,6 +69,7 @@ module.exports = function (environment) {
     };
 
     ENV.mainSite = { enabled: "false" }
+    ENV.marketplaceBrand = "goedgekozen"
   }
 
   if (environment === 'test') {

@@ -1,3 +1,38 @@
+{{#if (goedgekozen)}}
+<div class="contact">
+  <div class="ggz-page-header">
+    <h1>Contact</h1>
+  </div>
+
+  <div class="contact-content">
+    <div class="contact-details">
+      <span class="contact-section-label">goedgekozen.be</span>
+      <address class="contact-address">
+        Een plek van zorgvuldig uitgekozen winkels en makers.<br />
+        Samen besteld, afgehaald bij jou om de hoek.
+      </address>
+
+      <ul class="contact-links">
+        <li><a href="mailto:hallo@goedgekozen.be">hallo@goedgekozen.be</a></li>
+      </ul>
+
+      <h4>Ben je een maker?</h4>
+      <ul class="contact-links">
+        <li><a href="mailto:hallo@goedgekozen.be?subject=Ik%20wil%20mee%20doen%20als%20maker">Sluit je aan als maker</a></li>
+      </ul>
+
+      <h4>Vragen over je bestelling?</h4>
+      <ul class="contact-links">
+        <li>Neem contact op met de winkel waar je bestelde.</li>
+      </ul>
+    </div>
+
+    <div class="contact-map">
+      <LinkTo @route="locations" class="ggz-btn ggz-btn--ghost">Bekijk de afhaalplekken</LinkTo>
+    </div>
+  </div>
+</div>
+{{else}}
 <div class="contact">
   <div class="onstopbanner">
     <h1 class="uppercase">Contacteer Veeakker</h1>
@@ -32,5 +67,6 @@
     </div>
   </div>
 </div>
+{{/if}}
 
 {{outlet}}

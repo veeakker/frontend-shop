@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { get } from '@ember/object';
+import config from 'veeakker/config/environment';
 
 export default class extends Component {
   @service session;
@@ -15,14 +16,15 @@ export default class extends Component {
 
   get placeholderImageUrl() {
     const shop = this.session.webshop;
-    if (shop) {
-      const placeholder = get(shop, 'placeholderImage');
-      if (placeholder && placeholder.get('id')) {
-        const size = { width: 244, height: 200 };
-        return placeholder.content?.sizedImageUrl(size);
-      }
+    const shopPlaceholder = shop && get(shop, 'placeholderImage');
+    if (shopPlaceholder && shopPlaceholder.get('id')) {
+      const size = { width: 244, height: 200 };
+      return shopPlaceholder.content?.sizedImageUrl(size);
+    } else if (config.mainSite.enabled === 'false') {
+      return '/images/placeholder-goedgekozen.svg';
+    } else {
+      return '/images/logo-veeakker.png';
     }
-    return '/images/logo-veeakker.png';
   }
 
   get imageUrl() {

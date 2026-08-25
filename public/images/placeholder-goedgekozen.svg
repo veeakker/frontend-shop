@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="244" height="200" viewBox="0 0 244 200">
+  <g fill="none" stroke="#E8DCC8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bag body -->
+    <path d="M62 62 L182 62 L182 178 L62 178 Z"/>
+    <!-- Top rim fold -->
+    <line x1="62" y1="72" x2="182" y2="72"/>
+    <!-- Gusset creases -->
+    <line x1="70" y1="72" x2="70" y2="170"/>
+    <line x1="174" y1="72" x2="174" y2="170"/>
+    <!-- Bottom fold -->
+    <line x1="70" y1="170" x2="174" y2="170"/>
+    <!-- Left handle -->
+    <path d="M84 70 C 84 40, 110 40, 110 70"/>
+    <!-- Right handle -->
+    <path d="M134 70 C 134 40, 160 40, 160 70"/>
+    <!-- Brand label -->
+    <rect x="92" y="108" width="60" height="32" rx="3"/>
+    <line x1="102" y1="120" x2="142" y2="120"/>
+    <line x1="102" y1="128" x2="132" y2="128"/>
+  </g>
+</svg>

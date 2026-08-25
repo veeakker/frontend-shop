@@ -1,3 +1,15 @@
+{{#if (goedgekozen)}}
+<div class="ggz-page-header">
+  <h1>Winkel niet gevonden</h1>
+</div>
+<div class="ggz-page ggz-page--center">
+  <p>
+    We konden deze winkel niet vinden. Misschien is de link verouderd of is de winkel
+    niet langer beschikbaar.
+  </p>
+  <LinkTo @route="index" class="ggz-btn ggz-btn--primary">Bekijk alle winkels</LinkTo>
+</div>
+{{else}}
 <div class="onstopbanner">
   <h1 class="uppercase">webshop niet gevonden</h1>
   <Design::Forks/>
@@ -8,3 +20,4 @@
   </p>
   <!-- <div class="button-product-cart"><LinkTo @route="webshop" @model={{this.webshop}}>Naar de webshop</LinkTo></div> -->
 </div>
+{{/if}}

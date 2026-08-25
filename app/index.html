@@ -7,23 +7,32 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
+  <meta name="marketplace-brand" content="{{MARKETPLACE_BRAND}}">
   <link rel="icon" href="/images/logo-veeakker.png">
 
   <script>
     (function(){
       function gc(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):null;}
       function sc(n,v,age){document.cookie=n+'='+encodeURIComponent(v)+'; path=/; max-age='+age+'; SameSite=Lax';}
+      var brand=(document.querySelector('meta[name="marketplace-brand"]')||{}).content||'';
+      var isGoedgekozen=(brand==='goedgekozen');
+      var prefKey=isGoedgekozen?'goedgekozen-theme':'veeakker-theme';
+      var osKey=isGoedgekozen?'goedgekozen-theme-os':'veeakker-theme-os';
       var osNow=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
-      var osLast=gc('veeakker-theme-os');
-      var pref=gc('veeakker-theme')||localStorage.getItem('veeakker-theme');
-      sc('veeakker-theme-os',osNow,31536000);
+      var osLast=gc(osKey);
+      var pref=gc(prefKey)||localStorage.getItem(prefKey);
+      sc(osKey,osNow,31536000);
       var effective;
-      if(osLast&&osLast!==osNow){
-        sc('veeakker-theme','',0);
-        try{localStorage.removeItem('veeakker-theme');}catch(e){}
+      if(!isGoedgekozen&&osLast&&osLast!==osNow){
+        sc(prefKey,'',0);
+        try{localStorage.removeItem(prefKey);}catch(e){}
         effective=osNow;
       } else {
-        effective=(pref==='light'||pref==='dark')?pref:osNow;
+        if(isGoedgekozen){
+          effective=(pref==='light'||pref==='dark')?pref:'light';
+        } else {
+          effective=(pref==='light'||pref==='dark')?pref:osNow;
+        }
       }
       document.documentElement.setAttribute('data-theme',effective);
     })();

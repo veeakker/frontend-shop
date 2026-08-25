@@ -1,7 +1,69 @@
+{{#if (goedgekozen)}}
+<div class="ggz-page">
+  {{#if (eq this.model.uri "http://veeakker.be/delivery-kinds/toeren")}}
+    <h2>Toeren — afhalen op een vaste stopplaats</h2>
+    <p>
+      De toeren zijn de ruggengraat van goedgekozen. Om de vier weken rijdt het busje
+      een vaste route langs een aantal haltes in Vlaanderen. Je bestelt bij je favoriete
+      winkel, je pakketje rijdt mee op de toer, en je haalt het op aan de stopplaats
+      die jou het best uitkomt. Dat kan een andere winkel zijn dan waar je bestelde —
+      dat is juist het idee.
+    </p>
+    <p>
+      Op iedere halte blijven we een kwartier staan. Je betaalt bij afhaling, cash of
+      met bankcontact. De toeren zijn gratis — geen leveringskost.
+    </p>
+    <h2>Hoe bestel je?</h2>
+    <p>
+      Stel je bestelling samen in de webshop en kies als afleverwijze de Toer die
+      jou past. Je kan je bestelling plaatsen tot en met zondagnacht voor de levering.
+      De eerstvolgende zaterdag ligt je pakketje klaar op de afgesproken halte.
+    </p>
+    <p>
+      Let op: de prijs die je in de webshop ziet is een richtprijs. Voor gewogen
+      producten zoals vlees en vis betaal je de kiloprijs ter plekke. Je bestelling
+      kan dus iets goedkoper of duurder uitvallen.
+    </p>
+  {{else if (eq this.model.uri "http://veeakker.be/delivery-kinds/natuurwinkels")}}
+    <h2>Afhalen in een natuurwinkel</h2>
+    <p>
+      Bij deze winkels kan je je bestelling laten afleveren en ophalen. Je bent vrij
+      om je pakketje af te halen wanneer het jou past, tijdens de openingsuren van de
+      winkel. Vaak vind je er nog andere lokale producten. Eén bestelling, meerdere
+      winkels, minder kilometers.
+    </p>
+  {{else if (eq this.model.uri "http://veeakker.be/delivery-kinds/buurderijen")}}
+    <h2>Afhalen op een buurderij</h2>
+    <p>
+      We zijn aanwezig op een aantal buurderijen, meestal één keer per maand. Plaats
+      je bestelling op de winkel van de buurderij en haal je pakketje er af op de
+      afgesproken dag. Zo steun je zowel je lokale makers als je lokale buurderij.
+    </p>
+  {{else if (eq this.model.uri "http://veeakker.be/delivery-kinds/webshop")}}
+    <h2>Levering aan huis</h2>
+    <p>
+      Je pakketje wordt geleverd aan huis:
+    </p>
+    <ul>
+      <li>via pakjesdienst (€25/levering — gratis voor bestellingen vanaf €150)</li>
+      <li>om de vier weken via de Toeren aan huis (€10/levering — gratis vanaf €125)</li>
+      <li>of gratis opgehaald op een afgesproken halte via de Toeren of bij een natuurwinkel</li>
+    </ul>
+    <p>
+      Liever geen account? Kies bij de aflevering hoe je je bestelling geleverd wil
+      krijgen. Dat kan ook zonder registratie.
+    </p>
+  {{else}}
+    {{! template-lint-disable "no-triple-curlies" }}
+    {{{this.model.description}}}
+    {{! template-lint-enable "no-triple-curlies" }}
+  {{/if}}
+</div>
+{{else}}
 <div class="textbook">
   {{#if (eq this.model.uri "http://veeakker.be/delivery-kinds/toeren")}}
-    <p>Sinds het prille begin van Veeakker werde​n op deze manier producten rechtstreeks aan de klant verdeeld over gans Vlaanderen. Iedere toer wordt nog steeds om de 4 weken gereden. De data van deze rondes liggen voor het hele jaar vast. De meeste leveringsrondes vinden plaats op zaterdag. Alleen ‘Toer Hasselt’ wordt gereden op vrijdagen.</p>
-    <p>In 1986 deed Veeakker de eerste ‘Home delivery’ over gans Vlaanderen.</p>
+    <p>Sinds het prille begin van Veeakker werde​n op deze manier producten rechtstreeks aan de klant verdeeld over gans Vlaanderen. Iedere toer wordt nog steeds om de 4 weken gereden. De data van deze rondes liggen voor het hele jaar vast. De meeste leveringsrondes vinden plaats op zaterdag. Alleen 'Toer Hasselt' wordt gereden op vrijdagen.</p>
+    <p>In 1986 deed Veeakker de eerste 'Home delivery' over gans Vlaanderen.</p>
     <p>Momenteel zijn er zijn twee soorten Toeren: Toeren aan huis en Toeren met vaste stopplaatsen. </p>
     <p>Via de toeren bieden we voorlopig enkel thuisleveringen aan in de regio Mechelen en Tielt-Winge.  <LinkTo @route="locations.kind" @model="home-delivery">Via koerier kan dat over gans Vlaanderen.</LinkTo></p>
     <p>Al onze andere Toeren zijn Toeren met een vaste stopplaatsen. Voordeel is dat je als consument exact weet wanneer je de levering kan ophalen.</p>
@@ -33,8 +95,9 @@
       Krijg je je bestelling nu aan huis of in een natuurwinkel geleverd, dan kan je dat nog steeds. <br /> Wil je graag shoppen zonder een account aan te maken, dan kies je bij de aflevering hoe je je bestelling graag geleverd krijgt.
     </p>
   {{else}}
-    {{! template-lint-disable "no-triple-curlies" --}}
+    {{! template-lint-disable "no-triple-curlies" }}
     {{{this.model.description}}}
-    {{! template-lint-enable "no-triple-curlies" --}}
+    {{! template-lint-enable "no-triple-curlies" }}
   {{/if}}
 </div>
+{{/if}}

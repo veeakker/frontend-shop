@@ -79,6 +79,14 @@
   @include textures.texture-grain();
   border-bottom: 1px solid var(--color-border);
 
+  a {
+    color: var(--color-nav-bar-text);
+
+    &:hover {
+      color: var(--color-nav-bar-text-hover);
+    }
+  }
+
   a:hover {
     background-color: var(--color-nav-bg-hover);
   }
@@ -93,6 +101,21 @@
   width: 100%;
   background-color: var(--color-nav-secondary-bg);
   border-bottom: 1px solid var(--color-border);
+
+  /* Submenu sits on a surface-derived background, not the dark
+     --color-nav-bg, so use text tokens (not --color-nav-bar-text, which
+     shops set light for their dark nav bar).  --color-text-primary keeps
+     inactive links readable; --color-text-muted (--ink-2) is too dim for
+     some shop palettes.  Active and hover use the brand accent. */
+  a {
+    color: var(--color-text-primary);
+    &:hover {
+      color: var(--color-nav-bar-active);
+    }
+    &.active {
+      color: var(--color-nav-bar-active);
+    }
+  }
 
   a:hover {
     background-color: var(--color-nav-secondary-bg-hover);
@@ -109,20 +132,19 @@
   justify-content: center;
   text-align: center;
 
+  /* Layout only: color comes from the context class (.menu-header for the
+     dark nav bar, .submenu-header for the lighter surface) so a shop's
+     light --color-nav-bar-text doesn't collide with its light
+     --color-nav-secondary-bg. */
   a {
     display: inline-block;
     text-decoration: none;
     text-align: center;
-    color: var(--color-nav-bar-text);
     font-size: var(--tab-font-size);
     font-weight: var(--tab-font-weight);
     font-family: var(--font-display);
     padding: var(--space-4);
     transition: color var(--transition-fast);
-
-    &:hover {
-      color: var(--color-nav-bar-text-hover);
-    }
   }
 }
 

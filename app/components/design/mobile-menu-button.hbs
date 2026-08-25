@@ -1,0 +1,9 @@
+{{#if @isOpen}}
+  <a id="mobile-menu" {{on "click" @onClose}}>
+    <i class="fa fa-times"></i>
+  </a>
+{{else}}
+  <a id="mobile-menu" {{on "click" @onOpen}}>
+    <i class="fa fa-bars"></i>
+  </a>
+{{/if}}

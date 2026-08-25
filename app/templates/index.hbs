@@ -1,3 +1,179 @@
+{{#if (goedgekozen)}}
+<div class="ggz-landing">
+  {{#if this.hostingShop}}
+    <div class="ggz-hosted-banner">
+      <p class="ggz-hosted-banner__text">
+        {{this.hostingShop.label}} is een winkel op goedgekozen.be
+      </p>
+      <LinkTo @route="webshop" @model={{this.hostingShop}} class="ggz-hosted-banner__back">
+        Terug naar {{this.hostingShop.label}}
+      </LinkTo>
+    </div>
+  {{/if}}
+  <section class="ggz-hero">
+    <div class="ggz-hero__bg" aria-hidden="true"></div>
+    <div class="ggz-hero__inner">
+      <a class="ggz-wordmark" href="/" aria-label="goedgekozen.be — naar start">
+        <svg class="ggz-wordmark__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M11 20.5 L17 26.5 L29 13.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="ggz-wordmark__text">goedgekozen<span class="ggz-wordmark__be">.be</span></span>
+      </a>
+      <h1 class="ggz-hero__title">Lokaal gekozen.<br/>Samen besteld, afgehaald bij jou om de hoek.</h1>
+      <p class="ggz-hero__lead">
+        Eén plek van zorgvuldig uitgekozen winkels en makers. Bestel bij de ene,
+        haal af op de drempel van een andere winkel bij jou in de buurt.
+        Korte ketens, eerlijke economie, minimale impact.
+      </p>
+      <div class="ggz-hero__cta">
+        <a class="ggz-btn ggz-btn--primary" href="#winkels">Ontdek de winkels</a>
+        <a class="ggz-btn ggz-btn--ghost" href="#hoe-werkt-het">Hoe werkt het?</a>
+      </div>
+    </div>
+    <svg class="ggz-hero__skyline" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,120 L0,70 Q150,30 300,60 T600,55 T900,65 T1200,50 L1200,120 Z"/>
+    </svg>
+  </section>
+
+  <section class="ggz-section ggz-how" id="hoe-werkt-het">
+    <h2 class="ggz-section__title">Hoe het werkt</h2>
+    <p class="ggz-section__lead">Drie stappen tussen de maker en jouw drempel.</p>
+    <ol class="ggz-steps">
+      <li class="ggz-step">
+        <span class="ggz-step__num">1</span>
+        <svg class="ggz-step__icon" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M10 16 L24 8 L38 16 L38 38 L10 38 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M18 38 V26 H30 V38" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+        <h3 class="ggz-step__title">Kies een winkel</h3>
+        <p class="ggz-step__text">Blader door onze gekozen winkels en makers. Elke winkel vertelt waar zijn producten vandaan komen.</p>
+      </li>
+      <li class="ggz-step">
+        <span class="ggz-step__num">2</span>
+        <svg class="ggz-step__icon" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="16" cy="16" r="7" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M16 23 V40 M11 35 H21" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M34 12 V40 M29 17 H39 M29 33 H39" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <h3 class="ggz-step__title">Bestel samen</h3>
+        <p class="ggz-step__text">Leg je producten in je mandje. Eén bestelling, één levering, minder kilometers voor iedereen.</p>
+      </li>
+      <li class="ggz-step ggz-step--accent">
+        <span class="ggz-step__num">3</span>
+        <svg class="ggz-step__icon" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M8 26 L24 12 L40 26 V40 H8 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="20" y="30" width="8" height="10" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M14 22 H34" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <h3 class="ggz-step__title">Haal af bij een winkel bij jou</h3>
+        <p class="ggz-step__text">Je pakketje rijdt mee met de ronde en ligt klaar op een drempel in jouw buurt — de ene winkel, afgehaald bij de andere.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="ggz-section ggz-shops" id="winkels">
+    <h2 class="ggz-section__title">Onze gekozen winkels</h2>
+    <p class="ggz-section__lead">Elke winkel is uitgekozen om wat hij maakt en hoe hij het maakt.</p>
+
+    <div class="ggz-filters" role="tablist" aria-label="Filter winkels per type">
+      {{#each this.kinds as |kind|}}
+        <button
+          type="button"
+          class="ggz-filter {{if (eq this.kind kind.id) "ggz-filter--active"}}"
+          {{on "click" (fn this.setKind kind.id)}}
+        >{{kind.label}}</button>
+      {{/each}}
+    </div>
+
+    <div class="ggz-shop-grid">
+      {{#each this.filteredShops as |entry|}}
+        <LinkTo @route="webshop" @model={{entry.shop}} class="ggz-shop-card">
+          <div class="ggz-shop-card__media">
+            {{#if entry.shop.logo}}
+              <img src={{entry.shop.logo.downloadUrl}} alt={{entry.shop.label}} />
+            {{else}}
+              <span class="ggz-shop-card__initial">{{entry.shop.label}}</span>
+            {{/if}}
+          </div>
+          <div class="ggz-shop-card__body">
+            <h3 class="ggz-shop-card__title">{{entry.shop.label}}</h3>
+            {{#if entry.kindLabels.length}}
+              <ul class="ggz-shop-card__kinds">
+                {{#each entry.kindLabels as |label|}}
+                  <li>{{label}}</li>
+                {{/each}}
+              </ul>
+            {{/if}}
+          </div>
+        </LinkTo>
+      {{else}}
+        <p class="ggz-empty">Geen winkels voor dit type — probeer een ander filter.</p>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class="ggz-section ggz-map">
+    <h2 class="ggz-section__title">Waar haal je af?</h2>
+    <p class="ggz-section__lead">Een netwerk van afhaalplekken. Jouw bestelling rijdt mee naar een drempel bij jou.</p>
+    <div class="ggz-map__frame">
+      <DeliveryLocationsMap @places={{this.model.deliveryPlaces}} as |marker place|>
+        <h3>{{place.label}}</h3>
+        <p>{{place.postalAddress.streetAddress}}<br/>{{place.postalAddress.postalCode}} {{place.postalAddress.locality}}</p>
+      </DeliveryLocationsMap>
+    </div>
+  </section>
+
+  <section class="ggz-section ggz-values">
+    <h2 class="ggz-section__title">Waarom goedgekozen</h2>
+    <ul class="ggz-values__grid">
+      <li class="ggz-value">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 C16 14 12 22 12 30 C12 36 17 41 24 41 C31 41 36 36 36 30 C36 22 32 14 24 6 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 18 V35" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h3>Lokale productie</h3>
+        <p>Gemaakt door mensen uit jouw streek, met kennis van de grond en het vak.</p>
+      </li>
+      <li class="ggz-value">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M16 24 H32 M24 16 V32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h3>Eerlijke economie</h3>
+        <p>Een eerlijke prijs voor wie het maakt én voor wie het koopt. Geen tussenhandel die de keten leegtrekt.</p>
+      </li>
+      <li class="ggz-value">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 32 L20 20 L28 28 L40 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 16 H40 V24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Korte keten</h3>
+        <p>Van maker naar drempel, met zo weinig mogelijk schakels en kilometers ertussen.</p>
+      </li>
+      <li class="ggz-value">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10 C18 18 14 24 14 31 C14 36 18 40 24 40 C30 40 34 36 34 31 C34 24 30 18 24 10 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 24 V36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h3>Minimale impact</h3>
+        <p>Eén ronde, vele bestellingen. Minder verpakking, minder transport, minder verspilling.</p>
+      </li>
+      <li class="ggz-value">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 24 H38 M24 10 V38" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+        <h3>Open markten</h3>
+        <p>Een open plek waar makers en zoekers elkaar vinden. Toegankelijk, doorzichtig, eerlijk.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="ggz-section ggz-makers">
+    <h2 class="ggz-section__title">Gekozen makers</h2>
+    <p class="ggz-section__lead">Achter elk product staat een mens met een verhaal. We noemen ze bij naam.</p>
+    <div class="ggz-makers__card">
+      <p class="ggz-makers__quote">"Wat we maken, maken we met zorg voor de grond, de dieren en de mensen die ervan leven. goedgekozen geeft dat verhaal een plek."</p>
+      <p class="ggz-makers__cite">— een van onze makers</p>
+    </div>
+  </section>
+
+  <section class="ggz-section ggz-join">
+    <h2 class="ggz-section__title">Sluit je aan</h2>
+    <p class="ggz-section__lead">Maak jij lokaal, eerlijk, met zorg? Word een gekozen maker en bereik jouw buurt.</p>
+    <div class="ggz-join__cta">
+      <a class="ggz-btn ggz-btn--primary" href="mailto:hallo@goedgekozen.be?subject=Ik%20wil%20mee%20doen%20als%20maker">Word een maker</a>
+      <LinkTo @route="contact-us" class="ggz-btn ggz-btn--ghost">Stel een vraag</LinkTo>
+    </div>
+  </section>
+</div>
+{{else}}
 <div class="content-home">
   <div class="top-banner">
     {{!-- TODO: move languages upward?
@@ -47,3 +223,4 @@
     </div>
   </div>
 </div>
+{{/if}}

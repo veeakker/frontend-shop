@@ -1,5 +1,7 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import productGroupHasProducts from 'veeakker/utils/product-group-has-products';
+import shopSearchParams from 'veeakker/utils/shop-search-params';
 
 export default class WebshopProductGroupsRoute extends Route {
   @service store;
@@ -9,13 +11,23 @@ export default class WebshopProductGroupsRoute extends Route {
   async model() {
     let businessEntity = await this.basket.getConstrainingBusinessEntity();
     let shop = await this.session.getConstrainingShop();
+    let shopParams = await shopSearchParams(shop);
 
-    return await this.store.query('product-group', {
+    let rootGroups = await this.store.query('product-group', {
       "filter[:has-no:parent-groups]": "yes",
-      "filter[child-groups][products][is-enabled]": true,
       "include": "child-groups",
-      ...businessEntity ? { "filter[child-groups][products][offerings][available-at-or-from][:id:]": businessEntity.id } : {},
-      ...shop ? { "filter[child-groups][products][offerings][offered-by-shop][:id:]": shop.id } : {}
     });
+
+    let rootChecks = await Promise.all(
+      rootGroups.toArray().map(async (root) => {
+        let children = (await root.childGroups).toArray();
+        let childChecks = await Promise.all(
+          children.map(child => productGroupHasProducts(child.id, businessEntity, shopParams))
+        );
+        return { root, hasNonEmptyChild: childChecks.some(Boolean) };
+      })
+    );
+
+    return rootChecks.filter(r => r.hasNonEmptyChild).map(r => r.root);
   }
 }

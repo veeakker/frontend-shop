@@ -1,16 +1,30 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import config from 'veeakker/config/environment';
 
-const PREF_KEY = 'veeakker-theme';
-const OS_KEY   = 'veeakker-theme-os';
+// veeakker and goedgekozen use their own keys plus an OS-auto default.
+const STANDALONE = {
+  pref: 'veeakker-theme',
+  os: 'veeakker-theme-os',
+  default: 'auto',
+  resetOnOsChange: true
+};
+const GOEDGEKOZEN = {
+  pref: 'goedgekozen-theme',
+  os: 'goedgekozen-theme-os',
+  default: 'light',
+  resetOnOsChange: false
+};
 
 function getCookie(name) {
+  if (!name) return null;
   const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
   return m ? decodeURIComponent(m[1]) : null;
 }
 
 function setCookie(name, value, maxAge = 31536000) {
+  if (!name) return;
   document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}; SameSite=Lax`;
 }
 
@@ -24,29 +38,36 @@ export default class ThemeService extends Service {
   constructor() {
     super(...arguments);
 
-    const osNow  = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    const osLast = getCookie(OS_KEY);
-    const stored = getCookie(PREF_KEY) || localStorage.getItem(PREF_KEY) || 'auto';
+    const isGoedgekozen =
+      config.mainSite.enabled === 'false' && config.marketplaceBrand === 'goedgekozen';
+    const cfg = isGoedgekozen ? GOEDGEKOZEN : STANDALONE;
+    this._cfg = cfg;
 
-    if (osLast && osLast !== osNow) {
+    const osNow  = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    const osLast = getCookie(cfg.os);
+    const stored = getCookie(cfg.pref) || localStorage.getItem(cfg.pref) || cfg.default;
+
+    if (cfg.resetOnOsChange && osLast && osLast !== osNow) {
       // OS preference changed since last visit — discard manual override
       this.preference = 'auto';
-      deleteCookie(PREF_KEY);
-      localStorage.removeItem(PREF_KEY);
+      deleteCookie(cfg.pref);
+      localStorage.removeItem(cfg.pref);
     } else {
       this.preference = stored;
     }
 
-    setCookie(OS_KEY, osNow);
+    setCookie(cfg.os, osNow);
     this._apply(this.preference);
 
     this._mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
     this._onOsChange = () => {
-      this.preference = 'auto';
-      deleteCookie(PREF_KEY);
-      localStorage.removeItem(PREF_KEY);
-      setCookie(OS_KEY, this._mediaQuery.matches ? 'light' : 'dark');
-      this._apply('auto');
+      if (cfg.resetOnOsChange) {
+        this.preference = 'auto';
+        deleteCookie(cfg.pref);
+        localStorage.removeItem(cfg.pref);
+      }
+      setCookie(cfg.os, this._mediaQuery.matches ? 'light' : 'dark');
+      this._apply(this.preference);
     };
     this._mediaQuery.addEventListener('change', this._onOsChange);
   }
@@ -65,8 +86,8 @@ export default class ThemeService extends Service {
   toggle() {
     const next = this.effectiveTheme === 'dark' ? 'light' : 'dark';
     this.preference = next;
-    setCookie(PREF_KEY, next);
-    localStorage.setItem(PREF_KEY, next);
+    setCookie(this._cfg.pref, next);
+    localStorage.setItem(this._cfg.pref, next);
     this._apply(next);
   }
 

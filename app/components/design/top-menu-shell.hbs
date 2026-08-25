@@ -1,0 +1,17 @@
+<div class="top-menu{{if @wrapperClass (concat " " @wrapperClass)}}" style={{@wrapperStyle}}>
+  {{yield to="logo"}}
+
+  <div id="veeakker-menu">
+    {{yield to="links"}}
+    <Design::ThemeToggle />
+    <Design::MobileMenuButton
+      @isOpen={{@mobileOpen}}
+      @onOpen={{@onOpenNav}}
+      @onClose={{@onCloseNav}}
+    />
+  </div>
+</div>
+<div class="mobile-menu-links {{@mobileOpenClass}}">
+  {{yield to="links"}}
+  <Design::ThemeToggle @variant="mobile" />
+</div>
