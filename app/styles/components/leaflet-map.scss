@@ -1,42 +1,11 @@
-/* Leaflet map - theme-aware defaults
-   Targets .leaflet-map, our custom class on <DeliveryLocationsMap>.
-   Does NOT affect veeakker-home-map (no leaflet-map class there). */
-
-@mixin leaflet-light-mode {
-  .leaflet-map .leaflet-tile-pane {
-    filter: sepia(0.1);
-  }
-  .leaflet-map .leaflet-marker-icon:not(.leaflet-div-icon) {
-    filter: none;
-  }
-  .leaflet-map .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
-    filter: drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
-  }
-}
+/* Leaflet map
+ *
+ * theme-aware defaults Targets .leaflet-map, our custom class on <DeliveryLocationsMap> and <VeeakkerHomeMap>. Tile
+ * colours come from the vector style and js overrides.
+ */
 
 .leaflet-map {
   background: var(--color-surface-card); /* prevents light-grey flash before tiles arrive */
-
-  /* Dark mode: invert CartoDB light tiles → high-contrast dark map.
-     hue-rotate(180deg) partially un-shifts the inverted colours so
-     water/parks look less garish; saturate tones down the remainder.
-     This gives far better readability than dark_all tiles. */
-  .leaflet-tile-pane {
-    filter: invert(1) hue-rotate(180deg) saturate(1.5) brightness(1.1) sepia(0.3);
-  }
-
-  /* Dark mode: img-based icons - invert to make visible, pull brightness
-     back so they don't float above tile labels.
-     div-icons (home marker) are excluded: they carry their own colours. */
-  .leaflet-marker-icon:not(.leaflet-div-icon) {
-    filter: invert(1) sepia(0.25) brightness(0.65);
-  }
-
-  /* Selected place: add amber glow on top of the dark-mode filter */
-  .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
-    filter: invert(1) sepia(0.25) brightness(0.65)
-            drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
-  }
 
   /* div-icon container: strip Leaflet's default white box */
   .leaflet-div-icon {
@@ -45,4 +14,22 @@
   }
 }
 
-[data-theme="light"] { @include leaflet-light-mode; }
+/* img-based markers (van/shop/barn PNGs, home marker): invert so they read
+   warm on the light vector tiles in dark mode. */
+.leaflet-map .leaflet-marker-icon:not(.leaflet-div-icon) {
+  filter: invert(1) sepia(0.25) brightness(0.65);
+}
+
+/* Selected place: amber glow on top of the dark-mode filter */
+.leaflet-map .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
+  filter: invert(1) sepia(0.25) brightness(0.65)
+          drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
+}
+
+[data-theme="light"] .leaflet-map .leaflet-marker-icon:not(.leaflet-div-icon) {
+  filter: none;
+}
+
+[data-theme="light"] .leaflet-map .leaflet-marker-icon.marker-selected:not(.leaflet-div-icon) {
+  filter: drop-shadow(0 0 6px #C8955C) drop-shadow(0 0 3px #C8955C);
+}

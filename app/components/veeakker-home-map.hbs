@@ -1,6 +1,6 @@
 <div class="veeakker-home-map__leaflet-map">
   <LeafletMap class="leaflet-map" @lat={{this.butcheryLat}} @lng={{this.butcheryLng}} @zoom={{this.defaultZoom}} as |map|>
-    <map.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" />
+    <map.maplibre />
     <map.marker @location={{this.veeakkerButcheryLocation}} as |marker|>
       <marker.popup>
         <h3>Koelhuis - Kantoor</h3>

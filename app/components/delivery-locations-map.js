@@ -49,10 +49,4 @@ export default class DeliveryLocationsMapComponent extends Component {
 
     return [[49.5, 2.5], [51.5, 6.5]];
   }
-
-  get tileUrl() {
-    // Both themes use light_all: dark mode inverts it via CSS for high contrast,
-    // light mode darkens it via CSS filter. dark_all tiles are too low-contrast.
-    return 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
-  }
 }

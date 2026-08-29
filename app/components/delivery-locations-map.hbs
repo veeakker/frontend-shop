@@ -2,7 +2,7 @@
   @bounds={{this.bounds}}
   @fitBoundsOptions={{hash padding=(array 50 50) maxZoom=13}}
   ...attributes as |map|>
-  <map.tile @url={{this.tileUrl}} />
+  <map.maplibre />
   {{#if @userLocation}}
     <map.marker
       @location={{@userLocation}}
