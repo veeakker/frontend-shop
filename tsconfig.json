@@ -2,5 +2,6 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "allowJs": true
-  }
+  },
+  "include": ["app/**/*.gjs", "app/**/*.gts", "app/**/*.js", "app/**/*.ts"]
 }
