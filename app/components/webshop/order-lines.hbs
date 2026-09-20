@@ -1,10 +1,24 @@
 {{#each @orderLines as |orderLine|}}
-  <Webshop::Basket::Row
-    @orderLine={{orderLine}}
-    @removeOrderLine={{@removeOrderLine}}
-    @plainRows={{@plainRows}}
-    @hideAvailabilityWarning={{@hideAvailabilityWarning}}
-    @hideDisabledWarning={{@hideDisabledWarning}}>
-    {{yield orderLine to="order-extra"}}
-  </Webshop::Basket::Row>
+  {{#if (has-block "order-extra")}}
+    <Webshop::Basket::Row
+      @orderLine={{orderLine}}
+      @removeOrderLine={{@removeOrderLine}}
+      @plainRows={{@plainRows}}
+      @hideAvailabilityWarning={{@hideAvailabilityWarning}}
+      @hideDisabledWarning={{@hideDisabledWarning}}
+      @confirmRemoval={{@confirmRemoval}}>
+      {{!-- TODO: is there a better way to pass this conditionally?--}}
+      <:order-extra as |orderLine|>
+        {{yield orderLine to="order-extra"}}
+      </:order-extra>
+    </Webshop::Basket::Row>
+  {{else}}
+    <Webshop::Basket::Row
+      @orderLine={{orderLine}}
+      @removeOrderLine={{@removeOrderLine}}
+      @plainRows={{@plainRows}}
+      @hideAvailabilityWarning={{@hideAvailabilityWarning}}
+      @hideDisabledWarning={{@hideDisabledWarning}}
+      @confirmRemoval={{@confirmRemoval}} />
+  {{/if}}
 {{/each}}

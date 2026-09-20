@@ -54,9 +54,17 @@
       <span class="order-price-per-unit">{{euros @orderLine.pricePerUnit}} / pakje</span>
       <span class="order-total-price">{{euros @orderLine.price}}</span>
       {{#if @removeOrderLine}}
-        <button class="remove-button" {{on "click" (fn @removeOrderLine @orderLine.offering @orderLine.amount)}} type="button" aria-label="Verwijder uit winkelmandje">
-          <i class="fas fa-trash"></i>
-        </button>
+        {{#if this.confirmingRemoval}}
+          <span class="remove-confirmation" role="status">Verwijderen?</span>
+          <div class="remove-confirm-actions">
+            <button class="remove-button remove-yes" type="button" {{on "click" (fn @removeOrderLine @orderLine.offering @orderLine.amount)}}>Zeker</button>
+            <button class="remove-button remove-no" type="button" {{on "click" this.cancelRemoval}}>Behouden</button>
+          </div>
+        {{else}}
+          <button class="remove-button" type="button" aria-label="Verwijder uit winkelmandje" {{on "click" this.requestRemoval}}>
+            <i class="fas fa-trash"></i>
+          </button>
+        {{/if}}
       {{/if}}
     {{/if}}
   </div>

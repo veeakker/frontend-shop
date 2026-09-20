@@ -9,7 +9,7 @@
       <:body>
         <Webshop::OrderLines
           @orderLines={{this.disabledOrderLines}}
-          @removeOrderLine={{@removeOrderLine}} />
+          @removeOrderLine={{@removeOrderLine}} @confirmRemoval={{false}} />
       </:body>
 
       <:footer>
@@ -32,7 +32,7 @@
       <:body>
         <Webshop::OrderLines
           @orderLines={{this.notAtLocationOrderLines}}
-          @removeOrderLine={{@removeOrderLine}} />
+          @removeOrderLine={{@removeOrderLine}} @confirmRemoval={{false}} />
       </:body>
 
       <:footer>
@@ -54,7 +54,7 @@
     <:body>
       <Webshop::OrderLines
         @orderLines={{@orderLines}}
-        @removeOrderLine={{@removeOrderLine}} />
+        @removeOrderLine={{@removeOrderLine}} @confirmRemoval={{true}} />
     </:body>
 
     <:footer>
