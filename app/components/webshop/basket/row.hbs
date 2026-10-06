@@ -15,9 +15,44 @@
       </LinkTo>
     </h3>
     <h4>
-      <Webshop::Basket::Amount @amount={{@orderLine.offering.typeAndQuantity}} />
-      <i class="fas fa-times"></i>
-      {{@orderLine.amount}} pakje{{#if (gte @orderLine.amount 2)}}s{{/if}}
+      {{#if this.editing}}
+        <span class="order-line-edit">
+          <Webshop::OrderLineManager
+            @product={{@orderLine.offering.typeAndQuantity.product}}
+            @selectedOffer={{this.selectedOffer}}
+            @amount={{this.amount}}
+            @onChange={{this.updateConfiguration}}
+            as |configuration|>
+            <select class="order-select" name="quantities" onchange={{pick "target.value" (fn this.pickQuantity configuration.offers)}}>
+              {{#each configuration.quantities as |quantity|}}
+                <option selected={{eq (get this.selectedOffer "typeAndQuantity.value") quantity}} value={{quantity}}>{{quantity}}</option>
+              {{/each}}
+            </select>
+            <select class="order-select" name="units" onchange={{pick "target.value" configuration.selectUnit}}>
+              {{#each configuration.units as |unit|}}
+                <option selected={{eq unit configuration.selectedUnit}} value={{unit}}>{{unit}}</option>
+              {{/each}}
+            </select>
+            &times;
+            <NumberButton @value={{this.amount}} @onChange={{this.updateAmount}} />
+            <span class="order-line-unit-label">pakje{{#if (gte this.amount 2)}}s{{/if}}</span>
+          </Webshop::OrderLineManager>
+          <span class="order-line-edit-actions">
+            <button class="button-product" type="button" {{on "click" this.confirmEditing}}>Bevestig</button>
+            <button class="order-line-cancel" type="button" {{on "click" this.cancelEditing}}>Annuleer</button>
+          </span>
+        </span>
+      {{else if @removeOrderLine}}
+        <span class="order-line-view" role="button" {{on "click" this.startEditing}}>
+          <Webshop::Basket::Amount @amount={{@orderLine.offering.typeAndQuantity}} />
+          &times;
+          {{@orderLine.amount}} pakje{{#if (gte @orderLine.amount 2)}}s{{/if}}
+        </span>
+      {{else}}
+        <Webshop::Basket::Amount @amount={{@orderLine.offering.typeAndQuantity}} />
+        &times;
+        {{@orderLine.amount}} pakje{{#if (gte @orderLine.amount 2)}}s{{/if}}
+      {{/if}}
     </h4>
 
     {{#if (and (not @hideDisabledWarning) (or (eq this.productIsEnabled false) (eq this.offeringIsEnabled false)))}}

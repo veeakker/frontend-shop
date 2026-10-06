@@ -1,4 +1,4 @@
-{{#each @orderLines as |orderLine|}}
+{{#each @orderLines key="id" as |orderLine|}}
   {{#if (has-block "order-extra")}}
     <Webshop::Basket::Row
       @orderLine={{orderLine}}

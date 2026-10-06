@@ -189,6 +189,56 @@
     color: var(--color-text-muted);
     font-weight: 400;
     margin: 0;
+
+    .order-line-view {
+      cursor: pointer;
+    }
+  }
+
+  .order-line-edit {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-right: var(--space-3);
+
+    .order-line-edit-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .order-select {
+      font-size: var(--text-sm);
+      font-family: 'Open Sans', sans-serif;
+      color: var(--color-text-primary);
+      background-color: var(--color-surface-input);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      height: 28px;
+      padding: 0 var(--space-2);
+      cursor: pointer;
+    }
+
+    .button-product {
+      max-width: none;
+      margin-top: 0;
+    }
+
+    .order-line-cancel {
+      border: none;
+      background: transparent;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      font-size: var(--text-sm);
+      font-family: 'Open Sans', sans-serif;
+      padding: var(--space-1) var(--space-2);
+      transition: color var(--transition-fast);
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
   }
 
   .order-comment {

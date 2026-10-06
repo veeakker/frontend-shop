@@ -19,9 +19,6 @@ class BasketFetcher extends Resource {
         accept: "application/vnd.api+json"
       }
     })).json();
-    if ( isUpdate ) {
-      this.value.set("orderLines",[]);
-    }
     let deliveryPlaceId = result.data[0]?.relationships["delivery-place"]?.data?.id;
 
     this.store.pushPayload( result );
@@ -106,39 +103,6 @@ class AwaitResource extends Resource {
 
   async setup() {
     this.value = await this.args.positional[0];
-  }
-}
-
-class TotalPriceResource extends Resource {
-  @tracked value
-  @service store
-
-  async setup() {
-    const orderLines = await this.args.positional[0];
-    if( orderLines?.length ){
-      // eslint-disable-next-line ember/no-get
-      const enabledOrderLines = [];
-      for ( let orderLine of orderLines ) {
-        // eslint-disable-next-line ember/no-get
-        let ol = await orderLine;
-        let product = await ol.pProduct;
-        if ( product.isEnabled ) {
-          enabledOrderLines.push(ol);
-        }
-      }
-      // const enabledOrderLines = orderLines.filter( (line) => get(line, "product.isEnabled") );
-      // const prices = enabledOrderLines.map( (ol) => get(ol, "price") || 0 );
-
-      // NOTE: this strategy prefers to render no price if we could not correctly calculate it.  That may not be
-      // preferred either.
-      let totalPrice = 0;
-      for( let orderLine of enabledOrderLines ) {
-        totalPrice += await orderLine.pPrice;
-      }
-      this.value = totalPrice;
-    } else {
-      this.value = undefined;
-    }
   }
 }
 
@@ -287,6 +251,16 @@ export default class BasketService extends Service {
     return (await this.orderLines).findBy( "offering", offering );
   }
 
+  async updateOrderLine( orderLine, { amount, offering } ){
+    if ( amount !== undefined )
+      set(orderLine, 'amount', amount);
+    if ( offering )
+      set(orderLine, 'offering', offering);
+    await orderLine.save();
+    // The save response merges into the model so the rest of the
+    // basket stays as it is; no refetch is needed for a line update.
+  }
+
   /**
    * The basket itself connects to invoice information which is
    * persisted through the basket service with this method.
@@ -356,7 +330,29 @@ export default class BasketService extends Service {
     orderLine.commentPersisted();
   }
 
-  @use totalPrice = new TotalPriceResource(() => [this.orderLines])
+  /**
+    Reactive derivation over tracked record state; in-place order-line
+    updates recompute this without refetching the basket.
+   */
+  get totalPrice() {
+    // NOTE: this strategy prefers to render no price if we could not
+    // correctly calculate it.  That may not be preferred either.
+    const prices = (this.orderLinesR || [])
+      .filter((ol) => {
+        const product = get(ol, 'product');
+        return !(product && get(product, 'isEnabled') === false);
+      })
+      .map((ol) => get(ol, 'price'));
+
+    if ( prices.includes(undefined) || prices.includes(NaN) ) {
+      return undefined;
+    }
+    let totalPrice = 0;
+    for ( const price of prices ) {
+      totalPrice += price;
+    }
+    return totalPrice;
+  }
 }
 
 export { BasketFetcher };
