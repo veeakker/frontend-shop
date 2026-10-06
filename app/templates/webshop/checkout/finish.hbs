@@ -74,7 +74,7 @@
 
     <div class="frost-div">
       <img class="frost" src="/images/vries.png" alt="Frozen icon" width="25" />
-      <p>Zorg voor een diepvries indien je diepgevroren producten bestelt!</p>
+      <p>Zorg voor een diepvries indien je diepgevroren producten bestelde.</p>
     </div>
 
   </div>
@@ -91,16 +91,6 @@
       </div>
     </div>
   {{/if}}
-</div>
-
-<div class="finish-upsell">
-  {{#let (or (and (eq this.basket.deliveryType "http://veeakker.be/delivery-methods/tour") (or this.basket.deliveryPlace.lfwLink this.basket.deliveryPlace.deliveryRoute.lfwLink)) "https://localfoodworks.eu/bestellen/market/9") as |lfwLink|}}
-    <p>
-      <strong>Andere producten rechtstreeks van de boer?</strong><br/>
-      Bestel ze op <a href={{lfwLink}}>Local Food Works</a> en we leveren ze samen.
-      Selecteer de markt in overeenstemming met je leverdatum.
-    </p>
-  {{/let}}
 </div>
 
 {{outlet}}
